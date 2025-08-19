@@ -225,7 +225,7 @@
             Equipping first-time college students with what they need to start strong
           </h1>
           
-          <<p class="mt-6 text-lg text-slate-500 leading-relaxed max-w-prose">
+          <p class="mt-6 text-lg text-slate-500 leading-relaxed max-w-prose">
   Join our community and be among the first to see how we <span class="font-semibold text-slate-700">bridge the gap between acceptance and success</span>—supporting first-time college students with thoughtfully curated kits for independent living, including supplies, travel assistance and starter meals for when financial aid isn't enough.
 </p>
         </div>
@@ -327,33 +327,75 @@
 
     
 <section id="impact" class="mx-auto max-w-7xl px-6 pb-20">
-      <div class="rounded-3xl bg-gradient-to-r from-slate-50 to-slate-100/50 p-8 sm:p-10 relative overflow-hidden shadow-card">
-        <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent"></div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-200/20 rounded-full -translate-y-32 translate-x-32"></div>
-        
-        <div class="relative">
-          <div class="text-center mb-6">
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Be the first to know</h2>
-            <p class="text-base text-slate-400">Join our early community and get notified the moment we launch. No spam, just the important updates.</p>
-          </div>
-          
-         <form id="notifyForm"
-      class="max-w-md mx-auto"
-      novalidate
-      action="https://script.google.com/a/macros/campusready.foundation/s/AKfycby2GbW3ZY6d9nnTh7ehlNH9KD7tsYlZJUvuaEQHEGMajaL2F83qJcd_XCMI1OL81Zc/exec"
-      method="POST">
-  <div class="flex flex-col sm:flex-row gap-4 sm:items-start">
-    <input type="email"
-           id="email"
-           name="email"
-           required
-           placeholder="Enter your email address"
-           class="flex-1 rounded-md border-slate-300 px-3 py-2">
-    <button type="submit"
-            class="rounded-md bg-teal-600 px-4 py-2 text-white hover:bg-teal-700">
-      Notify Me
-    </button>
+  <div class="rounded-3xl bg-gradient-to-r from-slate-50 to-slate-100/50 p-8 sm:p-10 relative overflow-hidden shadow-card">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent"></div>
+    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-200/20 rounded-full -translate-y-32 translate-x-32"></div>
+
+    <div class="relative">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Be the first to know</h2>
+        <p class="text-base text-slate-400">Join our early community and get notified the moment we launch. No spam, just the important updates.</p>
+      </div>
+
+      <!-- FORM -->
+      <form id="notifyForm"
+            class="max-w-md mx-auto"
+            novalidate
+            action="https://script.google.com/a/macros/campusready.foundation/s/AKfycby2GbW3ZY6d9nnTh7ehlNH9KD7tsYlZJUvuaEQHEGMajaL2F83qJcd_XCMI1OL81Zc/exec"
+            method="POST"
+            onsubmit="return handleSignup(event, this)">
+        <div class="flex flex-col sm:flex-row gap-4 sm:items-start">
+          <input type="email"
+                 id="email"
+                 name="email"
+                 required
+                 placeholder="Enter your email address"
+                 class="flex-1 rounded-md border-slate-300 px-3 py-2">
+          <button type="submit"
+                  class="rounded-md bg-teal-600 px-4 py-2 text-white hover:bg-teal-700">
+            Notify Me
+          </button>
+        </div>
+        <!-- spam-trap -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
+      </form>
+
+      <!-- message area -->
+      <p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
+    </div>
   </div>
+</section>
+<script>
+function handleSignup(e, formEl) {
+  e.preventDefault();                 // hard stop navigation
+  var msg = document.getElementById('notifyMessage');
+  if (msg) msg.textContent = 'Submitting…';
+  try {
+    fetch(formEl.action, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new FormData(formEl)
+    }).then(function () {
+      formEl.reset();
+      if (msg) msg.textContent = "Thanks. We'll be in touch!";
+    }).catch(function () {
+      if (msg) msg.textContent = 'Sorry — network error. Please try again.';
+    });
+  } catch (err) {
+    if (msg) msg.textContent = 'Sorry — network error. Please try again.';
+  }
+  return false;                       // double-ensure no navigation
+}
+
+// Extra safety: also wire the listener on DOM ready.
+document.addEventListener('DOMContentLoaded', function () {
+  var f = document.getElementById('notifyForm');
+  if (f && !f._wired) {
+    f.addEventListener('submit', function (ev) { handleSignup(ev, f); });
+    f._wired = true;
+  }
+});
+</script>
 
   <!-- simple honeypot (spam trap) -->
   <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
