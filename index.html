@@ -337,7 +337,7 @@
             <p class="text-base text-slate-400">Join our early community and get notified the moment we launch. No spam, just the important updates.</p>
           </div>
           
-          <form id="notifyForm" class="max-w-md mx-auto" novalidate>
+          <form id="notifyForm" class="max-w-md mx-auto" novalidate action="https://script.google.com/a/macros/campusready.foundation/s/AKfycbxB4GIDl47dmUryVNigr5kilH-ooEfSGvGmtCDb67EvU6f4ZbS1jKwOjjKcDH6H9P_Dgw/exec" method="POST">
             <div class="flex flex-col sm:flex-row gap-4 sm:items-start">
               <div class="relative flex-1 group">
                 <label for="email" class="sr-only">Email address</label>
@@ -371,7 +371,9 @@
               </svg>
               Perfect! You're on the list. We'll email you when we launch.
             </p>
-          </form>
+          <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
+</form>
+<p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
         </div>
       </div>
     </section>
