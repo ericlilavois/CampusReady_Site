@@ -323,9 +323,7 @@
   </div>
 </section>
 
-
-
-    
+<!-- NEWSLETTER / WAITLIST -->
 <section id="impact" class="mx-auto max-w-7xl px-6 pb-20">
   <div class="rounded-3xl bg-gradient-to-r from-slate-50 to-slate-100/50 p-8 sm:p-10 relative overflow-hidden shadow-card">
     <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent"></div>
@@ -337,7 +335,7 @@
         <p class="text-base text-slate-400">Join our early community and get notified the moment we launch. No spam, just the important updates.</p>
       </div>
 
-      <!-- FORM -->
+      <!-- ONE form only -->
       <form id="notifyForm"
             class="max-w-md mx-auto"
             novalidate
@@ -356,136 +354,51 @@
             Notify Me
           </button>
         </div>
-        <!-- spam-trap -->
-        <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
+
+        <!-- safer honeypot: uncommon name; kept offscreen -->
+        <input type="text"
+               name="contact_field"
+               tabindex="-1"
+               autocomplete="off"
+               aria-hidden="true"
+               style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
       </form>
 
-      <!-- message area -->
+      <!-- single message element -->
       <p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
     </div>
   </div>
 </section>
+
+<!-- one tiny script -->
 <script>
 function handleSignup(e, formEl) {
-  e.preventDefault();                 // hard stop navigation
+  e.preventDefault(); // never leave the page
   var msg = document.getElementById('notifyMessage');
   if (msg) msg.textContent = 'Submitting…';
-  try {
-    fetch(formEl.action, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: new FormData(formEl)
-    }).then(function () {
-      formEl.reset();
-      if (msg) msg.textContent = "Thanks. We'll be in touch!";
-    }).catch(function () {
-      if (msg) msg.textContent = 'Sorry — network error. Please try again.';
-    });
-  } catch (err) {
+
+  // If honeypot has content (bot), pretend success but don't post
+  var hp = formEl.querySelector('input[name="contact_field"]');
+  if (hp && hp.value) {
+    formEl.reset();
+    if (msg) msg.textContent = "Thanks. We'll be in touch!";
+    return false;
+  }
+
+  fetch(formEl.action, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new FormData(formEl)
+  }).then(function () {
+    formEl.reset();
+    if (msg) msg.textContent = "Thanks. We'll be in touch!";
+  }).catch(function () {
     if (msg) msg.textContent = 'Sorry — network error. Please try again.';
-  }
-  return false;                       // double-ensure no navigation
+  });
+
+  return false; // double-ensure no navigation
 }
-
-// Extra safety: also wire the listener on DOM ready.
-document.addEventListener('DOMContentLoaded', function () {
-  var f = document.getElementById('notifyForm');
-  if (f && !f._wired) {
-    f.addEventListener('submit', function (ev) { handleSignup(ev, f); });
-    f._wired = true;
-  }
-});
 </script>
-
-  <!-- simple honeypot (spam trap) -->
-  <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
-</form>
-<script>
-(function () {
-  // Catch ALL forms that post to Google Apps Script
-  const forms = Array.from(document.querySelectorAll('form[action*="script.google.com"]'));
-  forms.forEach((form) => {
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault(); // stop the page from navigating to {"ok":true}
-
-      // Reuse or create a message element right after the form
-      let msg = form.nextElementSibling && form.nextElementSibling.id === 'notifyMessage'
-        ? form.nextElementSibling
-        : null;
-      if (!msg) {
-        msg = document.createElement('p');
-        msg.id = 'notifyMessage';
-        msg.className = 'mt-2 text-sm text-slate-600';
-        form.insertAdjacentElement('afterend', msg);
-      }
-
-      msg.textContent = 'Submitting…';
-
-      try {
-        await fetch(form.action, {
-          method: 'POST',
-          mode: 'no-cors',         // avoids CORS warnings
-          body: new FormData(form) // sends email + any hidden honeypot
-        });
-        form.reset();
-        msg.textContent = "Thanks. We'll be in touch!";
-      } catch {
-        msg.textContent = 'Sorry — network error. Please try again.';
-      }
-    });
-  });
-})();
-</script>
-
-<!-- message area for on-page feedback -->
-<p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
-          <script>
-(function () {
-  const form = document.getElementById('notifyForm');
-  const msg  = document.getElementById('notifyMessage');
-  if (!form) return;
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault(); // keep user on this page
-    if (msg) msg.textContent = 'Submitting…';
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: new FormData(form)
-      });
-      form.reset();
-      if (msg) msg.textContent = "Thanks. We'll be in touch!";
-    } catch {
-      if (msg) msg.textContent = 'Sorry — network error. Please try again.';
-    }
-  });
-})();
-</script>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contact" class="relative z-10 border-t border-slate-200 bg-white/80 backdrop-blur-sm">
-    <div class="mx-auto max-w-7xl px-6 py-12">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-        <div class="text-sm">
-          <p class="font-bold text-slate-900 text-base mb-1">Campus Ready Foundation</p>
-          <p class="text-slate-600">Saint Helena, CA</p>
-        </div>
-        <div class="text-sm text-slate-600 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <a href="mailto:hello@campusready.foundation" class="hover:text-brand-600 transition-colors duration-200 flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-            hello@campusready.foundation
-          </a>
-          <div class="hidden sm:block text-slate-400">•</div>
-          <button onclick="showPrivacyPolicy()" class="hover:text-brand-600 transition-colors duration-200">Privacy</button>
-        </div>
-      </div>
-    </div>
   </footer>
 
   <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
