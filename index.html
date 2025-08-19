@@ -358,6 +358,42 @@
   <!-- simple honeypot (spam trap) -->
   <input type="text" name="website" tabindex="-1" autocomplete="off" style="display:none">
 </form>
+<script>
+(function () {
+  // Catch ALL forms that post to Google Apps Script
+  const forms = Array.from(document.querySelectorAll('form[action*="script.google.com"]'));
+  forms.forEach((form) => {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault(); // stop the page from navigating to {"ok":true}
+
+      // Reuse or create a message element right after the form
+      let msg = form.nextElementSibling && form.nextElementSibling.id === 'notifyMessage'
+        ? form.nextElementSibling
+        : null;
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.id = 'notifyMessage';
+        msg.className = 'mt-2 text-sm text-slate-600';
+        form.insertAdjacentElement('afterend', msg);
+      }
+
+      msg.textContent = 'Submitting…';
+
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          mode: 'no-cors',         // avoids CORS warnings
+          body: new FormData(form) // sends email + any hidden honeypot
+        });
+        form.reset();
+        msg.textContent = "Thanks. We'll be in touch!";
+      } catch {
+        msg.textContent = 'Sorry — network error. Please try again.';
+      }
+    });
+  });
+})();
+</script>
 
 <!-- message area for on-page feedback -->
 <p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
