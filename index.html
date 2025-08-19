@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="description" content="Campus Ready Foundation is launching soon. Sign up to be notified the moment we go live." />
+  <meta property="og:title" content="Campus Ready Foundation – Coming Soon" />
+  <meta property="og:description" content="Sign up to get an early heads up when Campus Ready Foundation launches." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.campusready.foundation/og-image.png" />
+  <meta property="og:url" content="https://www.campusready.foundation" />
+  <link rel="canonical" href="https://www.campusready.foundation" />
+  <meta name="theme-color" content="#14b8a6" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6', // Main brand color
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a'
+            },
+            accent: {
+              50: '#fafafa',
+              100: '#f4f4f5',
+              200: '#e4e4e7',
+              300: '#d4d4d8',
+              400: '#a1a1aa',
+              500: '#71717a',
+              600: '#52525b',
+              700: '#3f3f46',
+              800: '#27272a',
+              900: '#18181b'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            serif: ['Playfair Display', 'serif']
+          },
+          boxShadow: {
+            'soft': '0 8px 30px rgba(0, 0, 0, 0.08)',
+            'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+            'card-hover': '0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+            'glow': '0 0 0 1px rgba(14, 165, 233, 0.1), 0 8px 32px rgba(14, 165, 233, 0.3)'
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.8s ease-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'scale-in': 'scaleIn 0.5s ease-out',
+            'pan': 'pan 20s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-10px) rotate(1deg)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0px)' }
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            },
+            pan: {
+              '0%': { backgroundPosition: 'left' },
+              '100%': { backgroundPosition: 'right' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { 
+      -webkit-font-smoothing: antialiased; 
+      -moz-osx-font-smoothing: grayscale; 
+    }
+    
+    /* Enhanced gradient background with new colors and animation */
+    .hero-gradient {
+      background: radial-gradient(ellipse 800px 400px at 50% -20%, rgba(20, 184, 166, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse 600px 300px at 80% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 50%);
+      background-size: 200% 200%;
+      animation: pan 20s ease-in-out infinite alternate;
+    }
+    
+    /* Glass morphism effect */
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Improved button hover effects with more complex shadow */
+    .btn-primary {
+      background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+      transition: all 0.3s ease;
+      --tw-brand-500-rgb: 20, 184, 166;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 4px 15px rgba(var(--tw-brand-500-rgb), 0.25), 
+        0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Card animations */
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+  </style>
+<!-- SEO START -->
+<title>Campus Ready Foundation — Essential, non‑tuition support for first‑time college students</title>
+<link rel="canonical" href="https://campusready.foundation/">
+<meta name="description" content="We equip first-time college students with essential, non-tuition resources so they start strong, with confidence and dignity.">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://campusready.foundation/">
+<meta property="og:title" content="Campus Ready Foundation">
+<meta property="og:description" content="Essential, non-tuition resources so students start strong.">
+<meta property="og:image" content="https://campusready.foundation/assets/og-image.jpg">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Campus Ready Foundation">
+<meta name="twitter:description" content="Essential, non-tuition resources so students start strong.">
+<meta name="twitter:image" content="https://campusready.foundation/assets/og-image.jpg">
+
+<!-- JSON-LD for Nonprofit -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NonprofitOrganization",
+  "name": "Campus Ready Foundation",
+  "url": "https://campusready.foundation/",
+  "logo": "https://campusready.foundation/assets/logo-512.png",
+  "email": "hello@campusready.foundation",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "EIN",
+    "value": "39-2532572"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Saint Helena",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  }
+}
+</script>
+<!-- SEO END -->
+<!-- ICONS START -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="theme-color" content="#0ea5a6">
+<!-- ICONS END -->
+</head>
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden">
+  <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
+
+  <header class="relative z-20 glass animate-fade-in">
+    <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
+      <a href="https://www.campusready.foundation" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
+        <div class="relative">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg">CR</span>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
+        </div>
+        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Campus Ready Foundation</span>
+      </a>
+      <nav aria-label="Secondary" class="hidden sm:block">
+        <ul class="flex items-center gap-8 text-sm font-medium">
+          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200 relative group" href="#about">
+            About
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a></li>
+          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200 relative group" href="#contact">
+            Contact
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <section class="mx-auto max-w-7xl px-6 pt-12 pb-20">
+      <div class="sm:grid-cols-3 grid-cols-1 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="animate-slide-up">
+          <div class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-700 bg-brand-50 rounded-full px-4 py-2 ring-1 ring-brand-200 shadow-sm animate-scale-in">
+            <div class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></div>
+            Coming Soon
+          </div>
+          
+          <h1 class="mt-8 text-4xl sm:text-5xl font-bold leading-tight text-slate-900 font-serif" style="letter-spacing: 0.025em;">
+            Equipping first-time college students with what they need to start strong
+          </h1>
+          
+          <<p class="mt-6 text-lg text-slate-500 leading-relaxed max-w-prose">
+  Join our community and be among the first to see how we <span class="font-semibold text-slate-700">bridge the gap between acceptance and success</span>—supporting first-time college students with thoughtfully curated kits for independent living, including supplies, travel assistance and starter meals for when financial aid isn't enough.
+</p>
+        </div>
+
+        <div class="relative animate-fade-in" style="animation-delay: 0.4s;">
+  <div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-brand-100 via-white to-brand-50 shadow-card relative overflow-hidden group">
+    <div class="absolute inset-0 bg-gradient-to-br from-brand-200/20 via-transparent to-brand-300/10"></div>
+    <div class="absolute top-4 right-4 w-16 h-16 bg-brand-200/30 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-8 left-8 w-10 h-10 bg-brand-300/40 rounded-full animate-float" style="animation-delay: 3s;"></div>
+    
+    <div class="relative h-full flex items-center justify-center">
+      <div class="relative group-hover:scale-105 transition-transform duration-300">
+        <picture>
+          <source srcset="assets/campus-ready-illustration.webp" type="image/webp" />
+          <source srcset="assets/campus-ready-illustration.jpg" type="image/jpeg" />
+          <img
+            src="assets/campus-ready-illustration.jpg"
+            alt="Campus Ready Foundation care box illustration"
+            loading="lazy"
+            decoding="async"
+            class="max-w-full h-auto mx-auto drop-shadow-lg"
+          />
+        </picture>
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-400/20 to-brand-600/20 rounded-full blur-3xl -z-10"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section id="about" class="mx-auto max-w-7xl px-6 pb-20">
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up" style="animation-delay: 0.1s;">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-5 shadow-soft">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" width="24" height="24">
+  <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9l9-4 9 4"/>
+    <path d="M4 10v6a2 2 0 0 0 1.2 1.83L12 21l6.8-3.17A2 2 0 0 0 20 16v-6"/>
+    <path d="M9.5 9.5l-6-2.5"/>
+    <path d="M14.5 9.5l6-2.5"/>
+    <path d="M12 12.5c2-3 6-.5 3.5 2L12 18l-3.5-3.5C6 12 10 9.5 12 12.5z"/>
+  </g>
+</svg>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Mission-Driven</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Practical support for first-time college students: travel, move-in essentials, and starter meals so they begin with confidence and dignity.</p>
+        </div>
+        
+        <div class="feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up" style="animation-delay: 0.2s;">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-5 shadow-soft">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" width="24" height="24">
+  <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="5" width="12" height="16" rx="2"/>
+    <path d="M9 5.5h6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2z"/>
+    <path d="M9 12l2 2 4-4"/>
+  </g>
+</svg>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Donor-Ready</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Built for transparency and ease. Partners can see impact clearly and quickly, with detailed reporting and measurable outcomes.</p>
+        </div>
+        
+        <div class="feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up" style="animation-delay: 0.3s;">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-5 shadow-soft">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" width="24" height="24">
+  <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 7V6a4 4 0 0 1 8 0v1"/>
+    <rect x="5" y="7" width="14" height="12" rx="3"/>
+    <path d="M9 12h6"/>
+    <path d="M7 10v2"/>
+    <path d="M17 10v2"/>
+  </g>
+</svg>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Student-Centered</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">Designed around the student experience: a simple process, easy access, and thoughtful, personal products that make dorm life feel like home.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- TRUST & CREDIBILITY (Between features and newsletter, soft teal background) -->
+<section id="trust" class="mx-auto max-w-7xl px-6 mt-0 mb-8">
+  <div class="rounded-2xl border border-teal-100/70 bg-gradient-to-br from-teal-50 to-white p-4 md:p-5 shadow-soft">
+    <p class="text-sm text-slate-600 flex flex-wrap items-center gap-x-2 gap-y-1">
+      <svg class="w-4 h-4 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+        <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6l-8 12-4-4" />
+        </g>
+      </svg>
+      <span>IRS 501(c)(3) approved</span>
+      <span class="text-slate-400">•</span>
+      <span>EIN <span class="tabular-nums">39-2532572</span></span>
+    </p>
+  </div>
+</section>
+
+
+
+    
+<section id="impact" class="mx-auto max-w-7xl px-6 pb-20">
+      <div class="rounded-3xl bg-gradient-to-r from-slate-50 to-slate-100/50 p-8 sm:p-10 relative overflow-hidden shadow-card">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-transparent"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-200/20 rounded-full -translate-y-32 translate-x-32"></div>
+        
+        <div class="relative">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">Be the first to know</h2>
+            <p class="text-base text-slate-400">Join our early community and get notified the moment we launch. No spam, just the important updates.</p>
+          </div>
+          
+          <form id="notifyForm" class="max-w-md mx-auto" novalidate>
+            <div class="flex flex-col sm:flex-row gap-4 sm:items-start">
+              <div class="relative flex-1 group">
+                <label for="email" class="sr-only">Email address</label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required
+                       placeholder="Enter your email address"
+                       class="w-full rounded-2xl border-2 border-slate-200 bg-white px-5 py-4 text-lg shadow-card placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-brand-200 focus:border-brand-500 transition-all duration-200 group-hover:border-slate-300" />
+                <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+              </div>
+              <button id="submitBtn" type="submit" class="w-full sm:w-auto btn-primary inline-flex justify-center items-center gap-3 rounded-2xl px-8 py-4 text-lg font-semibold text-white shadow-soft focus:outline-none focus:ring-4 focus:ring-brand-200 disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap">
+                <span>Notify Me</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </button>
+            </div>
+            <p id="helper" class="mt-3 text-sm text-slate-500 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Privacy Respected. No spam. Unsubscribe anytime.
+            </p>
+            <p id="error" class="mt-3 hidden text-sm text-red-600 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Please enter a valid email address.
+            </p>
+            <p id="success" class="mt-3 hidden text-sm text-emerald-700 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Perfect! You're on the list. We'll email you when we launch.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="relative z-10 border-t border-slate-200 bg-white/80 backdrop-blur-sm">
+    <div class="mx-auto max-w-7xl px-6 py-12">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+        <div class="text-sm">
+          <p class="font-bold text-slate-900 text-base mb-1">Campus Ready Foundation</p>
+          <p class="text-slate-600">Saint Helena, CA</p>
+        </div>
+        <div class="text-sm text-slate-600 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <a href="mailto:hello@campusready.foundation" class="hover:text-brand-600 transition-colors duration-200 flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            hello@campusready.foundation
+          </a>
+          <div class="hidden sm:block text-slate-400">•</div>
+          <button onclick="showPrivacyPolicy()" class="hover:text-brand-600 transition-colors duration-200">Privacy</button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between p-6 border-b border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-900">Privacy Policy</h2>
+        <button onclick="hidePrivacyPolicy()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+          <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto max-h-[70vh] prose prose-slate max-w-none">
+        <div class="text-sm text-slate-600 mb-6">
+          <strong>Campus Ready Foundation</strong><br>
+          <strong>Effective Date:</strong> August 18, 2025<br>
+          <strong>Last Updated:</strong> August 18, 2025
+        </div>
+
+        <h3 class="text-lg font-semibold text-slate-900 mb-3">Our Commitment to Privacy</h3>
+        <p class="text-slate-600 mb-6">Campus Ready Foundation respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and sign up for updates.</p>
+
+        <h3 class="text-lg font-semibold text-slate-900 mb-3">Information We Collect</h3>
+        <p class="text-slate-600 mb-4"><strong>Email Address:</strong> When you sign up for our launch notifications, we collect your email address to send you updates about Campus Ready Foundation's programs and launch.</p>
+        <p class="text-slate-600 mb-6"><strong>Automatically Collected Information:</strong> We may collect basic technical information such as your IP address, browser type, and pages visited to improve our website experience.</p>
+
+        <h3 class="text-lg font-semibold text-slate-900 mb-3">How We Use Your Information</h3>
+        <ul class="text-slate-600 mb-6 space-y-1">
+          <li><strong>Email Communications:</strong> To notify you about our launch and send occasional updates about Campus Ready Foundation's mission and programs</li>
+          <li><strong>Website Improvement:</strong> To analyze website traffic and improve user experience</li>
+          <li><strong>Legal Compliance:</strong> To comply with applicable laws and regulations</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold text-slate-900 mb-3">Information Sharing</h3>
+        <p class="text-slate-600 mb-4">We do not sell, trade, or share your personal information with third parties, except:</p>
+        <ul class="text-slate-600 mb-6 space-y-1">
+          <li><strong>Service Providers:</strong> Trusted third-party services that help us operate our website and email communications (such as email marketing platforms)</li>
+          <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
+        </ul>
+
+        <h3 class
+  
