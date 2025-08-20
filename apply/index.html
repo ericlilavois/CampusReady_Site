@@ -809,7 +809,26 @@ section#section5 .opt:hover {
 </style><style id="step-subline-style">
 /* Step n of 6 subline: muted, unobtrusive */
 .step-subline { color: var(--accent-600); font-size: 0.95em; }
-</style></head>
+</style>
+<style>
+/* Student: make Phone wider and keep its label on one line */
+#section1 .row-city-email .two-col {
+  /* Left side (City/State/ZIP) takes 1.8 parts,
+     Right side (Phone) takes 1 part.
+     This lines the right edge up with "Date of Birth" above. */
+  grid-template-columns: minmax(0, 1.8fr) minmax(24rem, 1fr);
+  align-items: end; /* bottoms line up nicely */
+}
+
+/* Keep "Phone Number" from breaking onto two lines on desktop */
+@media (min-width: 640px) {
+  #section1 label[for="student_phone"] { white-space: nowrap; }
+}
+
+/* Make sure the input uses the full width it’s given */
+#section1 #student_phone { width: 100%; }
+</style>
+</head>
 <body>
 <div class="wrap">
 <header>
