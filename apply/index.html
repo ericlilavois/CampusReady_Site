@@ -2678,5 +2678,28 @@ window.addEventListener('resize', () => {
     });
   });
 </script>
+   <script>
+(() => {
+  // 1) Make non-final navigation buttons NOT submit the form.
+  //    Only "Submit Application" should submit.
+  const navLabels = new Set(["Save & Next", "Back", "Save & Exit", "Clear Form"]);
+  document.querySelectorAll('button').forEach(btn => {
+    const label = (btn.textContent || "").trim();
+    if (navLabels.has(label)) btn.type = 'button';
+    if (/Submit Application/i.test(label)) btn.type = 'submit';
+  });
+
+  // 2) If any code calls the ZIP API over http, force it to https on the fly.
+  const _fetch = window.fetch;
+  window.fetch = function(resource, init) {
+    try {
+      if (typeof resource === 'string' && resource.startsWith('http://api.zippopotam.us/')) {
+        resource = resource.replace('http://', 'https://');
+      }
+    } catch (e) {}
+    return _fetch.call(this, resource, init);
+  };
+})();
+</script>
 </body>
 </html>
