@@ -941,7 +941,7 @@ section#section5 .opt:hover {
     type="text"
     inputmode="tel"
     placeholder="(555) 123-4567"
-    oninput="autoSave()"
+    oninput="formatPhone(this); autoSave()"
     onblur="formatPhone(this); validatePhone(this)"
     required
   />
@@ -1546,23 +1546,25 @@ function validatePhone(input) {
     }
 
     // Input formatting
-    function formatPhone(input) {
-      var value = input.value.replace(/\D/g, '').slice(0, 10);
-      var formatted = '';
-      
-      if (value.length > 6) {
-        formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6);
-      } else if (value.length > 3) {
-        formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3);
-      } else if (value.length > 0) {
-        formatted = '(' + value;
-      } else {
-        formatted = value;
-      }
-      
-      input.value = formatted;
-    }
-
+   function formatPhone(input) {
+  var value = input.value.replace(/\D/g, '');
+  if (value.length > 10) {
+    value = value.slice(0, 10);
+  }
+  
+  var formatted = '';
+  if (value.length === 0) {
+    formatted = '';
+  } else if (value.length <= 3) {
+    formatted = value;
+  } else if (value.length <= 6) {
+    formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+  } else {
+    formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6);
+  }
+  
+  input.value = formatted;
+}
     function formatSSN(input) {
       var value = input.value.replace(/\D/g, '').slice(0, 9);
       var formatted = '';
