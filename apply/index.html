@@ -2653,7 +2653,6 @@ window.addEventListener('resize', () => {
     var zip = qs(prefix + '_zip');
     var combined = qs(combinedId);
     if (!zip || !state || !city || !combined) return;
-   if (prefix === 'student') return;
      
     city.dataset.dirty = city.dataset.dirty || '0';
     state.dataset.dirty = state.dataset.dirty || '0';
