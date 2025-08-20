@@ -903,7 +903,10 @@ section#section5 .opt:hover {
 </div>
 </section>
 <!-- SECTION 1: Student Info -->
-<section id="section1">
+<form id="appForm" action="https://script.google.com/macros/s/AKfycby6CP5wZw3YUNPyQ5bUCFc4wc52Jk47KLkpuIaMMF60fXGnyJTMUgz4_iYLJTkrYiGxFQ/exec" method="POST">
+  <!-- optional anti-bot honeypot: -->
+  <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off">
+   <section id="section1">
 <h2>Student Information</h2><p aria-live="polite" class="step-subline">Step 2 of 6</p>
 <div class="grid cols-2"><div class="name-gender-dob"><div>
 <label class="req" for="student_name">Full Name</label>
@@ -1170,6 +1173,7 @@ section#section5 .opt:hover {
 <button class="btn primary" onclick="submitApplication()" type="button">Submit Application</button>
 </div>
 </section>
+   </form>
 </div>
 </div>
 <!-- Save & Exit Modal -->
@@ -2664,5 +2668,15 @@ window.addEventListener('resize', () => {
     };
   }
 })();
-</script></body>
+<script>
+  document.getElementById('appForm').addEventListener('submit', function () {
+    // Give inputs/selects/textareas a "name" if missing (Apps Script uses names)
+    this.querySelectorAll('input, select, textarea').forEach(el => {
+      if (el.name) return;                 // keep existing names
+      if (el.type === 'radio') return;     // radios already share a name
+      el.name = el.id || el.dataset.name || '';
+    });
+  });
+</script>
+</body>
 </html>
