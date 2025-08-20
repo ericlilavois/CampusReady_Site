@@ -1,0 +1,2668 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
+<title>Campus Ready Foundation — Grant Application</title>
+<style>
+    * { box-sizing: border-box; }
+    
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --ink:#e5e7eb;
+      --muted:#94a3b8;
+      --brand:#6ee7b7;
+      --accent:#38bdf8;
+      --danger:#f87171;
+      --ok:#34d399;
+      --warning:#fbbf24;
+      --radius:16px;
+    }
+    
+    html,body{height:100%; margin:0; padding:0;}
+    
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: linear-gradient(160deg, #0b1220, #0f172a 35% 65%, #0b1220);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    .wrap{max-width:900px; margin:0 auto; padding:16px;}
+    
+    header{
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between; 
+      gap:12px; 
+      margin:8px 0 16px;
+      flex-wrap: wrap;
+    }
+    
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:40px; 
+      height:40px; 
+      border-radius:12px; 
+      background:linear-gradient(135deg,var(--accent),var(--brand)); 
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      font-weight:700; 
+      color:#0b1220;
+      font-size: 14px;
+    }
+    
+    h1{font-size:1.1rem; margin:0; line-height: 1.3;}
+    
+    .header-actions{
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .card{
+      background:rgba(17,24,39,.7); 
+      border:1px solid rgba(148,163,184,.18); 
+      border-radius:var(--radius); 
+      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      margin-bottom: 20px;
+    }
+    
+    .pad{padding:16px;}
+    
+    .steps{ display:flex;
+      display:flex; 
+      gap:6px; 
+      flex-wrap:wrap; 
+      padding:16px; 
+      border-bottom:1px solid rgba(148,163,184,.15);
+    }
+    
+    .chip{
+      font-size:.8rem; 
+      padding:8px 12px; 
+      border-radius:20px; 
+      color:var(--muted); 
+      background:rgba(148,163,184,.08); 
+      border:1px solid transparent; 
+      cursor:pointer;
+      user-select: none;
+      text-align: center;
+      min-width: 80px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    
+    .chip:hover{
+      background:rgba(148,163,184,.15);
+    }
+    
+    .chip.active{
+      color:#0b1220; 
+      background:linear-gradient(135deg,var(--accent),var(--brand)); 
+      font-weight:600;
+    }
+    
+    .chip.complete{
+      color:#0b1220; 
+      background:linear-gradient(135deg,var(--ok),#22d3ee); 
+      font-weight:600;
+    }
+    
+    .chip.incomplete{
+      border-color: var(--warning);
+      color: var(--warning);
+      background:rgba(251,191,36,.1);
+    }
+    
+    .chip.invalid{
+      border-color: var(--danger);
+      color: var(--danger);
+      background:rgba(248,113,113,.1);
+    }
+    
+    .chip::after{
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: none;
+    }
+    
+    .chip.complete::after{
+      background: var(--ok);
+      display: block;
+    }
+    
+    .chip.incomplete::after{
+      background: var(--warning);
+      display: block;
+    }
+    
+    .chip.invalid::after{
+      background: var(--danger);
+      display: block;
+    }
+    
+    section{display:none; padding: 20px 0;}
+    section.active{display:block;}
+    
+    h2{font-size:1.2rem; margin:0 0 16px; color: var(--brand);}
+    .hint{color:var(--muted); font-size:.9rem; margin-bottom: 12px;}
+    
+    .grid{display:grid; gap:16px;}
+    
+    @media (min-width:600px){
+      .grid.cols-2{grid-template-columns:1fr 1fr;}
+    }
+    
+    label{
+      display:block; 
+      font-size:.95rem; 
+      margin:0 0 8px;
+      font-weight: 500;
+    }
+    
+    .req::after{content:" *"; color:var(--accent);}
+    
+    input, textarea, select{
+      width:100%; 
+      border-radius:8px; 
+      border:2px solid rgba(148,163,184,.3); 
+      background:rgba(2,6,23,.8); 
+      color:var(--ink); 
+      padding:12px; 
+      outline:none; 
+      font-size:16px;
+      font-family: inherit;
+    }
+    
+    input:focus, textarea:focus, select:focus{
+      border-color:var(--accent);
+      box-shadow: 0 0 0 3px rgba(56,189,248,.1);
+    }
+
+    input.invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(248,113,113,.15);
+    }
+
+    .email-error {
+      color: var(--danger);
+      font-size: 0.85rem;
+      margin-top: 6px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .email-error.show {
+      display: block;
+    }
+    
+    textarea{
+      min-height:120px; 
+      resize:vertical;
+    }
+    
+    .group{
+      display:flex; 
+      flex-direction: column;
+      gap:8px;
+    }
+    
+    .opt{
+      display:flex; 
+      align-items:center; 
+      gap:12px; 
+      border:2px solid rgba(148,163,184,.25); 
+      padding:12px; 
+      border-radius:8px; 
+      background:rgba(2,6,23,.5);
+      cursor: pointer;
+    }
+    
+    .opt input{
+      width: auto;
+      margin: 0;
+    }
+    
+    .opt:hover{
+      border-color: rgba(148,163,184,.4);
+    }
+    
+    .section-actions{
+      display:flex; 
+      justify-content:space-between; 
+      gap:12px; 
+      padding:20px 0 0; 
+      border-top:1px solid rgba(148,163,184,.15); 
+      margin-top:20px;
+      flex-wrap: wrap;
+    }
+    
+    .btn{
+      border:2px solid rgba(148,163,184,.4); 
+      background:rgba(2,6,23,.8); 
+      color:var(--ink); 
+      padding:14px 20px; 
+      border-radius:8px; 
+      font-weight:600; 
+      cursor:pointer;
+      font-size: 16px;
+      text-align: center;
+      user-select: none;
+      min-width: 120px;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn:hover{
+      background:rgba(2,6,23,.9);
+    }
+    
+    .btn:active{
+      transform: translateY(1px);
+    }
+    
+    .btn.small{
+      padding:10px 16px; 
+      font-size:.9rem;
+      min-width: 100px;
+    }
+    
+    .btn.primary{
+      background:linear-gradient(135deg,var(--accent),var(--brand)); 
+      color:#0b1220; 
+      border-color: var(--accent);
+    }
+    
+    .btn.secondary{
+      background:linear-gradient(135deg,var(--warning),#f59e0b); 
+      color:#0b1220; 
+      border-color: var(--warning);
+    }
+    
+    .btn.destruct{
+      border-color:var(--danger); 
+      color:var(--danger);
+    }
+    
+    .btn:disabled{
+      opacity:.5; 
+      cursor:not-allowed;
+    }
+    
+    .counter{
+      font-size:.85rem; 
+      color:var(--muted); 
+      margin-top:8px;
+    }
+    
+    .sig-wrap{
+      border:2px dashed rgba(148,163,184,.4); 
+      border-radius:8px; 
+      background:rgba(2,6,23,.4);
+    }
+    
+    .sig-tools{
+      display:flex; 
+      gap:8px; 
+      padding:8px; 
+      border-bottom:1px dashed rgba(148,163,184,.25);
+      align-items: center;
+    }
+    
+    .sig-pad{
+      width:100%; 
+      height:160px; 
+      display:block;
+      cursor:crosshair;
+      touch-action: none;
+    }
+    
+    .toast{
+      position:fixed; 
+      top:20px; 
+      right:20px; 
+      background:rgba(2,6,23,.95); 
+      color:var(--ok); 
+      border:1px solid var(--ok); 
+      padding:12px 16px; 
+      border-radius:8px; 
+      opacity:0; 
+      transform:translateY(-20px); 
+      transition:.3s ease; 
+      z-index:1000;
+      font-weight: 600;
+      max-width: 300px;
+      text-align: center;
+    }
+    
+    .toast.show{
+      opacity:1; 
+      transform:translateY(0);
+    }
+    
+    .alert{
+      border:2px solid var(--danger); 
+      background:rgba(248,113,113,.1); 
+      color:#fecaca; 
+      padding:12px; 
+      border-radius:8px; 
+      margin:12px 0; 
+      display:none;
+      font-weight: 500;
+    }
+    
+    .alert.show{
+      display:block; 
+      animation: alertPulse 0.5s;
+    }
+
+    /* Inline eligibility alerts */
+    .eligibility-alert {
+      border: 2px solid var(--danger);
+      background: rgba(248,113,113,.15);
+      color: #fecaca;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: none;
+      animation: slideIn 0.3s ease;
+    }
+
+    .eligibility-alert.show {
+      display: block;
+    }
+
+    /* Save & Exit Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal {
+      background: rgba(17,24,39,.95);
+      border: 1px solid rgba(148,163,184,.3);
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .modal h3 {
+      color: var(--brand);
+      margin: 0 0 16px;
+      font-size: 1.3rem;
+    }
+
+    .modal p {
+      color: var(--muted);
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    .resume-url {
+      background: rgba(2,6,23,.8);
+      border: 2px solid rgba(148,163,184,.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--accent);
+      word-break: break-all;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .resume-url:hover {
+      border-color: var(--accent);
+      background: rgba(2,6,23,.9);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    @keyframes alertPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Mobile specific */
+    @media (max-width: 600px) {
+      .wrap{padding:12px;}
+      .section-actions{
+        flex-direction: column;
+      }
+      .btn{
+        width: 100%;
+        margin: 4px 0;
+      }
+      .steps{ display:flex;
+        justify-content: center;
+      }
+      .chip{
+        flex: 1;
+        min-width: 60px;
+        font-size: 0.75rem;
+        padding: 6px 8px;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: center;
+      }
+      .modal {
+        padding: 20px;
+      }
+      .modal-actions {
+        flex-direction: column;
+      }
+    }
+  .field-error { display: none; color: var(--danger); font-size: 0.85rem; margin-top: 6px; font-weight: 500; }
+  .field-error.show { display: block; }
+
+  .ssn-toggle { margin-left: 8px; font-size: 0.85rem; padding: 4px 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; cursor: pointer; }
+  .ssn-toggle:focus { outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,.25); }
+
+</style>
+<style>
+/* City / State / ZIP single-row layout */
+.addr-row {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) 7.5ch 12ch; /* City grows, State narrow, ZIP medium */
+  gap: 12px;
+  align-items: end;
+}
+.addr-row .field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.addr-row .field input,
+.addr-row .field select {
+  width: 100%;
+}
+.addr-row .field.state select {
+  width: 7.5ch;
+  min-width: 7.5ch;
+}
+/* Messages that should span the whole row */
+.addr-row .row-message {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+}
+@media (max-width: 640px) {
+  .addr-row { grid-template-columns: 1fr; }
+}
+</style><style>
+/* Two-column utility for aligning field groups (stacks on small screens) */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+}
+@media (max-width: 640px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+</style><style>
+/* Scoped alignment reset for specific fields only */
+#student_ssn, #household_members, #household_income { text-align: left; }
+</style><style>
+#student_ssn, #household_members, #household_income { text-align: left; }
+</style><style>
+/* Scoped Student Tab row tweaks */
+.name-gender-dob,
+.row-address-phone,
+.row-college-start {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: var(--gap-md);
+}
+.name-gender-dob { grid-template-columns: 1.2fr 0.6fr 1fr; }
+.row-address-phone { grid-template-columns: 1fr 1fr; }
+.row-college-start { grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) {
+  .name-gender-dob,
+  .row-address-phone,
+  .row-college-start { grid-template-columns: 1fr; }
+}
+</style><style>
+/* Student tab row constraints within internal grid */
+.name-gender-dob,
+.row-address-phone,
+.row-college-start,
+.row-city-email,
+.row-ssn-income {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: var(--gap-md);
+}
+.name-gender-dob { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr) minmax(0, 1fr); }
+.row-address-phone { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.row-college-start { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.row-city-email { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.row-ssn-income { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+.name-gender-dob > *, .row-address-phone > *, .row-college-start > *, .row-city-email > *, .row-ssn-income > * { min-width: 0; }
+@media (max-width: 640px) {
+  .name-gender-dob,
+  .row-address-phone,
+  .row-college-start,
+  .row-city-email,
+  .row-ssn-income { grid-template-columns: 1fr; }
+}
+</style><style>
+/* Scoped: add Phone as 4th column in Student City row */
+#section1 .row-city-email .addr-row {
+  grid-template-columns: minmax(14rem, 1fr) 7.5ch 12ch minmax(14rem, 1fr);
+}
+@media (max-width: 640px) {
+  #section1 .row-city-email .addr-row { grid-template-columns: 1fr; }
+}
+</style><style>
+/* Student tab: add breathing room while keeping the internal grid intact */
+#section1 .grid { row-gap: 14px; }
+
+/* Ensure local row wrappers keep a light horizontal gap */
+#section1 .name-gender-dob,
+#section1 .row-address-phone,
+#section1 .row-city-email,
+#section1 .row-college-start,
+#section1 .row-ssn-income { gap: 12px; }
+
+/* Optional guard: when wrappers stack on small screens, add a bit more vertical spacing */
+@media (max-width: 640px) {
+  #section1 .grid { row-gap: 16px; }
+  #section1 .name-gender-dob,
+  #section1 .row-address-phone,
+  #section1 .row-city-email,
+  #section1 .row-college-start,
+  #section1 .row-ssn-income { gap: 14px; }
+}
+</style><style>
+/* Scoped: align bottoms in Student tab rows for consistent horizontal alignment */
+#section1 .row-city-email .addr-row { align-items: end; }
+#section1 .row-ssn-income { align-items: end; }
+#section1 .row-ssn-income > * { align-self: end; }
+</style><style>
+/* Scoped override: snap SSN + Income to same line */
+#section1 .row-ssn-income { align-items: start !important; }
+#section1 .row-ssn-income > * { align-self: start !important; }
+</style><style id="brand-colors-sync">
+/* === Brand color sync (from landing page) === */
+:root {
+  /* Brand (teal from site) */
+  --brand-50:#f0fdfa;
+  --brand-100:#ccfbf1;
+  --brand-200:#99f6e4;
+  --brand-300:#2dd4bf;
+  --brand-400:#14b8a6;
+  --brand-500:#14b8a6; /* site primary */
+  --brand-600:#0d9488;
+  --brand-700:#0f766e;
+  --brand-800:#115e59;
+  --brand-900:#134e4a;
+
+  /* Neutral (zinc/gray from site) */
+  --accent-50:#fafafa;
+  --accent-100:#f4f4f5;
+  --accent-200:#e4e4e7;
+  --accent-300:#d4d4d8;
+  --accent-400:#a1a1aa;
+  --accent-500:#71717a;
+  --accent-600:#52525b;
+  --accent-700:#3f3f46;
+  --accent-800:#27272a;
+  --accent-900:#18181b;
+
+  /* Derived */
+  --focus-ring: rgba(20,184,166,.28); /* from brand-500 */
+}
+
+/* Text and surfaces */
+body { color: var(--accent-900); background: #fff; }
+.section, .card, .panel { background: #fff; border-color: var(--accent-200); }
+.subtle-bg { background: var(--accent-50); }
+
+/* Inputs */
+input[type], select, textarea {
+  border: 1px solid var(--accent-300);
+  background: #fff;
+  color: var(--accent-900);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+::placeholder { color: var(--accent-400); }
+
+/* Labels & small text */
+label { color: var(--accent-800); }
+.hint, .help, .muted { color: var(--accent-600); }
+
+/* Buttons */
+.btn {
+  border: 1px solid var(--accent-300);
+  background: #fff;
+  color: var(--accent-800);
+}
+.btn:hover { border-color: var(--accent-400); color: var(--accent-900); }
+.btn.primary {
+  color: #fff;
+  border: none;
+  background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+}
+.btn.primary:hover {
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-800));
+}
+.btn.small.secondary {
+  background: #fff;
+  color: var(--accent-800);
+  border-color: var(--accent-300);
+}
+.btn.small.secondary:hover { border-color: var(--accent-400); color: var(--accent-900); }
+
+/* Links */
+a { color: var(--brand-700); }
+a:hover { color: var(--brand-800); }
+
+/* Tabs if present */
+.tab { color: var(--accent-600); border-bottom: 2px solid transparent; }
+.tab:hover { color: var(--accent-800); }
+.tab.active { color: var(--brand-700); border-bottom-color: var(--brand-500); }
+
+/* Notices */
+.notice.success {
+  background: var(--brand-50);
+  border: 1px solid var(--brand-200);
+  color: var(--brand-700);
+}
+</style><style id="brand-wash-tweaks">
+/* === A) Muted brand wash for Yes/No radio rows === */
+:root { --brand-500-rgb: 20,184,166; } /* #14b8a6 */
+
+.section .group:has(input[type="radio"]) {
+  background: rgba(var(--brand-500-rgb), .05);
+  border: 1px solid rgba(var(--brand-500-rgb), .10);
+  border-radius: 12px;
+}
+
+/* Optional micro-hover feedback for clarity */
+.section .group:has(input[type="radio"]):hover {
+  background: rgba(var(--brand-500-rgb), .07);
+  border-color: rgba(var(--brand-500-rgb), .14);
+}
+
+/* === B) Option 1 — soften internal grids with neutral wash === */
+.section .grid {
+  background: linear-gradient(to bottom right, var(--accent-50), #fff);
+  border: 1px solid var(--accent-200);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+</style><style id="brand-wash-fixes">
+/* Override the dark .opt background for Yes/No radios with muted brand wash */
+.group .opt {
+  background: rgba(20,184,166, .05);          /* brand-500 / 5 */
+  border-color: rgba(20,184,166, .10);         /* soften edge */
+}
+.group .opt:hover {
+  background: rgba(20,184,166, .07);
+  border-color: rgba(20,184,166, .14);
+}
+
+/* Darken ineligibility/alert text for readability */
+.alert, .eligibility-alert {
+  color: #991b1b; /* red-800-ish */
+}
+
+/* Make the internal grid softening more apparent on active tab panels */
+.wrap .card .pad section.active > .grid {
+  background: linear-gradient(to bottom right, var(--accent-50), #fff);
+  border: 1px solid var(--accent-200);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+</style><style id="grid-header-padding-cert-fixes">
+/* 1) Darker headers + immediate blurb inside internal grids */
+.wrap .card .pad section.active > .grid h2,
+.wrap .card .pad section.active > .grid h3 { color: var(--accent-900); }
+
+.wrap .card .pad section.active > .grid h2 + p,
+.wrap .card .pad section.active > .grid h3 + p { color: var(--accent-800); }
+
+/* 2) Breathing room so the shaded grid isn't tight to the first inputs */
+.wrap .card .pad section.active > .grid {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* 3) Certification tab rows: same muted brand wash as Yes/No */
+section#section5 .opt {
+  background: rgba(20,184,166, .05);
+  border-color: rgba(20,184,166, .10);
+  border-radius: 12px;
+}
+section#section5 .opt:hover {
+  background: rgba(20,184,166, .07);
+  border-color: rgba(20,184,166, .14);
+}
+</style><style id="header-brand-boost">
+/* Darker, brand-forward headers inside internal grids */
+.wrap .card .pad section.active > .grid h2,
+.wrap .card .pad section.active > .grid h3 {
+  color: var(--brand-800);
+}
+</style><style id="header-brand-900">
+/* Brand-900 headers for sections 1–5 only */
+.wrap .card .pad section#section1.active > .grid h2,
+.wrap .card .pad section#section1.active > .grid h3,
+.wrap .card .pad section#section2.active > .grid h2,
+.wrap .card .pad section#section2.active > .grid h3,
+.wrap .card .pad section#section3.active > .grid h2,
+.wrap .card .pad section#section3.active > .grid h3,
+.wrap .card .pad section#section4.active > .grid h2,
+.wrap .card .pad section#section4.active > .grid h3,
+.wrap .card .pad section#section5.active > .grid h2,
+.wrap .card .pad section#section5.active > .grid h3 {
+  color: var(--brand-900);
+}
+</style><style id="section-headers-brand900-exact">
+/* Exact targets: top H2 titles for Eligibility + Sections 1–5 */
+.wrap .card .pad section#section0 > h2,
+.wrap .card .pad section#section1 > h2,
+.wrap .card .pad section#section2 > h2,
+.wrap .card .pad section#section3 > h2,
+.wrap .card .pad section#section4 > h2,
+.wrap .card .pad section#section5 > h2 {
+  color: var(--brand-900);
+}
+</style><style id="step-subline-style">
+/* Step n of 6 subline: muted, unobtrusive */
+.step-subline { color: var(--accent-600); font-size: 0.95em; }
+</style></head>
+<body>
+<div class="wrap">
+<header>
+<div class="brand">
+<div class="logo">CR</div>
+<h1>Campus Ready Foundation — Grant Application</h1>
+</div>
+<div class="header-actions">
+<button class="btn small secondary" onclick="saveAndExit()" type="button">Save &amp; Exit</button>
+<button class="btn small destruct" onclick="clearAllData()" type="button">Clear Form</button>
+</div>
+</header>
+<div class="card">
+<div class="steps" id="stepIndicator"></div>
+<div class="pad">
+<!-- SECTION 0: Eligibility -->
+<section class="active" id="section0">
+<h2>Eligibility Prerequisites</h2><p aria-live="polite" class="step-subline">Step 1 of 6</p>
+<p class="hint">Please confirm all items before continuing. All four must be "Yes" to qualify.</p>
+<div class="grid">
+<div>
+<label class="req">I will be attending college for the first time</label>
+<div class="group">
+<label class="opt">
+<input name="first_time" onchange="checkEligibility()" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="first_time" onchange="checkEligibility()" type="radio" value="No"/> No
+                </label>
+</div>
+<div class="eligibility-alert" id="alert_first_time">
+                You must be a first-time college student to qualify for this grant.
+              </div>
+</div>
+<div>
+<label class="req">I will be attending college full-time</label>
+<div class="group">
+<label class="opt">
+<input name="full_time" onchange="checkEligibility()" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="full_time" onchange="checkEligibility()" type="radio" value="No"/> No
+                </label>
+</div>
+<div class="eligibility-alert" id="alert_full_time">
+                You must be enrolled full-time to qualify for this grant.
+              </div>
+</div>
+<div>
+<label class="req">I will be living on campus</label>
+<div class="group">
+<label class="opt">
+<input name="on_campus" onchange="checkEligibility()" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="on_campus" onchange="checkEligibility()" type="radio" value="No"/> No
+                </label>
+</div>
+<div class="eligibility-alert" id="alert_on_campus">
+                You must be living on campus to qualify for this grant.
+              </div>
+</div>
+<div>
+<label class="req">I will be attending college 100+ miles from home</label>
+<div class="group">
+<label class="opt">
+<input name="distance_100" onchange="checkEligibility()" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="distance_100" onchange="checkEligibility()" type="radio" value="No"/> No
+                </label>
+</div>
+<div class="eligibility-alert" id="alert_distance_100">
+                Your college must be at least 100 miles from your home address to qualify.
+              </div>
+</div>
+</div>
+<div class="alert" id="eligibilityAlert">
+<strong>Not Eligible:</strong> Based on your answers, you are not eligible for a Campus Ready Grant. All four requirements must be "Yes".
+          </div>
+<div class="section-actions">
+<span></span>
+<button class="btn primary" onclick="goNextValidated(1, 0)" type="button">Save &amp; Next</button>
+</div>
+</section>
+<!-- SECTION 1: Student Info -->
+<section id="section1">
+<h2>Student Information</h2><p aria-live="polite" class="step-subline">Step 2 of 6</p>
+<div class="grid cols-2"><div class="name-gender-dob"><div>
+<label class="req" for="student_name">Full Name</label>
+<input id="student_name" name="student_name" oninput="autoSave()" required="" type="text"/>
+</div><div>
+<label for="gender">Gender (optional)</label>
+<select id="gender" name="gender" onchange="autoSave()">
+<option value="">Prefer not to say</option>
+<option>Male</option>
+<option>Female</option>
+<option>Non-Binary</option>
+</select>
+</div><div>
+<label class="req" for="student_dob">Date of Birth</label>
+<input autocomplete="bday" id="student_dob" name="student_dob" oninput="autoSave()" required="" type="date"/>
+</div></div><div class="row-address-phone" style="grid-column: 1 / -1"><div>
+<label class="req" for="student_address">Home Address</label>
+<input autocomplete="address-line1" id="student_address" name="student_address" oninput="autoSave()" required="" type="text"/>
+</div><div class="field"><label class="req" for="student_email">Email Address</label>
+<input autocomplete="email" id="student_email" name="student_email" oninput="validateEmail(this); autoSave()" required="" style="width: 100%" type="email"/>
+<div class="email-error" id="student_email_error">Please enter a valid email address with a recognized domain.</div></div></div>
+<div class="row-city-email"><div><input aria-hidden="true" id="student_city" name="student_city" oninput="autoSave()" placeholder="Oakland, CA 94612" required="" style="display:none" type="text"/><div class="two-col"><div class="addr-row"><div class="field city"><label for="student_city_name">City</label>
+<input autocomplete="address-level2" id="student_city_name" name="student_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="student_state">State</label>
+<select autocomplete="address-level1" id="student_state" name="student_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="student_zip">ZIP Code</label>
+<input autocomplete="postal-code" id="student_zip" inputmode="numeric" name="student_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div><div class="field phone">
+<label class="req" for="student_phone">Phone Number</label>
+<input autocomplete="tel" id="student_phone" inputmode="numeric" name="student_phone" oninput="formatPhone(this); autoSave()" placeholder="(555) 123-4567" required="" type="tel"/>
+</div></div></div></div><div></div></div><div class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
+<input autocapitalize="off" autocomplete="off" autocorrect="off" id="student_ssn" name="student_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/></div><div class="field"><label class="req" for="student_income">Annual Student Income</label>
+<input id="student_income" min="0" name="student_income" oninput="autoSave()" placeholder="0" required="" type="number"/></div><div style="grid-column: 1 / -1">
+<div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
+</div></div>
+<div>
+</div><div class="row-college-start"><div>
+<label class="req" for="college">College You Will Attend</label>
+<input id="college" name="college" oninput="autoSave()" required="" type="text"/>
+</div><div>
+<label class="req" for="start_date">Expected Start Date</label>
+<input id="start_date" name="start_date" oninput="autoSave()" required="" type="date"/>
+</div></div>
+<div>
+</div>
+<div style="grid-column: 1">
+<label class="req" for="college_address">College Address</label>
+<input id="college_address" name="college_address" oninput="autoSave()" required="" type="text"/>
+</div>
+<div>
+<input aria-hidden="true" id="college_city" name="college_city" oninput="autoSave()" placeholder="Boston, MA 02115" required="" style="display:none" type="text"/>
+<div class="addr-row"><div class="field city"><label for="college_city_name">College City</label>
+<input autocomplete="address-level2" id="college_city_name" name="college_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="college_state">State</label>
+<select autocomplete="address-level1" id="college_state" name="college_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="college_zip">ZIP Code</label>
+<input autocomplete="postal-code" id="college_zip" inputmode="numeric" name="college_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div></div>
+</div>
+</div>
+<div class="section-actions">
+<button class="btn" onclick="goToSection(0)" type="button">Back</button>
+<button class="btn primary" onclick="goNextValidated(2, 1)" type="button">Save &amp; Next</button>
+</div>
+</section>
+<!-- SECTION 2: Parent/Guardian -->
+<section id="section2">
+<h2>Parent/Guardian Information</h2><p aria-live="polite" class="step-subline">Step 3 of 6</p>
+<p class="hint">Complete regardless of applicant's age.</p>
+<div class="grid cols-2">
+<div>
+<label class="req" for="pg_name">Parent/Guardian Name(s)</label>
+<input id="pg_name" name="pg_name" oninput="autoSave()" required="" type="text"/>
+</div>
+<div>
+<label class="req" for="pg_phone">Phone Number</label>
+<input autocomplete="tel" id="pg_phone" inputmode="numeric" name="pg_phone" oninput="formatPhone(this); autoSave()" placeholder="(555) 123-4567" required="" type="tel"/>
+</div>
+<div style="grid-column:1/-1">
+<label class="req" for="pg_address">Street Address</label>
+<input id="pg_address" name="pg_address" oninput="autoSave()" required="" type="text"/>
+</div>
+<div style="grid-column: 1 / -1">
+<label class="req" for="pg_city">City, State, ZIP</label>
+<input aria-hidden="true" id="pg_city" name="pg_city" oninput="autoSave()" placeholder="Oakland, CA 94612" required="" style="display:none" type="text"/>
+<div class="two-col" style="grid-template-columns: 1fr 1.5fr"><div class="addr-row"><div class="field city"><label for="pg_city_name">City</label>
+<input autocomplete="address-level2" id="pg_city_name" name="pg_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="pg_state">State</label>
+<select autocomplete="address-level1" id="pg_state" name="pg_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="pg_zip">ZIP Code</label>
+<input autocomplete="postal-code" id="pg_zip" inputmode="numeric" name="pg_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div></div><div class="field"><label class="req" for="pg_email">Email</label>
+<input autocomplete="email" id="pg_email" name="pg_email" oninput="validateEmail(this); autoSave()" required="" style="width: 100%" type="email"/>
+<div class="email-error" id="pg_email_error">Please enter a valid email address with a recognized domain.</div></div></div>
+</div>
+<div>
+</div>
+<div style="grid-column: 1">
+<label class="req" for="pg_ssn">Social Security Number</label><div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
+<input autocapitalize="off" autocomplete="off" autocorrect="off" id="pg_ssn" name="pg_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/>
+</div>
+<div>
+</div>
+<div style="grid-column: 1">
+<div class="two-col" style="grid-template-columns: 1fr 1fr"><div class="field"><label class="req" for="household_members">Household Members</label>
+<input id="household_members" min="1" name="household_members" oninput="autoSave()" required="" type="number"/></div><div class="field"><label class="req" for="household_income">Total Household Income</label>
+<input id="household_income" min="0" name="household_income" oninput="autoSave()" required="" type="number"/></div></div>
+</div>
+</div>
+<div class="section-actions">
+<button class="btn" onclick="goToSection(1)" type="button">Back</button>
+<button class="btn primary" onclick="goNextValidated(3, 2)" type="button">Save &amp; Next</button>
+</div>
+</section>
+<!-- SECTION 3: Questions -->
+<section id="section3">
+<h2>Additional Questions</h2><p aria-live="polite" class="step-subline">Step 4 of 6</p>
+<div class="grid">
+<div>
+<label class="req">Are you currently a high school senior?</label>
+<div class="group">
+<label class="opt">
+<input name="is_senior" onchange="autoSave()" required="" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="is_senior" onchange="autoSave()" type="radio" value="No"/> No
+                </label>
+</div>
+</div>
+<div>
+<label class="req">Have you completed the FAFSA?</label>
+<div class="group">
+<label class="opt">
+<input name="fafsa" onchange="toggleEFC(true); autoSave()" required="" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="fafsa" onchange="toggleEFC(false); autoSave()" type="radio" value="No"/> No
+                </label>
+</div>
+<div id="efcSection" style="margin-top:12px; display:none">
+<label class="req" for="efc">If yes, what is your Estimated Family Contribution (EFC)?</label>
+<div style="position: relative; display: inline-block; width: 100%;">
+<span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none;">$</span>
+<input id="efc" min="0" name="efc" oninput="autoSave()" placeholder="0" style="padding-left: 24px;" type="number"/>
+</div>
+</div>
+</div>
+<div style="grid-column: 1/-1;">
+<label class="req">Do any of the following apply to your household? (Check all that apply)</label>
+<div class="group">
+<label class="opt">
+<input name="household_circumstances" onchange="autoSave()" type="checkbox" value="SNAP/WIC/free_meals"/> Receive SNAP, WIC, or free/reduced school meals
+                </label>
+<label class="opt">
+<input name="household_circumstances" onchange="autoSave()" type="checkbox" value="housing_instability"/> Housing instability or transitional housing
+                </label>
+<label class="opt">
+<input name="household_circumstances" onchange="autoSave()" type="checkbox" value="no_internet_computer"/> No internet or computer access at home
+                </label>
+<label class="opt">
+<input name="household_circumstances" onchange="autoSave()" type="checkbox" value="unemployed_underemployed"/> Parent(s)/Guardian(s) unemployed or underemployed
+                </label>
+<label class="opt">
+<input name="household_circumstances" onchange="autoSave()" type="checkbox" value="financial_contributor"/> You contribute financially to your household
+                </label>
+</div>
+</div>
+<div>
+<label class="req">Will a parent/guardian accompany you to campus?</label>
+<div class="group">
+<label class="opt">
+<input name="accompany" onchange="autoSave()" required="" type="radio" value="Yes"/> Yes
+                </label>
+<label class="opt">
+<input name="accompany" onchange="autoSave()" type="radio" value="No"/> No
+                </label>
+</div>
+</div>
+<div style="grid-column: 1/-1;">
+<label class="req">Which of the following are you most concerned about affording during your move to college? (Check all that apply)</label>
+<div class="group">
+<label class="opt">
+<input name="affordability_concerns" onchange="autoSave()" type="checkbox" value="dorm_supplies"/> Basic dorm supplies (bedding, towels, cleaning, etc.)
+                </label>
+<label class="opt">
+<input name="affordability_concerns" onchange="autoSave()" type="checkbox" value="appliances"/> Appliances (mini fridge, hair dryer, iron)
+                </label>
+<label class="opt">
+<input name="affordability_concerns" onchange="autoSave()" type="checkbox" value="hygiene_items"/> Personal hygiene items
+                </label>
+<label class="opt">
+<input name="affordability_concerns" onchange="autoSave()" type="checkbox" value="transportation"/> Travel/transportation (plane, train, bus, gas, etc.)
+                </label>
+<label class="opt">
+<input name="affordability_concerns" onchange="autoSave()" type="checkbox" value="meals_food"/> Meals and food during transition
+                </label>
+<label class="opt" style="align-items: flex-start; padding-top: 12px;">
+<input name="affordability_concerns" onchange="toggleOtherConcern(this.checked); autoSave()" type="checkbox" value="other"/> Other:
+                </label>
+</div>
+<div id="otherConcernSection" style="margin-top: 8px; display: none;">
+<input id="other_concern_text" name="other_concern_text" oninput="autoSave()" placeholder="Please specify..." type="text"/>
+</div>
+</div>
+</div>
+<div class="section-actions">
+<button class="btn" onclick="goToSection(2)" type="button">Back</button>
+<button class="btn primary" onclick="goNextValidated(4, 3)" type="button">Save &amp; Next</button>
+</div>
+</section>
+<!-- SECTION 4: Essays -->
+<section id="section4">
+<h2>Essays</h2><p aria-live="polite" class="step-subline">Step 5 of 6</p>
+<div class="grid">
+<div>
+<label class="req" for="essay1">Essay 1 — Why is this award meaningful to you?</label>
+<textarea id="essay1" name="essay1" oninput="updateWordCount(); autoSave()" required=""></textarea>
+<div class="counter" id="essay1Counter">0 words</div>
+</div>
+<div>
+<label class="req" for="essay2">Essay #2 — Describe a challenge you experienced in applying and/or preparing for college (200–500 words).</label>
+<textarea data-maxwords="500" data-minwords="200" id="essay2" name="essay2" oninput="updateWordCount(); autoSave()" required=""></textarea>
+<div class="counter" id="essay2Counter">0 / 200-500 words</div>
+</div>
+</div>
+<div class="section-actions">
+<button class="btn" onclick="goToSection(3)" type="button">Back</button>
+<button class="btn primary" onclick="goNextValidated(5, 4)" type="button">Save &amp; Next</button>
+</div>
+</section>
+<!-- SECTION 5: Certification -->
+<section id="section5">
+<h2>Certification &amp; Signatures</h2><p aria-live="polite" class="step-subline">Step 6 of 6</p>
+<p class="hint">By signing, you certify the information is accurate.</p>
+<div class="grid">
+<div>
+<label class="opt">
+<input id="certify" name="certify" onchange="autoSave()" required="" type="checkbox"/> 
+                I certify this information is accurate and complete.
+              </label>
+</div>
+<div>
+<label for="today">Date</label>
+<input id="today" name="date" onchange="autoSave()" type="date"/>
+</div>
+</div>
+<div class="grid cols-2" style="margin-top:20px">
+<div>
+<label class="req">Applicant Signature</label>
+<div class="sig-wrap">
+<div class="sig-tools">
+<button class="btn small" onclick="clearSignature('appSig')" type="button">Clear</button>
+<span class="hint">Sign with finger/mouse</span>
+</div>
+<div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in your browser. If you resume later, you will need to sign again.</div>
+<canvas class="sig-pad" id="appSig"></canvas>
+</div>
+</div>
+<div>
+<label>Parent/Guardian Signature</label>
+<div class="sig-wrap">
+<div class="sig-tools">
+<button class="btn small" onclick="clearSignature('pgSig')" type="button">Clear</button>
+<span class="hint">Sign with finger/mouse</span>
+</div>
+<div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in your browser. If you resume later, you will need to sign again.</div>
+<canvas class="sig-pad" id="pgSig"></canvas>
+</div>
+</div>
+</div>
+<div class="section-actions">
+<button class="btn" onclick="goToSection(4)" type="button">Back</button>
+<button class="btn primary" onclick="submitApplication()" type="button">Submit Application</button>
+</div>
+</section>
+</div>
+</div>
+<!-- Save & Exit Modal -->
+<div class="modal-overlay" id="saveExitModal">
+<div class="modal">
+<h3>Form Saved Successfully!</h3>
+<p>Your progress has been saved. You can return to continue your application anytime using the link below:</p>
+<div class="resume-url" id="resumeUrl" onclick="copyResumeUrl()">
+          Click to copy resume link
+        </div>
+<p><strong>Important:</strong> Bookmark this link or save it somewhere safe. You'll need it to return to your application.</p>
+<p>Your form data is also saved locally on this device, so you can return to this page directly if using the same browser.</p>
+<div class="modal-actions">
+<button class="btn" onclick="closeModal()" type="button">Continue Working</button>
+<a class="btn secondary" href="#" onclick="goToResumeUrl()">Open Resume Link</a>
+</div>
+</div>
+</div>
+<div class="toast" div="" id="toast" polite"<="" role="status aria-live=">
+</div>
+<script>
+    // Simple global variables
+    var currentSectionIndex = 0;
+    var sectionTitles = ['Eligibility', 'Student', 'Parent/Guardian', 'Questions', 'Essays', 'Certification'];
+    var signaturePads = {};
+    var formId = null;
+
+    // Initialize when page loads
+    window.onload = function() {
+      console.log('App starting...');
+      
+      // Check for resume URL parameter
+      checkForResumeData();
+      
+      // Set today's date
+      document.getElementById('today').valueAsDate = new Date();
+      
+      // Load saved data
+      loadSavedData();
+      
+      // Setup signature pads
+      setupSignatures();
+      
+      // Update display
+      updateStepIndicator();
+      checkEligibility();
+      updateWordCount();
+      
+      console.log('App ready!');
+    };
+
+    // Generate or retrieve form ID
+    function getFormId() {
+      if (!formId) {
+        formId = localStorage.getItem('campusReadyFormId');
+        if (!formId) {
+          formId = 'cr_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+          localStorage.setItem('campusReadyFormId', formId);
+        }
+      }
+      return formId;
+    }
+
+    // Check for resume data in URL
+    function checkForResumeData() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var resumeId = urlParams.get('resume');
+      
+      if (resumeId) {
+        // Try to load data for this resume ID
+        try {
+          var savedData = localStorage.getItem('campusReadyForm_' + resumeId);
+          var savedSection = localStorage.getItem('campusReadySection_' + resumeId);
+          
+          if (savedData) {
+            // Set the form ID to match the resume ID
+            formId = resumeId;
+            localStorage.setItem('campusReadyFormId', formId);
+            
+            // Copy the resumed data to current storage
+            localStorage.setItem('campusReadyForm', savedData);
+            if (savedSection) {
+              localStorage.setItem('campusReadySection', savedSection);
+            }
+            
+            showToast('Application resumed successfully!');
+          }
+        } catch (e) {
+          console.log('Failed to resume:', e);
+          showToast('Could not resume application');
+        }
+      }
+    }
+
+    // Navigation (now allows jumping to any section)
+    function goToSection(sectionNumber) {
+      console.log('Going to section:', sectionNumber);
+      
+      // Save current data
+      autoSave();
+      
+      // Hide current section
+      document.getElementById('section' + currentSectionIndex).classList.remove('active');
+      
+      // Show new section
+      currentSectionIndex = sectionNumber;
+      document.getElementById('section' + currentSectionIndex).classList.add('active');
+      
+      // Update display
+      updateStepIndicator();
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+      
+      // Setup signatures if on last section
+      if (currentSectionIndex === 5) {
+        setTimeout(function() {
+          setupSignatures();
+        }, 100);
+      }
+      
+      return true;
+    }
+
+
+    // Navigate forward only when current section validates and, if on eligibility, when eligible
+    function goNextValidated(nextSection, currentSection){
+      if (currentSection === 0 && !isEligible()){
+        showToast('All eligibility answers must be "Yes" to continue.');
+        return;
+      }
+      var res = validateSection(currentSection);
+      if (!res || !res.valid){
+        showToast('Please complete required fields before continuing.');
+        if (res && res.firstInvalidField && res.firstInvalidField.focus) res.firstInvalidField.focus();
+        return;
+      }
+      goToSection(nextSection);
+    }
+    
+
+
+    // Section validation (now only used for final submission)
+    function validateSection(sectionIndex) {
+      var section = document.getElementById('section' + sectionIndex);
+      var requiredFields = section.querySelectorAll('input[required], select[required], textarea[required]');
+      var valid = true;
+      var firstInvalidField = null;
+      
+      for (var i = 0; i < requiredFields.length; i++) {
+        var field = requiredFields[i];
+        var fieldValid = true;
+        
+        if (field.type === 'radio') {
+          var radioGroup = document.querySelectorAll('input[name="' + field.name + '"]:checked');
+          fieldValid = radioGroup.length > 0;
+        } else if (field.type === 'checkbox') {
+          fieldValid = field.checked;
+        } else {
+          fieldValid = field.value.trim() !== '';
+        }
+        
+        // Validate email fields
+        if (field.type === 'email' && field.value.trim()) {
+          fieldValid = fieldValid && isValidEmail(field.value.trim());
+        }
+        
+        if (!fieldValid) {
+          valid = false;
+          if (!firstInvalidField) {
+            firstInvalidField = field;
+          }
+        }
+      }
+      
+      // Special validation for essays
+      if (sectionIndex === 4) {
+        var essay2 = document.getElementById('essay2');
+        var wordCount = countWords(essay2.value);
+        if (wordCount < 200 || wordCount > 300) {
+          valid = false;
+          if (!firstInvalidField) {
+            firstInvalidField = essay2;
+          }
+        }
+      }
+      
+      return {
+        valid: valid,
+        firstInvalidField: firstInvalidField
+      };
+    }
+
+    // Check if section is complete
+    function isSectionComplete(sectionIndex) {
+      return validateSection(sectionIndex).valid;
+    }
+
+    // Check if section has any data
+    function isSectionStarted(sectionIndex) {
+      var section = document.getElementById('section' + sectionIndex);
+      var allFields = section.querySelectorAll('input, select, textarea');
+      
+      for (var i = 0; i < allFields.length; i++) {
+        var field = allFields[i];
+        if (field.type === 'radio' || field.type === 'checkbox') {
+          if (field.checked) return true;
+        } else {
+          if (field.value.trim() !== '') return true;
+        }
+      }
+      
+      return false;
+    }
+
+    // Email validation
+    function validateEmail(input) {
+      var email = input.value.trim();
+      var errorElement = document.getElementById(input.id + '_error');
+      
+      if (!email) {
+        // Empty field - let required validation handle this
+        input.classList.remove('invalid');
+        errorElement.classList.remove('show');
+        return true;
+      }
+      
+      if (isValidEmail(email)) {
+        input.classList.remove('invalid');
+        errorElement.classList.remove('show');
+        return true;
+      } else {
+        input.classList.add('invalid');
+        errorElement.classList.add('show');
+        return false;
+      }
+    }
+
+    function isValidEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+  return re.test(String(email || '').trim());
+}
+
+
+    function checkEligibility() {
+      var eligibilityFields = ['first_time', 'full_time', 'on_campus', 'distance_100'];
+      var hasNo = false;
+      
+      // Check each field and show/hide individual alerts
+      for (var i = 0; i < eligibilityFields.length; i++) {
+        var field = eligibilityFields[i];
+        var selected = document.querySelector('input[name="' + field + '"]:checked');
+        var alertElement = document.getElementById('alert_' + field);
+        
+        if (selected && selected.value === 'No') {
+          showAlert('alert_' + field);
+          hasNo = true;
+        } else {
+          hideAlert('alert_' + field);
+        }
+      }
+      
+      // Show/hide main eligibility alert
+      var mainAlert = document.getElementById('eligibilityAlert');
+      if (hasNo) {
+        showAlert('eligibilityAlert');
+      } else {
+        hideAlert('eligibilityAlert');
+      }
+      
+      updateStepIndicator();
+      autoSave();
+    }
+
+    function isEligible() {
+      var eligibilityFields = ['first_time', 'full_time', 'on_campus', 'distance_100'];
+      
+      for (var i = 0; i < eligibilityFields.length; i++) {
+        var field = eligibilityFields[i];
+        var selected = document.querySelector('input[name="' + field + '"]:checked');
+        if (!selected || selected.value !== 'Yes') {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Enhanced step indicator with completion status
+    function updateStepIndicator() {
+      var stepContainer = document.getElementById('stepIndicator');
+      stepContainer.innerHTML = '';
+      
+      for (var i = 0; i < sectionTitles.length; i++) {
+        var chip = document.createElement('div');
+        chip.className = 'chip';
+        chip.textContent = (i + 1) + '. ' + sectionTitles[i];
+        
+        // Current section
+        if (i === currentSectionIndex) {
+          chip.classList.add('active');
+        }
+        // Check completion status
+        else if (isSectionComplete(i)) {
+          chip.classList.add('complete');
+        }
+        // Check if started but incomplete
+        else if (isSectionStarted(i)) {
+          chip.classList.add('incomplete');
+        }
+        // Special handling for eligibility section
+        else if (i === 0 && !isEligible() && isSectionStarted(i)) {
+          chip.classList.add('invalid');
+        }
+        
+        // Always allow clicking (flexible navigation)
+        chip.onclick = (function(index){ return function(){ if (index > 0 && !isEligible()){ showToast('You must meet eligibility to continue.'); return; } goToSection(index); }; })(i);
+        
+        stepContainer.appendChild(chip);
+      }
+    }
+
+    // Input formatting
+    function formatPhone(input) {
+      var value = input.value.replace(/\D/g, '').slice(0, 10);
+      var formatted = '';
+      
+      if (value.length > 6) {
+        formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6);
+      } else if (value.length > 3) {
+        formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+      } else if (value.length > 0) {
+        formatted = '(' + value;
+      } else {
+        formatted = value;
+      }
+      
+      input.value = formatted;
+    }
+
+    function formatSSN(input) {
+      var value = input.value.replace(/\D/g, '').slice(0, 9);
+      var formatted = '';
+      
+      if (value.length > 5) {
+        formatted = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5);
+      } else if (value.length > 3) {
+        formatted = value.slice(0, 3) + '-' + value.slice(3);
+      } else {
+        formatted = value;
+      }
+      
+      input.value = formatted;
+    }
+
+    // FAFSA toggle
+    function toggleEFC(show) {
+      var efcSection = document.getElementById('efcSection');
+      efcSection.style.display = show ? 'block' : 'none';
+    }
+
+    // Other concern toggle
+    function toggleOtherConcern(show) {
+      var otherSection = document.getElementById('otherConcernSection');
+      otherSection.style.display = show ? 'block' : 'none';
+      
+      if (!show) {
+        var otherInput = document.getElementById('other_concern_text');
+        if (otherInput) {
+          otherInput.value = '';
+        }
+      }
+    }
+
+    // Word counting
+    function countWords(text) {
+      if (!text || !text.trim()) return 0;
+      return text.trim().split(/\s+/).length;
+    }
+
+    function updateWordCount() {
+      var essay1 = document.getElementById('essay1');
+      var essay2 = document.getElementById('essay2');
+      var counter1 = document.getElementById('essay1Counter');
+      var counter2 = document.getElementById('essay2Counter');
+      
+      if (essay1 && counter1) {
+        var count1 = countWords(essay1.value);
+        counter1.textContent = count1 + ' words';
+      }
+      
+      if (essay2 && counter2) {
+        var count2 = countWords(essay2.value);
+        counter2.textContent = count2 + ' / 200-500 words';
+        if (count2 >= 200 && count2 <= 300) {
+          counter2.style.color = 'var(--ok)';
+        } else {
+          counter2.style.color = 'var(--danger)';
+        }
+      }
+    }
+
+    // Enhanced data persistence
+    function autoSave() {
+      try {
+        var formData = {};
+        var inputs = document.querySelectorAll('input, select, textarea');
+        
+        for (var i = 0; i < inputs.length; i++) {
+          var input = inputs[i];
+          if (input.name) {
+          if (input.name === 'student_ssn' || input.name === 'pg_ssn') { continue; }
+            if (input.type === 'radio') {
+              if (input.checked) {
+                formData[input.name] = input.value;
+              }
+            } else if (input.type === 'checkbox') {
+              if (input.checked) {
+                if (!formData[input.name]) formData[input.name] = [];
+                formData[input.name].push(input.value);
+              }
+            } else {
+              formData[input.name] = input.value;
+            }
+          }
+        }
+        
+        // Save with form ID
+        var currentFormId = getFormId();
+        localStorage.setItem('campusReadyForm', JSON.stringify(sanitizeForResume(formData)));
+        localStorage.setItem('campusReadySection', currentSectionIndex.toString());
+        localStorage.setItem('campusReadyForm_' + currentFormId, JSON.stringify(sanitizeForResume(formData)));
+        localStorage.setItem('campusReadySection_' + currentFormId, currentSectionIndex.toString());
+        localStorage.setItem('campusReadyLastSaved', new Date().toISOString());
+        
+        updateStepIndicator();
+      } catch (e) {
+        console.log('Save failed:', e);
+      }
+    }
+
+    function loadSavedData() {
+      try {
+        var saved = localStorage.getItem('campusReadyForm');
+        var savedSection = localStorage.getItem('campusReadySection');
+        
+        if (saved) {
+          var data = JSON.parse(saved);
+          
+          // Restore form data
+          for (var name in data) {
+        if (name === 'student_ssn' || name === 'pg_ssn' || name === 'applicantSignature' || name === 'guardianSignature') { continue; }
+            var elements = document.querySelectorAll('[name="' + name + '"]');
+            for (var i = 0; i < elements.length; i++) {
+              var element = elements[i];
+              if (element.type === 'radio') {
+                element.checked = (element.value === data[name]);
+              } else if (element.type === 'checkbox') {
+                if (Array.isArray(data[name])) {
+                  element.checked = (data[name].indexOf(element.value) !== -1);
+                } else {
+                  element.checked = (element.value === data[name]);
+                }
+              } else {
+                element.value = data[name] || '';
+              }
+            }
+          }
+          
+          // Show EFC field if FAFSA is Yes
+          if (data.fafsa === 'Yes') {
+            toggleEFC(true);
+          }
+          
+          // Show other concern field if "other" is checked
+          var otherConcernChecked = false;
+          if (data.affordability_concerns && Array.isArray(data.affordability_concerns)) {
+            otherConcernChecked = data.affordability_concerns.indexOf('other') !== -1;
+          }
+          toggleOtherConcern(otherConcernChecked);
+        }
+        
+        // Restore section
+        if (savedSection) {
+          var section = parseInt(savedSection);
+          if (section >= 0 && section < 6) {
+            // Hide current section
+            document.getElementById('section0').classList.remove('active');
+            // Show saved section
+            currentSectionIndex = section;
+            document.getElementById('section' + section).classList.add('active');
+          }
+        }
+      } catch (e) {
+        console.log('Load failed:', e);
+      }
+    }
+
+    // Save & Exit functionality
+    function saveAndExit() {
+      autoSave();
+      
+      var currentFormId = getFormId();
+      var currentUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+      var resumeUrl = currentUrl + '?resume=' + currentFormId;
+      
+      // Update modal with resume URL
+      document.getElementById('resumeUrl').textContent = resumeUrl;
+      document.getElementById('resumeUrl').setAttribute('data-url', resumeUrl);
+      
+      // Show modal
+      document.getElementById('saveExitModal').classList.add('show');
+    }
+
+    function copyResumeUrl() {
+      var url = document.getElementById('resumeUrl').getAttribute('data-url');
+      
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          showToast('Resume link copied to clipboard!');
+        }).catch(function() {
+          fallbackCopyToClipboard(url);
+        });
+      } else {
+        fallbackCopyToClipboard(url);
+      }
+    }
+
+    function fallbackCopyToClipboard(text) {
+      var textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast('Resume link copied to clipboard!');
+      } catch (err) {
+        showToast('Could not copy link. Please manually copy the URL.');
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    function goToResumeUrl() {
+      var url = document.getElementById('resumeUrl').getAttribute('data-url');
+      window.open(url, '_blank');
+    }
+
+    function closeModal() {
+      document.getElementById('saveExitModal').classList.remove('show');
+    }
+
+    function clearAllData() {
+      if (confirm('Clear all form data and start over?')) {
+        // Clear all related storage
+        var currentFormId = getFormId();
+        localStorage.removeItem('campusReadyForm');
+        localStorage.removeItem('campusReadySection');
+        localStorage.removeItem('campusReadyForm_' + currentFormId);
+        localStorage.removeItem('campusReadySection_' + currentFormId);
+        localStorage.removeItem('campusReadyFormId');
+        localStorage.removeItem('campusReadyLastSaved');
+        
+        // Generate new form ID
+        formId = null;
+        getFormId();
+        
+        // Reset form
+        var inputs = document.querySelectorAll('input, select, textarea');
+        for (var i = 0; i < inputs.length; i++) {
+          var input = inputs[i];
+          if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+          } else {
+            input.value = '';
+          }
+        }
+        
+        // Clear signatures
+        clearSignature('appSig');
+        clearSignature('pgSig');
+        
+        // Go to first section
+        document.getElementById('section' + currentSectionIndex).classList.remove('active');
+        currentSectionIndex = 0;
+        document.getElementById('section0').classList.add('active');
+        
+        // Set today's date again
+        document.getElementById('today').valueAsDate = new Date();
+        
+        // Update displays
+        updateStepIndicator();
+        checkEligibility();
+        toggleEFC(false);
+        updateWordCount();
+        
+        // Clear URL parameters
+        if (window.location.search) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        
+        showToast('Form cleared');
+      }
+    }
+
+    // Signature pads
+    function setupSignatures() {
+      setupSignaturePad('appSig');
+      setupSignaturePad('pgSig');
+    }
+
+    function setupSignaturePad(canvasId) {
+      var canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      
+      var ctx = canvas.getContext('2d');
+      var isDrawing = false;
+      var lastX = 0;
+      var lastY = 0;
+      
+      // Set canvas size
+      function resizeCanvas() {
+        var rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        // Set drawing style
+        ctx.lineWidth = 2;
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#e5e7eb';
+        
+        // Background
+        ctx.fillStyle = 'rgba(2,6,23,.4)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      
+      function getMousePos(e) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      }
+      
+      function getTouchPos(e) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
+        };
+      }
+      
+      // Mouse events
+      canvas.onmousedown = function(e) {
+        isDrawing = true;
+        var pos = getMousePos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+      };
+      
+      canvas.onmousemove = function(e) {
+        if (!isDrawing) return;
+        var pos = getMousePos(e);
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        
+        lastX = pos.x;
+        lastY = pos.y;
+      };
+      
+      canvas.onmouseup = function() {
+        isDrawing = false;
+      };
+      
+      // Touch events
+      canvas.ontouchstart = function(e) {
+        e.preventDefault();
+        isDrawing = true;
+        var pos = getTouchPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+      };
+      
+      canvas.ontouchmove = function(e) {
+        e.preventDefault();
+        if (!isDrawing) return;
+        var pos = getTouchPos(e);
+        
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        
+        lastX = pos.x;
+        lastY = pos.y;
+      };
+      
+      canvas.ontouchend = function(e) {
+        e.preventDefault();
+        isDrawing = false;
+      };
+      
+      // Initialize
+      resizeCanvas();
+      
+      // Store reference
+      signaturePads[canvasId] = {
+        canvas: canvas,
+        resize: resizeCanvas
+      };
+    }
+
+    function clearSignature(canvasId) {
+      var pad = signaturePads[canvasId];
+      if (pad) {
+        var ctx = pad.canvas.getContext('2d');
+        ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
+        
+        // Redraw background
+        ctx.fillStyle = 'rgba(2,6,23,.4)';
+        ctx.fillRect(0, 0, pad.canvas.width, pad.canvas.height);
+      }
+    }
+
+    // Alerts and toasts
+    function showAlert(alertId) {
+      var alert = document.getElementById(alertId);
+      if (alert) {
+        alert.classList.add('show');
+      }
+    }
+
+    function hideAlert(alertId) {
+      var alert = document.getElementById(alertId);
+      if (alert) {
+        alert.classList.remove('show');
+      }
+    }
+
+    function showToast(message) {
+      var toast = document.getElementById('toast');
+      if (toast) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(function() {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+    }
+
+    // Enhanced form submission with comprehensive validation
+    
+    // Remove sensitive fields before saving any resume payload
+    function sanitizeForResume(obj){
+      try {
+        if (!obj || typeof obj !== 'object') return obj;
+        const copy = JSON.parse(JSON.stringify(obj));
+        delete copy.student_ssn;
+        delete copy.pg_ssn;
+        delete copy.applicantSignature;
+        delete copy.guardianSignature;
+        return copy;
+      } catch (e) {
+        return obj;
+      }
+    }
+    
+    // === SSN validation + toggle (non-intrusive) ===
+    (function(){
+      function digitsOnly(s){ return String(s||'').replace(/\D/g, ''); }
+
+      // Use existing formatSSN if defined, else fallback
+      var _formatSSN = (typeof formatSSN === 'function') ? formatSSN : function(el){
+        var d = digitsOnly(el.value).slice(0,9);
+        var out = d;
+        if (d.length > 5) out = d.slice(0,3)+'-'+d.slice(3,5)+'-'+d.slice(5);
+        else if (d.length > 3) out = d.slice(0,3)+'-'+d.slice(3);
+        el.value = out;
+      };
+
+      function isValidSSN(str){
+        var m = /^(\d{3})-(\d{2})-(\d{4})$/.exec(String(str||'').trim());
+        if (!m) return false;
+        var a=m[1], b=m[2], c=m[3];
+        if (a==='000'||b==='00'||c==='0000') return false;
+        if (a==='666') return false;
+        if (a[0]==='9') return false;
+        return true;
+      }
+
+      function validateSSN(el){
+        if (!el) return false;
+        var val = String(el.value||'').trim();
+        var err = document.getElementById(el.id + '_error');
+        if (!val || !isValidSSN(val)){
+          el.classList.add('invalid');
+          if (err) err.classList.add('show');
+          return false;
+        }
+        el.classList.remove('invalid');
+        if (err) err.classList.remove('show');
+        return true;
+      }
+
+      function ensureErrorEl(el){
+        var id = el.id + '_error';
+        var existing = document.getElementById(id);
+        if (existing) return existing;
+        var div = document.createElement('div');
+        div.id = id;
+        div.className = 'field-error';
+        div.setAttribute('role','alert');
+        div.textContent = 'Enter a 9-digit SSN in the format 123-45-6789.';
+        el.parentNode.insertBefore(div, el.nextSibling);
+        return div;
+      }
+
+      function ensureToggle(el){
+        // create a Show/Hide button right after the input if not present
+        var next = el.nextElementSibling;
+        if (next && next.classList && next.classList.contains('ssn-toggle')) return next;
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ssn-toggle';
+        btn.setAttribute('aria-label', 'Toggle visibility');
+        btn.textContent = (el.type === 'password') ? 'Hide' : 'Show';
+        btn.addEventListener('click', function(){
+          if (el.type === 'password'){ el.type = 'text'; btn.textContent = 'Hide'; }
+          else { el.type = 'password'; btn.textContent = 'Show'; }
+          try { el.focus(); } catch(e){}
+        });
+        el.parentNode.insertBefore(btn, el.nextSibling);
+        return btn;
+      }
+
+      ['student_ssn','pg_ssn'].forEach(function(id){
+        var el = document.getElementById(id);
+        if (!el) return;
+        // Ensure listeners
+        el.addEventListener('input', function(){ _formatSSN(el); validateSSN(el); });
+        el.addEventListener('blur', function(){ validateSSN(el); });
+        el.addEventListener('paste', function(){ setTimeout(function(){ _formatSSN(el); validateSSN(el); }, 0); });
+
+        // Ensure error element and toggle exist
+        ensureErrorEl(el);
+        ensureToggle(el);
+
+        // Initial state: mark invalid until valid input
+        validateSSN(el);
+      });
+
+      // Hook submit guard without disturbing other logic
+      var _submitApp = (typeof submitApplication === 'function') ? submitApplication : null;
+      if (_submitApp){
+        window.submitApplication = function(){
+          var f1 = document.getElementById('student_ssn');
+          var f2 = document.getElementById('pg_ssn');
+          if (f1 && !validateSSN(f1)) { try{ f1.focus(); }catch(e){}; showToast('Please correct the SSN field before continuing.'); return; }
+          if (f2 && !validateSSN(f2)) { try{ f2.focus(); }catch(e){}; showToast('Please correct the SSN field before continuing.'); return; }
+          return _submitApp.apply(this, arguments);
+        };
+      }
+    })();
+function submitApplication() {
+      console.log('Submitting application...');
+      
+      // Check eligibility first
+      if (!isEligible()) {
+        alert('All eligibility requirements must be "Yes" to submit.');
+        goToSection(0);
+        return;
+      }
+      
+      // Validate all sections
+      var allValid = true;
+      var firstInvalidSection = -1;
+      var firstInvalidField = null;
+      
+      for (var i = 0; i < 6; i++) {
+        var validation = validateSection(i);
+        if (!validation.valid) {
+          allValid = false;
+          if (firstInvalidSection === -1) {
+            firstInvalidSection = i;
+            firstInvalidField = validation.firstInvalidField;
+          }
+        }
+      }
+      
+      if (!allValid) {
+        var sectionName = sectionTitles[firstInvalidSection];
+        alert('Please complete all required fields in section "' + sectionName + '" before submitting.');
+        goToSection(firstInvalidSection);
+        if (firstInvalidField) {
+          setTimeout(function() {
+            firstInvalidField.focus();
+          }, 300);
+        }
+        return;
+      }
+      
+      // Check certification
+      var certifyBox = document.getElementById('certify');
+      if (!certifyBox.checked) {
+        alert('You must certify the information is accurate to submit.');
+        goToSection(5);
+        setTimeout(function() {
+          certifyBox.focus();
+        }, 300);
+        return;
+      }
+      
+      // Save final data
+      autoSave();
+      
+      // Collect all form data
+      var formData = {};
+      var inputs = document.querySelectorAll('input, select, textarea');
+      
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+        if (input.name) {
+          if (input.type === 'radio') {
+            if (input.checked) {
+              formData[input.name] = input.value;
+            }
+          } else if (input.type === 'checkbox') {
+            if (input.checked) {
+              if (!formData[input.name]) formData[input.name] = [];
+              formData[input.name].push(input.value);
+            }
+          } else {
+            formData[input.name] = input.value;
+          }
+        }
+      }
+      
+      // Add signature data
+      var appSig = document.getElementById('appSig');
+      var pgSig = document.getElementById('pgSig');
+      if (appSig) {
+        formData.applicantSignature = appSig.toDataURL();
+      }
+      if (pgSig) {
+        formData.guardianSignature = pgSig.toDataURL();
+      }
+      
+      // Add submission metadata
+      formData.submissionId = getFormId();
+      formData.submissionDate = new Date().toISOString();
+      
+      console.log('Form data collected:', formData);
+      
+      // Show success
+      showToast('Application submitted successfully!');
+      
+      setTimeout(function() {
+        alert('Application submitted successfully!\n\nSubmission ID: ' + formData.submissionId + '\n\nYou will receive a confirmation email shortly.\n\nThank you for applying to the Campus Ready Foundation.');
+        
+        // Clear the form after successful submission
+        if (confirm('Would you like to clear the form data now that it has been submitted?')) {
+          clearAllData();
+        }
+      }, 1000);
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+      checkForResumeData();
+    });
+
+    // Periodic auto-save (every 30 seconds)
+    setInterval(function() {
+      autoSave();
+    }, 30000);
+
+    // Save on page unload
+    window.addEventListener('beforeunload', function() {
+      autoSave();
+    });
+  </script>
+<script>
+window.addEventListener('resize', () => {
+  try {
+    if (window.signaturePads) {
+      Object.values(window.signaturePads).forEach(function(p){
+        if (p && typeof p.resize === 'function') p.resize();
+      });
+    }
+  } catch(e){ /* no-op */ }
+});
+</script>
+<script>
+// Minimal SSN masking + 'dirty' validation (no other features changed)
+(function SSN_ONLY_PATCH(){
+  function digitsOnly(s){ return String(s||'').replace(/\D/g, ''); }
+  function isValidSSN(str){
+    var m = /^(\d{3})-(\d{2})-(\d{4})$/.exec(String(str||'').trim());
+    if (!m) return false;
+    var a=m[1], b=m[2], c=m[3];
+    if (a==='000'||b==='00'||c==='0000') return false;
+    if (a==='666') return false;
+    if (a[0]==='9') return false;
+    return true;
+  }
+  function ensureErrorEl(el){
+    var id = el.id + '_error';
+    var exists = document.getElementById(id);
+    if (exists) return exists;
+    var div = document.createElement('div');
+    div.id = id;
+    div.className = 'field-error';
+    div.setAttribute('role','alert');
+    div.textContent = 'Enter a 9-digit SSN in the format 123-45-6789.';
+    el.parentNode.insertBefore(div, el.nextSibling);
+    return div;
+  }
+  function setNeutral(el){
+    el.classList.remove('invalid');
+    var err = document.getElementById(el.id + '_error');
+    if (err) err.classList.remove('show');
+  }
+  function formatSSN(el){
+    var d = digitsOnly(el.value).slice(0,9);
+    if (d.length > 5) el.value = d.slice(0,3)+'-'+d.slice(3,5)+'-'+d.slice(5);
+    else if (d.length > 3) el.value = d.slice(0,3)+'-'+d.slice(3);
+    else el.value = d;
+  }
+  function validateSSN(el, opts){ // opts = {force:boolean}
+    opts = opts || {};
+    var val = (el.value||'').trim();
+    var dirty = el.dataset.dirty === '1';
+    var err = document.getElementById(el.id + '_error');
+    if (!opts.force && !dirty && val === '') { setNeutral(el); return true; } // neutral until touched
+    if (!isValidSSN(val)) { el.classList.add('invalid'); if (err) err.classList.add('show'); return false; }
+    el.classList.remove('invalid'); if (err) err.classList.remove('show'); return true;
+  }
+  function ensureToggle(el){
+    // Create a Show/Hide button if not present, default hidden (password)
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('ssn-toggle')) return next;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ssn-toggle';
+    btn.setAttribute('aria-label', 'Toggle visibility');
+    btn.setAttribute('aria-controls', el.id || '');
+    btn.setAttribute('aria-pressed', 'false');
+    btn.textContent = 'Show';
+    btn.addEventListener('click', function(){
+      var start = el.selectionStart, end = el.selectionEnd;
+      var showing = (el.type === 'text');
+      el.type = showing ? 'password' : 'text';
+      try { if (start != null && end != null) el.setSelectionRange(start, end); } catch(e){}
+      btn.textContent = (el.type === 'password') ? 'Show' : 'Hide';
+      btn.setAttribute('aria-pressed', (el.type === 'text') ? 'true' : 'false');
+      try { el.focus(); } catch(e){}
+    });
+    el.parentNode.insertBefore(btn, el.nextSibling);
+    return btn;
+  }
+  function attach(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    // Privacy defaults: masked + no autofill hints
+    try { el.setAttribute('type','password'); } catch(e){}
+    try { el.setAttribute('autocomplete','off'); el.setAttribute('autocapitalize','off'); el.setAttribute('autocorrect','off'); el.setAttribute('spellcheck','false'); } catch(e){}
+    el.dataset.dirty = '0'; // untouched
+    ensureErrorEl(el);
+    ensureToggle(el);
+    setNeutral(el); // neutral on load
+    el.addEventListener('input', function(){
+      el.dataset.dirty='1';
+      formatSSN(el);
+      validateSSN(el, {force:false});
+    });
+    el.addEventListener('paste', function(){
+      setTimeout(function(){
+        el.dataset.dirty='1';
+        formatSSN(el);
+        validateSSN(el, {force:false});
+      }, 0);
+    });
+    el.addEventListener('blur', function(){
+      validateSSN(el, {force:false}); // neutral if never typed
+    });
+  }
+  ['student_ssn','pg_ssn'].forEach(attach);
+
+  // Submit guard: force validation if fields exist, then defer to original handler
+  var _submit = (typeof window.submitApplication === 'function') && window.submitApplication;
+  if (_submit && !window.__ssn_guard_wrapped__){
+    window.__ssn_guard_wrapped__ = true;
+    window.submitApplication = function(){
+      var f1 = document.getElementById('student_ssn');
+      var f2 = document.getElementById('pg_ssn');
+      if (f1 && !validateSSN(f1, {force:true})) { try{ f1.focus(); }catch(e){}; if (typeof showToast==='function') showToast('Please correct the Student SSN.'); return; }
+      if (f2 && !validateSSN(f2, {force:true})) { try{ f2.focus(); }catch(e){}; if (typeof showToast==='function') showToast('Please correct the Parent/Guardian SSN.'); return; }
+      return _submit.apply(this, arguments);
+    };
+  }
+})();
+</script>
+<script>
+// Minimal EMAIL validator with neutral/dirty behavior; does not change layout or other logic
+(function EMAIL_ONLY_PATCH(){
+  function ensureErrorEl(el){
+    var id = el.id + '_error';
+    var exists = document.getElementById(id);
+    if (exists) return exists;
+    var div = document.createElement('div');
+    div.id = id;
+    div.className = 'field-error';
+    div.setAttribute('role','alert');
+    div.textContent = 'Enter a valid email address like name@example.com.';
+    el.parentNode.insertBefore(div, el.nextSibling);
+    return div;
+  }
+  function setNeutral(el){
+    el.classList.remove('invalid');
+    var err = document.getElementById(el.id + '_error');
+    if (err) err.classList.remove('show');
+    if (el.setCustomValidity) try { el.setCustomValidity(''); } catch(e){}
+  }
+  function hasOneAt(s){
+    var i = s.indexOf('@');
+    return i > 0 && i === s.lastIndexOf('@') && i < s.length - 1;
+  }
+  function isLocalOk(local){
+    if (!local || local.length > 64) return false;
+    if (local[0] === '.' || local[local.length-1] === '.') return false;
+    if (local.indexOf('..') !== -1) return false;
+    // allow wide range of characters, but disallow spaces and control chars
+    // keep it permissive to support international/localized addresses
+    for (var i=0;i<local.length;i++){
+      var ch = local[i];
+      var code = ch.charCodeAt(0);
+      if (code <= 31 || code === 127) return false; // control
+      if (ch === ' ' || ch === '"' || ch === '\\\\' || ch === '<' || ch === '>' ) return false;
+    }
+    return true;
+  }
+  function isDomainOk(domain){
+    if (!domain) return false;
+    // basic structure: labels separated by '.', at least 2 labels
+    var labels = domain.split('.');
+    if (labels.length < 2) return false;
+    for (var i=0;i<labels.length;i++){
+      var lab = labels[i];
+      if (!lab) return false;
+      if (lab.length > 63) return false;
+      if (lab[0] === '-' || lab[lab.length-1] === '-') return false;
+      // reject spaces, underscores, and forbidden punctuations in domain labels
+      if (/[^0-9A-Za-z\u00C0-\uFFFF-]/.test(lab)) return false;
+    }
+    var tld = labels[labels.length-1];
+    // Allow punycode tlds and unicode letters; require length >= 2 (common rule)
+    if (tld.length < 2) return false;
+    // obvious typo TLDs
+    var badTLD = {'con':1,'cmo':1,'ocm':1};
+    if (badTLD[tld.toLowerCase()]) return false;
+    return true;
+  }
+  function domainSuggestion(domain){
+    var d = domain.toLowerCase();
+    var map = {
+      'gamil.com':'gmail.com','hotnail.com':'hotmail.com','hotmial.com':'hotmail.com',
+      'yahho.com':'yahoo.com','yaho.com':'yahoo.com','outlok.com':'outlook.com',
+      'iclouds.com':'icloud.com','iclould.com':'icloud.com'
+    };
+    return map[d] || null;
+  }
+  function validateEmail(el, opts){ // opts = {force:boolean}
+    opts = opts || {};
+    var val = (el.value||'').trim();
+    var dirty = el.dataset.dirty === '1';
+    var err = ensureErrorEl(el);
+    if (!opts.force && !dirty && val === '') { setNeutral(el); return true; }
+    // type="email" may pass .con; perform stronger checks ourselves
+    if (!hasOneAt(val)) return markInvalid(el, err, 'Email must contain a single @ (e.g., name@example.com).');
+    var parts = val.split('@');
+    var local = parts[0], domain = parts[1];
+    if (!isLocalOk(local)) return markInvalid(el, err, 'The part before @ looks invalid.');
+    if (!isDomainOk(domain)) {
+      // hint for common TLD/domain typos
+      var tl = domain.split('.').pop().toLowerCase();
+      if (tl === 'con' || tl === 'cmo' || tl === 'ocm') {
+        return markInvalid(el, err, 'Top-level domain looks wrong: "' + tl + '". Did you mean ".com"?');
+      }
+      var sugg = domainSuggestion(domain);
+      if (sugg) return markInvalid(el, err, 'Did you mean ' + local + '@' + sugg + '?');
+      return markInvalid(el, err, 'The domain after @ looks invalid.');
+    }
+    // valid
+    el.classList.remove('invalid');
+    if (err) err.classList.remove('show');
+    if (el.setCustomValidity) try { el.setCustomValidity(''); } catch(e){}
+    return true;
+  }
+  function markInvalid(el, err, message){
+    el.classList.add('invalid');
+    if (err){ err.textContent = message || 'Enter a valid email address.'; err.classList.add('show'); }
+    if (el.setCustomValidity) try { el.setCustomValidity(message || 'Invalid email'); } catch(e){}
+    return false;
+  }
+  function attachEmail(idOrEl){
+    var el = (typeof idOrEl === 'string') ? document.getElementById(idOrEl) : idOrEl;
+    if (!el) return;
+    if (!el.dataset) el.dataset = {};
+    if (!el.dataset.dirty) el.dataset.dirty = '0';
+    ensureErrorEl(el);
+    // Neutral on load
+    setNeutral(el);
+    // Listeners: dirty on first input/paste
+    el.addEventListener('input', function(){
+      el.dataset.dirty = '1';
+      validateEmail(el, {force:false});
+    });
+    el.addEventListener('paste', function(){
+      setTimeout(function(){
+        el.dataset.dirty = '1';
+        validateEmail(el, {force:false});
+      }, 0);
+    });
+    el.addEventListener('blur', function(){ validateEmail(el, {force:false}); });
+  }
+  // Attach to common ids, then any remaining email inputs
+  ['student_email','pg_email'].forEach(attachEmail);
+  Array.prototype.forEach.call(document.querySelectorAll('input[type="email"]'), function(e){
+    if (!e.dataset || e.dataset.__email_patch_attached__) return;
+    e.dataset.__email_patch_attached__ = '1';
+    attachEmail(e);
+  });
+
+  // Submit guard wrapper
+  var _submit = (typeof window.submitApplication === 'function') && window.submitApplication;
+  if (_submit && !window.__email_guard_wrapped__){
+    window.__email_guard_wrapped__ = true;
+    window.submitApplication = function(){
+      var fields = [];
+      var e1 = document.getElementById('student_email'); if (e1) fields.push(e1);
+      var e2 = document.getElementById('pg_email'); if (e2) fields.push(e2);
+      if (fields.length === 0) {
+        fields = Array.prototype.slice.call(document.querySelectorAll('input[type=\"email\"]'));
+      }
+      for (var i=0;i<fields.length;i++){
+        if (!validateEmail(fields[i], {force:true})) {
+          try { fields[i].focus(); } catch(e){}
+          if (typeof showToast==='function') showToast('Please correct the highlighted email.');
+          return;
+        }
+      }
+      return _submit.apply(this, arguments);
+    };
+  }
+})();
+</script>
+</div>
+<script>
+// ZIP + City/State split with lookup; keeps original combined fields in sync
+(function ZIP_CITY_STATE_PATCH(){
+  function qs(id){ return document.getElementById(id); }
+  function digitsOnly(s){ return String(s||'').replace(/\D/g, ''); }
+  function formatZip(el){
+    var d = digitsOnly(el.value).slice(0,9);
+    if (d.length > 5) el.value = d.slice(0,5) + '-' + d.slice(5);
+    else el.value = d;
+  }
+  function ensureErrorEl(el){
+    var id = el.id + '_error';
+    var e = document.getElementById(id);
+    if (e) return e;
+    var div = document.createElement('div');
+    div.id = id;
+    div.className = 'field-error';
+    div.setAttribute('role','alert');
+    div.textContent = 'Please enter a valid ZIP code (12345 or 12345-6789).';
+    el.parentNode.insertBefore(div, el.nextSibling);
+    return div;
+  }
+  function setNeutral(el){
+    if (!el) return;
+    el.classList.remove('invalid');
+    var err = document.getElementById(el.id + '_error');
+    if (err) err.classList.remove('show');
+  }
+  function isValidUSZip(str){
+    return /^\d{5}(-\d{4})?$/.test(String(str||'').trim());
+  }
+  function debounce(fn, wait){ var t; return function(){ var a=arguments, ctx=this; clearTimeout(t); t=setTimeout(function(){ fn.apply(ctx,a); }, wait); }; }
+  function combine(city, state, zip){
+    var c = (city||'').trim();
+    var s = (state||'').trim();
+    var z = (zip||'').trim();
+    if (c && s && z) return c + ', ' + s + ' ' + z;
+    if (c && s) return c + ', ' + s;
+    return (c || s || z);
+  }
+  function parseCombined(val){
+    // City, ST 12345 or 12345-6789
+    var m = /^\s*([^,]+?)\s*,\s*([A-Za-z]{2})\s+(\d{5}(?:-\d{4})?)\s*$/.exec(String(val||''));
+    if (m) return {city:m[1], state:m[2], zip:m[3]};
+    // City, ST
+    m = /^\s*([^,]+?)\s*,\s*([A-Za-z]{2})\s*$/.exec(String(val||''));
+    if (m) return {city:m[1], state:m[2], zip:''};
+    return {city:'', state:'', zip:''};
+  }
+  function setDirty(el){ if (el && el.dataset) el.dataset.dirty = '1'; }
+  function getDirty(el){ return el && el.dataset && el.dataset.dirty === '1'; }
+  function neutralizeIfUntouched(el){ if (el && !getDirty(el) && (el.value||'').trim()==='') setNeutral(el); }
+
+  function attachGroup(prefix, combinedId){
+    var city = qs(prefix + '_city_name');
+    var state = qs(prefix + '_state');
+    var zip = qs(prefix + '_zip');
+    var combined = qs(combinedId);
+    if (!zip || !state || !city || !combined) return;
+
+    city.dataset.dirty = city.dataset.dirty || '0';
+    state.dataset.dirty = state.dataset.dirty || '0';
+    zip.dataset.dirty = zip.dataset.dirty || '0';
+
+    // Prefill from existing combined on load
+    if ((city.value==='' && state.value==='' && zip.value!=='') || (city.value==='' && state.value==='' && zip.value==='')){
+      var parsed = parseCombined(combined.value||'');
+      if (parsed.city && !getDirty(city)) city.value = parsed.city;
+      if (parsed.state && !getDirty(state)) state.value = parsed.state;
+      if (parsed.zip && !getDirty(zip)) zip.value = parsed.zip;
+    }
+
+    function syncCombined(){
+      combined.value = combine(city.value, state.value, zip.value);
+      // if the original had required, keep it logically satisfied to avoid native prompts
+      try { combined.setCustomValidity(''); } catch(e){}
+    }
+
+    function markInvalid(el, message){
+      el.classList.add('invalid');
+      var err = ensureErrorEl(el);
+      if (message) err.textContent = message;
+      err.classList.add('show');
+    }
+
+    function validateZip(opts){
+      opts = opts || {};
+      var val = (zip.value||'').trim();
+      if (!opts.force && zip.dataset.dirty !== '1' && val===''){ setNeutral(zip); return true; }
+      if (!isValidUSZip(val)){ markInvalid(zip, 'Please enter a valid ZIP code (12345 or 12345-6789).'); return false; }
+      setNeutral(zip);
+      return true;
+    }
+
+    function getZipEndpoint(zip5){
+      try {
+        var ep = (window.ZIP_LOOKUP_ENDPOINT||'').trim();
+        if (ep) return ep.replace(/\/$/, '') + '?zip=' + zip5;
+      } catch(e){}
+      return 'https://api.zippopotam.us/us/' + zip5;
+    }
+
+    function fetchPlace(){
+      var val = (zip.value||'').trim();
+      var m = /^(\d{5})(?:-(\d{4}))?$/.exec(val);
+      if (!m) return;
+      var five = m[1];
+      // Lookup via free endpoint
+      fetch(getZipEndpoint(five), {mode:'cors'}).then(function(res){
+        if (!res.ok) throw new Error('not found');
+        return res.json();
+      }).then(function(data){
+        var placeCity = '', placeStateAbbr = '';
+        if (data && data.ok && Array.isArray(data.results) && data.results.length){
+          placeCity = data.results[0].city || '';
+          placeStateAbbr = data.results[0].state || '';
+        } else if (data && data.places && data.places.length) {
+          var p = data.places[0];
+          placeCity = p['place name'] || '';
+          placeStateAbbr = p['state abbreviation'] || '';
+        } else { return; }
+        // If city/state untouched or empty, prefill
+        if (!getDirty(city)) city.value = placeCity;
+        if (!getDirty(state)) {
+          // Select matching state option if exists
+          var opt = Array.prototype.find.call(state.options, function(o){ return o.value === placeStateAbbr; });
+          if (opt) state.value = placeStateAbbr;
+        }
+        syncCombined();
+        // If user entered different city/state and they are dirty, show a soft suggestion (non-blocking)
+        var mismatch = false;
+        if (getDirty(city) && city.value && placeCity && city.value.trim().toLowerCase() !== placeCity.toLowerCase()) mismatch = true;
+        if (getDirty(state) && state.value && placeStateAbbr && state.value !== placeStateAbbr) mismatch = true;
+        var status = ensureStatus(); status.classList.remove('show');
+        var sugId = prefix + '_zip_suggestion';
+        var sug = document.getElementById(sugId);
+        if (!sug){
+          sug = document.createElement('div');
+          sug.id = sugId;
+          sug.className = 'field-error row-message';
+          var row = (state.closest && state.closest('.addr-row')) ? state.closest('.addr-row') : state.parentNode;
+          row.appendChild(sug);
+        }
+        if (mismatch){
+          sug.textContent = 'ZIP suggests ' + placeCity + ', ' + placeStateAbbr + '. Click to apply.';
+          sug.classList.add('show');
+          sug.style.cursor = 'pointer';
+          sug.onclick = function(){
+            city.value = placeCity;
+            state.value = placeStateAbbr;
+            setNeutral(zip);
+            sug.classList.remove('show');
+            syncCombined();
+          };
+        } else {
+          if (sug) sug.classList.remove('show');
+        }
+      }).catch(function(err){
+        var s = ensureStatus();
+        s.textContent = "Couldn't verify ZIP right now — validating format only.";
+        s.classList.add('show');
+        // On lookup failure, do nothing; keep validation based on format only
+      });
+    }
+
+    var debouncedLookup = debounce(fetchPlace, 300);
+    var statusId = prefix + '_zip_status';
+    function ensureStatus(){
+      var s = document.getElementById(statusId);
+      if (!s){
+        s = document.createElement('div');
+        s.id = statusId; s.className = 'field-error row-message';
+        var row = (state.closest && state.closest('.addr-row')) ? state.closest('.addr-row') : state.parentNode;
+        row.appendChild(s);
+      }
+      return s;
+    }
+
+    // Listeners
+    city.addEventListener('input', function(){ setDirty(city); syncCombined(); });
+    state.addEventListener('change', function(){ setDirty(state); syncCombined(); });
+    zip.addEventListener('input', function(){
+      setDirty(zip);
+      formatZip(zip);
+      validateZip({force:false});
+      if (isValidUSZip(zip.value)) debouncedLookup();
+      syncCombined();
+    });
+    zip.addEventListener('paste', function(){ setTimeout(function(){
+      setDirty(zip);
+      formatZip(zip);
+      validateZip({force:false});
+      if (isValidUSZip(zip.value)) debouncedLookup();
+      syncCombined();
+    },0); });
+    zip.addEventListener('blur', function(){
+      validateZip({force:false});
+      if (isValidUSZip(zip.value)) fetchPlace();
+    });
+
+    // Initial combined sync
+    syncCombined();
+
+    // Expose validator for submit guard
+    return { validate: function(opts){ return validateZip(opts); }, focusZip: function(){ try{ zip.focus(); }catch(e){} } };
+  }
+
+  var groups = [];
+  if (document.getElementById('student_city')) groups.push({inst: attachGroup('student','student_city')});
+  if (document.getElementById('college_city')) groups.push({inst: attachGroup('college','college_city')});
+  if (document.getElementById('pg_city')) groups.push({inst: attachGroup('pg','pg_city')});
+
+  // Submit guard wrapper
+  var _submit = (typeof window.submitApplication === 'function') && window.submitApplication;
+  if (_submit && !window.__zip_guard_wrapped__){
+    window.__zip_guard_wrapped__ = true;
+    window.submitApplication = function(){
+      for (var i=0;i<groups.length;i++){
+        var g = groups[i].inst;
+        if (g && g.validate && !g.validate({force:true})) {
+          if (typeof showToast==='function') showToast('Please correct the ZIP code.');
+          if (g.focusZip) g.focusZip();
+          return;
+        }
+      }
+      return _submit.apply(this, arguments);
+    };
+  }
+})();
+</script></body>
+</html>
