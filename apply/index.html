@@ -839,12 +839,14 @@ section#section5 .opt:hover {
 </style>
    <style id="row-city-phone-final">
 /* Inner split: left = City/State/ZIP, right = Phone */
+/* City / State / ZIP  |  Phone — match DOB width */
 #section1 .row-city-email .two-col {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(24rem, 1fr); /* left grows, right keeps a good width */
+  grid-template-columns: 1.7fr 1fr;  /* tweak 1.7 if you need a hair left/right */
   gap: 12px;
   align-items: end;
 }
+#section1 .row-city-email .two-col > * { min-width: 0; }
 /* Prevent any child from forcing overflow */
 #section1 .row-city-email .two-col > * { min-width: 0; }
 
