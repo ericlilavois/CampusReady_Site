@@ -576,7 +576,7 @@
 .name-gender-dob { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr) minmax(0, 1fr); }
 .row-address-phone { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .row-college-start { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.row-city-email { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.row-city-email { grid-template-columns: 1fr; }
 .row-ssn-income { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
 .name-gender-dob > *, .row-address-phone > *, .row-college-start > *, .row-city-email > *, .row-ssn-income > * { min-width: 0; }
 @media (max-width: 640px) {
@@ -811,15 +811,6 @@ section#section5 .opt:hover {
 .step-subline { color: var(--accent-600); font-size: 0.95em; }
 </style>
 <style>
-/* Student: make Phone wider and keep its label on one line */
-#section1 .row-city-email .two-col {
-  /* Left side (City/State/ZIP) takes 1.8 parts,
-     Right side (Phone) takes 1 part.
-     This lines the right edge up with "Date of Birth" above. */
-  grid-template-columns: minmax(0, 1.8fr) minmax(24rem, 1fr);
-  align-items: end; /* bottoms line up nicely */
-}
-
 /* Keep "Phone Number" from breaking onto two lines on desktop */
 @media (min-width: 640px) {
   #section1 label[for="student_phone"] { white-space: nowrap; }
@@ -844,6 +835,25 @@ section#section5 .opt:hover {
 @media (min-width: 640px) {
   #section1 label[for="student_phone"] { white-space: nowrap; }
 }
+#section1 #student_phone { width: 100%; }
+</style>
+   <style id="row-city-phone-final">
+/* Inner split: left = City/State/ZIP, right = Phone */
+#section1 .row-city-email .two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(24rem, 1fr); /* left grows, right keeps a good width */
+  gap: 12px;
+  align-items: end;
+}
+/* Prevent any child from forcing overflow */
+#section1 .row-city-email .two-col > * { min-width: 0; }
+
+/* Keep the "Phone Number" label on one line on desktop */
+@media (min-width: 640px) {
+  #section1 label[for="student_phone"] { white-space: nowrap; }
+}
+
+/* Let the input take all the space it’s given */
 #section1 #student_phone { width: 100%; }
 </style>
 </head>
