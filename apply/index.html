@@ -856,6 +856,24 @@ section#section5 .opt:hover {
 /* Let the input take all the space it’s given */
 #section1 #student_phone { width: 100%; }
 </style>
+   <style id="phone-matches-dob">
+/* City/State/ZIP (left) : Phone (right) — match DOB width */
+#section1 .row-city-email .two-col {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr; /* Phone = DOB width */
+  gap: 12px;
+  align-items: end;
+}
+
+/* Keep children from forcing overflow */
+#section1 .row-city-email .two-col > * { min-width: 0; }
+
+/* Keep the label on one line on desktop; let the input fill its space */
+@media (min-width: 640px) {
+  #section1 label[for="student_phone"] { white-space: nowrap; }
+}
+#section1 #student_phone { width: 100%; }
+</style>
 </head>
 <body>
 <div class="wrap">
