@@ -2576,7 +2576,9 @@ window.addEventListener('resize', () => {
     var zip = qs(prefix + '_zip');
     var combined = qs(combinedId);
     if (!zip || !state || !city || !combined) return;
-
+// Skip if this is not actually an address group
+if (prefix === 'student' && !city.closest('.addr-row')) return;
+     
     city.dataset.dirty = city.dataset.dirty || '0';
     state.dataset.dirty = state.dataset.dirty || '0';
     zip.dataset.dirty = zip.dataset.dirty || '0';
@@ -2698,13 +2700,15 @@ window.addEventListener('resize', () => {
     // Listeners
     city.addEventListener('input', function(){ setDirty(city); syncCombined(); });
     state.addEventListener('change', function(){ setDirty(state); syncCombined(); });
-    zip.addEventListener('input', function(){
-      setDirty(zip);
-      formatZip(zip);
-      validateZip({force:false});
-      if (isValidUSZip(zip.value)) debouncedLookup();
-      syncCombined();
-    });
+     zip.addEventListener('input', function(e){
+  // Don't interfere with other fields in the same container
+  if (e.target.id !== zip.id) return;
+  setDirty(zip);
+  formatZip(zip);
+  validateZip({force:false});
+  if (isValidUSZip(zip.value)) debouncedLookup();
+  syncCombined();
+});
     zip.addEventListener('paste', function(){ setTimeout(function(){
       setDirty(zip);
       formatZip(zip);
