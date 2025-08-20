@@ -2701,5 +2701,178 @@ window.addEventListener('resize', () => {
   };
 })();
 </script>
+   <script>
+/* ---------- 0) Safety: make non-final buttons non-submitting ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('button').forEach(btn => {
+    const label = (btn.textContent || '').trim().toLowerCase();
+    const isSubmit = /submit application/.test(label);
+    if (!isSubmit) btn.type = 'button';
+  });
+});
+
+/* ---------- 1) ZIP → City/State (HTTPS + mismatch message) ---------- */
+async function lookupZip(zip) {
+  const z = (zip || '').match(/\d{5}/)?.[0];
+  if (!z) return null;
+  try {
+    const res = await fetch(`https://api.zippopotam.us/us/${z}`, { mode: 'cors' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const place = data?.places?.[0];
+    return place ? { city: place['place name'], state: place['state abbreviation'] } : null;
+  } catch { return null; }
+}
+function wireZipGroup({ zipSel, citySel, stateSel, warnSel }) {
+  const zipEl = document.querySelector(zipSel);
+  const cityEl = document.querySelector(citySel);
+  const stateEl = document.querySelector(stateSel);
+  const warnEl = warnSel ? document.querySelector(warnSel) : null;
+  if (!zipEl || !cityEl || !stateEl) return;
+
+  const check = async () => {
+    const info = await lookupZip(zipEl.value);
+    if (!info) { if (warnEl) warnEl.textContent = ''; return; }
+    if (!cityEl.value) cityEl.value = info.city;
+    if (!stateEl.value) stateEl.value = info.state;
+    if (warnEl) {
+      const mismatch =
+        (cityEl.value && cityEl.value.toLowerCase() !== info.city.toLowerCase()) ||
+        (stateEl.value && stateEl.value.toUpperCase() !== info.state.toUpperCase());
+      warnEl.textContent = mismatch
+        ? `City/State does not match ZIP ${zipEl.value} (${info.city}, ${info.state}).`
+        : '';
+    }
+  };
+  ['input','change','blur'].forEach(ev => zipEl.addEventListener(ev, check));
+}
+document.addEventListener('DOMContentLoaded', () => {
+  // Update the selectors below to your actual IDs if they differ.
+  wireZipGroup({ zipSel:'#studentZip', citySel:'#studentCity', stateSel:'#studentState', warnSel:'#studentZipWarn' });
+  wireZipGroup({ zipSel:'#parentZip',  citySel:'#parentCity',  stateSel:'#parentState',  warnSel:'#parentZipWarn'  });
+  wireZipGroup({ zipSel:'#collegeZip', citySel:'#collegeCity', stateSel:'#collegeState', warnSel:'#collegeZipWarn' });
+});
+
+/* ---------- 2) Validate only the active step while navigating ---------- */
+function activeStepEl() {
+  // Works with either .step.is-active or [data-step].is-active patterns
+  return document.querySelector('.step.is-active, [data-step].is-active') || null;
+}
+function validateCurrentStep() {
+  const step = activeStepEl();
+  if (!step) return true;
+  // Check only required or constrained fields in this step
+  const fields = step.querySelectorAll('input, select, textarea');
+  for (const el of fields) {
+    // Custom check for required radio groups
+    if (el.type === 'radio' && el.required) {
+      const group = step.querySelectorAll(`input[type="radio"][name="${el.name}"]`);
+      const anyChecked = Array.from(group).some(r => r.checked);
+      if (!anyChecked) { el.reportValidity(); return false; }
+    } else if (!el.checkValidity()) {
+      el.reportValidity();
+      return false;
+    }
+  }
+  return true;
+}
+// While navigating steps, disable "required" on offscreen steps so the browser doesn't block navigation.
+function scopeRequiredToActive(mode) {
+  const steps = document.querySelectorAll('.step, [data-step]');
+  steps.forEach(step => {
+    const isActive = step.classList.contains('is-active');
+    step.querySelectorAll('[required]').forEach(el => {
+      if (mode === 'active-only') {
+        if (!isActive && el.required) {
+          el.dataset.wasRequired = '1';
+          el.required = false;
+        }
+      } else if (mode === 'all') {
+        if (el.dataset.wasRequired === '1') {
+          el.required = true;
+          delete el.dataset.wasRequired;
+        }
+      }
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  scopeRequiredToActive('active-only');
+
+  // If your step nav buttons have data-next / data-prev, this wires them safely.
+  document.querySelectorAll('[data-next]').forEach(btn => {
+    btn.type = 'button';
+    btn.addEventListener('click', () => {
+      if (validateCurrentStep()) {
+        scopeRequiredToActive('active-only');
+        // Your existing goToStep logic should still run (often attached elsewhere)
+      }
+    });
+  });
+  document.querySelectorAll('[data-prev]').forEach(btn => btn.type = 'button');
+
+  // Before final submit, restore "required" everywhere so the full form is validated once.
+  const form = document.getElementById('appForm');
+  if (form) {
+    form.addEventListener('submit', () => {
+      scopeRequiredToActive('all');
+      // Let the browser’s native validation run on the full form here
+    });
+  }
+});
+
+/* ---------- 3) SSN: “dirty” behavior + auto-format ---------- */
+function wireSSN(input) {
+  if (!input) return;
+  const fmt = v => {
+    const d = v.replace(/\D/g, '').slice(0, 9);
+    if (d.length <= 3) return d;
+    if (d.length <= 5) return `${d.slice(0,3)}-${d.slice(3)}`;
+    return `${d.slice(0,3)}-${d.slice(3,5)}-${d.slice(5)}`;
+  };
+  input.addEventListener('input', () => {
+    if (!input.dataset.dirty) input.dataset.dirty = '1';
+    const caret = input.selectionStart;
+    input.value = fmt(input.value);
+    input.setSelectionRange(caret, caret);
+    if (input.dataset.dirty === '1') {
+      if (/^\d{3}-\d{2}-\d{4}$/.test(input.value)) {
+        input.setCustomValidity('');
+        input.classList.remove('invalid');
+      } else {
+        input.setCustomValidity('Please enter SSN as 123-45-6789');
+        input.classList.add('invalid');
+      }
+    }
+  });
+  input.addEventListener('blur', () => {
+    if (!input.dataset.dirty) return;
+    if (/^\d{3}-\d{2}-\d{4}$/.test(input.value)) {
+      input.setCustomValidity('');
+      input.classList.remove('invalid');
+    } else {
+      input.setCustomValidity('Please enter SSN as 123-45-6789');
+      input.classList.add('invalid');
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', () => {
+  wireSSN(document.querySelector('#studentSSN'));
+  wireSSN(document.querySelector('#parentSSN'));
+});
+
+/* ---------- 4) Debug helper: find the first invalid field quickly ---------- */
+window.debugInvalid = () => {
+  const all = document.querySelectorAll('#appForm input, #appForm select, #appForm textarea');
+  for (const el of all) {
+    if (!el.checkValidity()) {
+      console.warn('Invalid field:', el.name || el.id, '→', el.validationMessage, el);
+      if (el.scrollIntoView) el.scrollIntoView({ behavior:'smooth', block:'center' });
+      if (el.focus) el.focus();
+      break;
+    }
+  }
+};
+</script>
 </body>
 </html>
