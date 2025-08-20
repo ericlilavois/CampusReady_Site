@@ -932,8 +932,23 @@ section#section5 .opt:hover {
 <input autocomplete="address-level2" id="student_city_name" name="student_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="student_state">State</label>
 <select autocomplete="address-level1" id="student_state" name="student_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="student_zip">ZIP Code</label>
 <input autocomplete="postal-code" id="student_zip" inputmode="numeric" name="student_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div><div class="field phone">
-<label class="req" for="student_phone">Phone Number</label>
-<input autocomplete="tel" id="student_phone" inputmode="numeric" name="student_phone" oninput="formatPhone(this); autoSave()" placeholder="(555) 123-4567" required="" type="tel"/>
+<div class="field">
+  <label class="req" for="student_phone">Phone Number</label>
+  <input
+    autocomplete="tel"
+    id="student_phone"
+    name="student_phone"
+    type="text"
+    inputmode="tel"
+    placeholder="(555) 123-4567"
+    oninput="autoSave()"
+    onblur="formatPhone(this); validatePhone(this)"
+    required
+  />
+  <div class="field-error" id="student_phone_error" role="alert">
+    Enter a 10-digit US phone number.
+  </div>
+</div>
 </div></div></div></div><div></div></div><div class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
 <input autocapitalize="off" autocomplete="off" autocorrect="off" id="student_ssn" name="student_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/></div><div class="field"><label class="req" for="student_income">Annual Student Income</label>
 <input id="student_income" min="0" name="student_income" oninput="autoSave()" placeholder="0" required="" type="number"/></div><div style="grid-column: 1 / -1">
@@ -977,7 +992,21 @@ section#section5 .opt:hover {
 </div>
 <div>
 <label class="req" for="pg_phone">Phone Number</label>
-<input autocomplete="tel" id="pg_phone" inputmode="numeric" name="pg_phone" oninput="formatPhone(this); autoSave()" placeholder="(555) 123-4567" required="" type="tel"/>
+<input
+    autocomplete="tel"
+    id="pg_phone"
+    name="pg_phone"
+    type="text"
+    inputmode="tel"
+    placeholder="(555) 123-4567"
+    oninput="autoSave()"
+    onblur="formatPhone(this); validatePhone(this)"
+    required
+  />
+  <div class="field-error" id="pg_phone_error" role="alert">
+    <!-- optional default text; JS will overwrite as needed -->
+    Enter a 10-digit US phone number.
+  </div>
 </div>
 <div style="grid-column:1/-1">
 <label class="req" for="pg_address">Street Address</label>
@@ -1335,19 +1364,24 @@ section#section5 .opt:hover {
           fieldValid = field.value.trim() !== '';
         }
         
-        // Validate email fields
-        if (field.type === 'email' && field.value.trim()) {
-          fieldValid = fieldValid && isValidEmail(field.value.trim());
-        }
-        
-        if (!fieldValid) {
-          valid = false;
-          if (!firstInvalidField) {
-            firstInvalidField = field;
-          }
-        }
+// Validate email fields
+if (field.type === 'email' && field.value.trim()) {
+  fieldValid = fieldValid && isValidEmail(field.value.trim());
+}
+
+// Enforce 10-digit phone numbers if present
+if ((field.id === 'student_phone' || field.id === 'pg_phone') && field.value.trim()) {
+  fieldValid = fieldValid && validatePhone(field);
+}
+
+if (!fieldValid) {
+  valid = false;
+  if (!firstInvalidField) {
+    firstInvalidField = field;
+  }
+}
       }
-      
+       
       // Special validation for essays
       if (sectionIndex === 4) {
         var essay2 = document.getElementById('essay2');
@@ -1416,6 +1450,23 @@ section#section5 .opt:hover {
   return re.test(String(email || '').trim());
 }
 
+function validatePhone(input) {
+  const digits = (input.value || '').replace(/\D/g, '');
+  const ok = digits.length === 10;
+  const err = document.getElementById(input.id + '_error');
+
+  if (ok) {
+    input.classList.remove('invalid');
+    if (err) err.classList.remove('show');
+  } else {
+    input.classList.add('invalid');
+    if (err) {
+      err.textContent = 'Enter a 10-digit phone number.';
+      err.classList.add('show');
+    }
+  }
+  return ok;
+}
 
     function checkEligibility() {
       var eligibilityFields = ['first_time', 'full_time', 'on_campus', 'distance_100'];
