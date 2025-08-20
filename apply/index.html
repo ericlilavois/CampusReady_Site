@@ -2017,7 +2017,9 @@ function validatePhone(input) {
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
-        
+
+        signaturePads[canvasId].hasInk = true;
+
         lastX = pos.x;
         lastY = pos.y;
       };
@@ -2044,6 +2046,9 @@ function validatePhone(input) {
         ctx.moveTo(lastX, lastY);
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
+
+        signaturePads[canvasId].hasInk = true;  // ← add this
+
         
         lastX = pos.x;
         lastY = pos.y;
@@ -2057,11 +2062,12 @@ function validatePhone(input) {
       // Initialize
       resizeCanvas();
       
-      // Store reference
-      signaturePads[canvasId] = {
-        canvas: canvas,
-        resize: resizeCanvas
-      };
+    // Store reference
+signaturePads[canvasId] = {
+  canvas: canvas,
+  resize: resizeCanvas,
+  hasInk: false
+};
     }
 
     function clearSignature(canvasId) {
@@ -2073,6 +2079,7 @@ function validatePhone(input) {
         // Redraw background
         ctx.fillStyle = 'rgba(2,6,23,.4)';
         ctx.fillRect(0, 0, pad.canvas.width, pad.canvas.height);
+        pad.hasInk = false;  // ← add this 
       }
     }
 
