@@ -2936,5 +2936,51 @@ window.debugInvalid = () => {
     };
   })();
 </script>
+   <script>
+(function(){
+  function getAge(dobStr){
+    const dob = new Date(dobStr);
+    if (isNaN(dob)) return null;
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+    return age;
+  }
+
+  function toggleGuardianSignatureByAge(){
+    var dobEl = document.getElementById('student_dob');
+    var block = document.getElementById('guardianSigBlock'); // you added this id in 4(A)
+    var nameEl = document.getElementById('guardian_typed_name');
+
+    if (!dobEl || !block) return;
+
+    var age = getAge(dobEl.value);
+    var needsGuardian = (age !== null && age < 18);
+
+    // show/hide the whole guardian block
+    block.style.display = needsGuardian ? '' : 'none';
+
+    // make typed name required only if under 18
+    if (nameEl) {
+      nameEl.required = needsGuardian;
+      if (!needsGuardian) { nameEl.value = ''; }
+    }
+  }
+
+  // expose for reuse if needed
+  window.toggleGuardianSignatureByAge = toggleGuardianSignatureByAge;
+
+  // run on load (helps when resuming a saved form)
+  window.addEventListener('load', toggleGuardianSignatureByAge);
+
+  // re-check when DOB changes
+  document.addEventListener('input', function(e){
+    if (e && e.target && e.target.id === 'student_dob') {
+      toggleGuardianSignatureByAge();
+    }
+  });
+})();
+</script>
 </body>
 </html>
