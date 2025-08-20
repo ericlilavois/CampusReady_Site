@@ -828,6 +828,24 @@ section#section5 .opt:hover {
 /* Make sure the input uses the full width it’s given */
 #section1 #student_phone { width: 100%; }
 </style>
+   <style>
+/* Student row: left = City/State/ZIP, right = Phone */
+#section1 .row-city-email .two-col {
+  display: grid;
+  grid-template-columns: 1fr minmax(24rem, 1fr); /* left grows, right keeps a good width */
+  gap: 12px;
+  align-items: end;
+}
+
+/* Prevent wide content from pushing across columns */
+#section1 .row-city-email .two-col > * { min-width: 0; }
+
+/* Keep the label on one line (desktop) and let the input fill its space */
+@media (min-width: 640px) {
+  #section1 label[for="student_phone"] { white-space: nowrap; }
+}
+#section1 #student_phone { width: 100%; }
+</style>
 </head>
 <body>
 <div class="wrap">
