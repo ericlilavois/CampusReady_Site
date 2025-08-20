@@ -589,7 +589,18 @@
 </style><style>
 /* Scoped: add Phone as 4th column in Student City row */
 #section1 .row-city-email .addr-row {
-  grid-template-columns: minmax(14rem, 1fr) 7.5ch 12ch minmax(14rem, 1fr);
+  grid-template-columns: minmax(14rem, 1fr) 7.5ch 12ch;
+}
+
+#section1 .row-city-email {
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+#section1 .personal-column {
+  display: grid;
+  gap: 12px;
 }
 @media (max-width: 640px) {
   #section1 .row-city-email .addr-row { grid-template-columns: 1fr; }
@@ -922,34 +933,60 @@ section#section5 .opt:hover {
 </div><div>
 <label class="req" for="student_dob">Date of Birth</label>
 <input autocomplete="bday" id="student_dob" name="student_dob" oninput="autoSave()" required="" type="date"/>
-</div></div><div class="row-address-phone" style="grid-column: 1 / -1"><div>
-<label class="req" for="student_address">Home Address</label>
-<input autocomplete="address-line1" id="student_address" name="student_address" oninput="autoSave()" required="" type="text"/>
-</div><div class="field"><label class="req" for="student_email">Email Address</label>
-<input autocomplete="email" id="student_email" name="student_email" oninput="autoSave()" required="" style="width: 100%" type="email"/>
-<div class="email-error" id="student_email_error">Please enter a valid email address with a recognized domain.</div></div></div>
-<div class="row-city-email"><div><input aria-hidden="true" id="student_city" name="student_city" oninput="autoSave()" placeholder="Oakland, CA 94612" required="" style="display:none" type="text"/><div class="two-col"><div class="addr-row"><div class="field city"><label for="student_city_name">City</label>
-<input autocomplete="address-level2" id="student_city_name" name="student_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="student_state">State</label>
-<select autocomplete="address-level1" id="student_state" name="student_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="student_zip">ZIP Code</label>
-<input autocomplete="postal-code" id="student_zip" inputmode="numeric" name="student_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div><div class="field phone">
-<div class="field">
-  <label class="req" for="student_phone">Phone Number</label>
-  <input
-    autocomplete="tel"
-    id="student_phone"
-    name="student_phone"
-    type="text"
-    inputmode="tel"
-    placeholder="(555) 123-4567"
-    oninput="formatPhone(this); autoSave()"
-    onblur="formatPhone(this); validatePhone(this)"
-    required
-  />
-  <div class="field-error" id="student_phone_error" role="alert">
-    Enter a 10-digit US phone number.
+</div></div><div class="row-address-phone" style="grid-column: 1 / -1">
+  <div>
+    <label class="req" for="student_address">Home Address</label>
+    <input autocomplete="address-line1" id="student_address" name="student_address" oninput="autoSave()" required="" type="text"/>
   </div>
 </div>
-</div></div></div></div><div></div></div><div class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
+<div class="row-city-email">
+  <div>
+    <input aria-hidden="true" id="student_city" name="student_city" oninput="autoSave()" placeholder="Oakland, CA 94612" required="" style="display:none" type="text"/>
+    <div class="addr-row">
+      <div class="field city">
+        <label for="student_city_name">City</label>
+        <input autocomplete="address-level2" id="student_city_name" name="student_city_name" oninput="autoSave()" required="" type="text"/>
+      </div>
+      <div class="field state">
+        <label for="student_state">State</label>
+        <select autocomplete="address-level1" id="student_state" name="student_state" onchange="autoSave()" required="">
+          <option disabled="" selected="" value="">Select state</option>
+          <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option>
+        </select>
+      </div>
+      <div class="field zip">
+        <label for="student_zip">ZIP Code</label>
+        <input autocomplete="postal-code" id="student_zip" inputmode="numeric" name="student_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/>
+      </div>
+    </div>
+  </div>
+  
+  <div class="personal-column">
+    <div class="field">
+      <label class="req" for="student_email">Email Address</label>
+      <input autocomplete="email" id="student_email" name="student_email" oninput="autoSave()" required="" type="email"/>
+      <div class="email-error" id="student_email_error">Please enter a valid email address with a recognized domain.</div>
+    </div>
+    
+    <div class="field">
+      <label class="req" for="student_phone">Phone Number</label>
+      <input
+        autocomplete="tel"
+        id="student_phone"
+        name="student_phone"
+        type="text"
+        inputmode="tel"
+        placeholder="(555) 123-4567"
+        oninput="formatPhone(this); autoSave()"
+        onblur="formatPhone(this); validatePhone(this)"
+        required
+      />
+      <div class="field-error" id="student_phone_error" role="alert">
+        Enter a 10-digit US phone number.
+      </div>
+    </div>
+  </div>
+</div>class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
 <input autocapitalize="off" autocomplete="off" autocorrect="off" id="student_ssn" name="student_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/></div><div class="field"><label class="req" for="student_income">Annual Student Income</label>
 <input id="student_income" min="0" name="student_income" oninput="autoSave()" placeholder="0" required="" type="number"/></div><div style="grid-column: 1 / -1">
 <div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
