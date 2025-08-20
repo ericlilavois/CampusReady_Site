@@ -2665,7 +2665,8 @@ window.addEventListener('resize', () => {
     // Listeners
     city.addEventListener('input', function(){ setDirty(city); syncCombined(); });
     state.addEventListener('change', function(){ setDirty(state); syncCombined(); });
-    zip.addEventListener('input', function(){
+      zip.addEventListener('input', function(e){
+      if (e.target.id.includes('phone')) return;
       setDirty(zip);
       formatZip(zip);
       validateZip({force:false});
