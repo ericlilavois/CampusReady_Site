@@ -2270,7 +2270,48 @@ function submitApplication() {
         }, 300);
         return;
       }
-      
+      // === SIGNATURE GUARD ===
+// Applicant: typed name required
+var appTyped = document.getElementById('applicant_typed_name');
+if (!appTyped || !appTyped.value.trim()) {
+  alert('Please type your full legal name above the Applicant Signature.');
+  goToSection(5);
+  if (appTyped && appTyped.focus) setTimeout(() => appTyped.focus(), 200);
+  return;
+}
+
+// Applicant: must draw on the canvas
+var appPad = signaturePads && signaturePads['appSig'];
+if (!appPad || !appPad.hasInk) {
+  alert('Please draw your Applicant Signature in the box.');
+  goToSection(5);
+  return;
+}
+
+// Guardian required only if that block is visible (under 18)
+var guardianBlock = document.getElementById('guardianSigBlock');
+var needsGuardian = !!(guardianBlock && guardianBlock.style.display !== 'none');
+
+if (needsGuardian) {
+  // Guardian typed name required
+  var gTyped = document.getElementById('guardian_typed_name');
+  if (!gTyped || !gTyped.value.trim()) {
+    alert('Please type the Parent/Guardian full legal name.');
+    goToSection(5);
+    if (gTyped && gTyped.focus) setTimeout(() => gTyped.focus(), 200);
+    return;
+  }
+
+  // Guardian must draw on the canvas
+  var gPad = signaturePads && signaturePads['pgSig'];
+  if (!gPad || !gPad.hasInk) {
+    alert('Please draw the Parent/Guardian signature in the box.');
+    goToSection(5);
+    return;
+  }
+}
+// === END SIGNATURE GUARD ===
+
       // Save final data
       autoSave();
       
