@@ -2289,8 +2289,18 @@ if (!appPad || !appPad.hasInk) {
 }
 
 // Guardian required only if that block is visible (under 18)
-var guardianBlock = document.getElementById('guardianSigBlock');
-var needsGuardian = !!(guardianBlock && guardianBlock.style.display !== 'none');
+// Guardian required only if applicant is under 18 (based on DOB)
+var needsGuardian = (function(){
+  var dobEl = document.getElementById('student_dob');
+  if (!dobEl || !dobEl.value) return false;
+  var dob = new Date(dobEl.value);
+  if (isNaN(dob)) return false;
+  var today = new Date();
+  var age = today.getFullYear() - dob.getFullYear();
+  var m = today.getMonth() - dob.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+  return age < 18;
+})();
 
 if (needsGuardian) {
   // Guardian typed name required
