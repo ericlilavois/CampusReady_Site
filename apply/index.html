@@ -1108,8 +1108,8 @@ section#section5 .opt:hover {
 </div>
 <div class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
 <input autocapitalize="off" autocomplete="off" autocorrect="off" id="student_ssn" name="student_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/></div><div cla<div class="field"><label class="req" for="student_income">Your Individual Annual Income</label>
-<input id="student_income" min="0" name="student_income" oninput="autoSave()" placeholder="0" required="" type="number"/>
-<div class="hint" style="margin-top: 6px;">Enter only your personal income from jobs, wages, or tips. Do not include parents' income, allowances, or gifts.</div></div><div style="grid-column: 1 / -1">
+<input id="student_income" name="student_income" oninput="formatIncome(this); autoSave()" placeholder="Enter amount (no $ or commas needed)" required="" type="text" inputmode="numeric"/>
+   <div class="hint" style="margin-top: 6px;">Enter only your personal income from jobs, wages, or tips. Do not include parents' income, allowances, or gifts.</div></div><div style="grid-column: 1 / -1">
 <div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
 </div></div>
 <div>
@@ -1191,7 +1191,7 @@ section#section5 .opt:hover {
 <div style="grid-column: 1">
 <div class="two-col" style="grid-template-columns: 1fr 1fr"><div class="field"><label class="req" for="household_members">Household Members</label>
 <input id="household_members" min="1" name="household_members" oninput="autoSave()" required="" type="number"/></div><div class="field"><label class="req" for="household_income">Total Household Income</label>
-<input id="household_income" min="0" name="household_income" oninput="autoSave()" required="" type="number"/></div></div>
+<input id="household_income" name="household_income" oninput="formatIncome(this); autoSave()" placeholder="Enter amount (no $ or commas needed)" required="" type="text" inputmode="numeric"/>/></div></div>
 </div>
 </div>
 <div class="section-actions">
@@ -2431,6 +2431,28 @@ return false;          // stops any further JS in this handler
     window.addEventListener('beforeunload', function() {
       autoSave();
     });
+
+// Income field formatting
+function formatIncome(input) {
+  var value = input.value;
+  
+  // Remove all non-numeric characters except decimal point
+  var cleanValue = value.replace(/[^0-9.]/g, '');
+  
+  // Ensure only one decimal point
+  var parts = cleanValue.split('.');
+  if (parts.length > 2) {
+    cleanValue = parts[0] + '.' + parts.slice(1).join('');
+  }
+  
+  // Limit to 2 decimal places
+  if (parts[1] && parts[1].length > 2) {
+    cleanValue = parts[0] + '.' + parts[1].slice(0, 2);
+  }
+  
+  input.value = cleanValue;
+}
+   
   </script>
 <script>
 window.addEventListener('resize', () => {
