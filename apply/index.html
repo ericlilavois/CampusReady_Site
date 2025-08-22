@@ -711,6 +711,48 @@ a:hover { color: var(--brand-800); }
   border: 1px solid var(--brand-200);
   color: var(--brand-700);
 }
+
+/* ZIP Code Suggestion Styling */
+.zip-suggestion {
+  background: rgba(20,184,166, .08);
+  border: 1px solid rgba(20,184,166, .25);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--brand-800);
+  display: none;
+  grid-column: 1 / -1;
+  transition: all 0.2s ease;
+}
+
+.zip-suggestion.show {
+  display: block;
+  animation: slideIn 0.3s ease;
+}
+
+.zip-suggestion:hover {
+  background: rgba(20,184,166, .12);
+  border-color: rgba(20,184,166, .35);
+}
+
+.zip-apply-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--brand-500), var(--brand-600));
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-left: 8px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.zip-apply-btn:hover {
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-700));
+  transform: translateY(-1px);
+}
+}
 </style><style id="brand-wash-tweaks">
 /* === A) Muted brand wash for Yes/No radio rows === */
 :root { --brand-500-rgb: 20,184,166; } /* #14b8a6 */
@@ -2804,13 +2846,13 @@ window.addEventListener('resize', () => {
         if (!sug){
           sug = document.createElement('div');
           sug.id = sugId;
-          sug.className = 'field-error row-message';
+          sug.className = 'zip-suggestion';
           var row = (state.closest && state.closest('.addr-row')) ? state.closest('.addr-row') : state.parentNode;
           row.appendChild(sug);
         }
         if (mismatch){
-          sug.textContent = 'ZIP suggests ' + placeCity + ', ' + placeStateAbbr + '. Click to apply.';
-          sug.classList.add('show');
+          sug.innerHTML = '<strong>ZIP code suggests:</strong> ' + placeCity + ', ' + placeStateAbbr + ' <span class="zip-apply-btn">Use This Location</span>';
+           sug.classList.add('show');
           sug.style.cursor = 'pointer';
           sug.onclick = function(){
             city.value = placeCity;
