@@ -2435,6 +2435,7 @@ return false;          // stops any further JS in this handler
 // Income field formatting
 function formatIncome(input) {
   var value = input.value;
+  var cursorPosition = input.selectionStart;
   
   // Remove all non-numeric characters except decimal point
   var cleanValue = value.replace(/[^0-9.]/g, '');
@@ -2450,7 +2451,27 @@ function formatIncome(input) {
     cleanValue = parts[0] + '.' + parts[1].slice(0, 2);
   }
   
+  // Add commas to the whole number part
+  if (cleanValue) {
+    var finalParts = cleanValue.split('.');
+    var wholePart = finalParts[0];
+    var decimalPart = finalParts[1];
+    
+    // Add commas every 3 digits
+    wholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+    // Reassemble with decimal if present
+    cleanValue = decimalPart !== undefined ? wholePart + '.' + decimalPart : wholePart;
+  }
+  
   input.value = cleanValue;
+  
+  // Restore cursor position (approximately)
+  try {
+    input.setSelectionRange(cursorPosition, cursorPosition);
+  } catch (e) {
+    // Ignore cursor positioning errors
+  }
 }
    
   </script>
