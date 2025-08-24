@@ -339,7 +339,7 @@
       <form id="notifyForm"
             class="max-w-md mx-auto"
             novalidate
-            action="https://script.google.com/a/macros/campusready.foundation/s/AKfycby98iUYhyRcR-hZkmxkiw6OFaF3NpcmusTk6oJuL7PDabRegJ-Yaf3vs5m14t4Om4PG/exec"
+            action="action="https://script.google.com/macros/s/AKfycby98iUYhyRcR-hZkmxkiw6OFaF3NpcmusTk6oJuL7PDabRegJ-Yaf3vs5m14t4Om4PG/exec"
             method="POST"
             onsubmit="return handleSignup(event, this)">
         <!-- Honeypot field: invisible to real users -->
@@ -359,14 +359,7 @@
           </button>
         </div>
 
-        <!-- safer honeypot: uncommon name; kept offscreen -->
-        <input type="text"
-               name="contact_field"
-               tabindex="-1"
-               autocomplete="off"
-               aria-hidden="true"
-               style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
-      </form>
+           </form>
 
       <!-- single message element -->
       <p id="notifyMessage" aria-live="polite" class="mt-2 text-sm text-slate-600"></p>
