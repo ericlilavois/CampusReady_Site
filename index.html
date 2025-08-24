@@ -370,61 +370,73 @@
 <!-- one tiny script -->
 <script>
 function handleSignup(e, form) {
-  e.preventDefault(); // stop page reload
+  e.preventDefault();
 
-  // Grab values
   const emailEl = document.getElementById('email');
-  const hpEl    = document.getElementById('contact_field'); // hidden honeypot
+  const hpEl = document.getElementById('contact_field');
+  const messageEl = document.getElementById('notifyMessage');
 
   const email = (emailEl?.value || '').trim();
-  const hp    = (hpEl?.value || '').trim();
+  const hp = (hpEl?.value || '').trim();
 
-  // Basic check
+  // Clear any previous messages
+  messageEl.textContent = '';
+
+  // Check if email is entered
   if (!email) {
-    alert('Please enter your email address.');
+    messageEl.textContent = 'Please enter your email address.';
+    messageEl.className = 'mt-2 text-sm text-red-600';
     return false;
   }
 
-  // Optional: disable button while submitting
-  const submitBtn = form.querySelector('button[type="submit"]');
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.setAttribute('aria-busy', 'true');
+  // Check if email looks valid
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!emailRegex.test(email)) {
+    messageEl.textContent = 'Please enter a valid email address.';
+    messageEl.className = 'mt-2 text-sm text-red-600';
+    return false;
   }
 
-  // Send to Google Apps Script
+  // Disable the button so user can't click twice
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting...';
+
+  // Show loading message
+  messageEl.textContent = 'Adding you to the list...';
+  messageEl.className = 'mt-2 text-sm text-slate-600';
+
+  // Create form data the old-fashioned way (more reliable)
+  const formData = new FormData();
+  formData.append('email', email);
+  formData.append('contact_field', hp);
+
+  // Send the data
   fetch(form.action, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email: email,
-      contact_field: hp
-    })
+    body: formData
   })
-  .then(r => r.json())
-  .then(data => {
-    if (data && data.ok) {
-      form.reset(); // clears inputs and honeypot
-      alert('Thanks! You’re on the list.');
-    } else {
-      const reason = (data && data.status) ? ` (${data.status})` : '';
-      alert(`We couldn’t accept that submission${reason}. Please try again.`);
-    }
+  .then(() => {
+    // Success - clear the form and show success message
+    form.reset();
+    messageEl.textContent = 'Thanks! You\'re on the list.';
+    messageEl.className = 'mt-2 text-sm text-green-600';
   })
   .catch(() => {
-    alert('Something went wrong. Please try again.');
+    // Error - show error message
+    messageEl.textContent = 'Something went wrong. Please try again.';
+    messageEl.className = 'mt-2 text-sm text-red-600';
   })
   .finally(() => {
-    if (submitBtn) {
-      submitBtn.disabled = false;
-      submitBtn.removeAttribute('aria-busy');
-    }
+    // Always re-enable the button
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
   });
 
-  return false; // stop navigation
+  return false;
 }
 </script>
-
   </footer>
 
   <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
