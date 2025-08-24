@@ -370,40 +370,58 @@
 <!-- one tiny script -->
 <script>
 function handleSignup(e, form) {
-  const emailEl = document.getElementById('email');
-  const email = (emailEl?.value || '').trim();
+    const emailEl = document.getElementById('email');
+    const email = (emailEl?.value || '').trim();
 
-  // Basic validation
-  if (!email) {
-    alert('Please enter your email address.');
-    return false;
-  }
+    // Basic validation
+    if (!email) {
+        alert('Please enter your email address.');
+        return false;
+    }
 
-  // Simple email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  if (!emailRegex.test(email)) {
-    alert('Please enter a valid email address.');
-    return false;
-  }
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+    }
 
-  // Create hidden iframe for invisible submission
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.name = 'hidden-form';
-  document.body.appendChild(iframe);
+    // Show loading message
+    document.getElementById('notifyMessage').textContent = 'Adding you to the list...';
+    document.getElementById('notifyMessage').className = 'mt-2 text-sm text-blue-600';
 
-  // Set form target to iframe
-  form.target = 'hidden-form';
-  
-  // Show success message after delay
-  setTimeout(() => {
-    form.reset();
-    document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
-    document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
-  }, 1000);
+    // Create hidden iframe for invisible submission
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.name = 'hidden-form';
+    document.body.appendChild(iframe);
 
-  // Let form submit normally (return true)
-  return true;
+    // Listen for iframe to finish loading (this means the request completed)
+    iframe.onload = function() {
+        // Wait a moment for the script to process
+        setTimeout(() => {
+            // Show success message (we'll improve this further in the next solution)
+            form.reset();
+            document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
+            document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
+            
+            // Clean up the iframe
+            document.body.removeChild(iframe);
+        }, 500);
+    };
+
+    // If iframe fails to load, show error
+    iframe.onerror = function() {
+        document.getElementById('notifyMessage').textContent = 'Something went wrong. Please try again.';
+        document.getElementById('notifyMessage').className = 'mt-2 text-sm text-red-600';
+        document.body.removeChild(iframe);
+    };
+
+    // Set form target to iframe
+    form.target = 'hidden-form';
+
+    // Let form submit normally (return true)
+    return true;
 }
 </script>  
   </footer>
