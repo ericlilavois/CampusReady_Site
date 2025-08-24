@@ -376,57 +376,50 @@
 
 <!-- one tiny script -->
 <script>
-<script>
 function handleSignup(e, form) {
-  // Stop the browser’s default form submit (page reload)
-  e.preventDefault();
+  e.preventDefault(); // stop page reload
 
   // Grab values
   const emailEl = document.getElementById('email');
-  const hpEl    = document.getElementById('contact_field'); // hidden honeypot (you added this above)
+  const hpEl    = document.getElementById('contact_field'); // hidden honeypot
 
   const email = (emailEl?.value || '').trim();
   const hp    = (hpEl?.value || '').trim();
 
-  // Simple check
+  // Basic check
   if (!email) {
     alert('Please enter your email address.');
-    return false; // keep the page here
+    return false;
   }
 
-  // Optional: disable the button during submit (prevents double clicks)
+  // Optional: disable button while submitting
   const submitBtn = form.querySelector('button[type="submit"]');
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.setAttribute('aria-busy', 'true');
   }
 
-  // Send JSON to your Apps Script endpoint (form.action)
+  // Send to Google Apps Script
   fetch(form.action, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email,
-      contact_field: hp // include honeypot in payload
+      contact_field: hp
     })
   })
   .then(r => r.json())
   .then(data => {
-    // Success UI (adjust to your preference)
-    // If Apps Script flagged spam, it returns ok:false with a status.
     if (data && data.ok) {
-      // Clear the form (also clears honeypot)
-      form.reset();
+      form.reset(); // clears inputs and honeypot
       alert('Thanks! You’re on the list.');
     } else {
-      // Show a friendly message if it wasn’t accepted
-      // (e.g., suspected spam, invalid email, etc.)
       const reason = (data && data.status) ? ` (${data.status})` : '';
-      alert(`We couldn’t accept that submission${reason}. If this seems wrong, please try again.`);
+      alert(`We couldn’t accept that submission${reason}. Please try again.`);
     }
   })
   .catch(() => {
-    alert('Something went wrong submitting the form. Please try again.');
+    alert('Something went wrong. Please try again.');
   })
   .finally(() => {
     if (submitBtn) {
@@ -435,25 +428,10 @@ function handleSignup(e, form) {
     }
   });
 
-  // Prevent default navigation
-  return false;
+  return false; // stop navigation
 }
 </script>
 
-  fetch(formEl.action, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: new FormData(formEl)
-  }).then(function () {
-    formEl.reset();
-    if (msg) msg.textContent = "Thanks. We'll be in touch!";
-  }).catch(function () {
-    if (msg) msg.textContent = 'Sorry — network error. Please try again.';
-  });
-
-  return false; // double-ensure no navigation
-}
-</script>
   </footer>
 
   <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
