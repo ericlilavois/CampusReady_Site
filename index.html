@@ -395,11 +395,12 @@ function handleSignup(e, form) {
     formData.append('email', email);
     formData.append('contact_field', ''); // honeypot field
 
-    // Submit using fetch
-    fetch('https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec', {
-        method: 'POST',
-        body: formData
-    })
+   // Submit using fetch
+fetch('https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+})
     .then(response => response.json())
     .then(data => {
         if (data.ok) {
