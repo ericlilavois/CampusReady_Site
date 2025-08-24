@@ -342,6 +342,10 @@
             action="https://script.google.com/macros/s/AKfycbxB4GIDl47dmUryVNigr5kilH-ooEfSGvGmtCDb67EvU6f4ZbS1jKwOjjKcDH6H9P_Dgw/exec"
             method="POST"
             onsubmit="return handleSignup(event, this)">
+        <!-- Honeypot field: invisible to real users -->
+<input type="text" name="contact_field" id="contact_field"
+       autocomplete="off" tabindex="-1"
+       style="position:absolute;left:-9999px;opacity:0;">
         <div class="flex flex-col sm:flex-row gap-4 sm:items-start">
           <input type="email"
                  id="email"
