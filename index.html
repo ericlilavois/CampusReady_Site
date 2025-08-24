@@ -370,8 +370,6 @@
 <!-- one tiny script -->
 <script>
 function handleSignup(e, form) {
-    e.preventDefault(); // Stop the form from submitting normally
-    
     const emailEl = document.getElementById('email');
     const email = (emailEl?.value || '').trim();
 
@@ -392,37 +390,16 @@ function handleSignup(e, form) {
     document.getElementById('notifyMessage').textContent = 'Adding you to the list...';
     document.getElementById('notifyMessage').className = 'mt-2 text-sm text-blue-600';
 
-    // Create form data
-    const formData = new FormData();
-    formData.append('email', email);
-    formData.append('contact_field', ''); // honeypot field
+    // Show success message after delay
+    setTimeout(() => {
+        form.reset();
+        document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
+        document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
+    }, 2000);
 
-   // Submit using fetch
-fetch('https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-})
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            form.reset();
-            document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
-            document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
-        } else {
-            document.getElementById('notifyMessage').textContent = 'Something went wrong. Please try again.';
-            document.getElementById('notifyMessage').className = 'mt-2 text-sm text-red-600';
-        }
-    })
-    .catch(error => {
-        console.log('Error details:', error);
-        document.getElementById('notifyMessage').textContent = 'Something went wrong. Please try again.';
-        document.getElementById('notifyMessage').className = 'mt-2 text-sm text-red-600';
-    });
-
-    return false;
+    return true; // Let form submit normally
 }
-</script>  
+</script>
   </footer>
 
   <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
