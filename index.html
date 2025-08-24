@@ -370,73 +370,42 @@
 <!-- one tiny script -->
 <script>
 function handleSignup(e, form) {
-  e.preventDefault();
-
   const emailEl = document.getElementById('email');
-  const hpEl = document.getElementById('contact_field');
-  const messageEl = document.getElementById('notifyMessage');
-
   const email = (emailEl?.value || '').trim();
-  const hp = (hpEl?.value || '').trim();
 
-  // Clear any previous messages
-  messageEl.textContent = '';
-
-  // Check if email is entered
+  // Basic validation
   if (!email) {
-    messageEl.textContent = 'Please enter your email address.';
-    messageEl.className = 'mt-2 text-sm text-red-600';
+    alert('Please enter your email address.');
     return false;
   }
 
-  // Check if email looks valid
+  // Simple email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
-    messageEl.textContent = 'Please enter a valid email address.';
-    messageEl.className = 'mt-2 text-sm text-red-600';
+    alert('Please enter a valid email address.');
     return false;
   }
 
-  // Disable the button so user can't click twice
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting...';
+  // Create hidden iframe for invisible submission
+  const iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.name = 'hidden-form';
+  document.body.appendChild(iframe);
 
-  // Show loading message
-  messageEl.textContent = 'Adding you to the list...';
-  messageEl.className = 'mt-2 text-sm text-slate-600';
-
-  // Create form data the old-fashioned way (more reliable)
-  const formData = new FormData();
-  formData.append('email', email);
-  formData.append('contact_field', hp);
-
-  // Send the data
-  fetch(form.action, {
-    method: 'POST',
-    body: formData
-  })
-  .then(() => {
-    // Success - clear the form and show success message
+  // Set form target to iframe
+  form.target = 'hidden-form';
+  
+  // Show success message after delay
+  setTimeout(() => {
     form.reset();
-    messageEl.textContent = 'Thanks! You\'re on the list.';
-    messageEl.className = 'mt-2 text-sm text-green-600';
-  })
-  .catch(() => {
-    // Error - show error message
-    messageEl.textContent = 'Something went wrong. Please try again.';
-    messageEl.className = 'mt-2 text-sm text-red-600';
-  })
-  .finally(() => {
-    // Always re-enable the button
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
-  });
+    document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
+    document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
+  }, 1000);
 
-  return false;
+  // Let form submit normally (return true)
+  return true;
 }
-</script>
+</script>  
   </footer>
 
   <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
