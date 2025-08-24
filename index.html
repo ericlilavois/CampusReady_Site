@@ -397,7 +397,14 @@ function handleSignup(e, form) {
         document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
     }, 2000);
 
-    return true; // Let form submit normally
+    // Submit form in hidden iframe to avoid showing the response page
+const iframe = document.createElement('iframe');
+iframe.style.display = 'none';
+iframe.name = 'hidden-iframe';
+document.body.appendChild(iframe);
+form.target = 'hidden-iframe';
+
+return true; // Let form submit to iframe
 }
 </script>
   </footer>
