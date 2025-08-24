@@ -376,18 +376,69 @@
 
 <!-- one tiny script -->
 <script>
-function handleSignup(e, formEl) {
-  e.preventDefault(); // never leave the page
-  var msg = document.getElementById('notifyMessage');
-  if (msg) msg.textContent = 'Submitting…';
+<script>
+function handleSignup(e, form) {
+  // Stop the browser’s default form submit (page reload)
+  e.preventDefault();
 
-  // If honeypot has content (bot), pretend success but don't post
-  var hp = formEl.querySelector('input[name="contact_field"]');
-  if (hp && hp.value) {
-    formEl.reset();
-    if (msg) msg.textContent = "Thanks. We'll be in touch!";
-    return false;
+  // Grab values
+  const emailEl = document.getElementById('email');
+  const hpEl    = document.getElementById('contact_field'); // hidden honeypot (you added this above)
+
+  const email = (emailEl?.value || '').trim();
+  const hp    = (hpEl?.value || '').trim();
+
+  // Simple check
+  if (!email) {
+    alert('Please enter your email address.');
+    return false; // keep the page here
   }
+
+  // Optional: disable the button during submit (prevents double clicks)
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.setAttribute('aria-busy', 'true');
+  }
+
+  // Send JSON to your Apps Script endpoint (form.action)
+  fetch(form.action, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      contact_field: hp // include honeypot in payload
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    // Success UI (adjust to your preference)
+    // If Apps Script flagged spam, it returns ok:false with a status.
+    if (data && data.ok) {
+      // Clear the form (also clears honeypot)
+      form.reset();
+      alert('Thanks! You’re on the list.');
+    } else {
+      // Show a friendly message if it wasn’t accepted
+      // (e.g., suspected spam, invalid email, etc.)
+      const reason = (data && data.status) ? ` (${data.status})` : '';
+      alert(`We couldn’t accept that submission${reason}. If this seems wrong, please try again.`);
+    }
+  })
+  .catch(() => {
+    alert('Something went wrong submitting the form. Please try again.');
+  })
+  .finally(() => {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+    }
+  });
+
+  // Prevent default navigation
+  return false;
+}
+</script>
 
   fetch(formEl.action, {
     method: 'POST',
