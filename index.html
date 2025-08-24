@@ -336,10 +336,12 @@
       </div>
 
       <!-- ONE form only -->
-      <form id="notifyForm" 
-        class="max-w-md mx-auto" 
-        novalidate 
-        onsubmit="return handleSignup(event, this)">
+    <form id="notifyForm" 
+  class="max-w-md mx-auto" 
+  novalidate 
+  action="https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec" 
+  method="POST" 
+  onsubmit="return handleSignup(event, this)">
         <!-- Honeypot field: invisible to real users -->
 <input type="text" name="contact_field" id="contact_field"
        autocomplete="off" tabindex="-1"
