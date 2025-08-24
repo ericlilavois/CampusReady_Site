@@ -336,12 +336,10 @@
       </div>
 
       <!-- ONE form only -->
-      <form id="notifyForm"
-            class="max-w-md mx-auto"
-            novalidate
-            action="https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec"
-            method="POST"
-            onsubmit="return handleSignup(event, this)">
+      <form id="notifyForm" 
+        class="max-w-md mx-auto" 
+        novalidate 
+        onsubmit="return handleSignup(event, this)">
         <!-- Honeypot field: invisible to real users -->
 <input type="text" name="contact_field" id="contact_field"
        autocomplete="off" tabindex="-1"
@@ -370,6 +368,8 @@
 <!-- one tiny script -->
 <script>
 function handleSignup(e, form) {
+    e.preventDefault(); // Stop the form from submitting normally
+    
     const emailEl = document.getElementById('email');
     const email = (emailEl?.value || '').trim();
 
@@ -390,38 +390,34 @@ function handleSignup(e, form) {
     document.getElementById('notifyMessage').textContent = 'Adding you to the list...';
     document.getElementById('notifyMessage').className = 'mt-2 text-sm text-blue-600';
 
-    // Create hidden iframe for invisible submission
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.name = 'hidden-form';
-    document.body.appendChild(iframe);
+    // Create form data
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('contact_field', ''); // honeypot field
 
-    // Listen for iframe to finish loading (this means the request completed)
-    iframe.onload = function() {
-        // Wait a moment for the script to process
-        setTimeout(() => {
-            // Show success message (we'll improve this further in the next solution)
+    // Submit using fetch
+    fetch('https://script.google.com/macros/s/AKfycbycdRuvvQNk0f0lhs0rJ3ceX3zXRZeIRRirsd9gyIppzALQ9y8qMFfkN3gkT0M_PLfr/exec', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
             form.reset();
             document.getElementById('notifyMessage').textContent = 'Thanks! You\'re on the list.';
             document.getElementById('notifyMessage').className = 'mt-2 text-sm text-green-600';
-            
-            // Clean up the iframe
-            document.body.removeChild(iframe);
-        }, 500);
-    };
-
-    // If iframe fails to load, show error
-    iframe.onerror = function() {
+        } else {
+            document.getElementById('notifyMessage').textContent = 'Something went wrong. Please try again.';
+            document.getElementById('notifyMessage').className = 'mt-2 text-sm text-red-600';
+        }
+    })
+    .catch(error => {
+        console.log('Error details:', error);
         document.getElementById('notifyMessage').textContent = 'Something went wrong. Please try again.';
         document.getElementById('notifyMessage').className = 'mt-2 text-sm text-red-600';
-        document.body.removeChild(iframe);
-    };
+    });
 
-    // Set form target to iframe
-    form.target = 'hidden-form';
-
-    // Let form submit normally (return true)
-    return true;
+    return false;
 }
 </script>  
   </footer>
