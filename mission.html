@@ -125,7 +125,6 @@
   <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
     <a href="https://www.campusready.foundation" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
       <div class="relative">
-        <img src="assets/favicon-32.png" alt="" class="h-5 w-5 rounded-md" aria-hidden="true">
         <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg">CR</span>
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
       </div>
@@ -170,19 +169,20 @@
 
     <!-- The Challenge -->
    <div class="mt-10 feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up">
- <!-- Challenge icon: price tag + "$$!" -->
+<!-- Challenge icon: price tag with exclamation (no text, crisp at 24px) -->
 <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-4 shadow-soft">
   <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
     <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <!-- tag shape with clipped corner -->
       <path d="M7 8h7l4 4-6 6-7-7 2-3z"/>
       <!-- tag hole -->
-      <circle cx="16" cy="12" r="1.2"/>
+      <circle cx="16" cy="12" r="1.25"/>
       <!-- short loop/string -->
       <path d="M17.2 10.8l2.2-2.7"/>
+      <!-- exclamation mark inside the tag (line + dot) -->
+      <path d="M11 11v3"/>
+      <circle cx="11" cy="16" r="0.8"/>
     </g>
-    <!-- $$! mark, white like your other icons -->
-    <text x="10" y="13" font-size="7.5" font-weight="700" fill="currentColor">$$!</text>
   </svg>
 </div>
      <h2 class="text-xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">The Challenge</h2>
@@ -258,9 +258,12 @@
           Ready to help students start strong?
         </h2>
         <div class="mt-4 sm:mt-0 flex items-center gap-3">
-          <a href="/donate" class="inline-flex items-center rounded-xl bg-brand-600 px-5 py-3 text-white font-medium shadow-sm hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
-            Donate Now
-          </a>
+         <a href="/partners"
+   class="inline-flex items-center rounded-xl bg-white px-5 py-3 text-brand-700 font-medium
+          ring-1 ring-inset ring-brand-300 hover:bg-brand-50
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
+  Partner with Us
+</a>
           <a href="/partners" class="inline-flex items-center rounded-xl bg-white px-5 py-3 text-brand-700 font-medium ring-1 ring-inset ring-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
             Partner with Us
           </a>
