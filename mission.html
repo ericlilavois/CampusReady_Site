@@ -125,6 +125,7 @@
   <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
     <a href="https://www.campusready.foundation" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
       <div class="relative">
+        <img src="assets/favicon-32.png" alt="" class="h-5 w-5 rounded-md" aria-hidden="true">
         <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg">CR</span>
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
       </div>
@@ -151,11 +152,11 @@
   <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Our Mission</h1>
 </header>
     <!-- Mission strip (top banner) -->
-    <section aria-label="Mission" class="rounded-2xl bg-brand-50 border border-brand-100 p-4 sm:p-5">
-      <p class="text-sm sm:text-base leading-relaxed">
-       <strong>Campus Ready Foundation</strong> supports first-time college students from underserved communities with essential resources for independent living – from move-in basics and dorm supplies to travel and early-arrival meals.
-      </p>
-    </section>
+    <section aria-label="Mission" class="rounded-3xl border border-teal-100/70 bg-gradient-to-br from-teal-50 to-white p-4 md:p-5 shadow-soft animate-fade-in">
+  <p class="text-base sm:text-lg leading-relaxed text-slate-700">
+    <strong>Campus Ready Foundation</strong> supports first-time college students from underserved communities with essential resources for independent living – from move-in basics and dorm supplies to travel and early-arrival meals.
+  </p>
+</section>
 
     <!-- Hero -->
     <header class="mt-8">
@@ -169,7 +170,22 @@
 
     <!-- The Challenge -->
    <div class="mt-10 feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up">
-  <h2 class="text-xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">The Challenge</h2>
+ <!-- Challenge icon: price tag + "$$!" -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-4 shadow-soft">
+  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- tag shape with clipped corner -->
+      <path d="M7 8h7l4 4-6 6-7-7 2-3z"/>
+      <!-- tag hole -->
+      <circle cx="16" cy="12" r="1.2"/>
+      <!-- short loop/string -->
+      <path d="M17.2 10.8l2.2-2.7"/>
+    </g>
+    <!-- $$! mark, white like your other icons -->
+    <text x="10" y="13" font-size="7.5" font-weight="700" fill="currentColor">$$!</text>
+  </svg>
+</div>
+     <h2 class="text-xl font-bold text-slate-900 mb-2" style="letter-spacing: 0.015em;">The Challenge</h2>
   <p class="text-slate-600 leading-relaxed">
     The path to college brings hidden costs: move-in basics, travel, and early-arrival meals. These costs can strain family budgets, push students toward extra work, and add social stress that distracts from academics and undercuts confidence.
   </p>
@@ -177,7 +193,21 @@
 
     <!-- Our Solution -->
     <div class="mt-10 feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up">
-  <h2 class="text-xl font-bold text-slate-900 mb-3" style="letter-spacing: 0.015em;">Our Solution</h2>
+  <!-- Our Solution icon -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-4 shadow-soft">
+  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-4 9 4"/>
+      <path d="M4 10v6a2 2 0 0 0 1.2 1.83L12 21l6.8-3.17A2 2 0 0 0 20 16v-6"/>
+      <path d="M9.5 9.5l-6-2.5"/>
+      <path d="M14.5 9.5l6-2.5"/>
+      <!-- heart on the front of the box -->
+      <path d="M12 12.5c2-3 6-.5 3.5 2L12 18l-3.5-3.5C6 12 10 9.5 12 12.5z"/>
+    </g>
+  </svg>
+</div>
+
+      <h2 class="text-xl font-bold text-slate-900 mb-3" style="letter-spacing: 0.015em;">Our Solution</h2>
   <ul class="space-y-2 list-disc pl-5 text-slate-700">
     <li><span class="font-semibold">Move-In Kits</span> with bedding, towels, storage, and supplies</li>
     <li><span class="font-semibold">Travel Support</span> to and from campus</li>
@@ -190,7 +220,18 @@
 
     <!-- How It Works -->
    <div class="mt-10 feature-card rounded-3xl border border-slate-200 p-6 shadow-card hover:shadow-card-hover bg-white/80 backdrop-blur-sm animate-slide-up">
-  <h2 class="text-xl font-bold text-slate-900 mb-3" style="letter-spacing: 0.015em;">How It Works</h2>
+  <!-- How It Works icon: clipboard + checklist -->
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center mb-4 shadow-soft">
+  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <g stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="6" y="5" width="12" height="16" rx="2"/>
+      <path d="M9 5.5h6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2z"/>
+      <path d="M8 12l2 2 4-4"/>
+      <path d="M8 17h8"/>
+    </g>
+  </svg>
+</div>
+     <h2 class="text-xl font-bold text-slate-900 mb-3" style="letter-spacing: 0.015em;">How It Works</h2>
   <ol class="space-y-2 list-decimal pl-5 text-slate-700">
     <li><span class="font-semibold">Donors</span> and partners provide funding or in-kind support</li>
     <li><span class="font-semibold">Campus Ready Foundation</span> provides move-in kits, travel support, and early-arrival meals</li>
