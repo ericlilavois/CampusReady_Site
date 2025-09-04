@@ -112,6 +112,12 @@
   }
   .feature-card { transition: all 0.3s ease; }
   .feature-card:hover { transform: translateY(-8px); }
+    /* Secondary button hover (match Donate’s lift/soft shadow) */
+.btn-secondary { transition: all 0.3s ease; }
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
 </style>
   
   <meta name="description" content="Campus Ready Foundation mission: supporting first-time college students with move-in basics, travel, and early-arrival meals so they can start strong." />
@@ -123,7 +129,7 @@
   <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
    <a href="https://www.campusready.foundation" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
   <div class="relative">
-   <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg ring-1 ring-brand-400/30">CR</span>
+<span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-600 bg-gradient-to-br from-teal-500 to-teal-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg ring-1 ring-teal-400/30">CR</span>
 <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand-400 to-brand-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
   </div>
   <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Campus Ready Foundation</span>
@@ -249,8 +255,11 @@
           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
   Donate Now
 </a>
-          <a href="/partners" class="inline-flex items-center rounded-xl bg-white px-5 py-3 text-brand-700 font-medium ring-1 ring-inset ring-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
-            Partner with Us
+          <a href="/partners" 
+         class="btn-secondary inline-flex items-center rounded-xl bg-white px-5 py-3 text-brand-700 font-medium
+          ring-1 ring-inset ring-brand-300 hover:bg-brand-50
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
+  Partner with Us
           </a>
         </div>
       </div>
