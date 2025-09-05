@@ -125,21 +125,23 @@
 <body class="font-sans bg-slate-50 text-slate-900 overflow-x-hidden">
 <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
 
-<header class="relative z-20 glass animate-fade-in">
-  <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
- <a href="https://www.campusready.foundation" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
-  <div class="relative">
-    <!-- Badge -->
-    <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-600 bg-gradient-to-br from-teal-500 to-teal-600 text-white shadow-soft group-hover:shadow-glow transition-all duration-300 font-bold text-lg ring-1 ring-teal-400/30">CR</span>
-
-    <!-- Cloud overlay: sits behind the badge and fades in on hover -->
-    <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
-  </div>
-
-  <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-    Campus Ready Foundation
-  </span>
-</a>
+<header class="bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+    <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
+      <div class="relative">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-600 bg-gradient-to-br from-teal-500 to-teal-600 text-white font-bold">CR</span>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
+      </div>
+      <span class="text-lg font-bold tracking-tight">Campus Ready Foundation</span>
+    </a>
+    <nav class="hidden sm:block" aria-label="Main">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/donate/">Donate</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#about">About</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
   <main class="w-full px-4 sm:px-6 lg:px-8 py-10">
