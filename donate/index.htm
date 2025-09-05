@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Give — Campus Ready Foundation</title>
+  <meta name="description" content="Help first‑time college students start strong with essentials, travel, and nutrition support." />
+  <style>
+    :root{
+      /* Mirroring your original palette */
+      --brand-50:#f0fdfa; --brand-100:#ccfbf1; --brand-200:#99f6e4; --brand-300:#5eead4; --brand-400:#2dd4bf; --brand-500:#14b8a6; --brand-600:#0d9488; --brand-700:#0f766e; --brand-800:#115e59; --brand-900:#134e4a;
+      --accent-50:#fafafa; --accent-100:#f4f4f5; --accent-200:#e4e4e7; --accent-300:#d4d4d8; --accent-400:#a1a1aa; --accent-500:#71717a; --accent-600:#52525b; --accent-700:#3f3f46; --accent-800:#27272a; --accent-900:#18181b;
+      --ink:#0f172a; --muted:#475569; --maxw:1200px; --r:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.08); --shadow-strong:0 18px 50px rgba(20,184,166,.18);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a; background:#fff; line-height:1.6}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+    /* Sticky header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(255,255,255,.85); border-bottom:1px solid var(--accent-200)}
+    .header-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{font-weight:800; letter-spacing:.2px}
+    .donate{display:inline-block; background:var(--brand-500); color:#fff; padding:12px 18px; border-radius:12px; font-weight:800; box-shadow:0 10px 24px rgba(20,184,166,.22); text-decoration:none}
+    .donate:hover{background:var(--brand-600)}
+    /* Stripes */
+    section{padding:88px 0}
+    .hero{background: linear-gradient(135deg, var(--brand-500), var(--brand-600)); color:#fff}
+    .hero h1{margin:0 0 10px; font-size:48px; line-height:1.1}
+    .hero .pull{font-size:28px; font-weight:900; letter-spacing:.3px}
+    .hero .cta{display:inline-block; margin-top:20px; background:#fff; color:var(--brand-700); padding:14px 22px; border-radius:12px; font-weight:900; text-decoration:none; box-shadow:var(--shadow)}
+    .hero .cta:hover{transform:translateY(-2px)}
+    .stripe{background:#fff}
+    .stripe-muted{background:var(--accent-50)}
+    .h2{font-size:36px; margin:0 0 10px}
+    .lead{max-width:860px; color:var(--muted)}
+    /* Large impact tiles */
+    .tiles{display:grid; grid-template-columns:repeat(5,1fr); gap:20px; margin-top:26px}
+    .tile{background:#fff; border:1px solid var(--accent-200); border-radius:var(--r); padding:28px; min-height:160px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease}
+    .tile:hover{transform:translateY(-6px) scale(1.01); box-shadow:var(--shadow-strong)}
+    .amt{font-size:28px; font-weight:900; color:#0f172a}
+    .desc{margin-top:10px; color:#334155}
+    /* Pull quote */
+    .pullquote{padding:70px 0; text-align:center; font-weight:900; letter-spacing:.3px; color:var(--brand-700); font-size:28px}
+    /* Final CTA */
+    .final{background: linear-gradient(180deg, #f8fffe, #ffffff); border-top:1px solid var(--accent-200); border-bottom:1px solid var(--accent-200)}
+    .btn{display:inline-block; margin-top:12px; background:var(--brand-500); color:#fff; padding:16px 26px; border-radius:14px; font-weight:900; text-decoration:none; box-shadow:0 12px 28px rgba(20,184,166,.28)}
+    .btn:hover{background:var(--brand-600)}
+    footer{padding:44px 0; border-top:1px solid var(--accent-200); color:#475569}
+    @media (max-width:1120px){.tiles{grid-template-columns:repeat(3,1fr)}}
+    @media (max-width:720px){.tiles{grid-template-columns:1fr} .hero h1{font-size:36px} .hero .pull{font-size:22px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div class="brand">Campus Ready Foundation</div>
+      <a class="donate" href="#donate">Donate</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Join us. Bridge the Gap.</h1>
+      <div class="pull">Confidence. Dignity. Starting Strong.</div>
+      <p style="max-width:760px; margin-top:10px">We equip low‑income, first‑time college students with essentials, travel support, and nutrition assistance so they can begin their education with stability—not stress.</p>
+      <a href="#donate" class="cta">Donate Now</a>
+    </div>
+  </section>
+
+  <section class="stripe">
+    <div class="container">
+      <h2 class="h2">Why Your Gift Matters</h2>
+      <p class="lead">For many low‑income new college students, academics are only part of the challenge; the financial strain and social pressure of getting to college and setting up a living space can distract their focus from day one. Your gift lifts that burden so students begin on equal footing—with the freedom to focus on learning.</p>
+    </div>
+  </section>
+
+  <section class="stripe-muted">
+    <div class="container">
+      <h2 class="h2">Choose Your Impact Level</h2>
+      <p class="lead">Equipping a student for success is about more than tuition. It’s about ensuring they arrive with stability, not stress. Every contribution—large or small—helps close the gap:</p>
+      <div class="tiles" aria-label="Impact levels">
+        <div class="tile"><div class="amt">$100</div><div class="desc">Covers critical incidentals that ensure a smooth arrival.</div></div>
+        <div class="tile"><div class="amt">$150</div><div class="desc">Provides nutritious meals during move‑in, before dining services open.</div></div>
+        <div class="tile"><div class="amt">$750</div><div class="desc">Funds a complete Student Essentials Living Kit: bedding, towels, storage, toiletries, and supplies.</div></div>
+        <div class="tile"><div class="amt">$1,500</div><div class="desc">Covers safe travel and transportation to campus.</div></div>
+        <div class="tile"><div class="amt">$2,500</div><div class="desc">Provides a full Campus Ready award, eliminating the most pressing transition barriers.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pullquote">“Every gift ensures one more student can start strong.”</div>
+
+  <section id="donate" class="final">
+    <div class="container">
+      <h2 class="h2">Be Part of the Foundation</h2>
+      <p class="lead">Your support goes directly to students—ensuring that cost is never a reason they hesitate before they begin. Whether you choose to cover a meal plan gap, fund a full award, or partner with us on a larger initiative, you are helping build the bridge from high school to higher education.</p>
+      <a class="btn" href="#">Join us. Bridge the Gap.</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39‑2532572 • Donations are tax‑deductible to the fullest extent allowed by law.</div>
+  </footer>
+</body>
+</html>
