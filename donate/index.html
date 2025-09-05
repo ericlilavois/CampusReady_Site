@@ -54,15 +54,18 @@
   </style>
 </head>
 <body>
- <header class="bg-white/90 backdrop-blur border-b border-slate-200">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
   <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+    <!-- Logo / Home -->
     <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
       <div class="relative">
-        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-600 bg-gradient-to-br from-teal-500 to-teal-600 text-white font-bold">CR</span>
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 bg-teal-600 text-white font-bold">CR</span>
         <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
       </div>
       <span class="text-lg font-bold tracking-tight">Campus Ready Foundation</span>
     </a>
+
+    <!-- Desktop nav -->
     <nav class="hidden sm:block" aria-label="Main">
       <ul class="flex items-center gap-6 text-sm font-medium">
         <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
@@ -71,8 +74,48 @@
         <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#contact">Contact</a></li>
       </ul>
     </nav>
+
+    <!-- Mobile toggle -->
+    <button id="nav-toggle" class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
+      <span aria-hidden="true" data-icon="menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </span>
+      <span aria-hidden="true" data-icon="close" class="hidden">
+        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6l-12 12"/></svg>
+      </span>
+      <span class="sr-only">Menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="sm:hidden hidden border-t border-slate-200">
+    <ul class="px-6 py-4 space-y-3 text-sm font-medium">
+      <li><a class="block text-slate-700 hover:text-teal-700" href="/mission/">Mission</a></li>
+      <li><a class="block text-slate-700 hover:text-teal-700" href="/donate/">Donate</a></li>
+      <li><a class="block text-slate-700 hover:text-teal-700" href="/#about">About</a></li>
+      <li><a class="block text-slate-700 hover:text-teal-700" href="/#contact">Contact</a></li>
+    </ul>
   </div>
 </header>
+
+  <script>
+  (function () {
+    const btn = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('hidden');
+      const icons = btn.querySelectorAll('[data-icon]');
+      if (icons.length === 2) {
+        icons[0].classList.toggle('hidden'); // menu
+        icons[1].classList.toggle('hidden'); // close
+      }
+    });
+  })();
+</script>
+
 
   <section class="hero">
     <div class="container">
