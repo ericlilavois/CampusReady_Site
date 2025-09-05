@@ -71,12 +71,14 @@
         <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
         <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/donate/">Donate</a></li>
         <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#about">About</a></li>
-        <li>
-  <a class="text-slate-600 hover:text-teal-700 transition-colors"
-     href="https://mail.google.com/mail/?view=cm&to=hello@campusready.foundation&su=Campus%20Ready%20Inquiry"
-     target="_blank" rel="noopener">
+  <li>
+  <button
+    id="contact-btn"
+    class="relative z-10 text-slate-600 hover:text-brand-600 transition-colors duration-200 bg-transparent border-none cursor-pointer font-medium text-sm"
+    onclick="openContactModal()"
+  >
     Contact
-  </a>
+  </button>
 </li>
       </ul>
     </nav>
@@ -221,6 +223,258 @@
   // Auto-update the year in the footer
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<!-- Contact Modal -->
+<div id="contact-modal" class="fixed inset-0 bg-black/60 backdrop-blur-lg z-50 hidden items-center justify-center p-4">
+  <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full mx-4 transform transition-all duration-500 scale-95 opacity-0 overflow-hidden" id="modal-content">
+    
+    <!-- Header with Gradient Background -->
+    <div class="relative bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 p-8 text-white">
+      <div class="absolute inset-0 bg-gradient-to-br from-brand-400/20 to-transparent"></div>
+      <div class="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
+      <div class="absolute bottom-2 left-6 w-8 h-8 bg-white/5 rounded-full animate-float" style="animation-delay: 2s;"></div>
+      
+      <div class="relative flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <!-- Campus Ready Logo -->
+          <div class="relative">
+            <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white shadow-lg font-bold text-lg border border-white/30">CR</span>
+            <div class="absolute inset-0 rounded-2xl bg-white/10 blur-sm"></div>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold tracking-tight">Get in Touch</h3>
+            <p class="text-brand-100 text-sm font-medium">Campus Ready Foundation</p>
+          </div>
+        </div>
+        <button 
+          onclick="closeContactModal()" 
+          class="text-white/80 hover:text-white hover:bg-white/20 transition-all duration-200 p-2 rounded-xl backdrop-blur-sm"
+          aria-label="Close contact form"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <p class="text-brand-50 mt-4 leading-relaxed">We look forward to hearing from you.</p>
+    </div>
+    
+    <!-- Form Section -->
+    <form id="contact-form" class="p-8 space-y-6" onsubmit="handleContactSubmit(event)">
+      <div class="space-y-6">
+        <div>
+          <label for="contact-name" class="block text-sm font-semibold text-slate-800 mb-3">Name *</label>
+          <input 
+            type="text" 
+            id="contact-name" 
+            name="name" 
+            required
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
+            placeholder="Your full name"
+          >
+        </div>
+        
+        <div>
+          <label for="contact-email" class="block text-sm font-semibold text-slate-800 mb-3">Email *</label>
+          <input 
+            type="email" 
+            id="contact-email" 
+            name="email" 
+            required
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
+            placeholder="your.email@example.com"
+          >
+        </div>
+        
+        <div>
+          <label for="contact-subject" class="block text-sm font-semibold text-slate-800 mb-3">Subject</label>
+          <input 
+            type="text" 
+            id="contact-subject" 
+            name="subject" 
+            value="Campus Ready Inquiry"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
+          >
+        </div>
+        
+        <div style="margin-top: 1.5rem;">
+          <label for="contact-message" class="block text-sm font-semibold text-slate-800 mb-3">Message *</label>
+          <textarea 
+            id="contact-message" 
+            name="message" 
+            required
+            rows="4"
+            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; resize: vertical; font-family: inherit; font-size: inherit; line-height: 1.5;"
+            placeholder="How may we be of service?"
+          ></textarea>
+        </div>
+      </div>
+      
+      <div class="flex gap-4" style="padding-top: 2rem;">
+        <button 
+          type="button" 
+          onclick="closeContactModal()"
+          class="flex-1 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-xl hover:bg-slate-50 hover:border-slate-400 transition-all duration-300 font-semibold"
+        >
+          Cancel
+        </button>
+        <button 
+          type="submit"
+          class="flex-1 px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-xl hover:from-brand-700 hover:to-brand-800 hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300 font-semibold transform hover:scale-[1.02]"
+        >
+          Send Message
+        </button>
+      </div>
+    </form>
+    
+    <!-- Success Message -->
+    <div id="contact-success" class="hidden p-8 text-center">
+      <div class="relative">
+        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <div class="absolute inset-0 rounded-full bg-green-400/30 animate-ping"></div>
+        </div>
+      </div>
+      <h4 class="text-2xl font-bold text-slate-900 mb-3">Message Sent!</h4>
+      <p class="text-slate-600 mb-6 leading-relaxed max-w-sm mx-auto">Your email client should open shortly. If it doesn't, please email us directly at <span class="font-semibold text-brand-600">hello@campusready.foundation</span></p>
+      <button 
+        onclick="closeContactModal()"
+        class="px-8 py-3 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-xl hover:from-brand-700 hover:to-brand-800 hover:shadow-lg transition-all duration-300 font-semibold transform hover:scale-[1.02]"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
 
+<script>
+function openContactModal() {
+  const modal = document.getElementById('contact-modal');
+  const content = document.getElementById('modal-content');
+  
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  
+  setTimeout(() => {
+    content.classList.remove('scale-95', 'opacity-0');
+    content.classList.add('scale-100', 'opacity-100');
+  }, 50);
+  
+  setTimeout(() => {
+    const nameInput = document.getElementById('contact-name');
+    if (nameInput) nameInput.focus();
+  }, 300);
+  
+  document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+  const modal = document.getElementById('contact-modal');
+  const content = document.getElementById('modal-content');
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('contact-success');
+  
+  content.classList.add('scale-95', 'opacity-0');
+  content.classList.remove('scale-100', 'opacity-100');
+  
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    
+    if (form && success) {
+      form.classList.remove('hidden');
+      success.classList.add('hidden');
+      form.reset();
+      
+      const subjectField = document.getElementById('contact-subject');
+      if (subjectField) subjectField.value = 'Campus Ready Inquiry';
+    }
+    
+    document.body.style.overflow = '';
+  }, 500);
+}
+
+function handleContactSubmit(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const formData = new FormData(form);
+  
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+  
+  const body = `Hello Campus Ready Foundation,
+
+${message}
+
+Best regards,
+${name}
+${email}`;
+  
+  const mailtoLink = `mailto:hello@campusready.foundation?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  
+  form.style.transition = 'opacity 0.3s ease-out';
+  form.style.opacity = '0';
+  
+  setTimeout(() => {
+    form.classList.add('hidden');
+    const successDiv = document.getElementById('contact-success');
+    successDiv.classList.remove('hidden');
+    successDiv.style.opacity = '0';
+    
+    setTimeout(() => {
+      successDiv.style.transition = 'opacity 0.3s ease-in';
+      successDiv.style.opacity = '1';
+    }, 50);
+  }, 300);
+  
+  setTimeout(() => {
+    try {
+      window.location.href = mailtoLink;
+    } catch (e) {
+      try {
+        const tempLink = document.createElement('a');
+        tempLink.href = mailtoLink;
+        tempLink.style.display = 'none';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+      } catch (e2) {
+        window.open(mailtoLink);
+      }
+    }
+  }, 500);
+  
+  setTimeout(() => {
+    closeContactModal();
+  }, 4000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('contact-modal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeContactModal();
+    });
+    
+    const modalContent = document.getElementById('modal-content');
+    if (modalContent) {
+      modalContent.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
+  }
+  
+  document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('contact-modal');
+    if (modal && !modal.classList.contains('hidden') && e.key === 'Escape') {
+      closeContactModal();
+    }
+  });
+});
+</script>
 </body>
 </html>
