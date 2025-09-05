@@ -466,45 +466,40 @@ form.target = 'hidden-iframe';
 return true; // Let form submit to iframe
 }
 </script>
-  </footer>
+<footer class="border-t border-slate-200 bg-white/60">
+  <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        <a class="hover:underline" href="/faq/">FAQ</a>
+        <span class="mx-2">•</span>
+        <a class="hover:underline" href="/privacy/">Privacy</a>
+      </p>
+      <p>© <span id="year"></span> Campus Ready Foundation</p>
+    </div>
 
-  <div id="privacyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
-      <div class="flex items-center justify-between p-6 border-b border-slate-200">
-        <h2 class="text-2xl font-bold text-slate-900">Privacy Policy</h2>
-        <button onclick="hidePrivacyPolicy()" class="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <div class="p-6 overflow-y-auto max-h-[70vh] prose prose-slate max-w-none">
-        <div class="text-sm text-slate-600 mb-6">
-          <strong>Campus Ready Foundation</strong><br>
-          <strong>Effective Date:</strong> August 18, 2025<br>
-          <strong>Last Updated:</strong> August 18, 2025
-        </div>
+    <p class="mt-3">
+      Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39-2532572 • Donations are tax-deductible to the fullest extent allowed by law.
+    </p>
+  </div>
+<footer class="border-t border-slate-200 bg-white/60">
+  <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p>
+        <a class="hover:underline" href="/faq/">FAQ</a>
+        <span class="mx-2">•</span>
+        <a class="hover:underline" href="/privacy/">Privacy</a>
+      </p>
+      <p>© <span id="year"></span> Campus Ready Foundation</p>
+    </div>
 
-        <h3 class="text-lg font-semibold text-slate-900 mb-3">Our Commitment to Privacy</h3>
-        <p class="text-slate-600 mb-6">Campus Ready Foundation respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website and sign up for updates.</p>
-
-        <h3 class="text-lg font-semibold text-slate-900 mb-3">Information We Collect</h3>
-        <p class="text-slate-600 mb-4"><strong>Email Address:</strong> When you sign up for our launch notifications, we collect your email address to send you updates about Campus Ready Foundation's programs and launch.</p>
-        <p class="text-slate-600 mb-6"><strong>Automatically Collected Information:</strong> We may collect basic technical information such as your IP address, browser type, and pages visited to improve our website experience.</p>
-
-        <h3 class="text-lg font-semibold text-slate-900 mb-3">How We Use Your Information</h3>
-        <ul class="text-slate-600 mb-6 space-y-1">
-          <li><strong>Email Communications:</strong> To notify you about our launch and send occasional updates about Campus Ready Foundation's mission and programs</li>
-          <li><strong>Website Improvement:</strong> To analyze website traffic and improve user experience</li>
-          <li><strong>Legal Compliance:</strong> To comply with applicable laws and regulations</li>
-        </ul>
-
-        <h3 class="text-lg font-semibold text-slate-900 mb-3">Information Sharing</h3>
-        <p class="text-slate-600 mb-4">We do not sell, trade, or share your personal information with third parties, except:</p>
-        <ul class="text-slate-600 mb-6 space-y-1">
-          <li><strong>Service Providers:</strong> Trusted third-party services that help us operate our website and email communications (such as email marketing platforms)</li>
-          <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
-        </ul>
-
-        <h3 class
-  
+    <p class="mt-3">
+      Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39-2532572 • Donations are tax-deductible to the fullest extent allowed by law.
+    </p>
+  </div>
+</footer>
+<script>
+  // Auto-update the year in the footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
