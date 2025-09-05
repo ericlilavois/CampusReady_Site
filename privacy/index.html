@@ -1,167 +1,214 @@
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-  <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
-    <!-- Logo / Home -->
-    <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
-      <div class="relative">
-        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 bg-teal-600 text-white font-bold">CR</span>
-        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
-      </div>
-      <span class="text-lg font-bold tracking-tight">Campus Ready Foundation</span>
-    </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Campus Ready Foundation</title>
 
-    <!-- Desktop nav -->
-    <nav class="hidden sm:block" aria-label="Main">
-      <ul class="flex items-center gap-6 text-sm font-medium">
-        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
-        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/donate/">Donate</a></li>
-        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#about">About</a></li>
-        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#contact">Contact</a></li>
+  <!-- Icons (note the leading slash so this works from /privacy/) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+
+  <!-- Fonts (match the rest of the site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (needed for all styling and the hidden mobile panel) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <meta name="description" content="Privacy Policy for Campus Ready Foundation." />
+</head>
+<body class="font-sans bg-slate-50 text-slate-900 overflow-x-hidden">
+
+  <!-- Header (same pattern as Donor/FAQ) -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
+        <div class="relative">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-teal-500 to-teal-600 bg-teal-600 text-white font-bold">CR</span>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
+        </div>
+        <span class="text-lg font-bold tracking-tight">Campus Ready Foundation</span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden sm:block" aria-label="Main">
+        <ul class="flex items-center gap-6 text-sm font-medium">
+          <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
+          <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/donate/">Donate</a></li>
+          <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#about">About</a></li>
+          <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile toggle -->
+      <button id="nav-toggle" class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
+        <span aria-hidden="true" data-icon="menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </span>
+        <span aria-hidden="true" data-icon="close" class="hidden">
+          <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6l-12 12"/></svg>
+        </span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu panel (starts hidden; Tailwind provides the 'hidden' class) -->
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-slate-200">
+      <ul class="px-6 py-4 space-y-3 text-sm font-medium">
+        <li><a class="block text-slate-700 hover:text-teal-700" href="/mission/">Mission</a></li>
+        <li><a class="block text-slate-700 hover:text-teal-700" href="/donate/">Donate</a></li>
+        <li><a class="block text-slate-700 hover:text-teal-700" href="/#about">About</a></li>
+        <li><a class="block text-slate-700 hover:text-teal-700" href="/#contact">Contact</a></li>
       </ul>
-    </nav>
+    </div>
+  </header>
 
-    <!-- Mobile toggle -->
-    <button id="nav-toggle" class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
-      <span aria-hidden="true" data-icon="menu">
-        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </span>
-      <span aria-hidden="true" data-icon="close" class="hidden">
-        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6l-12 12"/></svg>
-      </span>
-      <span class="sr-only">Menu</span>
-    </button>
-  </div>
+  <!-- Tiny toggle script (one per page) -->
+  <script>
+    (function () {
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        menu.classList.toggle('hidden');
+        const icons = btn.querySelectorAll('[data-icon]');
+        if (icons.length === 2) {
+          icons[0].classList.toggle('hidden'); // menu
+          icons[1].classList.toggle('hidden'); // close
+        }
+      });
+    })();
+  </script>
 
-  <!-- Mobile menu panel -->
-  <div id="mobile-menu" class="sm:hidden hidden border-t border-slate-200">
-    <ul class="px-6 py-4 space-y-3 text-sm font-medium">
-      <li><a class="block text-slate-700 hover:text-teal-700" href="/mission/">Mission</a></li>
-      <li><a class="block text-slate-700 hover:text-teal-700" href="/donate/">Donate</a></li>
-      <li><a class="block text-slate-700 hover:text-teal-700" href="/#about">About</a></li>
-      <li><a class="block text-slate-700 hover:text-teal-700" href="/#contact">Contact</a></li>
-    </ul>
-  </div>
-</header>
+  <!-- Main content -->
+  <main class="w-full px-4 sm:px-6 lg:px-8 py-12">
+    <div class="mx-auto max-w-3xl space-y-8">
+      <header class="mb-2">
+        <h1 class="text-3xl font-bold text-slate-900">Privacy Policy</h1>
+        <p class="text-slate-600 mt-1">Effective: September 5, 2025</p>
+        <p class="mt-4">
+          <a href="/" class="text-teal-700 underline">← Back to Home</a>
+        </p>
+      </header>
+
+      <section class="space-y-4">
+        <p>
+          Campus Ready Foundation (“we,” “us,” or “our”) respects your privacy. This policy explains what we collect,
+          how we use it, and the choices you have. It applies to our website (campusready.foundation), our “Notify Me”
+          email sign-ups, our donor pages, and our student application experiences.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">What we collect</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+          <li><strong>Contact information</strong> you provide (e.g., name, email) when you subscribe, inquire, or apply.</li>
+          <li><strong>Donation details</strong> (e.g., gift amount, designation). <em>Payment card and bank info are handled by our secure payment partner and are not stored by us.</em></li>
+          <li><strong>Application information</strong> from students/guardians needed to assess eligibility and provide support.</li>
+          <li><strong>Basic site activity</strong> (e.g., pages viewed) to keep the site reliable and improve content.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">How we use information</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+          <li>To operate our programs and provide updates you request.</li>
+          <li>To process and acknowledge donations and provide tax receipts.</li>
+          <li>To review student applications and deliver support fairly and efficiently.</li>
+          <li>To maintain site security, fix issues, and understand what content is useful.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">How we share information</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+          <li>With trusted service providers who help us run the site, process donations, email updates, or manage applications.</li>
+          <li>When required by law or to protect our rights and the safety of others.</li>
+          <li>We <strong>do not sell or share</strong> personal information for advertising.</li>
+        </ul>
+        <p class="text-slate-700">
+          Donations are processed through a secure third-party platform. Your payment details are handled by that provider
+          under its own privacy practices.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Your choices</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700">
+          <li><strong>Emails:</strong> you can unsubscribe anytime using the link in our emails or by contacting us.</li>
+          <li><strong>Access / correction / deletion:</strong> email us and we’ll help with reasonable requests.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Retention</h2>
+        <p class="text-slate-700">
+          We keep information only as long as needed for our programs, legal/financial obligations (e.g., donation records),
+          or as required by law. When no longer needed, we delete or de-identify it.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Security</h2>
+        <p class="text-slate-700">
+          We use reasonable safeguards to protect information. No method is 100% secure, but we work to prevent misuse,
+          loss, and unauthorized access.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Children</h2>
+        <p class="text-slate-700">
+          Our public site isn’t aimed at children under 13. If you believe a child provided information without consent,
+          please contact us and we’ll address it. For student applicants, we collect only what’s needed to assess eligibility
+          and provide support, and we protect it appropriately.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">California & other regional rights</h2>
+        <p class="text-slate-700">
+          If you’re in a place with specific privacy rights (like California or the EU/UK), you may have additional rights,
+          such as to know, access, correct, delete, or limit use of your data. We honor applicable laws. Contact us to exercise these rights.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Changes</h2>
+        <p class="text-slate-700">
+          We may update this policy from time to time. We’ll post the new date at the top. If changes are significant,
+          we’ll provide a clearer notice.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-xl font-semibold text-slate-900">Contact</h2>
+        <p class="text-slate-700">
+          Questions or requests? Email <a class="text-teal-700 underline" href="mailto:hello@campusready.foundation">hello@campusready.foundation</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Simple footer -->
+  <footer class="border-t border-slate-200 bg-white/60">
+    <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-sm text-slate-600">
+      <p>© <span id="year"></span> Campus Ready Foundation</p>
+      <p>
+        <a class="hover:underline" href="/faq/">FAQ</a>
+        <span class="mx-2">•</span>
+        <a class="hover:underline" href="/privacy/">Privacy</a>
+      </p>
+    </div>
+  </footer>
 
   <script>
-  (function () {
-    const btn = document.getElementById('nav-toggle');
-    const menu = document.getElementById('mobile-menu');
-    if (!btn || !menu) return;
-    btn.addEventListener('click', () => {
-      const open = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!open));
-      menu.classList.toggle('hidden');
-      const icons = btn.querySelectorAll('[data-icon]');
-      if (icons.length === 2) {
-        icons[0].classList.toggle('hidden'); // menu
-        icons[1].classList.toggle('hidden'); // close
-      }
-    });
-  })();
-</script>
+    // Auto-year for footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 
-<main class="w-full px-4 sm:px-6 lg:px-8 py-12">
-  <div class="mx-auto max-w-3xl space-y-8">
-    <header class="mb-2">
-      <h1 class="text-3xl font-bold text-slate-900">Privacy Policy</h1>
-      <p class="text-slate-600 mt-1">Effective: September 5, 2025</p>
-    </header>
-
-    <section class="space-y-4">
-      <p>
-        Campus Ready Foundation (“we,” “us,” or “our”) respects your privacy. This policy explains what we collect,
-        how we use it, and the choices you have. It applies to our website (campusready.foundation), our “Notify Me”
-        email sign-ups, our donor pages, and our student application experiences.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">What we collect</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li><strong>Contact information</strong> you provide (e.g., name, email) when you subscribe, inquire, or apply.</li>
-        <li><strong>Donation details</strong> (e.g., gift amount, designation). <em>Payment card and bank info are handled by our secure payment partner and are not stored by us.</em></li>
-        <li><strong>Application information</strong> from students/guardians needed to assess eligibility and provide support.</li>
-        <li><strong>Basic site activity</strong> (e.g., pages viewed) to keep the site reliable and improve content.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">How we use information</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li>To operate our programs and provide updates you request.</li>
-        <li>To process and acknowledge donations and provide tax receipts.</li>
-        <li>To review student applications and deliver support fairly and efficiently.</li>
-        <li>To maintain site security, fix issues, and understand what content is useful.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">How we share information</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li>With trusted service providers who help us run the site, process donations, email updates, or manage applications.</li>
-        <li>When required by law or to protect our rights and the safety of others.</li>
-        <li>We <strong>do not sell or share</strong> personal information for advertising.</li>
-      </ul>
-      <p class="text-slate-700">
-        Donations are processed through a secure third-party platform. Your payment details are handled by that provider
-        under its own privacy practices.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Your choices</h2>
-      <ul class="list-disc pl-5 space-y-2 text-slate-700">
-        <li><strong>Emails:</strong> you can unsubscribe anytime using the link in our emails or by contacting us.</li>
-        <li><strong>Access / correction / deletion:</strong> email us and we’ll help with reasonable requests.</li>
-      </ul>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Retention</h2>
-      <p class="text-slate-700">
-        We keep information only as long as needed for our programs, legal/financial obligations (e.g., donation records),
-        or as required by law. When no longer needed, we delete or de-identify it.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Security</h2>
-      <p class="text-slate-700">
-        We use reasonable safeguards to protect information. No method is 100% secure, but we work to prevent misuse,
-        loss, and unauthorized access.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Children</h2>
-      <p class="text-slate-700">
-        Our public site isn’t aimed at children under 13. If you believe a child provided information without consent,
-        please contact us and we’ll address it. For student applicants, we collect only what’s needed to assess eligibility
-        and provide support, and we protect it appropriately.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">California & other regional rights</h2>
-      <p class="text-slate-700">
-        If you’re in a place with specific privacy rights (like California or the EU/UK), you may have additional rights,
-        such as to know, access, correct, delete, or limit use of your data. We honor applicable laws. Contact us to exercise these rights.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Changes</h2>
-      <p class="text-slate-700">
-        We may update this policy from time to time. We’ll post the new date at the top. If changes are significant,
-        we’ll provide a clearer notice.
-      </p>
-    </section>
-
-    <section class="space-y-2">
-      <h2 class="text-xl font-semibold text-slate-900">Contact</h2>
-      <p class="text-slate-700">
-        Questions or requests? Email <a class="text-teal-700 underline" href="mailto:hello@campusready.foundation">hello@campusready.foundation</a>.
-      </p>
-    </section>
-  </div>
-</main>
+</body>
+</html>
