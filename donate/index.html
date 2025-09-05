@@ -106,22 +106,13 @@
 
     <li><strong>DAF (Donor-Advised Fund):</strong> Recommend a grant to <em>Campus Ready Foundation</em>. 
       Please email details to: <a class="text-teal-700 hover:text-teal-800 underline" href="mailto:hello@campusready.foundation">hello@campusready.foundation</a> so we can acknowledge your gift.</li>
-<button type="button"
-        class="ml-2 inline-flex items-center rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-700 hover:bg-slate-50"
-        onclick="navigator.clipboard.writeText('hello@campusready.foundation'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy email',1500);">
-  Copy email
-</button>
+
     <li><strong>Stock or Wire/ACH:</strong>
       <a class="text-teal-700 hover:text-teal-800 underline"
          href="mailto:hello@campusready.foundation?subject=Stock%20or%20Wire%20Instructions%20Request&amp;body=Hi%20Campus%20Ready%20Foundation%20team%2C%0A%0APlease%20send%20me%20secure%20transfer%20instructions.%0A%0AName%3A%20%0AEmail%3A%20%0AOrganization%20(optional)%3A%20%0AGift%20type%3A%20Stock%20or%20Wire%2FACH%0ANotes%3A%20%0A%0AThank%20you!">
         Email us for secure transfer instructions
       </a>.
     </li>
-<button type="button"
-        class="ml-2 inline-flex items-center rounded-md border border-slate-300 px-2 py-1 text-xs text-slate-700 hover:bg-slate-50"
-        onclick="navigator.clipboard.writeText('hello@campusready.foundation'); this.textContent='Copied!'; setTimeout(()=>this.textContent='Copy email',1500);">
-  Copy email
-</button>
 
     <li><strong>Check by Mail:</strong> Payable to <em>Campus Ready Foundation</em>, 
       <span class="whitespace-nowrap">1895 Madrona Ave</span>, <span class="whitespace-nowrap">Saint Helena, CA 94574</span>.
@@ -140,50 +131,6 @@
 </p>
     </div>
   </section>
-
-  <!-- Request Stock/Wire Instructions (fallback form) -->
-<section class="mt-8 rounded-2xl border border-slate-200 p-6 bg-white/90 shadow-card">
-  <h2 class="text-xl font-bold text-slate-900 mb-3">Request Stock or Wire Instructions</h2>
-  <p class="text-slate-600 mb-4">If email links don’t open on your device, use this form and we’ll reply with secure transfer details.</p>
-
-  <!-- Replace YOUR_FORMSPREE_ENDPOINT after you create it -->
-  <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" class="space-y-4">
-    <div>
-      <label for="req-name" class="block text-sm font-medium text-slate-700">Your Name</label>
-      <input id="req-name" name="name" type="text" required class="mt-1 w-full rounded-md border-slate-300 px-3 py-2">
-    </div>
-
-    <div>
-      <label for="req-email" class="block text-sm font-medium text-slate-700">Email</label>
-      <input id="req-email" name="email" type="email" required class="mt-1 w-full rounded-md border-slate-300 px-3 py-2">
-    </div>
-
-    <div>
-      <label for="req-type" class="block text-sm font-medium text-slate-700">Gift Type</label>
-      <select id="req-type" name="gift_type" required class="mt-1 w-full rounded-md border-slate-300 px-3 py-2">
-        <option value="">Select one…</option>
-        <option value="stock">Stock (DTC transfer)</option>
-        <option value="wire">Wire / ACH</option>
-        <option value="unsure">I’m not sure</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="req-notes" class="block text-sm font-medium text-slate-700">Notes (optional)</label>
-      <textarea id="req-notes" name="notes" rows="3" class="mt-1 w-full rounded-md border-slate-300 px-3 py-2" placeholder="Any preferences, timelines, or questions?"></textarea>
-    </div>
-
-    <!-- Honeypot -->
-    <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-
-    <button type="submit" class="inline-flex items-center rounded-xl bg-teal-600 px-5 py-3 text-white font-medium shadow-sm hover:bg-teal-700 transition">
-      Email me the instructions
-    </button>
-
-    <p class="text-xs text-slate-500 mt-2">We’ll use your information only to send transfer instructions and acknowledge your gift.</p>
-  </form>
-</section>
-
   
   <footer>
     <div class="container">Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39‑2532572 • Donations are tax‑deductible to the fullest extent allowed by law.</div>
