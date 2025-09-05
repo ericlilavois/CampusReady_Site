@@ -54,12 +54,25 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="container header-inner">
-      <div class="brand">Campus Ready Foundation</div>
-      <a class="donate" href="#donate">Donate</a>
-    </div>
-  </header>
+ <header class="bg-white/90 backdrop-blur border-b border-slate-200">
+  <div class="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
+    <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
+      <div class="relative">
+        <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-teal-600 bg-gradient-to-br from-teal-500 to-teal-600 text-white font-bold">CR</span>
+        <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur"></div>
+      </div>
+      <span class="text-lg font-bold tracking-tight">Campus Ready Foundation</span>
+    </a>
+    <nav class="hidden sm:block" aria-label="Main">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/mission/">Mission</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/donate/">Donate</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#about">About</a></li>
+        <li><a class="text-slate-600 hover:text-teal-700 transition-colors" href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <section class="hero">
     <div class="container">
