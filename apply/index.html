@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
 <title>Campus Ready Foundation — Grant Application</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="https://campusready.foundation/assets/favicon-32.png?v=2">
+   <link rel="icon" type="image/png" sizes="32x32" href="s://campusready.foundation/assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="https://campusready.foundation/assets/favicon-16.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="https://campusready.foundation/assets/apple-touch-icon.png?v=2">
 <link rel="manifest" href="https://campusready.foundation/assets/site.webmanifest?v=2">
@@ -2411,11 +2411,32 @@ if (needsGuardian) {
       formData.submissionDate = new Date().toISOString();
       
       console.log('Form data collected:', formData);
-      
-      // Show success
-      const form = document.getElementById('appForm');
-form.requestSubmit();  // actually posts to your Apps Script and follows its redirect
-return false;          // stops any further JS in this handler
+
+// Send the actual formData object we built
+var xhr = new XMLHttpRequest();
+xhr.open('POST', document.getElementById('appForm').action, true);
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+// Convert formData object to URL-encoded string
+var params = [];
+for (var key in formData) {
+  if (Array.isArray(formData[key])) {
+    for (var i = 0; i < formData[key].length; i++) {
+      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(formData[key][i]));
+    }
+  } else {
+    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]));
+  }
+}
+
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    document.body.innerHTML = xhr.responseText;
+  }
+};
+
+xhr.send(params.join('&'));
+return false;
     }
 
     // Handle browser back/forward buttons
@@ -2851,7 +2872,7 @@ window.addEventListener('resize', () => {
         var ep = (window.ZIP_LOOKUP_ENDPOINT||'').trim();
         if (ep) return ep.replace(/\/$/, '') + '?zip=' + zip5;
       } catch(e){}
-      return 'https://api.zippopotam.us/us/' + zip5;
+      return 's://api.zippopotam.us/us/' + zip5;
     }
 
     function fetchPlace(){
@@ -3078,8 +3099,8 @@ window.debugInvalid = () => {
     const _fetch = window.fetch;
     window.fetch = function(resource, init) {
       try {
-        if (typeof resource === 'string' && resource.startsWith('http://api.zippopotam.us/')) {
-          resource = resource.replace('http://', 'https://');
+        if (typeof resource === 'string' && resource.startsWith('://api.zippopotam.us/')) {
+          resource = resource.replace('://', 's://');
         }
       } catch (e) {}
       return _fetch.call(this, resource, init);
