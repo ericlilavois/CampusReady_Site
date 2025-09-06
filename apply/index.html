@@ -2410,32 +2410,37 @@ if (needsGuardian) {
       formData.submissionId = getFormId();
       formData.submissionDate = new Date().toISOString();
       
-      console.log('Form data collected:', formData);
+     console.log('Form data collected:', formData);
 
-// Send the actual formData object we built
-var xhr = new XMLHttpRequest();
-xhr.open('POST', document.getElementById('appForm').action, true);
-xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// Create a temporary form with our processed data
+var tempForm = document.createElement('form');
+tempForm.method = 'POST';
+tempForm.action = document.getElementById('appForm').action;
 
-// Convert formData object to URL-encoded string
-var params = [];
+// Add all form data as hidden inputs
 for (var key in formData) {
   if (Array.isArray(formData[key])) {
+    // Handle arrays (checkboxes)
     for (var i = 0; i < formData[key].length; i++) {
-      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(formData[key][i]));
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = formData[key][i];
+      tempForm.appendChild(input);
     }
   } else {
-    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]));
+    // Handle single values
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = formData[key];
+    tempForm.appendChild(input);
   }
 }
 
-xhr.onload = function() {
-  if (xhr.status === 200) {
-    document.body.innerHTML = xhr.responseText;
-  }
-};
-
-xhr.send(params.join('&'));
+// Submit the temporary form
+document.body.appendChild(tempForm);
+tempForm.submit();
 return false;
     }
 
