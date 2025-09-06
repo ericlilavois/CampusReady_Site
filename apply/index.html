@@ -2412,36 +2412,30 @@ if (needsGuardian) {
       
      console.log('Form data collected:', formData);
 
-// Create a temporary form with our processed data
-var tempForm = document.createElement('form');
-tempForm.method = 'POST';
-tempForm.action = document.getElementById('appForm').action;
+// Update the original form with our processed checkbox data
+var originalForm = document.getElementById('appForm');
 
-// Add all form data as hidden inputs
+// Remove existing checkbox inputs to avoid duplicates
+var existingCheckboxes = originalForm.querySelectorAll('input[type="checkbox"]');
+for (var i = 0; i < existingCheckboxes.length; i++) {
+  existingCheckboxes[i].remove();
+}
+
+// Add our processed checkbox data as hidden inputs
 for (var key in formData) {
   if (Array.isArray(formData[key])) {
-    // Handle arrays (checkboxes)
-    for (var i = 0; i < formData[key].length; i++) {
-      var input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = formData[key][i];
-      tempForm.appendChild(input);
+    for (var j = 0; j < formData[key].length; j++) {
+      var hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = key;
+      hiddenInput.value = formData[key][j];
+      originalForm.appendChild(hiddenInput);
     }
-  } else {
-    // Handle single values
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = formData[key];
-    tempForm.appendChild(input);
   }
 }
 
-// Submit the temporary form
-document.body.appendChild(tempForm);
-tempForm.submit();
-return false;
+// Now submit the form normally
+originalForm.submit();
     }
 
     // Handle browser back/forward buttons
