@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Our story — Campus Ready Foundation." />
+  <meta property="og:title" content="Campus Ready Foundation — Our Story" />
+  <meta property="og:description" content="Why we started Campus Ready Foundation, and the moment that sparked our mission." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.campusready.foundation/assets/og-image.jpg" />
+  <meta property="og:url" content="https://www.campusready.foundation/about/" />
+  <link rel="canonical" href="https://www.campusready.foundation/about/" />
+  <meta name="theme-color" content="#14b8a6" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 500:'#14b8a6',600:'#0d9488',700:'#0f766e',50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4' }
+          },
+          fontFamily: { sans:['Inter','ui-sans-serif','system-ui'], serif:['Playfair Display','serif'] },
+          boxShadow: { soft:'0 8px 30px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient{background:radial-gradient(ellipse 800px 400px at 50% -20%, rgba(20,184,166,.15) 0%, transparent 50%),
+                               radial-gradient(ellipse 600px 300px at 80% 80%, rgba(20,184,166,.08) 0%, transparent 50%);}
+    .glass{backdrop-filter:blur(10px); background:rgba(255,255,255,.85); border:1px solid rgba(255,255,255,.2);}
+  </style>
+
+  <title>Campus Ready Foundation — Our Story</title>
+
+  <!-- Icons (reuse your paths) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+</head>
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden">
+  <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
+
+  <!-- ===== Header (same as home, but About links to /about/) ===== -->
+  <header class="relative z-20 glass">
+    <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
+        <div class="relative">
+          <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-soft font-bold text-lg">CR</span>
+        </div>
+        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Campus Ready Foundation</span>
+      </a>
+
+      <nav aria-label="Main" class="hidden sm:block">
+        <ul class="flex items-center gap-8 text-sm font-medium">
+          <li><a class="text-slate-600 hover:text-brand-600 relative group" href="/mission/">
+            Mission <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform"></span></a></li>
+          <li><a class="text-slate-600 hover:text-brand-600 relative group" href="/donate/">
+            Donate <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform"></span></a></li>
+          <li><a class="text-slate-900 relative group" href="/about/">
+            About <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-100 transition-transform"></span></a></li>
+          <li><a class="text-slate-600 hover:text-brand-600" href="mailto:hello@campusready.foundation?subject=Campus%20Ready%20Inquiry">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button id="nav-toggle" class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
+        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-slate-200">
+      <ul class="px-6 py-4 space-y-3 text-sm font-medium">
+        <li><a class="block text-slate-700 hover:text-brand-600" href="/mission/">Mission</a></li>
+        <li><a class="block text-slate-700 hover:text-brand-600" href="/donate/">Donate</a></li>
+        <li><a class="block text-slate-700 hover:text-brand-600" href="/about/">About</a></li>
+        <li><a class="block text-slate-700 hover:text-brand-600" href="mailto:hello@campusready.foundation?subject=Campus%20Ready%20Inquiry">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- Page header -->
+    <section class="mx-auto max-w-7xl px-6 pt-12 pb-6">
+      <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">Our Story</h1>
+
+      <!-- About sub-nav -->
+      <div class="mt-6 flex items-center gap-4 text-sm">
+        <a href="/about/" class="px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100">Our Story</a>
+        <a href="/about/team/" class="px-3 py-1.5 rounded-full text-slate-600 hover:text-brand-700 ring-1 ring-slate-200 hover:ring-brand-200">Our Team</a>
+      </div>
+    </section>
+
+    <!-- Story body + pull-quote -->
+    <section class="mx-auto max-w-3xl px-6 pb-20 leading-relaxed text-slate-700">
+      <div class="space-y-6 text-lg">
+        <p>When their son Max began his freshman year at Chapman University, Karen Dantzler and Eric Lilavois flew to Southern California to help him move in. Max had driven down that morning, his car packed to the brim with belongings. The family stayed in a hotel the night before move-in, Karen and Eric confident they had planned for everything—checklists reviewed, bedding and towels packed, supplies carefully purchased in advance. Yet as the next day unfolded, the true cost of getting started revealed itself—not only the airfare, hotel, and meals, but also the inevitable forgotten essentials that meant multiple trips to Target the next day: laundry detergent, hangers, a second pillow.</p>
+
+        <!-- Pull-quote -->
+        <blockquote class="my-6 border-l-4 border-brand-500 pl-5 italic text-slate-800">
+          “How do families less fortunate afford all this?”
+        </blockquote>
+
+        <p>It was during one of those drives that Karen asked the question that would become their calling.</p>
+
+        <p>The question resonated deeply. Eric remembered arriving at NYU with little more than a set of milk crates and a stack of records—grateful to be there, yet conscious of how different his experience felt from classmates who showed up with carloads of belongings and coordinated dorm sets. Karen, meanwhile, had pursued a career in modern dance after college, later building a thriving personal training business to support her artistic work. Together, they understood how easily the gap between resources and readiness can shape a young person’s sense of belonging. For many students, those disparities surface even before the first class is taught.</p>
+
+        <p>Eighteen months after Max’s drop-off, during a reflective hiatus from his hospitality career, Eric felt a pull he couldn’t ignore. He formed a 501(c)(3) nonprofit and, with Karen, provided the seed funding for what would become the Campus Ready Foundation. He brought his operational expertise—building systems, designing applications, creating scoring rubrics—while Karen poured in her entrepreneurial tenacity. Together, they turned one heartfelt question into a mission.</p>
+
+        <p>When they began sharing their vision, the response was immediate. A respected business leader confided that he too had arrived at college with almost nothing, a memory that stayed with him despite all he had achieved later in life. Another offered corporate support. Story after story echoed the same truth: even the most accomplished adults still remembered what it felt like to start out unprepared.</p>
+
+        <p class="font-medium text-slate-800">Campus Ready Foundation was born from the belief that no student’s potential should be diminished by the stress of simply getting started—because a strong beginning, with dignity intact, can change everything.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (reuse your existing footer) -->
+  <footer class="border-t border-slate-200 bg-white/60">
+    <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          <a class="hover:underline" href="/faq/">FAQ</a>
+          <span class="mx-2">•</span>
+          <a class="hover:underline" href="/privacy/">Privacy</a>
+        </p>
+        <p>© <span id="year"></span> Campus Ready Foundation</p>
+      </div>
+      <p class="mt-3">Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39-2532572 • Donations are tax-deductible to the fullest extent allowed by law.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (btn && menu) btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+  </script>
+</body>
+</html>
