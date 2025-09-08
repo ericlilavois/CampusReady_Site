@@ -45,37 +45,7 @@
   <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
 
   <!-- Header (same structure as other pages) -->
-  <header class="relative z-20 glass">
-    <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
-      <a href="/" class="inline-flex items-center gap-3 group" aria-label="Campus Ready Foundation home">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md font-bold text-lg">CR</span>
-        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">Campus Ready Foundation</span>
-      </a>
-      <nav aria-label="Main" class="hidden sm:block">
-        <ul class="flex items-center gap-8 text-sm font-medium">
-          <li><a class="text-slate-600 hover:text-brand-600 relative group" href="/mission/">
-            Mission <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform"></span></a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 relative group" href="/donate/">
-            Donate <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform"></span></a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 relative group" href="/About/">
-            About <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform"></span></a></li>
-          <li><a class="text-slate-600 hover:text-brand-600" href="mailto:hello@campusready.foundation?subject=Campus%20Ready%20Inquiry">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="nav-toggle" class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false">
-        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-    <div id="mobile-menu" class="sm:hidden hidden border-t border-slate-200">
-      <ul class="px-6 py-4 space-y-3 text-sm font-medium">
-        <li><a class="block text-slate-700 hover:text-brand-600" href="/mission/">Mission</a></li>
-        <li><a class="block text-slate-700 hover:text-brand-600" href="/donate/">Donate</a></li>
-        <li><a class="block text-slate-700 hover:text-brand-600" href="/About/">About</a></li>
-        <li><a class="block text-slate-700 hover:text-brand-600" href="mailto:hello@campusready.foundation?subject=Campus%20Ready%20Inquiry">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
+ <div data-include="/includes/header.html"></div>
   <main class="relative z-10">
     <!-- Page header + sub-nav -->
     <section class="mx-auto max-w-7xl px-6 pt-12 pb-6">
@@ -157,5 +127,6 @@
     const menu = document.getElementById('mobile-menu');
     if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
   </script>
+  <script src="/assets/js/includes.js"></script>
 </body>
 </html>
