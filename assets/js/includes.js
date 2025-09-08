@@ -35,3 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 });
+// Make "Contact" smart: open modal if present, otherwise fall back to email link
+const contact = document.getElementById('contact-btn');
+const hasModal = document.getElementById('contact-modal');
+if (contact) {
+  if (hasModal && typeof window.openContactModal === 'function') {
+    contact.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.openContactModal();
+    });
+  }
+}
