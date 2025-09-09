@@ -135,21 +135,9 @@
   </main>
 
   <!-- Simple footer -->
-  <footer class="border-t border-slate-200 bg-white/60">
-    <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-sm text-slate-600">
-      <p>© <span id="year"></span> Campus Ready Foundation</p>
-      <p>
-        <a class="hover:underline" href="/faq/">FAQ</a>
-        <span class="mx-2">•</span>
-        <a class="hover:underline" href="/privacy/">Privacy</a>
-      </p>
-    </div>
-  </footer>
 
-  <script>
-    // Auto-year for footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <div data-include="/includes/footer.html"></div>
+
 <script src="/assets/js/includes.js"></script>
 </body>
 </html>
