@@ -304,41 +304,45 @@
             color: var(--accent-400);
         }
 
-        /* Radio/Checkbox Groups */
-        .group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background: rgba(var(--brand-500-rgb), .05);
-            border: 1px solid rgba(var(--brand-500-rgb), .10);
-            border-radius: 12px;
-        }
+        .hidden { display: none; }
+
+      .group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(var(--brand-500-rgb), .05);
+    border: 1px solid rgba(var(--brand-500-rgb), .10);
+    border-radius: 12px;
+    padding: 8px;             /* NEW: adds breathing room above/below options */
+    box-sizing: border-box;   /* keeps widths tidy with the new padding */
+}
 
         .group:hover {
             background: rgba(var(--brand-500-rgb), .07);
             border-color: rgba(var(--brand-500-rgb), .14);
         }
 
-        .opt {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 2px solid rgba(var(--brand-500-rgb), .10);
-            padding: 12px;
-            border-radius: 12px;
-            background: rgba(var(--brand-500-rgb), .05);
-            cursor: pointer;
-        }
+    .opt {
+    display: flex;
+    align-items: flex-start;  /* CHANGED */
+    gap: 12px;
+    border: 2px solid rgba(var(--brand-500-rgb), .10);
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(var(--brand-500-rgb), .05);
+    cursor: pointer;
+}
 
         .opt:hover {
             background: rgba(var(--brand-500-rgb), .07);
             border-color: rgba(var(--brand-500-rgb), .14);
         }
 
-        .opt input {
-            width: auto;
-            margin: 0;
-        }
+.opt input {
+    width: auto;
+    margin: 0;
+    margin-top: 2px;   /* NEW: aligns radio/checkbox with first line of label */
+}
 
         /* Buttons */
         .btn {
@@ -1355,8 +1359,11 @@
                                         <button class="btn small" onclick="clearSignature('appSig')" type="button">Clear</button>
                                         <span class="hint">Sign with finger/mouse</span>
                                     </div>
-                                    <div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in your browser. If you resume later, you will need to sign again.</div>
-                                    <canvas class="sig-pad" id="pgSig"></canvas>
+                                  <div id="resumeNote" class="hint hidden" style="margin:6px 0 4px">
+  For your security, your signature is stored locally in your browser. If you resume later, you will need to sign again.
+</div>
+
+                                  <canvas class="sig-pad" id="appSig"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -1899,6 +1906,9 @@
             
             document.getElementById('resumeUrl').textContent = resumeUrl;
             document.getElementById('resumeUrl').setAttribute('data-url', resumeUrl);
+
+            localStorage.setItem('CR_showResumeNote', '1');
+
             document.getElementById('saveExitModal').classList.add('show');
         }
 
@@ -2139,10 +2149,21 @@
             }
         }
 
+        
         // Form Submission System
+function stripCurrencyFormatting() {
+  var candidates = document.querySelectorAll(
+    'input[data-format="currency"], input[name*="income"], input[id*="income"]'
+  );
+  candidates.forEach(function(el) {
+    if (typeof el.value === 'string') {
+      el.value = el.value.replace(/,/g, '');
+    }
+  });
+}
         function submitApplication() {
             console.log('Submitting application...');
-            
+
             if (!isEligible()) {
                 alert('All eligibility requirements must be "Yes" to submit.');
                 goToSection(0);
@@ -2357,6 +2378,17 @@
             autoSave();
         }, 30000);
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Show resume note if arriving via ?resume=... OR a Save & Exit flag
+  var params = new URLSearchParams(window.location.search || '');
+  var isResume = params.has('resume');
+  var shouldShow = isResume || localStorage.getItem('CR_showResumeNote') === '1';
+  if (shouldShow) {
+    var note = document.getElementById('resumeNote');
+    if (note) note.classList.remove('hidden');
+    localStorage.removeItem('CR_showResumeNote');
+  }
+});     
         // Save on page unload
         window.addEventListener('beforeunload', function() {
             autoSave();
@@ -2854,20 +2886,4 @@
         })();
     </script>
 </body>
-</html> your browser. If you resume later, you will need to sign again.</div>
-                                    <canvas class="sig-pad" id="appSig"></canvas>
-                                </div>
-                            </div>
-
-                            <div id="guardianSigBlock">
-                                <label>Parent/Guardian Signature</label>
-                                <div class="field">
-                                    <label for="guardian_typed_name">Type Your Full Legal Name</label>
-                                    <input id="guardian_typed_name" name="guardian_typed_name" type="text" oninput="autoSave()">
-                                </div>
-                                <div class="sig-wrap">
-                                    <div class="sig-tools">
-                                        <button class="btn small" onclick="clearSignature('pgSig')" type="button">Clear</button>
-                                        <span class="hint">Sign with finger/mouse</span>
-                                    </div>
-                                    <div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in
+</html>
