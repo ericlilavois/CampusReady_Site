@@ -942,7 +942,7 @@ section#section5 .opt:hover {
 <!-- SECTION 0: Eligibility -->
 <section class="active" id="section0">
 <h2>Eligibility Prerequisites</h2><p aria-live="polite" class="step-subline">Step 1 of 6</p>
-<p class="hint">Please confirm all items before continuing. All four must be "Yes" to qualify.</p>
+<p class="hint">Please confirm all items before continuing. All three must be "Yes" to qualify.</p>
 <div class="grid">
 <div>
 <label class="req">I will be attending college for the first time</label>
@@ -986,23 +986,11 @@ section#section5 .opt:hover {
                 You must be living on campus to qualify for this grant.
               </div>
 </div>
-<div>
-<label class="req">I will be attending college 100+ miles from home</label>
-<div class="group">
-<label class="opt">
-<input name="distance_100" onchange="checkEligibility()" type="radio" value="Yes"/> Yes
-                </label>
-<label class="opt">
-<input name="distance_100" onchange="checkEligibility()" type="radio" value="No"/> No
-                </label>
-</div>
-<div class="eligibility-alert" id="alert_distance_100">
-                Your college must be at least 100 miles from your home address to qualify.
-              </div>
-</div>
+
+   </div>
 </div>
 <div class="alert" id="eligibilityAlert">
-<strong>Not Eligible:</strong> Based on your answers, you are not eligible for a Campus Ready Grant. All four requirements must be "Yes".
+<strong>Not Eligible:</strong> Based on your answers, you are not eligible for a Campus Ready Grant. All three requirements must be "Yes".
           </div>
 <div class="section-actions">
 <span></span>
@@ -1636,7 +1624,7 @@ function validatePhone(input) {
 }
 
     function checkEligibility() {
-      var eligibilityFields = ['first_time', 'full_time', 'on_campus', 'distance_100'];
+      var eligibilityFields = ['first_time', 'full_time', 'on_campus'];
       var hasNo = false;
       
       // Check each field and show/hide individual alerts
@@ -1666,7 +1654,7 @@ function validatePhone(input) {
     }
 
     function isEligible() {
-      var eligibilityFields = ['first_time', 'full_time', 'on_campus', 'distance_100'];
+      var eligibilityFields = ['first_time', 'full_time', 'on_campus'];
       
       for (var i = 0; i < eligibilityFields.length; i++) {
         var field = eligibilityFields[i];
