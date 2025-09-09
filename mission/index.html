@@ -280,18 +280,10 @@ tailwind.config = {
     </section>
     </div>
   </main>
-  <footer class="border-t border-slate-200 bg-white/60">
-  <div class="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between text-sm text-slate-600">
-    <p>© <span id="year"></span> Campus Ready Foundation</p>
-    <p>
-      <a class="hover:underline" href="/faq/">FAQ</a>
-      <span class="mx-2">•</span>
-      <a class="hover:underline" href="/privacy/">Privacy</a>
-    </p>
-  </div>
-</footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<!-- Contact Modal -->
+
+  <div data-include="/includes/footer.html"></div>
+
+  <!-- Contact Modal -->
 <div id="contact-modal" class="fixed inset-0 bg-black/60 backdrop-blur-lg z-50 hidden items-center justify-center p-4">
   <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full mx-4 transform transition-all duration-500 scale-95 opacity-0 overflow-hidden" id="modal-content">
     
