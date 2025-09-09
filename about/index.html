@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Our story — Campus Ready Foundation." />
+  <meta property="og:title" content="Campus Ready Foundation — Our Story" />
+  <meta property="og:description" content="Why we started Campus Ready Foundation, and the moment that sparked our mission." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.campusready.foundation/assets/og-image.jpg" />
+  <meta property="og:url" content="https://www.campusready.foundation/about/" />
+  <link rel="canonical" href="https://www.campusready.foundation/about/" />
+  <meta name="theme-color" content="#14b8a6" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 500:'#14b8a6',600:'#0d9488',700:'#0f766e',50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4' }
+          },
+          fontFamily: { sans:['Inter','ui-sans-serif','system-ui'], serif:['Playfair Display','serif'] },
+          boxShadow: { soft:'0 8px 30px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient{background:radial-gradient(ellipse 800px 400px at 50% -20%, rgba(20,184,166,.15) 0%, transparent 50%),
+                               radial-gradient(ellipse 600px 300px at 80% 80%, rgba(20,184,166,.08) 0%, transparent 50%);}
+    .glass{backdrop-filter:blur(10px); background:rgba(255,255,255,.85); border:1px solid rgba(255,255,255,.2);}
+  </style>
+
+  <title>Campus Ready Foundation — Our Story</title>
+
+  <!-- Icons (reuse your paths) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+</head>
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden">
+  <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
+
+  <!-- ===== Header (same as home, but about links to /about/) ===== -->
+<div data-include="/includes/header.html"></div>
+  <main class="relative z-10">
+    <!-- Page header -->
+    <section class="mx-auto max-w-7xl px-6 pt-12 pb-6">
+      <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">Our Story</h1>
+
+   <!-- about sub-nav -->
+<div class="mt-6 flex items-center gap-4 text-sm">
+  <a href="/about/" class="px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100">Our Story</a>
+  <a href="/about/team/" class="px-3 py-1.5 rounded-full text-slate-600 hover:text-brand-700 ring-1 ring-slate-200 hover:ring-brand-200">Our Team</a>
+</div>
+    </section>
+
+    <!-- Story body + pull-quote -->
+    <section class="mx-auto max-w-3xl px-6 pb-20 leading-relaxed text-slate-700">
+      <div class="space-y-6 text-lg">
+        <p>When their son Max began his freshman year at Chapman University, Karen Dantzler and Eric Lilavois flew to Southern California to help him move in. Max had driven down that morning, his car packed to the brim with belongings. The family stayed in a hotel the night before move-in, Karen and Eric confident they had planned for everything—checklists reviewed, bedding and towels packed, supplies carefully purchased in advance. Yet as the next day unfolded, the true cost of getting started revealed itself—not only the airfare, hotel, and meals, but also the inevitable forgotten essentials that meant multiple trips to Target the next day: laundry detergent, hangers, a second pillow.</p>
+
+        <!-- Pull-quote -->
+        <blockquote class="my-6 border-l-4 border-brand-500 pl-5 italic text-slate-800">
+          “How do families less fortunate afford all this?”
+        </blockquote>
+
+        <p>It was during one of those drives that Karen asked the question that would become their calling.</p>
+
+        <p>The question resonated deeply. Eric remembered arriving at NYU from Long Island with little more than a set of milk crates and a stack of records—grateful to be there, yet conscious of how different his experience felt from classmates who showed up with carloads of belongings and coordinated dorm sets. Karen also arrived at NYU, alone as a Dance Major with one suitcase, and a few boxes that were shipped from California. Together they understood how easily the gap between resources and readiness can shape a young person’s sense of belonging. For many students, those disparities surface even before the first class is taught.</p>
+
+        <p>Eighteen months after Max’s drop-off, during a reflective hiatus from a successful career as a hospitality executive, Eric felt a pull he couldn’t ignore. He formed a 501(c)(3) nonprofit and, with Karen, provided the seed funding for what would become the Campus Ready Foundation. Eric brought his operational expertise—building systems, designing applications and creating scoring rubrics, while Karen, having parlayed her dance career into a 30-year business of customized personal fitness, poured in her entrepreneurial tenacity. Together, they turned one heartfelt question into a mission.</p>
+
+        <p>When they began sharing their vision, the response was immediate. A respected business leader confided that he too had arrived at college with almost nothing, a memory that stayed with him despite all he had achieved later in life. Another offered corporate support. Story after story echoed the same truth: even the most accomplished adults still remembered what it felt like to start out unprepared.</p>
+
+<div class="mt-8 rounded-2xl border border-teal-100 bg-gradient-to-br from-teal-50 to-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+  <p class="text-slate-800 font-medium leading-relaxed">
+    Campus Ready Foundation was born from the belief that no student’s potential should be diminished by the stress of simply getting started—because a strong beginning, with dignity intact, can change everything.
+  </p>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (reuse your existing footer) -->
+ <div data-include="/includes/footer.html"></div>
+
+  <script src="/assets/js/includes.js"></script>
+</body>
+</html>
