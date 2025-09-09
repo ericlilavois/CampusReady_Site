@@ -922,21 +922,35 @@ section#section5 .opt:hover {
 }
 #section1 #student_phone { width: 100%; }
 </style>
+   <style id="brand-logo-sizing">
+/* Base logo size and proportional spacing */
+:root { --logo-h: 40px; } /* mobile/tablet default */
+.brand { display:flex; align-items:center; gap: clamp(12px, calc(var(--logo-h) * 0.15), 48px); }
+.brand-logo { height: var(--logo-h); width:auto; display:block; }
+.brand-title { margin:0; line-height:1.2; font-size: clamp(1.1rem, 1rem + 0.8vw, 2rem); }
+
+/* Desktop: make the logo 6× (40px → 240px) */
+@media (min-width: 1024px) {
+  :root { --logo-h: 240px; }
+  header { flex-wrap: nowrap; } /* keep actions from wrapping under the big logo */
+}
+
+/* If the old teal box is still in the DOM, hide it */
+.logo { display:none !important; }
+</style>
 </head>
 <body>
 <div class="wrap">
 <header>
 <div class="brand">
-  <!-- Use your real logo lockup path here (SVG preferred) -->
- <img
-  class="brand-logo"
-  src="https://campusready.foundation/assets/img/brand/CRF_logo.lockup.BLK_72dpi.screen.res.png"
-  alt="Campus Ready Foundation"
-  height="40"
-  decoding="async"
-/>
-  <h1 class="brand-app">Grant Application</h1>
+  <img
+    class="brand-logo"
+    src="/assets/img/brand/CRF_logo.lockup.BLK_72dpi.screen.res.png"
+    alt="Campus Ready Foundation"
+  />
+  <h1 class="brand-title">Grant Application</h1>
 </div>
+   
 <div class="header-actions">
 <button class="btn small secondary" onclick="saveAndExit()" type="button">Save &amp; Exit</button>
 <button class="btn small destruct" onclick="clearAllData()" type="button">Clear Form</button>
