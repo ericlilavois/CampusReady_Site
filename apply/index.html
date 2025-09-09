@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
 <title>Campus Ready Foundation — Grant Application</title>
-   <link rel="icon" type="image/png" sizes="32x32" href="s://campusready.foundation/assets/favicon-32.png?v=2">
+   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="https://campusready.foundation/assets/favicon-16.png?v=2">
 <link rel="apple-touch-icon" sizes="180x180" href="https://campusready.foundation/assets/apple-touch-icon.png?v=2">
 <link rel="manifest" href="https://campusready.foundation/assets/site.webmanifest?v=2">
@@ -751,7 +751,6 @@ a:hover { color: var(--brand-800); }
 .zip-apply-btn:hover {
   background: linear-gradient(135deg, var(--brand-600), var(--brand-700));
   transform: translateY(-1px);
-}
 }
 </style><style id="brand-wash-tweaks">
 /* === A) Muted brand wash for Yes/No radio rows === */
@@ -2859,7 +2858,7 @@ window.addEventListener('resize', () => {
         var ep = (window.ZIP_LOOKUP_ENDPOINT||'').trim();
         if (ep) return ep.replace(/\/$/, '') + '?zip=' + zip5;
       } catch(e){}
-      return 's://api.zippopotam.us/us/' + zip5;
+      return 'https://api.zippopotam.us/us/' + zip5;
     }
 
     function fetchPlace(){
