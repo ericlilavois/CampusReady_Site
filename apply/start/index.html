@@ -66,6 +66,10 @@
     /* Match other pages: more opaque header (page-only override) */
     header.glass{backdrop-filter:blur(10px); background:rgba(255,255,255,.92) !important; border-bottom:1px solid rgb(226,232,240)}
 
+    /* Logo animation (explicit) */
+@keyframes draw { from { stroke-dashoffset: 999; } to { stroke-dashoffset: 0; } }
+@keyframes pop  { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
     /* Hover “lift” for cards */
     .lift{transition:transform .18s ease, box-shadow .2s ease}
     .lift:hover{transform:translateY(-6px) scale(1.01); box-shadow:0 12px 28px rgba(0,0,0,.10)}
