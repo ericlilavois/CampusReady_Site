@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 });
+// Highlight the current page in the nav
+const here = (location.pathname || '/').toLowerCase();
+document.querySelectorAll('nav a[href]').forEach(a => {
+  const href = a.getAttribute('href').toLowerCase();
+  const isHome = href === '/' && (here === '/' || here === '');
+  const isSection = href !== '/' && here.startsWith(href);
+  if (isHome || isSection) a.classList.add('active');
+});
 // Make "Contact" smart: open modal if present, otherwise fall back to email link
 const contact = document.getElementById('contact-btn');
 const hasModal = document.getElementById('contact-modal');

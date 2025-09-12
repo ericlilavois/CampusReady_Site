@@ -2,6 +2,8 @@
 
 A simple static site on GitHub Pages with a shared header you edit once.
 
+WIP: Seeding draft PR for site cleanup; will remove before merge.
+
 ## Folder map
 ~~~
 /index.html
