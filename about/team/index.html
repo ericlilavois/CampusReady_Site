@@ -60,54 +60,92 @@
       </div>
     </section>
 
-    <!-- Placeholder cards (easy to replace with real bios later) -->
-    <section class="mx-auto max-w-7xl px-6 py-10">
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Card -->
-        <div class="rounded-2xl border border-slate-200 bg-white shadow-card p-6">
+<!-- Team cards inside a soft panel -->
+<section class="mx-auto max-w-7xl px-6 py-10">
+  <div class="rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-6 sm:p-8">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Card: Eric -->
+      <div class="rounded-2xl border border-brand-100 bg-white/80 backdrop-blur-sm shadow-card p-0 overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="p-6">
           <div class="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">Eric Lilavois</h3>
           <p class="text-sm text-slate-500">Co-Founder | Board President</p>
-          <a href="/about/team/eric-lilavois/" class="mt-3 inline-flex items-center text-brand-700 font-medium hover:underline">
-  Read Eric’s Bio →
-  <span class="sr-only"> about Eric Lilavois</span>
-</a>
         </div>
+        <!-- quiet footer link -->
+        <div class="border-t border-slate-200 bg-white/70 px-6 py-3">
+          <a href="/about/team/eric-lilavois/" class="inline-flex items-center gap-1 text-brand-700 font-medium hover:underline">
+            Read Eric’s Bio <span aria-hidden>→</span>
+            <span class="sr-only"> about Eric Lilavois</span>
+          </a>
+        </div>
+      </div>
 
-        <!-- Duplicate these two cards as needed -->
-        <div class="rounded-2xl border border-slate-200 bg-white shadow-card p-6">
+      <!-- Card: Karen -->
+      <div class="rounded-2xl border border-brand-100 bg-white/80 backdrop-blur-sm shadow-card p-0 overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="p-6">
           <div class="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">Karen Dantzler</h3>
           <p class="text-sm text-slate-500">Co Founder | Board Treasurer</p>
-         <a href="/about/team/karen-dantzler/" class="mt-3 inline-flex items-center text-brand-700 font-medium hover:underline">
-  Read Karen’s Bio →
-  <span class="sr-only"> about Karen Dantzler</span>
-</a>
         </div>
+        <div class="border-t border-slate-200 bg-white/70 px-6 py-3">
+          <a href="/about/team/karen-dantzler/" class="inline-flex items-center gap-1 text-brand-700 font-medium hover:underline">
+            Read Karen’s Bio <span aria-hidden>→</span>
+            <span class="sr-only"> about Karen Dantzler</span>
+          </a>
+        </div>
+      </div>
 
-        <div class="rounded-2xl border border-slate-200 bg-white shadow-card p-6">
+      <!-- Card: Janie -->
+      <div class="rounded-2xl border border-brand-100 bg-white/80 backdrop-blur-sm shadow-card p-0 overflow-hidden transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+        <div class="p-6">
           <div class="w-20 h-20 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
             </svg>
           </div>
           <h3 class="text-lg font-semibold text-slate-900">Janie Green</h3>
           <p class="text-sm text-slate-500">Board Member | Secretary</p>
-         <a href="/about/team/janie-green/" class="mt-3 inline-flex items-center text-brand-700 font-medium hover:underline">
-  Read Janie’s Bio →
-  <span class="sr-only"> about Janie Green</span>
-</a>
+        </div>
+        <div class="border-t border-slate-200 bg-white/70 px-6 py-3">
+          <a href="/about/team/janie-green/" class="inline-flex items-center gap-1 text-brand-700 font-medium hover:underline">
+            Read Janie’s Bio <span aria-hidden>→</span>
+            <span class="sr-only"> about Janie Green</span>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<!-- Quiet bottom CTA band -->
+<section class="mx-auto max-w-7xl px-6 mt-6 pb-10">
+  <div class="rounded-2xl border border-slate-200 bg-gradient-to-r from-slate-50 to-white p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div class="max-w-2xl">
+      <p class="text-slate-700">
+        <span class="font-semibold">Interested in serving on the Board or Advisory Council?</span> We’d love to connect.
+      </p>
+      <p class="text-slate-500 text-sm mt-1">Tell us who you are and why you’re excited to help students start strong.</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="mailto:hello@campusready.foundation?subject=Board%20or%20Advisory%20Interest" class="inline-flex items-center rounded-xl bg-teal-600 px-4 py-2 text-white font-semibold shadow-sm hover:bg-teal-700 transition">
+        Contact us
+      </a>
+      <a href="/mission/" class="text-brand-700 font-medium hover:underline">Learn more</a>
+    </div>
+  </div>
+</section>
+    
   </main>
 
  <div data-include="/includes/footer.html"></div>
