@@ -10,7 +10,7 @@
 />
 </a>
 
-  <!-- Desktop nav -->
+<!-- Desktop nav -->
 <nav aria-label="Main" class="hidden sm:block">
   <ul class="flex items-center gap-8 text-sm font-medium">
     <li>
@@ -25,21 +25,47 @@
         <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
       </a>
     </li>
-<li class="relative group">
-  <a href="/about/" class="inline-flex items-center gap-1 text-slate-600 hover:text-brand-600 transition-colors duration-200">
-   <li>
-  <a class="text-slate-600 hover:text-brand-600 transition-colors duration-200 relative group" href="/partners/">
-    Partners
-    <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
-  </a>
-</li>
-    About
-    <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.4a.75.75 0 01-1.08 0l-4.25-4.4a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
-    </svg>
-  </a>
+    <li>
+      <a class="text-slate-600 hover:text-brand-600 transition-colors duration-200 relative group" href="/partners/">
+        Partners
+        <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+      </a>
+    </li>
+    <li class="relative group">
+      <a href="/about/" class="inline-flex items-center gap-1 text-slate-600 hover:text-brand-600 transition-colors duration-200">
+        About
+        <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.4a.75.75 0 01-1.08 0l-4.25-4.4a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+        </svg>
+      </a>
 
-  <!-- No mt-2; use top-full so there's zero gap -->
+      <!-- No mt-2; use top-full so there's zero gap -->
+      <div class="absolute left-0 top-full w-44 rounded-xl border border-slate-200 bg-white shadow-card z-50
+                  invisible opacity-0 translate-y-1 transition-all duration-150
+                  group-hover:visible group-hover:opacity-100 group-hover:translate-y-0
+                  focus-within:visible focus-within:opacity-100 focus-within:translate-y-0">
+        <a href="/about/" class="block px-3 py-2 text-sm text-slate-700 hover:text-brand-700 hover:bg-slate-50 rounded-t-xl">Our Story</a>
+        <a href="/about/team/" class="block px-3 py-2 text-sm text-slate-700 hover:text-brand-700 hover:bg-slate-50 rounded-b-xl">Our Team</a>
+      </div>
+    </li>
+    <li>
+      <a class="text-slate-600 hover:text-brand-600 transition-colors duration-200 relative group" href="/apply/start/">
+        Apply
+        <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-brand-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+      </a>
+    </li>
+    <li>
+      
+        id="contact-btn"
+        href="mailto:hello@campusready.foundation?subject=Campus%20Ready%20Inquiry"
+        class="relative z-10 text-slate-600 hover:text-brand-600 transition-colors duration-200 bg-transparent cursor-pointer font-medium text-sm"
+      >
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>  
+    <!-- No mt-2; use top-full so there's zero gap -->
   <div class="absolute left-0 top-full w-44 rounded-xl border border-slate-200 bg-white shadow-card z-50
               invisible opacity-0 translate-y-1 transition-all duration-150
               group-hover:visible group-hover:opacity-100 group-hover:translate-y-0
