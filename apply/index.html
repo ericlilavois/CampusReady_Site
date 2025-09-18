@@ -1719,8 +1719,11 @@ function validatePhone(input) {
       for (var i = 0; i < sectionTitles.length; i++) {
         var chip = document.createElement('div');
         chip.className = 'chip';
-        chip.textContent = (i + 1) + '. ' + sectionTitles[i];
-        
+      // Use mobile titles on small screens
+var isMobile = window.innerWidth <= 600;
+var titleArray = isMobile ? mobileTitles : sectionTitles;
+chip.textContent = (i + 1) + '. ' + titleArray[i];
+         
         // Current section
         if (i === currentSectionIndex) {
           chip.classList.add('active');
