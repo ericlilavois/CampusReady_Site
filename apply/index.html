@@ -1250,16 +1250,16 @@ section#section5 .opt:hover {
 <label class="req">Have you completed the FAFSA?</label>
 <div class="group">
 <label class="opt">
-<input name="fafsa" onchange="toggleEFC(true); autoSave()" required="" type="radio" value="Yes"/> Yes
+<input name="fafsa" onchange="toggleSAI(true); autoSave()" required="" type="radio" value="Yes"/> Yes
                 </label>
 <label class="opt">
-<input name="fafsa" onchange="toggleEFC(false); autoSave()" type="radio" value="No"/> No
+<input name="fafsa" onchange="toggleSAI(false); autoSave()" type="radio" value="No"/> No
                 </label>
 </div>
-<div id="efcSection" style="margin-top:12px; display:none">
-<label class="req" for="efc">If yes, what is your Student Aid Index (SAI)?</label>
+<div id="saiSection" style="margin-top:12px; display:none">
+<label class="req" for="sai">If yes, what is your Student Aid Index (SAI)?</label>
 <div style="position: relative; display: inline-block; width: 100%;">
-<input id="efc" name="efc" oninput="autoSave()" placeholder="0" type="number"/>
+<input id="sai" name="sai" oninput="autoSave()" placeholder="0" type="number"/>
 </div>
 </div>
 </div>
@@ -1783,9 +1783,9 @@ chip.textContent = (i + 1) + '. ' + titleArray[i];
     }
 
     // FAFSA toggle
-    function toggleEFC(show) {
-      var efcSection = document.getElementById('efcSection');
-      efcSection.style.display = show ? 'block' : 'none';
+    function toggleSAI(show) {
+      var saiSection = document.getElementById('saiSection');
+      saiSection.style.display = show ? 'block' : 'none';
     }
 
     // Other concern toggle
@@ -1896,9 +1896,9 @@ chip.textContent = (i + 1) + '. ' + titleArray[i];
             }
           }
           
-          // Show EFC field if FAFSA is Yes
+          // Show SAI field if FAFSA is Yes
           if (data.fafsa === 'Yes') {
-            toggleEFC(true);
+            toggleSAI(true);
           }
           
           // Show other concern field if "other" is checked
@@ -2025,7 +2025,7 @@ chip.textContent = (i + 1) + '. ' + titleArray[i];
         // Update displays
         updateStepIndicator();
         checkEligibility();
-        toggleEFC(false);
+        toggleSAI(false);
         updateWordCount();
         
         // Clear URL parameters
