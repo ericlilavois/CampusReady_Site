@@ -1367,7 +1367,7 @@ section#section5 .opt:hover {
 <label class="req">Applicant Signature</label>
    <div class="field">
   <label class="req" for="applicant_typed_name">Type Your Full Legal Name </label>
-  <input id="applicant_typed_name" name="applicant_typed_name" type="text" oninput="autoSave()" required>
+ <input id="applicant_typed_name" name="applicant_typed_name" type="text" oninput="autoSave(); validateSignatureName('applicant')" required>
 </div>
 <div class="sig-wrap">
 <div class="sig-tools">
@@ -1382,7 +1382,7 @@ section#section5 .opt:hover {
 <label>Parent/Guardian Signature</label>
    <div class="field">
   <label for="guardian_typed_name">Type Your Full Legal Name</label>
-  <input id="guardian_typed_name" name="guardian_typed_name" type="text" oninput="autoSave()">
+<input id="guardian_typed_name" name="guardian_typed_name" type="text" oninput="autoSave(); validateSignatureName('guardian')">
 </div>
 <div class="sig-wrap">
 <div class="sig-tools">
@@ -3232,6 +3232,40 @@ function showProgressBar() {
   `;
   
   document.body.appendChild(overlay);
+}
+</script>
+
+<script>
+function validateSignatureName(type) {
+  var mainField, signatureField, warningDiv;
+  
+  if (type === 'applicant') {
+    mainField = document.getElementById('student_name');
+    signatureField = document.getElementById('applicant_typed_name');
+    warningDiv = 'applicant_name_warning';
+  } else {
+    mainField = document.getElementById('pg_name');
+    signatureField = document.getElementById('guardian_typed_name');
+    warningDiv = 'guardian_name_warning';
+  }
+  
+  if (!mainField || !signatureField) return;
+  
+  var mainName = mainField.value.trim();
+  var signatureName = signatureField.value.trim();
+  
+  // Remove existing warning
+  var existingWarning = document.getElementById(warningDiv);
+  if (existingWarning) existingWarning.remove();
+  
+  // Check if names don't match (and both have content)
+  if (signatureName && mainName && signatureName !== mainName) {
+    var warning = document.createElement('div');
+    warning.id = warningDiv;
+    warning.style.cssText = 'color: #dc2626; font-size: 0.85rem; margin-top: 6px; font-weight: 500;';
+    warning.textContent = 'This name doesn\'t match "' + mainName + '" entered above. Please use your exact full legal name.';
+    signatureField.parentNode.insertBefore(warning, signatureField.nextSibling);
+  }
 }
 </script>
    
