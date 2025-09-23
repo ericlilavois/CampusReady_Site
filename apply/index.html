@@ -2308,6 +2308,8 @@ signaturePads[canvasId] = {
     })();
 function submitApplication() {
       console.log('Submitting application...');
+   // Show progress bar
+showProgressBar();
       
       // Check eligibility first
       if (!isEligible()) {
@@ -3187,5 +3189,51 @@ window.debugInvalid = () => {
   });
 })();
 </script>
+
+<script>
+function showProgressBar() {
+  // Create overlay
+  var overlay = document.createElement('div');
+  overlay.id = 'submitProgress';
+  overlay.style.cssText = `
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    font-family: inherit;
+  `;
+  
+  // Create progress container
+  overlay.innerHTML = `
+    <div style="
+      background: white; 
+      border-radius: 16px; 
+      padding: 40px; 
+      text-align: center; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      max-width: 400px;
+      width: 90%;
+    ">
+      <div style="margin-bottom: 24px; font-size: 1.3rem; font-weight: 600; color: #14b8a6;">
+        Processing Your Application
+      </div>
+      <div style="width: 100%; height: 8px; background: #f0f9ff; border-radius: 4px; margin: 0 auto 20px; overflow: hidden;">
+        <div style="height: 100%; background: linear-gradient(90deg, #14b8a6, #0891b2); border-radius: 4px; width: 0%; animation: progress 60s linear forwards;"></div>
+      </div>
+      <div style="font-size: 0.95rem; color: #6b7280; line-height: 1.5;">
+        Calculating distance to your college and finalizing your application.<br>
+        <strong>Please don't close this window</strong> - this may take up to 2 minutes.
+      </div>
+    </div>
+    <style>
+      @keyframes progress {
+        to { width: 100%; }
+      }
+    </style>
+  `;
+  
+  document.body.appendChild(overlay);
+}
+</script>
+   
 </body>
 </html>
