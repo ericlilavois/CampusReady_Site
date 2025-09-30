@@ -328,18 +328,18 @@
     <!-- Action Buttons -->
     <div class="gate-actions">
       <button class="gate-btn gate-btn-primary" onclick="downloadCalendarReminder()">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-        </svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round"
+        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+</svg>
         Download Calendar Reminder
       </button>
       
       <button class="gate-btn gate-btn-secondary" onclick="showEmailSignup()">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-        </svg>
+   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round"
+        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+</svg>
         Get Email Notification
       </button>
     </div>
@@ -427,9 +427,9 @@
 
 /* Close Button */
 .gate-modal-close {
-  position: sticky;
-  top: 20px;
-  right: 20px;
+  position: absolute;   /* was: sticky */
+  top: 16px;            /* adjust to taste */
+  right: 16px;          /* adjust to taste */
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -440,7 +440,7 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  z-index: 10001;
+  z-index: 10002;       /* slightly above the overlay/card */
 }
 
 .gate-modal-close:hover {
