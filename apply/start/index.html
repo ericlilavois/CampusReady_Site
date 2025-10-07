@@ -788,7 +788,7 @@
 let countdownInterval;
 
 function updateCountdown() {
-  const targetDate = new Date('2026-03-01T00:00:00-08:00'); // PT timezone
+  const targetDate = new Date('2026-01-01T00:00:00-08:00'); // PT timezone
   const now = new Date();
   const diff = targetDate - now;
 
@@ -864,8 +864,8 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:campus-ready-application-${Date.now()}@campusready.foundation
 DTSTAMP:${formatICSDate(new Date())}
-DTSTART:20260301T080000Z
-DTEND:20260301T090000Z
+DTSTART:20260101T080000Z
+DTEND:20260101T090000Z
 SUMMARY:Campus Ready Foundation Applications Open Today!
 DESCRIPTION:Applications for Campus Ready Foundation grants open today. Apply at https://campusready.foundation/apply/\\n\\nThis is your reminder to submit your application for move-in essentials\\, travel support\\, and early-arrival meals.
 LOCATION:https://campusready.foundation/apply/
