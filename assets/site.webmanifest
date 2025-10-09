@@ -3,8 +3,13 @@
   "short_name": "Campus Ready",
   "icons": [
     {
-      "src": "/assets/CRF_icon_192 x 192.png",
+      "src": "/assets/CRF_icon_192x192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/CRF_icon_512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
