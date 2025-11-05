@@ -47,24 +47,36 @@ return /^\d{5}(-\d{4})?$/.test(String(zip || '').trim());
 }
 
 export async function doesZipMatchCityState(zip, city, state) {
-  const trimmedZip = zip.trim();
-  const trimmedCity = city.trim().toLowerCase();
-  const trimmedState = state.trim().toLowerCase();
+// Normalize inputs
+const zip5 = String(zip || '').trim().slice(0, 10).replace(/\D/g, '').slice(0, 5); // use 5-digit portion
+const st  = String(state || '').trim().toUpperCase(); // USPS 2-letter via <select>
+const normCity = (s) => {
+let x = String(s || '').toLowerCase();
+x = x.replace(/\./g, '');        // drop periods: "St." -> "St"
+x = x.replace(/\s+/g, ' ').trim();
+// Expand common prefixes to reduce false mismatches
+x = x.replace(/^st\s+/, 'saint ');
+x = x.replace(/^ste\s+/, 'sainte ');
+return x;
+};
+const c = normCity(city);
 
-  try {
-    const response = await fetch(`https://api.zippopotam.us/us/${trimmedZip}`);
-    if (!response.ok) return false;
+try {
+if (!zip5 || zip5.length !== 5) return false;
+const response = await fetch(`https://api.zippopotam.us/us/${zip5}`);
+if (!response.ok) return false;
 
-    const data = await response.json();
-    const places = data.places || [];
+const data = await response.json();
+const places = Array.isArray(data.places) ? data.places : [];
 
-    return places.some(place => {
-      const apiCity = place['place name'].toLowerCase();
-      const apiState = place['state abbreviation'].toLowerCase();
-      return apiCity === trimmedCity && apiState === trimmedState;
-    });
-  } catch (error) {
-    console.error('ZIP lookup failed:', error);
-    return false;
-  }
+return places.some(place => {
+const apiCity  = normCity(place['place name']);
+const apiState = String(place['state abbreviation'] || '').toUpperCase();
+// Match on exact state, and city after normalization
+return apiState === st && apiCity === c;
+});
+} catch (error) {
+console.error('ZIP lookup failed:', error);
+return false;
+}
 }
