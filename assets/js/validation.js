@@ -33,11 +33,8 @@ export function isValidEmail(email) {
     if (tld.length < 2) return false;
     
     // Blocks common typos that pass basic regex
-    -    const badTLD = ['con', 'cmo', 'ocm', 'net', 'in']; 
--    if (badTLD.includes(tld)) return false;
-+    // Optional: keep only truly common typo TLDs; do NOT block real TLDs like .net / .in
-+    const badTLD = ['con', 'cmo', 'ocm'];
-+    if (badTLD.includes(tld)) return false;
+ const badTLD = ['con', 'cmo', 'ocm'];
+if (badTLD.includes(tld)) return false;
     return true;
 }
 
