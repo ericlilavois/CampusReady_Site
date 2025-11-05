@@ -1,4 +1,4 @@
-eexport function isValidEmail(email) {
+export function isValidEmail(email) {
     const val = (email || '').trim();
     if (!val) return false;
 
@@ -33,17 +33,19 @@ eexport function isValidEmail(email) {
     if (tld.length < 2) return false;
     
     // Blocks common typos that pass basic regex
-    const badTLD = ['con', 'cmo', 'ocm', 'net', 'in']; 
-    if (badTLD.includes(tld)) return false;
-
+    -    const badTLD = ['con', 'cmo', 'ocm', 'net', 'in']; 
+-    if (badTLD.includes(tld)) return false;
++    // Optional: keep only truly common typo TLDs; do NOT block real TLDs like .net / .in
++    const badTLD = ['con', 'cmo', 'ocm'];
++    if (badTLD.includes(tld)) return false;
     return true;
 }
 
 export function isValidZip(zip) {
-  const trimmed = zip.trim();
-  const zipPattern = /^\d{5}$/;
-  return zipPattern.test(trimmed);
+// Allow 5-digit or ZIP+4 with optional hyphen
+return /^\d{5}(-\d{4})?$/.test(String(zip || '').trim());
 }
+
 export async function doesZipMatchCityState(zip, city, state) {
   const trimmedZip = zip.trim();
   const trimmedCity = city.trim().toLowerCase();
