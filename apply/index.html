@@ -776,6 +776,11 @@
   box-shadow: none;
 }
 
+/* Hide header when landing page is showing */
+body:has(#landing.active) header {
+  display: none !important;
+}
+   
 /* Mobile Responsive for Landing */
 @media (max-width: 640px) {
   #landing .landing-header {
