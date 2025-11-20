@@ -583,6 +583,234 @@
   .row-address-phone,
   .row-college-start { grid-template-columns: 1fr; }
 }
+/* === Landing Page Styles === */
+#landing {
+  display: none;
+}
+
+#landing.active {
+  display: block;
+}
+
+#landing .landing-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#landing .landing-header {
+  background: linear-gradient(135deg, #469E92 0%, #3d8a7f 100%);
+  padding: 48px 32px;
+  text-align: center;
+  color: white;
+  border-radius: 16px 16px 0 0;
+  margin: -16px -16px 0 -16px;
+}
+
+#landing .landing-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 24px;
+}
+
+#landing .landing-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  color: white;
+}
+
+#landing .landing-header p {
+  font-size: 1.125rem;
+  opacity: 0.95;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#landing .landing-content {
+  padding: 48px 32px;
+}
+
+#landing .landing-section {
+  margin-bottom: 40px;
+}
+
+#landing .landing-section:last-of-type {
+  margin-bottom: 0;
+}
+
+#landing .landing-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #469E92;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#landing .landing-section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: #469E92;
+  border-radius: 2px;
+}
+
+#landing .landing-intro-text {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #374151;
+  margin-bottom: 32px;
+}
+
+#landing .landing-checklist {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+#landing .landing-checklist ul {
+  list-style: disc;
+  padding-left: 24px;
+  margin: 0;
+}
+
+#landing .landing-checklist li {
+  margin-bottom: 10px;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-left: 8px;
+}
+
+#landing .landing-checklist li:last-child {
+  margin-bottom: 0;
+}
+
+#landing .landing-notice {
+  background: #e6f5f3;
+  border: 2px solid #469E92;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+#landing .landing-notice-title {
+  font-weight: 700;
+  color: #0d5f54;
+  margin-bottom: 8px;
+}
+
+#landing .landing-notice p {
+  color: #0d5f54;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+#landing .landing-confirmation {
+  border-top: 2px solid #e5e7eb;
+  padding-top: 32px;
+}
+
+#landing .landing-checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+#landing .landing-checkbox-wrapper:hover {
+  background: #f9fafb;
+}
+
+#landing .landing-checkbox-wrapper input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-top: 2px;
+  accent-color: #469E92;
+}
+
+#landing .landing-checkbox-wrapper label {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+#landing .landing-button-container {
+  text-align: center;
+}
+
+#landing .btn-begin-app {
+  background: linear-gradient(135deg, #469E92, #3d8a7f);
+  color: white;
+  border: none;
+  padding: 18px 48px;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(70, 158, 146, 0.3);
+}
+
+#landing .btn-begin-app:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(70, 158, 146, 0.4);
+  background: linear-gradient(135deg, #3d8a7f, #469E92);
+}
+
+#landing .btn-begin-app:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Mobile Responsive for Landing */
+@media (max-width: 640px) {
+  #landing .landing-header {
+    padding: 32px 24px;
+  }
+
+  #landing .landing-header h1 {
+    font-size: 1.5rem;
+  }
+
+  #landing .landing-header p {
+    font-size: 1rem;
+  }
+
+  #landing .landing-content {
+    padding: 32px 24px;
+  }
+
+  #landing .landing-section-title {
+    font-size: 1.25rem;
+  }
+
+  #landing .landing-intro-text {
+    font-size: 1rem;
+  }
+
+  #landing .landing-checklist {
+    padding: 20px;
+  }
+
+  #landing .btn-begin-app {
+    width: 100%;
+    padding: 16px 32px;
+  }
+}   
 </style><style>
 /* Student tab row constraints within internal grid */
 .name-gender-dob,
@@ -998,6 +1226,68 @@ section#section5 .opt:hover {
 <div class="card">
 <div class="steps" id="stepIndicator"></div>
 <div class="pad">
+
+<!-- LANDING PAGE -->
+<section class="active" id="landing">
+  <div class="landing-container">
+    <div class="landing-header">
+      <img src="https://campusready.foundation/assets/img/brand/CRF_logo.lockup.GRN_72dpi.screen.res.png" alt="Campus Ready Foundation" class="landing-logo">
+      <h1>Welcome to Your Application</h1>
+      <p>We're excited you're taking this important step toward your college journey</p>
+    </div>
+
+    <div class="landing-content">
+      <div class="landing-section">
+        <div class="landing-intro-text">
+          Campus Ready Grants help you begin college fully prepared. We provide travel assistance for you and a parent or guardian (including airfare, hotel and transportation), move-in essentials based on your college's checklist, and meals as you settle in.
+        </div>
+      </div>
+
+      <div class="landing-section">
+        <h2 class="landing-section-title">Before You Begin</h2>
+        <p style="color: #6b7280; margin-bottom: 20px; font-size: 0.95rem;">
+          Along with basic contact information, you're going to need specific items to complete your application. Please have the following ready to make the process smooth and fast.
+        </p>
+
+        <div class="landing-checklist">
+          <ul>
+            <li>Social Security Numbers (yours and your parent or guardian's)</li>
+            <li>Your individual annual income (from jobs, wages, or tips)</li>
+            <li>Total household income and number of people in your household</li>
+            <li>FAFSA completion status and your SAI (Student Aid Index), if completed</li>
+            <li>Name and address of the college you'll be attending</li>
+            <li>Expected start date and confirmation you'll be living on campus</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="landing-notice">
+        <div class="landing-notice-title">
+          Important: Parent/Guardian Signature Required
+        </div>
+        <p>
+          If you're under 18 years old, you'll need a parent or guardian available to review and sign the application with you at the final step. Please make sure they're nearby before you begin.
+        </p>
+      </div>
+
+      <div class="landing-confirmation">
+        <div class="landing-checkbox-wrapper" onclick="document.getElementById('landingReadyCheck').click()">
+          <input type="checkbox" id="landingReadyCheck" onchange="toggleBeginButton()">
+          <label for="landingReadyCheck">
+            I've gathered all the required information and I'm ready to begin my application
+          </label>
+        </div>
+
+        <div class="landing-button-container">
+          <button id="beginAppBtn" class="btn-begin-app" disabled onclick="startApplication()">
+            Begin Application
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+   
 <!-- SECTION 0: Eligibility -->
 <section class="active" id="section0">
 <h2>Eligibility Prerequisites</h2><p aria-live="polite" class="step-subline">Step 1 of 6</p>
@@ -1438,35 +1728,51 @@ section#section5 .opt:hover {
 <script>
     // Simple global variables
     var currentSectionIndex = 0;
-  var sectionTitles = ['Eligibility', 'Student', 'Parent/Guardian', 'Questions', 'Essays', 'Certification'];
-var mobileTitles = ['Eligibile', 'Student', 'Guardian', 'Other', 'Essays', 'Certification'];
+  var sectionTitles = ['Welcome', 'Eligibility', 'Student', 'Parent/Guardian', 'Questions', 'Essays', 'Certification'];
+var mobileTitles = ['Welcome', 'Eligible', 'Student', 'Guardian', 'Other', 'Essays', 'Certification'];
    var signaturePads = {};
     var formId = null;
 
     // Initialize when page loads
-    window.onload = function() {
-      console.log('App starting...');
-      
-      // Check for resume URL parameter
-      checkForResumeData();
-      
-      // Set today's date
-      document.getElementById('today').valueAsDate = new Date();
-      
-      // Load saved data
-      loadSavedData();
-      
-      // Setup signature pads
-      setupSignatures();
-      
-      // Update display
-      updateStepIndicator();
-      checkEligibility();
-      updateWordCount();
-      
-      console.log('App ready!');
-    };
-
+window.onload = function() {
+  console.log('App starting...');
+  
+  // Check if user has already seen landing page
+  const hasSeenLanding = localStorage.getItem('campusReadyLandingSeen');
+  const urlParams = new URLSearchParams(window.location.search);
+  const isResuming = urlParams.get('resume');
+  
+  if (hasSeenLanding === 'true' || isResuming) {
+    // Skip landing page, go straight to Section 0
+    console.log('Skipping landing page...');
+    document.getElementById('landing').classList.remove('active');
+    currentSectionIndex = 0;
+    document.getElementById('section0').classList.add('active');
+  } else {
+    // Show landing page
+    console.log('Showing landing page...');
+    currentSectionIndex = -1;
+  }
+  
+  // Check for resume URL parameter
+  checkForResumeData();
+  
+  // Set today's date
+  document.getElementById('today').valueAsDate = new Date();
+  
+  // Load saved data
+  loadSavedData();
+  
+  // Setup signature pads
+  setupSignatures();
+  
+  // Update display
+  updateStepIndicator();
+  checkEligibility();
+  updateWordCount();
+  
+  console.log('App ready!');
+};
     // Generate or retrieve form ID
     function getFormId() {
       if (!formId) {
@@ -1511,35 +1817,66 @@ var mobileTitles = ['Eligibile', 'Student', 'Guardian', 'Other', 'Essays', 'Cert
     }
 
     // Navigation (now allows jumping to any section)
-    function goToSection(sectionNumber) {
-      console.log('Going to section:', sectionNumber);
-      
-      // Save current data
-      autoSave();
-      
-      // Hide current section
-      document.getElementById('section' + currentSectionIndex).classList.remove('active');
-      
-      // Show new section
-      currentSectionIndex = sectionNumber;
-      document.getElementById('section' + currentSectionIndex).classList.add('active');
-      
-      // Update display
-      updateStepIndicator();
-      
-      // Scroll to top
-      window.scrollTo(0, 0);
-      
-      // Setup signatures if on last section
-      if (currentSectionIndex === 5) {
-        setTimeout(function() {
-          setupSignatures();
-        }, 100);
-      }
-      
-      return true;
-    }
+   // Landing page button toggle
+function toggleBeginButton() {
+  const checkbox = document.getElementById('landingReadyCheck');
+  const button = document.getElementById('beginAppBtn');
+  button.disabled = !checkbox.checked;
+}
 
+// Start application from landing page
+function startApplication() {
+  console.log('Starting application from landing page...');
+  
+  // Set flag that user has seen landing page
+  localStorage.setItem('campusReadyLandingSeen', 'true');
+  
+  // Hide landing page
+  document.getElementById('landing').classList.remove('active');
+  
+  // Show Section 0 (Eligibility)
+  currentSectionIndex = 0;
+  document.getElementById('section0').classList.add('active');
+  
+  // Update step indicator
+  updateStepIndicator();
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+} 
+  function goToSection(sectionNumber) {
+  console.log('Going to section:', sectionNumber);
+  
+  // Save current data
+  autoSave();
+  
+  // Hide landing page if it's showing
+  if (currentSectionIndex === -1) {
+    document.getElementById('landing').classList.remove('active');
+  } else {
+    // Hide current section
+    document.getElementById('section' + currentSectionIndex).classList.remove('active');
+  }
+  
+  // Show new section
+  currentSectionIndex = sectionNumber;
+  document.getElementById('section' + currentSectionIndex).classList.add('active');
+  
+  // Update display
+  updateStepIndicator();
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+  
+  // Setup signatures if on last section
+  if (currentSectionIndex === 5) {
+    setTimeout(function() {
+      setupSignatures();
+    }, 100);
+  }
+  
+  return true;
+}
 
     // Navigate forward only when current section validates and, if on eligibility, when eligible
     function goNextValidated(nextSection, currentSection){
@@ -1556,8 +1893,6 @@ var mobileTitles = ['Eligibile', 'Student', 'Guardian', 'Other', 'Essays', 'Cert
       goToSection(nextSection);
     }
     
-
-
     // Section validation (now only used for final submission)
     function validateSection(sectionIndex) {
       var section = document.getElementById('section' + sectionIndex);
@@ -1727,40 +2062,57 @@ function validatePhone(input) {
 
     // Enhanced step indicator with completion status
     function updateStepIndicator() {
-      var stepContainer = document.getElementById('stepIndicator');
-      stepContainer.innerHTML = '';
-      
-      for (var i = 0; i < sectionTitles.length; i++) {
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-      // Use mobile titles on small screens
-var isMobile = window.innerWidth <= 600;
-var titleArray = isMobile ? mobileTitles : sectionTitles;
-chip.textContent = (i + 1) + '. ' + titleArray[i];
-         
-        // Current section
-        if (i === currentSectionIndex) {
-          chip.classList.add('active');
-        }
-        // Check completion status
-        else if (isSectionComplete(i)) {
-          chip.classList.add('complete');
-        }
-        // Check if started but incomplete
-        else if (isSectionStarted(i)) {
-          chip.classList.add('incomplete');
-        }
-        // Special handling for eligibility section
-        else if (i === 0 && !isEligible() && isSectionStarted(i)) {
-          chip.classList.add('invalid');
-        }
-        
-        // Always allow clicking (flexible navigation)
-        chip.onclick = (function(index){ return function(){ if (index > 0 && !isEligible()){ showToast('You must meet eligibility to continue.'); return; } goToSection(index); }; })(i);
-        
-        stepContainer.appendChild(chip);
-      }
+  var stepContainer = document.getElementById('stepIndicator');
+  stepContainer.innerHTML = '';
+  
+  // Don't show step indicator on landing page
+  if (currentSectionIndex === -1) {
+    return;
+  }
+  
+  for (var i = 0; i < sectionTitles.length; i++) {
+    // Skip the "Welcome" step in the indicator (it's index 0, but we don't show it)
+    if (i === 0) continue;
+    
+    var chip = document.createElement('div');
+    chip.className = 'chip';
+    
+    // Use mobile titles on small screens
+    var isMobile = window.innerWidth <= 600;
+    var titleArray = isMobile ? mobileTitles : sectionTitles;
+    chip.textContent = i + '. ' + titleArray[i];
+     
+    // Current section
+    if (i === currentSectionIndex) {
+      chip.classList.add('active');
     }
+    // Check completion status
+    else if (isSectionComplete(i - 1)) {  // Adjust for removed landing page
+      chip.classList.add('complete');
+    }
+    // Check if started but incomplete
+    else if (isSectionStarted(i - 1)) {  // Adjust for removed landing page
+      chip.classList.add('incomplete');
+    }
+    // Special handling for eligibility section
+    else if (i === 0 && !isEligible() && isSectionStarted(i - 1)) {  // Adjust for removed landing page
+      chip.classList.add('invalid');
+    }
+    
+    // Always allow clicking (flexible navigation)
+    chip.onclick = (function(index){ 
+      return function(){ 
+        if (index > 0 && !isEligible()){ 
+          showToast('You must meet eligibility to continue.'); 
+          return; 
+        } 
+        goToSection(index); 
+      }; 
+    })(i);
+    
+    stepContainer.appendChild(chip);
+  }
+}
 
     // Input formatting
    function formatPhone(input) {
@@ -2031,7 +2383,10 @@ chip.textContent = (i + 1) + '. ' + titleArray[i];
         
         // Go to first section
         document.getElementById('section' + currentSectionIndex).classList.remove('active');
-        currentSectionIndex = 0;
+        currentSectionIndex = -1;
+        localStorage.removeItem('campusReadyLandingSeen');
+        document.getElementById('section0').classList.remove('active');
+        document.getElementById('landing').classList.add('active');
         document.getElementById('section0').classList.add('active');
         
         // Set today's date again
