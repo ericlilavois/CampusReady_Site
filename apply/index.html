@@ -1188,8 +1188,8 @@ section#section5 .opt:hover {
 .brand-logo { height: var(--logo-h); width:auto; display:block; }
 .brand-title { margin:0; line-height:1.2; font-size: clamp(1.1rem, 1rem + 0.8vw, 2rem); font-family: 'Playfair Display', serif; position: absolute; left: 50%; transform: translateX(-50%); }
 @media (max-width: 640px) {
-  .brand { flex-direction: column; align-items: center; }
-  .brand-title { position: static; left: auto; transform: none; text-align: center; margin-left: 0; }
+  .brand { flex-wrap: wrap; }
+  .brand-title { position: static; left: auto; transform: none; width: 100%; text-align: center; margin-left: 0; }
 }
 /* Desktop: make the logo 4× (40px → 120px) */
 @media (min-width: 1024px) {
