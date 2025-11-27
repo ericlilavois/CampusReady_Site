@@ -588,6 +588,11 @@
   display: none;
 }
 
+/* Remove top padding when landing page is active */
+.pad:has(#landing.active) {
+  padding-top: 0;
+}
+   
 #landing.active {
   display: block;
 }
@@ -599,7 +604,7 @@
 
 #landing .landing-header {
   background: linear-gradient(135deg, #469E92 0%, #3d8a7f 100%);
-  padding: 32px 32px;
+  padding: 36px 32px;
   text-align: center;
   color: white;
   border-radius: 16px 16px 0 0;
@@ -609,7 +614,7 @@
 #landing .landing-logo {
   width: 180px;
   height: auto;
-  margin: 0 auto 12px;
+ margin: 0px auto 12px;
   display: block;
 }
 
