@@ -588,7 +588,10 @@
   display: none;
 }
 
-/* Remove top padding when landing page is active */
+/* Hide step indicator and remove top padding when landing page is active */
+body:has(#landing.active) .steps {
+  display: none;
+}
 .pad:has(#landing.active) {
   padding-top: 0;
 }
