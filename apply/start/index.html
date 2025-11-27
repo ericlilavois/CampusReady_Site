@@ -292,7 +292,7 @@
   <script src="/assets/js/includes.js"></script>
 
 <!-- APPLICATION GATING MODAL -->
-<!-- Add this code before the closing </body> tag in /apply/index.html -->
+<!-- Modal shows countdown before Jan 1, nothing during open period, closed message after May 15 -->
 
 <!-- Modal Overlay -->
 <div id="applicationGateModal" class="gate-modal-overlay">
@@ -304,7 +304,7 @@
       </svg>
     </button>
 
-    <!-- Header -->
+    <!-- Header - changes based on state -->
     <div class="gate-modal-header">
       <div class="gate-icon">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -312,12 +312,17 @@
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
         </svg>
       </div>
-      <h2>Thank You for Your Interest!</h2>
+      <h2 id="gateModalTitle">Thanks for Your Interest!</h2>
+    </div>
+
+    <!-- Body message - shown only when closed -->
+    <div id="gateClosedMessage" class="gate-closed-message" style="display: none;">
+      <p>Applications for the current academic year have closed, but we'd love to support you in the next cycle.</p>
     </div>
 
     <!-- Countdown -->
     <div class="gate-countdown-container">
-      <div class="gate-countdown-label">Applications open in:</div>
+      <div class="gate-countdown-label" id="gateCountdownLabel">Applications open in:</div>
       <div class="gate-countdown" id="gateCountdown">
         <div class="gate-countdown-unit">
           <span class="gate-countdown-value" id="days">000</span>
@@ -336,24 +341,24 @@
           <span class="gate-countdown-label-small">seconds</span>
         </div>
       </div>
-      <div class="gate-opening-date">January 1, 2026 at 12:00 AM PT</div>
+      <div class="gate-opening-date" id="gateOpeningDate">January 1, 2026 at 12:00 AM PT</div>
     </div>
 
     <!-- Action Buttons -->
     <div class="gate-actions">
       <button class="gate-btn gate-btn-primary" onclick="downloadCalendarReminder()">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round"
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-</svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
         Download Calendar Reminder
       </button>
       
       <button class="gate-btn gate-btn-secondary" onclick="showEmailSignup()">
-   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round"
-        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-</svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
         Get Email Notification
       </button>
     </div>
@@ -376,18 +381,17 @@
         </button>
       </form>
       <div id="emailSignupSuccess" class="gate-success-message" style="display: none;">
-        Thank you! We'll notify you when applications open on January 1, 2026.
+        You're on the list. We'll reach out when applications open.
       </div>
     </div>
 
     <!-- Footer Note -->
     <div class="gate-footer-note">
-      <strong>Note:</strong> In our inaugural year (2026), we are accepting applications from Northern California residents only. 
-      We plan to expand regionally and nationally in future years.
+      Questions? Reach us at <a href="mailto:apply@campusready.foundation" style="color: #0d9488; text-decoration: underline;">apply@campusready.foundation</a>
     </div>
   </div>
 </div>
-
+    
 <style>
 /* Modal Overlay */
 .gate-modal-overlay {
@@ -741,6 +745,18 @@
   color: #374151;
 }
 
+/* Closed state message */
+.gate-closed-message {
+  padding: 0 40px 8px;
+  text-align: center;
+}
+
+.gate-closed-message p {
+  color: #374151;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
 /* Mobile Responsive */
 @media (max-width: 640px) {
   .gate-modal-content {
@@ -789,20 +805,91 @@
     padding: 14px 20px;
   }
 }
+  
 </style>
 
 <script>
-// Countdown Timer
+// Application Window Configuration
+// Applications open Jan 1 at 12:00 AM PT and close May 16 at 12:00 AM PT
+const APPLICATION_OPEN_MONTH = 0;  // January (0-indexed)
+const APPLICATION_OPEN_DAY = 1;
+const APPLICATION_CLOSE_MONTH = 4; // May (0-indexed)
+const APPLICATION_CLOSE_DAY = 16;  // May 16 at 12:00 AM = end of May 15
+
 let countdownInterval;
 
-function updateCountdown() {
-  const targetDate = new Date('2026-01-01T00:00:00-08:00'); // PT timezone
+// Determine the application window state
+function getApplicationState() {
   const now = new Date();
-  const diff = targetDate - now;
+  const year = now.getFullYear();
+  
+  // Create dates in PT timezone
+  const openDate = new Date(`${year}-01-01T00:00:00-08:00`);
+  const closeDate = new Date(`${year}-05-16T00:00:00-07:00`); // May is PDT (-07:00)
+  
+  if (now >= openDate && now < closeDate) {
+    return { state: 'open', nextOpenDate: null };
+  } else {
+    // Applications are closed - calculate next Jan 1
+    let nextYear = year;
+    if (now >= closeDate) {
+      nextYear = year + 1;
+    }
+    const nextOpenDate = new Date(`${nextYear}-01-01T00:00:00-08:00`);
+    
+    // Determine if we're before or after the window this year
+    const isClosed = now >= closeDate;
+    
+    return { state: 'closed', nextOpenDate: nextOpenDate, isClosed: isClosed };
+  }
+}
+
+// Update modal content based on state
+function updateModalForState(stateInfo) {
+  const titleEl = document.getElementById('gateModalTitle');
+  const closedMsgEl = document.getElementById('gateClosedMessage');
+  const countdownLabelEl = document.getElementById('gateCountdownLabel');
+  const openingDateEl = document.getElementById('gateOpeningDate');
+  
+  if (stateInfo.state === 'closed' && stateInfo.isClosed) {
+    // After May 15 - show "closed" messaging
+    titleEl.textContent = "We'll Be Back Soon";
+    closedMsgEl.style.display = 'block';
+    countdownLabelEl.textContent = 'Applications reopen in:';
+  } else {
+    // Before Jan 1 - show "opening soon" messaging
+    titleEl.textContent = 'Thank You for Your Interest';
+    closedMsgEl.style.display = 'none';
+    countdownLabelEl.textContent = 'Applications open in:';
+  }
+  
+  // Update the target date display
+  const nextYear = stateInfo.nextOpenDate.getFullYear();
+  openingDateEl.textContent = `January 1, ${nextYear} at 12:00 AM PT`;
+}
+
+function updateCountdown() {
+  const stateInfo = getApplicationState();
+  
+  if (stateInfo.state === 'open') {
+    // This shouldn't happen since we don't show modal when open
+    // But just in case, show a message
+    document.getElementById('gateCountdown').innerHTML = '<div style="font-size: 24px; color: #14b8a6; font-weight: 700;">Applications are now open!</div>';
+    clearInterval(countdownInterval);
+    return;
+  }
+  
+  // Update modal content for current state
+  updateModalForState(stateInfo);
+  
+  const now = new Date();
+  const diff = stateInfo.nextOpenDate - now;
 
   if (diff <= 0) {
     document.getElementById('gateCountdown').innerHTML = '<div style="font-size: 24px; color: #14b8a6; font-weight: 700;">Applications are now open!</div>';
     clearInterval(countdownInterval);
+    // Reload page after a moment to reflect new state
+    setTimeout(() => location.reload(), 2000);
     return;
   }
 
@@ -819,18 +906,32 @@ function updateCountdown() {
 
 // Initialize Modal
 function initApplicationGate() {
-  // Intercept all Apply button/link clicks
+  const stateInfo = getApplicationState();
+  
+  // Intercept Apply button/link clicks
   document.addEventListener('click', function(e) {
     const target = e.target.closest('a[href*="/apply/"], button[onclick*="apply"]');
     if (target && target.getAttribute('href') === '/apply/') {
-      e.preventDefault();
-      openApplicationGate();
+      
+      // Check state at click time (in case it changed)
+      const currentState = getApplicationState();
+      
+      if (currentState.state === 'open') {
+        // Applications are open - let the click through
+        return;
+      } else {
+        // Applications are closed - show modal
+        e.preventDefault();
+        openApplicationGate();
+      }
     }
   });
 
-  // Start countdown
-  updateCountdown();
-  countdownInterval = setInterval(updateCountdown, 1000);
+  // Only start countdown if applications are not open
+  if (stateInfo.state !== 'open') {
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+  }
 }
 
 function openApplicationGate() {
@@ -864,6 +965,9 @@ document.addEventListener('keydown', function(e) {
 
 // Calendar Download
 function downloadCalendarReminder() {
+  const stateInfo = getApplicationState();
+  const targetYear = stateInfo.nextOpenDate ? stateInfo.nextOpenDate.getFullYear() : new Date().getFullYear() + 1;
+  
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Campus Ready Foundation//Application Reminder//EN
@@ -872,8 +976,8 @@ METHOD:PUBLISH
 BEGIN:VEVENT
 UID:campus-ready-application-${Date.now()}@campusready.foundation
 DTSTAMP:${formatICSDate(new Date())}
-DTSTART:20260101T080000Z
-DTEND:20260101T090000Z
+DTSTART:${targetYear}0101T080000Z
+DTEND:${targetYear}0101T090000Z
 SUMMARY:Campus Ready Foundation Applications Open Today!
 DESCRIPTION:Applications for Campus Ready Foundation grants open today. Apply at https://campusready.foundation/apply/\\n\\nThis is your reminder to submit your application for move-in essentials\\, travel support\\, and early-arrival meals.
 LOCATION:https://campusready.foundation/apply/
@@ -901,7 +1005,6 @@ END:VCALENDAR`;
   document.body.removeChild(link);
   URL.revokeObjectURL(link.href);
 }
-
 function formatICSDate(date) {
   return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
 }
