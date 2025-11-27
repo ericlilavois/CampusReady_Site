@@ -56,7 +56,8 @@
     .wrap{max-width:900px; margin:0 auto; padding:16px;}
     
     header{
-      display:flex; 
+      display:flex;
+      position: relative; 
       align-items:center; 
       justify-content:space-between; 
       gap:12px; 
@@ -1185,8 +1186,7 @@ section#section5 .opt:hover {
 :root { --logo-h: 20px; } /* mobile/tablet default */
 .brand { display:flex; align-items:center; gap: clamp(12px, calc(var(--logo-h) * 0.15), 48px); }
 .brand-logo { height: var(--logo-h); width:auto; display:block; }
-.brand-title { margin:0; line-height:1.2; font-size: clamp(1.1rem, 1rem + 0.8vw, 2rem); font-family: 'Playfair Display', serif; }
-/* Desktop: make the logo 4× (40px → 120px) */
+.brand-title { margin:0; line-height:1.2; font-size: clamp(1.1rem, 1rem + 0.8vw, 2rem); font-family: 'Playfair Display', serif; position: absolute; left: 50%; transform: translateX(-50%); }/* Desktop: make the logo 4× (40px → 120px) */
 @media (min-width: 1024px) {
   :root { --logo-h: 160px; }
   header { flex-wrap: nowrap; } /* keep actions from wrapping under the big logo */
