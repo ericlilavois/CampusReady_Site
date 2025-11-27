@@ -2398,10 +2398,11 @@ function validatePhone(input) {
         clearSignature('appSig');
         clearSignature('pgSig');
         
-        // Go to first section
-        document.getElementById('section' + currentSectionIndex).classList.remove('active');
-       currentSectionIndex = 0;
-       document.getElementById('section0').classList.add('active');
+     // Go to first section
+document.getElementById('section' + currentSectionIndex).classList.remove('active');
+document.getElementById('landing').classList.remove('active');
+currentSectionIndex = 0;
+document.getElementById('section0').classList.add('active');
         
         // Set today's date again
         document.getElementById('today').valueAsDate = new Date();
