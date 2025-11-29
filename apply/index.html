@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -518,8 +517,7 @@
   .field-error { display: none; color: var(--danger); font-size: 0.85rem; margin-top: 6px; font-weight: 500; }
   .field-error.show { display: block; }
 
-  .ssn-toggle { margin-left: 8px; font-size: 0.85rem; padding: 4px 8px; border: 1px solid #cbd5e1; border-radius: 8px; background: #f8fafc; cursor: pointer; }
-  .ssn-toggle:focus { outline: none; box-shadow: 0 0 0 3px rgba(59,130,246,.25); }
+
 
 </style>
 <style>
@@ -564,9 +562,7 @@
 }
 </style><style>
 /* Scoped alignment reset for specific fields only */
-#student_ssn, #household_members, #household_income { text-align: left; }
-</style><style>
-#student_ssn, #household_members, #household_income { text-align: left; }
+#household_members, #household_income { text-align: left; }
 </style><style>
 /* Scoped Student Tab row tweaks */
 .name-gender-dob,
@@ -832,7 +828,7 @@ body:has(#landing.active) header {
 .row-address-phone,
 .row-college-start,
 .row-city-email,
-.row-ssn-income {
+.row-income {
   grid-column: 1 / -1;
   display: grid;
   gap: var(--gap-md);
@@ -841,14 +837,14 @@ body:has(#landing.active) header {
 .row-address-phone { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .row-college-start { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .row-city-email { grid-template-columns: 1fr; }
-.row-ssn-income { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
-.name-gender-dob > *, .row-address-phone > *, .row-college-start > *, .row-city-email > *, .row-ssn-income > * { min-width: 0; }
+.row-income { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; }
+.name-gender-dob > *, .row-address-phone > *, .row-college-start > *, .row-city-email > *, .row-income > * { min-width: 0; }
 @media (max-width: 640px) {
   .name-gender-dob,
   .row-address-phone,
   .row-college-start,
   .row-city-email,
-  .row-ssn-income { grid-template-columns: 1fr; }
+  .row-income { grid-template-columns: 1fr; }
 }
 </style><style>
 </style><style>
@@ -860,7 +856,7 @@ body:has(#landing.active) header {
 #section1 .row-address-phone,
 #section1 .row-city-email,
 #section1 .row-college-start,
-#section1 .row-ssn-income { gap: 12px; }
+#section1 .row-income { gap: 12px; }
 
 /* Optional guard: when wrappers stack on small screens, add a bit more vertical spacing */
 @media (max-width: 640px) {
@@ -869,17 +865,17 @@ body:has(#landing.active) header {
   #section1 .row-address-phone,
   #section1 .row-city-email,
   #section1 .row-college-start,
-  #section1 .row-ssn-income { gap: 14px; }
+  #section1 .row-income { gap: 14px; }
 }
 </style><style>
 /* Scoped: align bottoms in Student tab rows for consistent horizontal alignment */
 #section1 .row-city-email .addr-row { align-items: end; }
-#section1 .row-ssn-income { align-items: end; }
-#section1 .row-ssn-income > * { align-self: end; }
+#section1 .row-income { align-items: end; }
+#section1 .row-income > * { align-self: end; }
 </style><style>
-/* Scoped override: snap SSN + Income to same line */
-#section1 .row-ssn-income { align-items: start !important; }
-#section1 .row-ssn-income > * { align-self: start !important; }
+/* Scoped override: snap Income fields to same line */
+#section1 .row-income { align-items: start !important; }
+#section1 .row-income > * { align-self: start !important; }
 </style><style id="brand-colors-sync">
 /* === Brand color sync (from landing page) === */
 :root {
@@ -1027,7 +1023,7 @@ a:hover { color: var(--brand-800); }
   border-color: rgba(var(--brand-500-rgb), .14);
 }
 
-/* === B) Option 1 — soften internal grids with neutral wash === */
+/* === B) Option 1 â€” soften internal grids with neutral wash === */
 .section .grid {
   background: linear-gradient(to bottom right, var(--accent-50), #fff);
   border: 1px solid var(--accent-200);
@@ -1088,7 +1084,7 @@ section#section5 .opt:hover {
   color: var(--brand-800);
 }
 </style><style id="header-brand-900">
-/* Brand-900 headers for sections 1–5 only */
+/* Brand-900 headers for sections 1â€“5 only */
 .wrap .card .pad section#section1.active > .grid h2,
 .wrap .card .pad section#section1.active > .grid h3,
 .wrap .card .pad section#section2.active > .grid h2,
@@ -1102,7 +1098,7 @@ section#section5 .opt:hover {
   color: var(--brand-900);
 }
 </style><style id="section-headers-brand900-exact">
-/* Exact targets: top H2 titles for Eligibility + Sections 1–5 */
+/* Exact targets: top H2 titles for Eligibility + Sections 1â€“5 */
 .wrap .card .pad section#section0 > h2,
 .wrap .card .pad section#section1 > h2,
 .wrap .card .pad section#section2 > h2,
@@ -1121,7 +1117,7 @@ section#section5 .opt:hover {
   #section1 label[for="student_phone"] { white-space: nowrap; }
 }
 
-/* Make sure the input uses the full width it’s given */
+/* Make sure the input uses the full width itâ€™s given */
 #section1 #student_phone { width: 100%; }
 </style>
    <style>
@@ -1144,7 +1140,7 @@ section#section5 .opt:hover {
 </style>
    <style id="row-city-phone-final">
 /* Inner split: left = City/State/ZIP, right = Phone */
-/* City / State / ZIP  |  Phone — match DOB width */
+/* City / State / ZIP  |  Phone â€” match DOB width */
 #section1 .row-city-email .two-col {
   display: grid;
   grid-template-columns: 1.7fr 1fr;  /* tweak 1.7 if you need a hair left/right */
@@ -1160,11 +1156,11 @@ section#section5 .opt:hover {
   #section1 label[for="student_phone"] { white-space: nowrap; }
 }
 
-/* Let the input take all the space it’s given */
+/* Let the input take all the space itâ€™s given */
 #section1 #student_phone { width: 100%; }
 </style>
    <style id="phone-matches-dob">
-/* City/State/ZIP (left) : Phone (right) — match DOB width */
+/* City/State/ZIP (left) : Phone (right) â€” match DOB width */
 #section1 .row-city-email .two-col {
   display: grid;
   grid-template-columns: 1.8fr 1fr; /* Phone = DOB width */
@@ -1191,7 +1187,7 @@ section#section5 .opt:hover {
   .brand { flex-wrap: wrap; }
   .brand-title { position: static; left: auto; transform: none; width: 100%; text-align: center; margin-left: 0; }
 }
-/* Desktop: make the logo 4× (40px → 120px) */
+/* Desktop: make the logo 4Ã— (40px â†’ 120px) */
 @media (min-width: 1024px) {
   :root { --logo-h: 160px; }
   header { flex-wrap: nowrap; } /* keep actions from wrapping under the big logo */
@@ -1269,7 +1265,6 @@ section#section5 .opt:hover {
 
         <div class="landing-checklist">
           <ul>
-            <li>Social Security Numbers (yours and your parent or guardian's)</li>
             <li>Your individual annual income (from jobs, wages, or tips)</li>
             <li>Total household income and number of people in your household</li>
             <li>FAFSA completion status and your SAI (Student Aid Index), if completed</li>
@@ -1460,12 +1455,9 @@ section#section5 .opt:hover {
     </div>
   </div>
 </div>
-<div class="row-ssn-income"><div class="field"><label class="req" for="student_ssn">Social Security Number</label>
-<input autocapitalize="off" autocomplete="off" autocorrect="off" id="student_ssn" name="student_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/></div><div class="field"><label class="req" for="student_income">Your Individual Annual Income</label>
+<div class="row-income"><div class="field"><label class="req" for="student_income">Your Individual Annual Income</label>
 <input id="student_income" name="student_income" oninput="formatIncome(this); autoSave()" placeholder="Enter amount (no $ or commas needed)" required="" type="text" inputmode="numeric"/>
-   <div class="hint" style="margin-top: 6px;">Enter only your personal income from jobs, wages, or tips. Do not include parents' income, allowances, or gifts.</div></div><div style="grid-column: 1 / -1">
-<div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
-</div></div>
+   <div class="hint" style="margin-top: 6px;">Enter only your personal income from jobs, wages, or tips. Do not include parents' income, allowances, or gifts.</div></div></div>
 <div>
 </div><div class="row-college-start"><div>
 <label class="req" for="college">College You Will Attend</label>
@@ -1533,12 +1525,6 @@ section#section5 .opt:hover {
 <input autocomplete="postal-code" id="pg_zip" inputmode="numeric" name="pg_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div></div><div class="field"><label class="req" for="pg_email">Email</label>
 <input autocomplete="email" id="pg_email" name="pg_email" oninput="autoSave()" required="" style="width: 100%" type="email"/>
 <div class="email-error" id="pg_email_error">Please enter a valid email address with a recognized domain.</div></div></div>
-</div>
-<div>
-</div>
-<div style="grid-column: 1">
-<label class="req" for="pg_ssn">Social Security Number</label><div class="hint" style="margin-top:4px">For your security, this field is not saved in your browser. If you resume later, you will need to re-enter it.</div>
-<input autocapitalize="off" autocomplete="off" autocorrect="off" id="pg_ssn" name="pg_ssn" oninput="formatSSN(this); autoSave()" placeholder="123-45-6789" required="" spellcheck="false" style="text-align: left !important" type="text"/>
 </div>
 <div>
 </div>
@@ -1653,12 +1639,12 @@ section#section5 .opt:hover {
 <h2>Essays</h2><p aria-live="polite" class="step-subline">Step 5 of 6</p>
 <div class="grid">
 <div>
-<label class="req" for="essay1">Essay 1 — Why is this award meaningful to you?</label>
+<label class="req" for="essay1">Essay 1 â€” Why is this award meaningful to you?</label>
 <textarea id="essay1" name="essay1" oninput="updateWordCount(); autoSave()" required=""></textarea>
 <div class="counter" id="essay1Counter">0 words</div>
 </div>
 <div>
-<label class="req" for="essay2">Essay #2 — Describe a challenge you experienced in applying and/or preparing for college (200–500 words).</label>
+<label class="req" for="essay2">Essay #2 â€” Describe a challenge you experienced in applying and/or preparing for college (200â€“500 words).</label>
 <textarea data-maxwords="500" data-minwords="200" id="essay2" name="essay2" oninput="updateWordCount(); autoSave()" required=""></textarea>
 <div class="counter" id="essay2Counter">0 / 200-500 words</div>
 </div>
@@ -1733,7 +1719,6 @@ section#section5 .opt:hover {
           Click to copy resume link
         </div>
 <p><strong>Important:</strong> Bookmark this link or save it somewhere safe. You'll need it to return to your application.</p>
-<p><strong>Security Notice:</strong> For your protection, Social Security Numbers are not saved when you exit. You will need to re-enter SSN fields when you resume.</p>
 <p>Your form data is also saved locally on this device, so you can return to this page directly if using the same browser.</p>
 <div class="modal-actions">
 <button class="btn" onclick="closeModal()" type="button">Continue Working</button>
@@ -2151,20 +2136,6 @@ function validatePhone(input) {
   
   input.value = formatted;
 }
-    function formatSSN(input) {
-      var value = input.value.replace(/\D/g, '').slice(0, 9);
-      var formatted = '';
-      
-      if (value.length > 5) {
-        formatted = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5);
-      } else if (value.length > 3) {
-        formatted = value.slice(0, 3) + '-' + value.slice(3);
-      } else {
-        formatted = value;
-      }
-      
-      input.value = formatted;
-    }
 
     // FAFSA toggle
     function toggleSAI(show) {
@@ -2222,7 +2193,6 @@ function validatePhone(input) {
         for (var i = 0; i < inputs.length; i++) {
           var input = inputs[i];
           if (input.name) {
-          if (input.name === 'student_ssn' || input.name === 'pg_ssn') { continue; }
             if (input.type === 'radio') {
               if (input.checked) {
                 formData[input.name] = input.value;
@@ -2262,7 +2232,7 @@ function validatePhone(input) {
           
           // Restore form data
           for (var name in data) {
-        if (name === 'student_ssn' || name === 'pg_ssn' || name === 'applicantSignature' || name === 'guardianSignature') { continue; }
+        if (name === 'applicantSignature' || name === 'guardianSignature') { continue; }
             var elements = document.querySelectorAll('[name="' + name + '"]');
             for (var i = 0; i < elements.length; i++) {
               var element = elements[i];
@@ -2516,7 +2486,7 @@ document.getElementById('section0').classList.add('active');
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
 
-        signaturePads[canvasId].hasInk = true;  // ← add this
+        signaturePads[canvasId].hasInk = true;  // â† add this
 
         
         lastX = pos.x;
@@ -2548,7 +2518,7 @@ signaturePads[canvasId] = {
         // Redraw background
         ctx.fillStyle = 'rgba(2,6,23,.4)';
         ctx.fillRect(0, 0, pad.canvas.width, pad.canvas.height);
-        pad.hasInk = false;  // ← add this 
+        pad.hasInk = false;  // â† add this 
       }
     }
 
@@ -2585,8 +2555,6 @@ signaturePads[canvasId] = {
       try {
         if (!obj || typeof obj !== 'object') return obj;
         const copy = JSON.parse(JSON.stringify(obj));
-        delete copy.student_ssn;
-        delete copy.pg_ssn;
         delete copy.applicantSignature;
         delete copy.guardianSignature;
         return copy;
@@ -2595,102 +2563,6 @@ signaturePads[canvasId] = {
       }
     }
     
-    // === SSN validation + toggle (non-intrusive) ===
-    (function(){
-      function digitsOnly(s){ return String(s||'').replace(/\D/g, ''); }
-
-      // Use existing formatSSN if defined, else fallback
-      var _formatSSN = (typeof formatSSN === 'function') ? formatSSN : function(el){
-        var d = digitsOnly(el.value).slice(0,9);
-        var out = d;
-        if (d.length > 5) out = d.slice(0,3)+'-'+d.slice(3,5)+'-'+d.slice(5);
-        else if (d.length > 3) out = d.slice(0,3)+'-'+d.slice(3);
-        el.value = out;
-      };
-
-      function isValidSSN(str){
-        var m = /^(\d{3})-(\d{2})-(\d{4})$/.exec(String(str||'').trim());
-        if (!m) return false;
-        var a=m[1], b=m[2], c=m[3];
-        if (a==='000'||b==='00'||c==='0000') return false;
-        if (a==='666') return false;
-        if (a[0]==='9') return false;
-        return true;
-      }
-
-      function validateSSN(el){
-        if (!el) return false;
-        var val = String(el.value||'').trim();
-        var err = document.getElementById(el.id + '_error');
-        if (!val || !isValidSSN(val)){
-          el.classList.add('invalid');
-          if (err) err.classList.add('show');
-          return false;
-        }
-        el.classList.remove('invalid');
-        if (err) err.classList.remove('show');
-        return true;
-      }
-
-      function ensureErrorEl(el){
-        var id = el.id + '_error';
-        var existing = document.getElementById(id);
-        if (existing) return existing;
-        var div = document.createElement('div');
-        div.id = id;
-        div.className = 'field-error';
-        div.setAttribute('role','alert');
-        div.textContent = 'Enter a 9-digit SSN in the format 123-45-6789.';
-        el.parentNode.insertBefore(div, el.nextSibling);
-        return div;
-      }
-
-      function ensureToggle(el){
-        // create a Show/Hide button right after the input if not present
-        var next = el.nextElementSibling;
-        if (next && next.classList && next.classList.contains('ssn-toggle')) return next;
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'ssn-toggle';
-        btn.setAttribute('aria-label', 'Toggle visibility');
-        btn.textContent = (el.type === 'password') ? 'Hide' : 'Show';
-        btn.addEventListener('click', function(){
-          if (el.type === 'password'){ el.type = 'text'; btn.textContent = 'Hide'; }
-          else { el.type = 'password'; btn.textContent = 'Show'; }
-          try { el.focus(); } catch(e){}
-        });
-        el.parentNode.insertBefore(btn, el.nextSibling);
-        return btn;
-      }
-
-      ['student_ssn','pg_ssn'].forEach(function(id){
-        var el = document.getElementById(id);
-        if (!el) return;
-        // Ensure listeners
-        el.addEventListener('input', function(){ _formatSSN(el); validateSSN(el); });
-        el.addEventListener('blur', function(){ validateSSN(el); });
-        el.addEventListener('paste', function(){ setTimeout(function(){ _formatSSN(el); validateSSN(el); }, 0); });
-
-        // Ensure error element and toggle exist
-        ensureErrorEl(el);
-        ensureToggle(el);
-
-        // Initial state: mark invalid until valid input
-        validateSSN(el);
-      });
-
-      // Hook submit guard without disturbing other logic
-      var _submitApp = (typeof submitApplication === 'function') ? submitApplication : null;
-      if (_submitApp){
-        window.submitApplication = function(){
-          var f1 = document.getElementById('student_ssn');
-          var f2 = document.getElementById('pg_ssn');
-          if (f1 && !validateSSN(f1)) { try{ f1.focus(); }catch(e){}; showToast('Please correct the SSN field before continuing.'); return; }
-          if (f2 && !validateSSN(f2)) { try{ f2.focus(); }catch(e){}; showToast('Please correct the SSN field before continuing.'); return; }
-          return _submitApp.apply(this, arguments);
-        };
-      }
-    })();
 function submitApplication() {
       console.log('Submitting application...');
    // Show progress bar
@@ -2928,116 +2800,6 @@ window.addEventListener('resize', () => {
     }
   } catch(e){ /* no-op */ }
 });
-</script>
-<script>
-// Minimal SSN masking + 'dirty' validation (no other features changed)
-(function SSN_ONLY_PATCH(){
-  function digitsOnly(s){ return String(s||'').replace(/\D/g, ''); }
-  function isValidSSN(str){
-    var m = /^(\d{3})-(\d{2})-(\d{4})$/.exec(String(str||'').trim());
-    if (!m) return false;
-    var a=m[1], b=m[2], c=m[3];
-    if (a==='000'||b==='00'||c==='0000') return false;
-    if (a==='666') return false;
-    if (a[0]==='9') return false;
-    return true;
-  }
-  function ensureErrorEl(el){
-    var id = el.id + '_error';
-    var exists = document.getElementById(id);
-    if (exists) return exists;
-    var div = document.createElement('div');
-    div.id = id;
-    div.className = 'field-error';
-    div.setAttribute('role','alert');
-    div.textContent = 'Enter a 9-digit SSN in the format 123-45-6789.';
-    el.parentNode.insertBefore(div, el.nextSibling);
-    return div;
-  }
-  function setNeutral(el){
-    el.classList.remove('invalid');
-    var err = document.getElementById(el.id + '_error');
-    if (err) err.classList.remove('show');
-  }
-  function formatSSN(el){
-    var d = digitsOnly(el.value).slice(0,9);
-    if (d.length > 5) el.value = d.slice(0,3)+'-'+d.slice(3,5)+'-'+d.slice(5);
-    else if (d.length > 3) el.value = d.slice(0,3)+'-'+d.slice(3);
-    else el.value = d;
-  }
-  function validateSSN(el, opts){ // opts = {force:boolean}
-    opts = opts || {};
-    var val = (el.value||'').trim();
-    var dirty = el.dataset.dirty === '1';
-    var err = document.getElementById(el.id + '_error');
-    if (!opts.force && !dirty && val === '') { setNeutral(el); return true; } // neutral until touched
-    if (!isValidSSN(val)) { el.classList.add('invalid'); if (err) err.classList.add('show'); return false; }
-    el.classList.remove('invalid'); if (err) err.classList.remove('show'); return true;
-  }
-  function ensureToggle(el){
-    // Create a Show/Hide button if not present, default hidden (password)
-    var next = el.nextElementSibling;
-    if (next && next.classList && next.classList.contains('ssn-toggle')) return next;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'ssn-toggle';
-    btn.setAttribute('aria-label', 'Toggle visibility');
-    btn.setAttribute('aria-controls', el.id || '');
-    btn.setAttribute('aria-pressed', 'false');
-    btn.textContent = 'Show';
-    btn.addEventListener('click', function(){
-      var start = el.selectionStart, end = el.selectionEnd;
-      var showing = (el.type === 'text');
-      el.type = showing ? 'password' : 'text';
-      try { if (start != null && end != null) el.setSelectionRange(start, end); } catch(e){}
-      btn.textContent = (el.type === 'password') ? 'Show' : 'Hide';
-      btn.setAttribute('aria-pressed', (el.type === 'text') ? 'true' : 'false');
-      try { el.focus(); } catch(e){}
-    });
-    el.parentNode.insertBefore(btn, el.nextSibling);
-    return btn;
-  }
-  function attach(id){
-    var el = document.getElementById(id);
-    if (!el) return;
-    // Privacy defaults: masked + no autofill hints
-    try { el.setAttribute('type','password'); } catch(e){}
-    try { el.setAttribute('autocomplete','off'); el.setAttribute('autocapitalize','off'); el.setAttribute('autocorrect','off'); el.setAttribute('spellcheck','false'); } catch(e){}
-    el.dataset.dirty = '0'; // untouched
-    ensureErrorEl(el);
-    ensureToggle(el);
-    setNeutral(el); // neutral on load
-    el.addEventListener('input', function(){
-      el.dataset.dirty='1';
-      formatSSN(el);
-      validateSSN(el, {force:false});
-    });
-    el.addEventListener('paste', function(){
-      setTimeout(function(){
-        el.dataset.dirty='1';
-        formatSSN(el);
-        validateSSN(el, {force:false});
-      }, 0);
-    });
-    el.addEventListener('blur', function(){
-      validateSSN(el, {force:false}); // neutral if never typed
-    });
-  }
-  ['student_ssn','pg_ssn'].forEach(attach);
-
-  // Submit guard: force validation if fields exist, then defer to original handler
-  var _submit = (typeof window.submitApplication === 'function') && window.submitApplication;
-  if (_submit && !window.__ssn_guard_wrapped__){
-    window.__ssn_guard_wrapped__ = true;
-    window.submitApplication = function(){
-      var f1 = document.getElementById('student_ssn');
-      var f2 = document.getElementById('pg_ssn');
-      if (f1 && !validateSSN(f1, {force:true})) { try{ f1.focus(); }catch(e){}; if (typeof showToast==='function') showToast('Please correct the Student SSN.'); return; }
-      if (f2 && !validateSSN(f2, {force:true})) { try{ f2.focus(); }catch(e){}; if (typeof showToast==='function') showToast('Please correct the Parent/Guardian SSN.'); return; }
-      return _submit.apply(this, arguments);
-    };
-  }
-})();
 </script>
 <script>
 // Minimal EMAIL validator with neutral/dirty behavior; does not change layout or other logic
@@ -3353,7 +3115,7 @@ window.addEventListener('resize', () => {
         }
       }).catch(function(err){
         var s = ensureStatus();
-        s.textContent = "Couldn't verify ZIP right now — validating format only.";
+        s.textContent = "Couldn't verify ZIP right now â€” validating format only.";
         s.classList.add('show');
         // On lookup failure, do nothing; keep validation based on format only
       });
@@ -3498,7 +3260,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form) {
     form.addEventListener('submit', () => {
       scopeRequiredToActive('all');
-      // Let the browser’s native validation run on the full form here
+      // Let the browserâ€™s native validation run on the full form here
     });
   }
 });
@@ -3507,7 +3269,7 @@ window.debugInvalid = () => {
   const all = document.querySelectorAll('#appForm input, #appForm select, #appForm textarea');
   for (const el of all) {
     if (!el.checkValidity()) {
-      console.warn('Invalid field:', el.name || el.id, '→', el.validationMessage, el);
+      console.warn('Invalid field:', el.name || el.id, 'â†’', el.validationMessage, el);
       if (el.scrollIntoView) el.scrollIntoView({ behavior:'smooth', block:'center' });
       if (el.focus) el.focus();
       break;
