@@ -1740,7 +1740,7 @@ window.onload = function() {
   console.log('App starting...');
   
   // Check if user has already seen landing page
-  const hasSeenLanding = localStorage.getItem('campusReadyLandingSeen');
+  const hasSeenLanding = sessionStorage.getItem('campusReadyLandingSeen');
   const urlParams = new URLSearchParams(window.location.search);
   const isResuming = urlParams.get('resume');
   
@@ -1831,7 +1831,7 @@ function startApplication() {
   console.log('Starting application from landing page...');
   
   // Set flag that user has seen landing page
-  localStorage.setItem('campusReadyLandingSeen', 'true');
+  sessionStorage.setItem('campusReadyLandingSeen', 'true');
   
   // Hide landing page
   document.getElementById('landing').classList.remove('active');
