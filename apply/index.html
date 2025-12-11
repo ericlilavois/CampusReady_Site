@@ -2263,8 +2263,8 @@ function validatePhone(input) {
           toggleOtherConcern(otherConcernChecked);
         }
         
-        // Restore section
-        if (savedSection) {
+       // Restore section - but only if not showing landing page
+        if (savedSection && currentSectionIndex !== -1) {
           var section = parseInt(savedSection);
           if (section >= 0 && section < 6) {
             // Hide current section
