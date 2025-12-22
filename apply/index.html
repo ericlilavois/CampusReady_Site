@@ -1274,15 +1274,6 @@ section#section5 .opt:hover {
         </div>
       </div>
 
-      <div class="landing-notice">
-        <div class="landing-notice-title">
-          Important: Parent/Guardian Signature Required
-        </div>
-        <p>
-          If you're under 18 years old, you'll need a parent or guardian available to review and sign the application with you at the final step. Please make sure they're nearby before you begin.
-        </p>
-      </div>
-
       <div class="landing-confirmation">
 <div class="landing-checkbox-wrapper">
    <input type="checkbox" id="landingReadyCheck" onchange="toggleBeginButton()">
@@ -1522,8 +1513,8 @@ section#section5 .opt:hover {
 <div class="two-col" style="grid-template-columns: 1fr 1.5fr"><div class="addr-row"><div class="field city"><label for="pg_city_name">City</label>
 <input autocomplete="address-level2" id="pg_city_name" name="pg_city_name" oninput="autoSave()" required="" type="text"/></div><div class="field state"><label for="pg_state">State</label>
 <select autocomplete="address-level1" id="pg_state" name="pg_state" onchange="autoSave()" required=""><option disabled="" selected="" value="">Select state</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option><option value="AS">AS</option><option value="GU">GU</option><option value="MP">MP</option><option value="PR">PR</option><option value="VI">VI</option><option value="AA">AA</option><option value="AE">AE</option><option value="AP">AP</option></select></div><div class="field zip"><label for="pg_zip">ZIP Code</label>
-<input autocomplete="postal-code" id="pg_zip" inputmode="numeric" name="pg_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div></div><div class="field"><label class="req" for="pg_email">Email</label>
-<input autocomplete="email" id="pg_email" name="pg_email" oninput="autoSave()" required="" style="width: 100%" type="email"/>
+<input autocomplete="postal-code" id="pg_zip" inputmode="numeric" name="pg_zip" oninput="autoSave()" placeholder="12345 or 12345-6789" required="" type="text"/></div></div><div class="field"><label for="pg_email">Email (optional)</label>
+<input autocomplete="email" id="pg_email" name="pg_email" oninput="autoSave()" style="width: 100%" type="email"/>
 <div class="email-error" id="pg_email_error">Please enter a valid email address with a recognized domain.</div></div></div>
 </div>
 <div>
@@ -1686,21 +1677,6 @@ section#section5 .opt:hover {
 </div>
 <div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in your browser. If you resume later, you will need to sign again.</div>
 <canvas class="sig-pad" id="appSig"></canvas>
-</div>
-</div>
-<div id="guardianSigBlock">
-<label>Parent/Guardian Signature</label>
-   <div class="field">
-  <label for="guardian_typed_name">Type Your Full Legal Name</label>
-<input id="guardian_typed_name" name="guardian_typed_name" type="text" oninput="autoSave(); validateSignatureName('guardian')">
-</div>
-<div class="sig-wrap">
-<div class="sig-tools">
-<button class="btn small" onclick="clearSignature('pgSig')" type="button">Clear</button>
-<span class="hint">Sign with finger/mouse</span>
-</div>
-<div class="hint" style="margin:6px 0 4px">For your security, your signature is not saved in your browser. If you resume later, you will need to sign again.</div>
-<canvas class="sig-pad" id="pgSig"></canvas>
 </div>
 </div>
 </div>
@@ -2368,7 +2344,6 @@ function validatePhone(input) {
         
         // Clear signatures
         clearSignature('appSig');
-        clearSignature('pgSig');
         
      // Go to first section
 document.getElementById('section' + currentSectionIndex).classList.remove('active');
@@ -2397,7 +2372,6 @@ document.getElementById('section0').classList.add('active');
     // Signature pads
     function setupSignatures() {
       setupSignaturePad('appSig');
-      setupSignaturePad('pgSig');
     }
 
     function setupSignaturePad(canvasId) {
@@ -2633,38 +2607,6 @@ if (!appPad || !appPad.hasInk) {
   return;
 }
 
-// Guardian required only if that block is visible (under 18)
-// Guardian required only if applicant is under 18 (based on DOB)
-var needsGuardian = (function(){
-  var dobEl = document.getElementById('student_dob');
-  if (!dobEl || !dobEl.value) return false;
-  var dob = new Date(dobEl.value);
-  if (isNaN(dob)) return false;
-  var today = new Date();
-  var age = today.getFullYear() - dob.getFullYear();
-  var m = today.getMonth() - dob.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-  return age < 18;
-})();
-
-if (needsGuardian) {
-  // Guardian typed name required
-  var gTyped = document.getElementById('guardian_typed_name');
-  if (!gTyped || !gTyped.value.trim()) {
-    alert('Please type the Parent/Guardian full legal name.');
-    goToSection(5);
-    if (gTyped && gTyped.focus) setTimeout(() => gTyped.focus(), 200);
-    return;
-  }
-
-  // Guardian must draw on the canvas
-  var gPad = signaturePads && signaturePads['pgSig'];
-  if (!gPad || !gPad.hasInk) {
-    alert('Please draw the Parent/Guardian signature in the box.');
-    goToSection(5);
-    return;
-  }
-}
 // === END SIGNATURE GUARD ===
 
       // Save final data
@@ -2692,14 +2634,10 @@ if (needsGuardian) {
         }
       }
       
-      // Add signature data
+  // Add signature data
       var appSig = document.getElementById('appSig');
-      var pgSig = document.getElementById('pgSig');
       if (appSig) {
         formData.applicantSignature = appSig.toDataURL();
-      }
-      if (pgSig) {
-        formData.guardianSignature = pgSig.toDataURL();
       }
       
       // Add submission metadata
@@ -3291,52 +3229,6 @@ window.debugInvalid = () => {
       return _fetch.call(this, resource, init);
     };
   })();
-</script>
-   <script>
-(function(){
-  function getAge(dobStr){
-    const dob = new Date(dobStr);
-    if (isNaN(dob)) return null;
-    const today = new Date();
-    let age = today.getFullYear() - dob.getFullYear();
-    const m = today.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-    return age;
-  }
-
-  function toggleGuardianSignatureByAge(){
-    var dobEl = document.getElementById('student_dob');
-    var block = document.getElementById('guardianSigBlock'); // you added this id in 4(A)
-    var nameEl = document.getElementById('guardian_typed_name');
-
-    if (!dobEl || !block) return;
-
-    var age = getAge(dobEl.value);
-    var needsGuardian = (age !== null && age < 18);
-
-    // show/hide the whole guardian block
-    block.style.display = needsGuardian ? '' : 'none';
-
-    // make typed name required only if under 18
-    if (nameEl) {
-      nameEl.required = needsGuardian;
-      if (!needsGuardian) { nameEl.value = ''; }
-    }
-  }
-
-  // expose for reuse if needed
-  window.toggleGuardianSignatureByAge = toggleGuardianSignatureByAge;
-
-  // run on load (helps when resuming a saved form)
-  window.addEventListener('load', toggleGuardianSignatureByAge);
-
-  // re-check when DOB changes
-  document.addEventListener('input', function(e){
-    if (e && e.target && e.target.id === 'student_dob') {
-      toggleGuardianSignatureByAge();
-    }
-  });
-})();
 </script>
 
 <script>
