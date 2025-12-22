@@ -1630,6 +1630,7 @@ section#section5 .opt:hover {
 <!-- SECTION 4: Essays -->
 <section id="section4">
 <h2>Essays</h2><p aria-live="polite" class="step-subline">Step 5 of 6</p>
+<p class="hint">Please answer both questions thoughtfully. Essay 1 should be 200–300 words; Essay 2 should be 200–500 words. The word counts update as you type.</p>
 <div class="grid">
 <div>
 <label class="req" for="essay1">Essay 1 - Why is this award meaningful to you?</label>
@@ -2148,7 +2149,12 @@ function validatePhone(input) {
       
       if (essay1 && counter1) {
         var count1 = countWords(essay1.value);
-        counter1.textContent = count1 + ' words';
+        counter1.textContent = count1 + ' / 200-300 words';
+if (count1 >= 200 && count1 <= 300) {
+  counter1.style.color = 'var(--ok)';
+} else {
+  counter1.style.color = 'var(--danger)';
+   }
       }
       
       if (essay2 && counter2) {
