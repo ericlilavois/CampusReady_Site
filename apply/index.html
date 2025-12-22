@@ -1630,17 +1630,17 @@ section#section5 .opt:hover {
 <!-- SECTION 4: Essays -->
 <section id="section4">
 <h2>Essays</h2><p aria-live="polite" class="step-subline">Step 5 of 6</p>
-<p class="hint">Please answer both questions thoughtfully. Essay 1 should be 200–300 words; Essay 2 should be 200–500 words. The word counts update as you type.</p>
+<p class="hint">Please answer both questions thoughtfully. Essay 1 should be 200–300 words; Essay 2 should be 200–500 words.</p>
 <div class="grid">
 <div>
 <label class="req" for="essay1">Essay 1 - Why is this award meaningful to you?</label>
 <textarea id="essay1" name="essay1" oninput="updateWordCount(); autoSave()" required=""></textarea>
-<div class="counter" id="essay1Counter">0 / 200-300  words</div>
+<div class="counter" id="essay1Counter">0 / (200-300)</div>
 </div>
 <div>
 <label class="req" for="essay2">Essay #2 - Describe a challenge you experienced in applying and/or preparing for college.</label>
 <textarea data-maxwords="500" data-minwords="200" id="essay2" name="essay2" oninput="updateWordCount(); autoSave()" required=""></textarea>
-<div class="counter" id="essay2Counter">0 / 200-500 words</div>
+<div class="counter" id="essay2Counter">0 / (200-500)</div>
 </div>
 </div>
 <div class="section-actions">
@@ -2141,32 +2141,32 @@ function validatePhone(input) {
       return text.trim().split(/\s+/).length;
     }
 
-    function updateWordCount() {
-      var essay1 = document.getElementById('essay1');
-      var essay2 = document.getElementById('essay2');
-      var counter1 = document.getElementById('essay1Counter');
-      var counter2 = document.getElementById('essay2Counter');
-      
-      if (essay1 && counter1) {
-        var count1 = countWords(essay1.value);
-        counter1.textContent = count1 + ' / 200-300 words';
-if (count1 >= 200 && count1 <= 300) {
-  counter1.style.color = 'var(--ok)';
-} else {
-  counter1.style.color = 'var(--danger)';
-   }
-      }
-      
-      if (essay2 && counter2) {
-        var count2 = countWords(essay2.value);
-        counter2.textContent = count2 + ' / 200-500 words';
-        if (count2 >= 200 && count2 <= 500) {
-          counter2.style.color = 'var(--ok)';
-        } else {
-          counter2.style.color = 'var(--danger)';
-        }
-      }
+   function updateWordCount() {
+  var essay1 = document.getElementById('essay1');
+  var essay2 = document.getElementById('essay2');
+  var counter1 = document.getElementById('essay1Counter');
+  var counter2 = document.getElementById('essay2Counter');
+  
+  if (essay1 && counter1) {
+    var count1 = countWords(essay1.value);
+    counter1.textContent = count1 + ' words (200–300)';
+    if (count1 >= 200 && count1 <= 300) {
+      counter1.style.color = 'var(--ok)';
+    } else {
+      counter1.style.color = 'var(--danger)';
     }
+  }
+  
+  if (essay2 && counter2) {
+    var count2 = countWords(essay2.value);
+    counter2.textContent = count2 + ' words (200–500)';
+    if (count2 >= 200 && count2 <= 500) {
+      counter2.style.color = 'var(--ok)';
+    } else {
+      counter2.style.color = 'var(--danger)';
+    }
+  }
+}
 
     // Enhanced data persistence
     function autoSave() {
