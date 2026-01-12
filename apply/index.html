@@ -12,6 +12,7 @@
   gtag('js', new Date());
 
   gtag('config', 'G-C6B2GRMESL');
+  gtag('config', 'AW-17798681592');
 </script>
 <title>Grant Application</title>
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
@@ -3315,6 +3316,23 @@ function validateSignatureName(type) {
   }
 }
 </script>
+<script>
+// Capture gclid from URL for Google Ads conversion tracking
+(function() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var gclid = urlParams.get('gclid');
+  if (gclid) {
+    var form = document.getElementById('appForm');
+    if (form) {
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'gclid';
+      input.value = gclid;
+      form.appendChild(input);
+    }
+  }
+})();
+</script> 
    
 </body>
 </html>
