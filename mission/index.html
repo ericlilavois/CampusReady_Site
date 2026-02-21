@@ -12,22 +12,22 @@
   gtag('js', new Date());
   gtag('config', 'G-C6B2GRMESL');
 </script>
-  <title>Apply | Campus Ready Foundation</title>
-<meta name="description" content="Apply for a Campus Ready Foundation grant — move-in essentials, travel to campus, and early-arrival support for your first days on campus." />
-<meta property="og:title" content="Apply | Campus Ready Foundation" />
-<meta property="og:description" content="Apply for a Campus Ready Foundation grant — move-in essentials, travel to campus, and early-arrival support for your first days on campus." />
+  <title>Campus Ready Foundation — Mission</title>
+<meta name="description" content="Campus Ready Foundation mission: supporting first-time college students with move-in essentials, travel to campus, and early-arrival support so they can start strong." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://campusready.foundation/mission/" />
+<meta property="og:title" content="Campus Ready Foundation | Confidence. Dignity. A Strong Start." />
+<meta property="og:description" content="Supporting first-time college students from low-income households with move-in essentials, travel to campus, and early-arrival support." />
 <meta property="og:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
 <meta property="og:image:alt" content="Campus Ready Foundation logo with green checkmark." />
-<meta property="og:url" content="https://campusready.foundation/apply/" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Apply | Campus Ready Foundation" />
-<meta name="twitter:description" content="Apply for a Campus Ready Foundation grant — move-in essentials, travel to campus, and early-arrival support for your first days on campus." />
+<meta name="twitter:title" content="Campus Ready Foundation | Confidence. Dignity. A Strong Start." />
+<meta name="twitter:description" content="Supporting first-time college students from low-income households with move-in essentials, travel to campus, and early-arrival support." />
 <meta name="twitter:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
 <meta name="twitter:image:alt" content="Campus Ready Foundation logo with green checkmark." />
-<link rel="canonical" href="https://campusready.foundation/apply/" />
+<link rel="canonical" href="https://campusready.foundation/mission/" />
   <!-- Favicons -->
- <link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/CRF_icon_32 x 32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/CRF_icon_48 x 48.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/CRF_icon_180 x 180.png">
@@ -67,8 +67,8 @@
     /* Page background gradient */
     .page-bg {
       background:
-        radial-gradient(ellipse 900px 500px at 60% -10%, rgba(20,184,166,.12) 0%, transparent 55%),
-        radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.07) 0%, transparent 50%);
+        radial-gradient(ellipse 900px 500px at 60% -10%, rgba(20,184,166,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
     }
 
     /* Match other pages: more opaque header (depends on shared include having class="glass" on <header>) */
@@ -81,28 +81,26 @@
     .reveal-delay-2 { transition-delay: .2s }
     .reveal-delay-3 { transition-delay: .3s }
 
-    /* Hero headline */
-    .hero-headline {
+    /* Page headline */
+    .page-headline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(2.75rem, 7vw, 5rem);
       font-weight: 800;
-      line-height: 1.05;
+      line-height: 1.08;
       letter-spacing: -.01em;
       color: #0f172a;
     }
-    .hero-headline em { font-style: italic; color: #0d9488 }
 
-    /* Stat number */
-    .stat-number {
+    /* Section headline */
+    .section-headline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
       font-weight: 800;
-      line-height: 1;
-      color: #14b8a6;
-      letter-spacing: -.02em;
+      line-height: 1.15;
+      letter-spacing: -.01em;
     }
 
-    /* Eyebrow label */
+    /* Eyebrow */
     .eyebrow {
       font-size: .7rem;
       font-weight: 700;
@@ -110,61 +108,48 @@
       text-transform: uppercase;
       color: #14b8a6;
     }
+    .eyebrow-light {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5eead4;
+    }
 
     /* Section rule */
     .section-rule { width: 3rem; height: 2px; background: #14b8a6 }
 
-    /* Eligibility callout */
-    .eligibility-callout {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.35rem, 3vw, 1.75rem);
-      font-weight: 700;
-      line-height: 1.4;
-      color: #0f172a;
-    }
-
-    /* Grant grid */
-    .grant-grid { display: grid; gap: 2rem }
+    /* Solution items */
+    .solution-grid { display: grid; gap: 2rem }
     @media (min-width: 640px) {
-      .grant-grid { grid-template-columns: repeat(3, 1fr) }
-      .grant-item { border-top: 1px solid #e2e8f0; padding-top: 1.5rem }
-    }
-    .grant-icon {
-      width: 2.75rem; height: 2.75rem; min-width: 2.75rem;
-      border-radius: 50%;
-      background: #f0fdfa;
-      border: 1.5px solid #99f6e4;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1rem;
+      .solution-grid { grid-template-columns: repeat(3, 1fr) }
+      .solution-item { border-top: 1px solid rgba(20,184,166,.25); padding-top: 1.5rem }
     }
 
-    /* Check items */
-    .check-item { display: flex; align-items: flex-start; gap: .875rem; padding: .875rem 0; border-bottom: 1px solid #f1f5f9 }
-    .check-item:last-child { border-bottom: none }
-    .check-dot {
-      width: 1.5rem; height: 1.5rem; min-width: 1.5rem;
-      border-radius: 50%;
-      border: 2px solid #99f6e4;
-      display: flex; align-items: center; justify-content: center;
-      margin-top: 1px;
-    }
-
-    /* Trust block */
-    .trust-block { border-left: 3px solid #14b8a6; padding-left: 1.5rem }
-
-    /* Timeline steps */
-    .timeline-step { position: relative; padding-left: 1.25rem }
-    .timeline-step::before {
+    /* How it works */
+    .works-item { position: relative; padding-left: 1.5rem }
+    .works-item::before {
       content: '';
       position: absolute;
-      left: 0; top: .45rem;
+      left: 0; top: .5rem;
       width: 6px; height: 6px;
       border-radius: 50%;
       background: #14b8a6;
     }
 
-    /* Dark CTA section — CRF Green (style guide primary: #469E92) */
-    .cta-section { background: #469E92 }
+    /* Pull quote */
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      color: #0f172a;
+      letter-spacing: -.01em;
+    }
+
+    /* CTA — CRF Green */
+    .cta-green { background: #469E92 }
   </style>
 </head>
 
@@ -177,167 +162,168 @@
 
     <!-- 1 · HERO -->
     <section class="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-20 sm:pb-24">
-      <div class="grid lg:grid-cols-[1fr_auto] gap-12 items-end">
-        <div>
-          <p class="eyebrow mb-5">2026 Applications Open</p>
-          <h1 class="hero-headline">Get campus-ready,<br><em>for real.</em></h1>
-          <p class="mt-6 text-lg text-slate-600 leading-relaxed max-w-lg">
-            Getting to campus and getting set up costs more than most families expect — and financial aid wasn't designed to cover it. That's the gap we fill.
-          </p>
-          <div class="mt-8 flex flex-wrap items-center gap-4">
-            <a href="/apply/" class="inline-flex items-center rounded-xl bg-brand-600 px-6 py-3.5 text-white font-semibold shadow-sm hover:bg-brand-700 transition-colors text-base">Apply now</a>
-            <span class="text-slate-400 text-sm">Deadline: May 15, 2026</span>
-          </div>
-        </div>
-        <div class="hidden lg:flex flex-col items-end text-right pb-1">
-          <div class="stat-number">$2,500</div>
-          <p class="text-sm text-slate-500 mt-1 font-medium">avg. award value</p>
-          <p class="text-xs text-slate-400 mt-0.5">travel · supplies · gift card</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2 · ELIGIBILITY -->
-    <section class="bg-brand-50 border-y border-brand-100">
-      <div class="mx-auto max-w-5xl px-6 py-14 sm:py-16 reveal">
+      <div class="max-w-3xl reveal">
         <div class="section-rule mb-5"></div>
-        <p class="eyebrow mb-4">Who this is for</p>
-        <p class="eligibility-callout max-w-2xl">
-          This grant is for first-time college students enrolling full-time and living on campus — no distance requirement, no minimum GPA, and no expectation of a perfect application.
-        </p>
-        <p class="eligibility-callout max-w-2xl mt-3" style="font-style:italic;color:#0d9488">
-          If that's you, we want to hear from you.
-        </p>
-        <p class="mt-5 text-slate-600 text-base max-w-xl leading-relaxed">
-          Financial aid covers tuition. We cover what it doesn't — the costs that show up before your first class even starts.
+        <p class="eyebrow mb-5">Our Mission</p>
+        <h1 class="page-headline mb-8">
+          Confidence. Dignity.<br>A Strong Start.
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed max-w-2xl">
+          Campus Ready Foundation supports first-time college students from low-income households with what financial aid wasn't designed to provide — the basics that make arrival possible and belonging feel real. Move-in essentials, travel to campus, early-arrival support. One well-timed grant. A fundamentally different beginning.
         </p>
       </div>
     </section>
 
-    <!-- 3 · WHAT THE GRANT COVERS -->
-    <section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-      <div class="section-rule mb-5 reveal"></div>
-      <p class="eyebrow mb-4 reveal">What the grant covers</p>
-      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-12 max-w-lg leading-tight reveal">A grant that covers what financial aid doesn't.</h2>
-      <div class="grant-grid">
-
-        <div class="grant-item reveal reveal-delay-1">
-          <div class="grant-icon">
-            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-slate-900 text-lg mb-2">Move-in essentials</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Bedding, towels, storage, toiletries, and the supplies your college's checklist requires, so you arrive with what you actually need.</p>
-        </div>
-
-        <div class="grant-item reveal reveal-delay-2">
-          <div class="grant-icon">
-            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
-              <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-slate-900 text-lg mb-2">Travel to campus</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Transportation to campus for you and a parent or guardian on move-in day — whether that's across the state or across the country.</p>
-        </div>
-
-        <div class="grant-item reveal reveal-delay-3">
-          <div class="grant-icon">
-            <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-              <line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
-          </div>
-          <h3 class="font-semibold text-slate-900 text-lg mb-2">Early-arrival support</h3>
-          <p class="text-slate-600 text-sm leading-relaxed">Meal support and a $100 gift card for incidentals for those first days on campus — before dining services open and before you've found your footing.</p>
-        </div>
-
+    <!-- 2 · THE CHALLENGE -->
+    <section class="mx-auto max-w-5xl px-6 pb-16 sm:pb-20">
+      <div class="reveal">
+        <div class="section-rule mb-5"></div>
+        <p class="eyebrow mb-5">The challenge</p>
+      </div>
+      <div class="rounded-2xl bg-slate-50 border border-slate-200 p-8 sm:p-10 reveal">
+        <h2 class="section-headline text-slate-900 mb-8">The gap nobody talks about</h2>
+        <p class="text-lg text-slate-600 leading-loose max-w-2xl">
+          Most students who apply to college have figured out how to get there.
+          What nobody told them — what financial aid doesn't cover — is what it
+          costs to <em class="not-italic font-semibold text-slate-900">arrive</em>.
+          The bedding, the towels, the supplies, the flight, the hotel, the first
+          few days of food before the dining hall opens. For a family stretched
+          thin, these aren't luxuries. They're barriers. And when a student walks
+          onto campus visibly less prepared than her classmates, that gap doesn't
+          just show up in her bank account. It shows up in whether she feels like
+          she <em class="not-italic font-semibold italic text-brand-600">belongs there at all</em>.
+        </p>
       </div>
     </section>
 
-    <!-- 4 · THE PROCESS -->
-    <section class="bg-slate-50 border-y border-slate-100">
-      <div class="mx-auto max-w-5xl px-6 py-12 sm:py-14 reveal">
-        <p class="eyebrow mb-8">The process</p>
-        <div class="grid sm:grid-cols-3 gap-8 sm:gap-12">
-          <div class="timeline-step">
-            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Step 1</p>
-            <p class="font-semibold text-slate-900 text-lg">You apply</p>
-            <p class="text-slate-500 text-sm mt-1 leading-relaxed">Jan 1 – May 15. Takes about 20–30 minutes, and you can save your progress and return any time before the deadline.</p>
-          </div>
-          <div class="timeline-step">
-            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Step 2</p>
-            <p class="font-semibold text-slate-900 text-lg">We review</p>
-            <p class="text-slate-500 text-sm mt-1 leading-relaxed">Every application is read by our board with care. We look at your full picture — not just your numbers.</p>
-          </div>
-          <div class="timeline-step">
-            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Step 3</p>
-            <p class="font-semibold text-slate-900 text-lg">Awards arrive</p>
-            <p class="text-slate-500 text-sm mt-1 leading-relaxed">Awards delivered July 15 – Aug 1, ahead of move-in day.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 · WHAT YOU'LL NEED -->
-    <section class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-      <div class="section-rule mb-5 reveal"></div>
-      <p class="eyebrow mb-4 reveal">Before you begin</p>
-      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mb-10 max-w-md leading-tight reveal">Here's what to have ready.</h2>
-      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 reveal">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-4">Your information</p>
-          <div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><p class="text-slate-700 text-sm leading-relaxed">Contact info and the name and address of your college</p></div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><p class="text-slate-700 text-sm leading-relaxed">Your expected start date and confirmation you'll live on campus</p></div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><p class="text-slate-700 text-sm leading-relaxed">Basic household snapshot — income and number of people at home</p></div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><p class="text-slate-700 text-sm leading-relaxed">FAFSA or CADAA completion status and your SAI, if you have it</p></div>
-          </div>
-        </div>
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400 mb-4">Two short essays</p>
-          <div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><div><p class="text-slate-700 text-sm leading-relaxed">Why this award is meaningful to you</p><p class="text-slate-400 text-xs mt-0.5">200–300 words</p></div></div>
-            <div class="check-item"><div class="check-dot"><div class="w-2 h-2 rounded-full bg-brand-200"></div></div><div><p class="text-slate-700 text-sm leading-relaxed">A challenge you faced while applying or preparing for college</p><p class="text-slate-400 text-xs mt-0.5">200–500 words</p></div></div>
-            <div class="mt-6 bg-brand-50 rounded-xl p-4 border border-brand-100">
-              <p class="text-sm text-brand-700 leading-relaxed"><strong>We're not evaluating your writing.</strong> We're trying to understand your situation and your goals — honest and direct is exactly right.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6 · HOW WE REVIEW -->
+    <!-- 3 · OUR SOLUTION -->
     <section class="bg-brand-50 border-y border-brand-100">
-      <div class="mx-auto max-w-5xl px-6 py-14 sm:py-16 reveal">
-        <p class="eyebrow mb-6">How we review</p>
-        <div class="trust-block max-w-2xl">
-          <p class="text-xl text-slate-800 leading-relaxed font-medium">
-            We look first at <span class="text-slate-900 font-semibold">financial need</span>, your <span class="text-slate-900 font-semibold">readiness to thrive on campus</span>, and how well our grant can make a real difference for you. We read every essay. Your answers help us understand who you are — not just what your numbers say.
-          </p>
+      <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20 reveal">
+        <div class="section-rule mb-5"></div>
+        <p class="eyebrow mb-4">Our solution</p>
+        <h2 class="section-headline text-slate-900 mb-12 max-w-lg">
+          Essentials that make a real beginning possible.
+        </h2>
+
+        <div class="solution-grid">
+
+          <div class="solution-item reveal reveal-delay-1">
+            <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 text-lg mb-2">Move-in essentials</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Bedding, towels, storage, and the essentials we've found every student needs in those first days on campus — regardless of school, major, or how far from home they've come.
+            </p>
+          </div>
+
+          <div class="solution-item reveal reveal-delay-2">
+            <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 text-lg mb-2">Travel to campus</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Transportation to campus for the student and a parent or guardian on move-in day — including in-kind partnerships with services like Lyft — so getting there isn't something a family has to choose not to do.
+            </p>
+          </div>
+
+          <div class="solution-item reveal reveal-delay-3">
+            <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-slate-900 text-lg mb-2">Early-Arrival Support</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Help covering the first days on campus, before dining services open for the semester.
+            </p>
+          </div>
+
         </div>
-        <p class="mt-6 text-sm text-slate-500 max-w-xl leading-relaxed">
-          <strong class="text-slate-700">Privacy:</strong> We use your information only to review your application and administer awards. We do not sell your data or share it with third parties. See our <a href="/privacy/" class="text-brand-700 hover:underline">Privacy Policy</a>.
+
+        <p class="mt-12 text-base text-slate-700 font-medium max-w-xl leading-relaxed reveal">
+          With these basics in place, students can do what they came to do — learn, connect, and begin.
         </p>
+
       </div>
     </section>
 
-    <!-- 7 · FINAL CTA -->
-    <section class="cta-section">
+    <!-- 4 · HOW IT WORKS -->
+    <section class="bg-slate-50 border-y border-slate-100">
+      <div class="mx-auto max-w-5xl px-6 py-14 sm:py-16 reveal">
+        <p class="eyebrow mb-10">How it works</p>
+        <div class="grid sm:grid-cols-3 gap-10 sm:gap-12">
+
+          <div class="works-item">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Donors &amp; Partners</p>
+            <p class="font-semibold text-slate-900 text-lg mb-2">You make it possible</p>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              Individuals, companies, and organizations provide the funding and in-kind products and services that make grants possible — from cash donations to transportation partnerships to product contributions.
+            </p>
+          </div>
+
+          <div class="works-item">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Campus Ready Foundation</p>
+            <p class="font-semibold text-slate-900 text-lg mb-2">We coordinate</p>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              We evaluate applications, select recipients, and deliver move-in essentials, travel to campus, and early-arrival support — coordinated for each student's situation.
+            </p>
+          </div>
+
+          <div class="works-item">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Students</p>
+            <p class="font-semibold text-slate-900 text-lg mb-2">They begin</p>
+            <p class="text-slate-500 text-sm leading-relaxed">
+              First-time college students receive their award before move-in day and begin their college experience ready, not catching up.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · PULL QUOTE -->
+    <section class="mx-auto max-w-5xl px-6 py-20 sm:py-28 reveal">
+      <p class="pull-quote max-w-3xl">
+        "A strong start, with dignity intact, can change everything."
+      </p>
+    </section>
+
+    <!-- 6 · CTA -->
+    <section class="cta-green">
       <div class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
         <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center reveal">
+
           <div>
-            <p class="eyebrow mb-4" style="color:#5eead4">Applications close May 15</p>
-            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">Your first days should<br>feel like a beginning.</h2>
-            <p class="text-white/85 text-lg max-w-md leading-relaxed">It takes about 20–30 minutes. You can save your progress and come back any time before the deadline.</p>
+            <p class="eyebrow-light mb-4">Make a difference</p>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+              Ready to change how<br>a student's story starts?
+            </h2>
+            <p class="text-white/75 text-lg max-w-md leading-relaxed">
+              Donors fund the grants. Partners extend our reach. Both matter more than you might know to a student who's about to arrive on campus for the first time.
+            </p>
           </div>
+
           <div class="flex flex-col items-start lg:items-end gap-4">
-            <a href="/apply/" class="inline-flex items-center rounded-xl bg-brand-500 px-8 py-4 text-white font-bold text-lg shadow-lg hover:bg-brand-600 transition-colors">Start your application</a>
-            <a href="mailto:hello@campusready.foundation" class="text-slate-400 hover:text-slate-300 text-sm transition-colors">Questions? hello@campusready.foundation</a>
+            <a href="https://givebutter.com/DTxPIn?utm_source=site&utm_medium=button&utm_campaign=mission_page&utm_content=cta_donate_now"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center rounded-xl bg-white px-8 py-4 text-slate-900 font-bold text-lg shadow hover:bg-brand-50 transition-colors">
+              Donate now
+            </a>
+            <a href="/partners/"
+               class="inline-flex items-center rounded-xl border-2 border-white/40 px-8 py-4 text-white font-semibold text-lg hover:border-white/70 transition-colors">
+              Partner with us
+            </a>
           </div>
+
         </div>
       </div>
     </section>
@@ -353,9 +339,9 @@
   <!-- Scroll reveal observer -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const reveals = document.querySelectorAll('.reveal');
+      var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(function(entries) {
+        var observer = new IntersectionObserver(function(entries) {
           entries.forEach(function(entry) {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
@@ -365,762 +351,10 @@
         }, { threshold: 0.15 });
         reveals.forEach(function(el) { observer.observe(el); });
       } else {
-        // Fallback: show everything immediately
         reveals.forEach(function(el) { el.classList.add('visible'); });
       }
     });
   </script>
-
-
-<!-- ================================================================== -->
-<!-- APPLICATION GATING MODAL                                           -->
-<!-- Shows countdown before Jan 1, nothing during open period,          -->
-<!-- closed message after May 15                                        -->
-<!-- ================================================================== -->
-
-<div id="applicationGateModal" class="gate-modal-overlay">
-  <div class="gate-modal-content">
-    <!-- Close Button -->
-    <button class="gate-modal-close" onclick="closeApplicationGate()" aria-label="Close">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M6 6l12 12M18 6l-12 12"/>
-      </svg>
-    </button>
-
-    <!-- Header -->
-    <div class="gate-modal-header">
-      <div class="gate-icon">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-      </div>
-      <h2 id="gateModalTitle">Thanks for Your Interest!</h2>
-    </div>
-
-    <!-- Body message - shown only when closed -->
-    <div id="gateClosedMessage" class="gate-closed-message" style="display: none;">
-      <p>Applications for the current academic year have closed, but we'd love to support you in the next cycle.</p>
-    </div>
-
-    <!-- Countdown -->
-    <div class="gate-countdown-container">
-      <div class="gate-countdown-label" id="gateCountdownLabel">Applications open in:</div>
-      <div class="gate-countdown" id="gateCountdown">
-        <div class="gate-countdown-unit">
-          <span class="gate-countdown-value" id="days">000</span>
-          <span class="gate-countdown-label-small">days</span>
-        </div>
-        <div class="gate-countdown-unit">
-          <span class="gate-countdown-value" id="hours">00</span>
-          <span class="gate-countdown-label-small">hours</span>
-        </div>
-        <div class="gate-countdown-unit">
-          <span class="gate-countdown-value" id="minutes">00</span>
-          <span class="gate-countdown-label-small">minutes</span>
-        </div>
-        <div class="gate-countdown-unit">
-          <span class="gate-countdown-value" id="seconds">00</span>
-          <span class="gate-countdown-label-small">seconds</span>
-        </div>
-      </div>
-      <div class="gate-opening-date" id="gateOpeningDate">January 1, 2026 at 12:00 AM PT</div>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="gate-actions">
-      <button class="gate-btn gate-btn-primary" onclick="downloadCalendarReminder()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-        </svg>
-        Download Calendar Reminder
-      </button>
-      <button class="gate-btn gate-btn-secondary" onclick="showEmailSignup()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-        </svg>
-        Get Email Notification
-      </button>
-    </div>
-
-    <!-- Email Signup Form (Hidden by default) -->
-    <div id="emailSignupForm" class="gate-email-form" style="display: none;">
-      <div class="gate-form-divider">or</div>
-      <h3>Get Notified When Applications Open</h3>
-      <form onsubmit="submitEmailSignup(event)">
-        <div class="gate-form-group">
-          <label for="signupName">Your Name</label>
-          <input type="text" id="signupName" name="name" placeholder="First and Last Name" required>
-        </div>
-        <div class="gate-form-group">
-          <label for="signupEmail">Email Address</label>
-          <input type="email" id="signupEmail" name="email" placeholder="you@example.com" required>
-        </div>
-        <button type="submit" class="gate-btn gate-btn-submit">
-          Sign Me Up
-        </button>
-      </form>
-      <div id="emailSignupSuccess" class="gate-success-message" style="display: none;">
-        You're on the list. We'll reach out when applications open.
-      </div>
-    </div>
-
-    <!-- Footer Note -->
-    <div class="gate-footer-note">
-      Questions? Reach us at <a href="mailto:hello@campusready.foundation" style="color: #0d9488; text-decoration: underline;">hello@campusready.foundation</a>
-    </div>
-  </div>
-</div>
-
-<style>
-/* ================================================================== */
-/* APPLICATION GATING MODAL STYLES                                     */
-/* ================================================================== */
-
-/* Modal Overlay */
-.gate-modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-  z-index: 10000;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  animation: gateModalFadeIn 0.3s ease;
-}
-
-.gate-modal-overlay.show {
-  display: flex;
-}
-
-@keyframes gateModalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Modal Content */
-.gate-modal-content {
-  background: white;
-  border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  z-index: 10001;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  animation: gateModalSlideUp 0.4s ease;
-}
-
-@keyframes gateModalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Close Button */
-.gate-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.gate-modal-close:hover {
-  background: white;
-  border-color: #14b8a6;
-  transform: scale(1.05);
-}
-
-.gate-modal-close svg {
-  color: #6b7280;
-}
-
-/* Header */
-.gate-modal-header {
-  background: linear-gradient(135deg, #14b8a6 0%, #0891b2 100%);
-  color: white;
-  padding: 40px 40px 32px;
-  text-align: center;
-  border-radius: 20px 20px 0 0;
-  position: relative;
-  z-index: 1;
-}
-
-.gate-icon {
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.gate-icon svg {
-  color: white;
-}
-
-.gate-modal-header h2 {
-  margin: 0 0 12px;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.gate-subtitle {
-  margin: 0;
-  font-size: 16px;
-  opacity: 0.95;
-  line-height: 1.5;
-}
-
-/* Countdown */
-.gate-countdown-container {
-  padding: 40px 40px 32px;
-  text-align: center;
-  background: linear-gradient(to bottom, #f0fdfa, white);
-}
-
-.gate-countdown-label {
-  font-size: 14px;
-  color: #6b7280;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 20px;
-}
-
-.gate-countdown {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.gate-countdown-unit {
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px 12px;
-  min-width: 85px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.gate-countdown-value {
-  display: block;
-  font-size: 32px;
-  font-weight: 700;
-  color: #14b8a6;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-}
-
-.gate-countdown-label-small {
-  display: block;
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-
-.gate-opening-date {
-  color: #374151;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* Action Buttons */
-.gate-actions {
-  padding: 0 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.gate-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 16px 28px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  border: none;
-  width: 100%;
-}
-
-.gate-btn svg {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  min-height: 20px;
-}
-
-.gate-btn-primary {
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
-  color: white;
-  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
-}
-
-.gate-btn-primary:hover {
-  background: linear-gradient(135deg, #0d9488, #0f766e);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
-}
-
-.gate-btn-secondary {
-  background: white;
-  color: #374151;
-  border: 2px solid #e5e7eb;
-}
-
-.gate-btn-secondary:hover {
-  background: #f9fafb;
-  border-color: #14b8a6;
-  color: #14b8a6;
-}
-
-.gate-btn-submit {
-  background: linear-gradient(135deg, #14b8a6, #0d9488);
-  color: white;
-  margin-top: 8px;
-}
-
-.gate-btn-submit:hover {
-  background: linear-gradient(135deg, #0d9488, #0f766e);
-  transform: translateY(-2px);
-}
-
-/* Email Form */
-.gate-email-form {
-  padding: 32px 40px;
-  background: #f9fafb;
-  border-top: 1px solid #e5e7eb;
-  animation: gateFormSlideDown 0.3s ease;
-}
-
-@keyframes gateFormSlideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-  }
-}
-
-.gate-form-divider {
-  text-align: center;
-  color: #9ca3af;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-  position: relative;
-}
-
-.gate-form-divider::before,
-.gate-form-divider::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 40%;
-  height: 1px;
-  background: #e5e7eb;
-}
-
-.gate-form-divider::before { left: 0; }
-.gate-form-divider::after { right: 0; }
-
-.gate-email-form h3 {
-  margin: 0 0 20px;
-  font-size: 20px;
-  color: #1f2937;
-  text-align: center;
-}
-
-.gate-form-group {
-  margin-bottom: 16px;
-}
-
-.gate-form-group label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 6px;
-}
-
-.gate-form-group input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.2s;
-}
-
-.gate-form-group input:focus {
-  outline: none;
-  border-color: #14b8a6;
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
-}
-
-.gate-success-message {
-  background: #ecfdf5;
-  border: 2px solid #86efac;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  color: #065f46;
-  font-weight: 600;
-  line-height: 1.5;
-  animation: gateSuccessPulse 0.5s ease;
-}
-
-@keyframes gateSuccessPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-}
-
-/* Footer Note */
-.gate-footer-note {
-  padding: 24px 40px 32px;
-  font-size: 13px;
-  color: #6b7280;
-  line-height: 1.6;
-  text-align: left;
-  border-top: 1px solid #e5e7eb;
-}
-
-.gate-footer-note strong {
-  color: #374151;
-}
-
-/* Closed state message */
-.gate-closed-message {
-  padding: 0 40px 8px;
-  text-align: center;
-}
-
-.gate-closed-message p {
-  color: #374151;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Mobile responsive */
-@media (max-width: 640px) {
-  .gate-modal-overlay {
-    align-items: flex-start;
-    padding-top: 80px;
-  }
-  .gate-modal-content {
-    border-radius: 16px;
-    margin: 10px;
-  }
-  .gate-modal-header {
-    padding: 40px 24px 32px;
-  }
-  .gate-modal-header h2 {
-    font-size: 24px;
-  }
-  .gate-countdown-container {
-    padding: 32px 24px 24px;
-  }
-  .gate-countdown {
-    gap: 8px;
-  }
-  .gate-countdown-unit {
-    min-width: 70px;
-    padding: 10px 6px;
-  }
-  .gate-countdown-value {
-    font-size: 20px;
-  }
-  .gate-countdown-label-small {
-    font-size: 10px;
-  }
-  .gate-actions,
-  .gate-email-form,
-  .gate-footer-note {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-  .gate-btn {
-    font-size: 15px;
-    padding: 14px 20px;
-  }
-}
-</style>
-
-<script>
-// ================================================================== //
-// APPLICATION GATING LOGIC                                            //
-// Applications open Jan 1 at 12:00 AM PT                              //
-// Applications close May 16 at 12:00 AM PT (end of May 15)            //
-// ================================================================== //
-
-const APPLICATION_OPEN_MONTH = 0;  // January (0-indexed)
-const APPLICATION_OPEN_DAY = 1;
-const APPLICATION_CLOSE_MONTH = 4; // May (0-indexed)
-const APPLICATION_CLOSE_DAY = 16;  // May 16 at 12:00 AM = end of May 15
-
-let countdownInterval;
-
-// Determine the application window state
-function getApplicationState() {
-  const now = new Date();
-  const year = now.getFullYear();
-
-  // Create dates in PT timezone
-  const openDate = new Date(`${year}-01-01T00:00:00-08:00`);
-  const closeDate = new Date(`${year}-05-16T00:00:00-07:00`); // May is PDT (-07:00)
-
-  if (now >= openDate && now < closeDate) {
-    return { state: 'open', nextOpenDate: null };
-  } else {
-    let nextYear = year;
-    if (now >= closeDate) {
-      nextYear = year + 1;
-    }
-    const nextOpenDate = new Date(`${nextYear}-01-01T00:00:00-08:00`);
-    const isClosed = now >= closeDate;
-    return { state: 'closed', nextOpenDate: nextOpenDate, isClosed: isClosed };
-  }
-}
-
-// Update modal content based on state
-function updateModalForState(stateInfo) {
-  const titleEl = document.getElementById('gateModalTitle');
-  const closedMsgEl = document.getElementById('gateClosedMessage');
-  const countdownLabelEl = document.getElementById('gateCountdownLabel');
-  const openingDateEl = document.getElementById('gateOpeningDate');
-
-  if (stateInfo.state === 'closed' && stateInfo.isClosed) {
-    titleEl.textContent = "Thanks for checking in!";
-    closedMsgEl.style.display = 'block';
-    countdownLabelEl.textContent = 'Applications reopen in:';
-  } else {
-    titleEl.textContent = 'Thank You for Your Interest';
-    closedMsgEl.style.display = 'none';
-    countdownLabelEl.textContent = 'Applications open in:';
-  }
-
-  const nextYear = stateInfo.nextOpenDate.getFullYear();
-  openingDateEl.textContent = `January 1, ${nextYear} at 12:00 AM PT`;
-}
-
-function updateCountdown() {
-  const stateInfo = getApplicationState();
-
-  if (stateInfo.state === 'open') {
-    document.getElementById('gateCountdown').innerHTML = '<div style="font-size: 24px; color: #14b8a6; font-weight: 700;">Applications are now open!</div>';
-    clearInterval(countdownInterval);
-    return;
-  }
-
-  updateModalForState(stateInfo);
-
-  const now = new Date();
-  const diff = stateInfo.nextOpenDate - now;
-
-  if (diff <= 0) {
-    document.getElementById('gateCountdown').innerHTML = '<div style="font-size: 24px; color: #14b8a6; font-weight: 700;">Applications are now open!</div>';
-    clearInterval(countdownInterval);
-    setTimeout(() => location.reload(), 2000);
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById('days').textContent = String(days).padStart(3, '0');
-  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-}
-
-// Initialize Modal
-function initApplicationGate() {
-  const stateInfo = getApplicationState();
-
-  // Intercept Apply button/link clicks
-  document.addEventListener('click', function(e) {
-    const target = e.target.closest('a[href*="/apply/"], button[onclick*="apply"]');
-    if (target && target.getAttribute('href') === '/apply/') {
-      const currentState = getApplicationState();
-      if (currentState.state === 'open') {
-        return; // Let the click through
-      } else {
-        e.preventDefault();
-        openApplicationGate();
-      }
-    }
-  });
-
-  // Only start countdown if applications are not open
-  if (stateInfo.state !== 'open') {
-    updateCountdown();
-    countdownInterval = setInterval(updateCountdown, 1000);
-  }
-}
-
-function openApplicationGate() {
-  const modal = document.getElementById('applicationGateModal');
-  modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeApplicationGate() {
-  const modal = document.getElementById('applicationGateModal');
-  modal.classList.remove('show');
-  document.body.style.overflow = '';
-}
-
-// Close on outside click
-document.getElementById('applicationGateModal')?.addEventListener('click', function(e) {
-  if (e.target === this) {
-    closeApplicationGate();
-  }
-});
-
-// Close on Escape key
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    const modal = document.getElementById('applicationGateModal');
-    if (modal.classList.contains('show')) {
-      closeApplicationGate();
-    }
-  }
-});
-
-// Calendar Download
-function downloadCalendarReminder() {
-  const stateInfo = getApplicationState();
-  const targetYear = stateInfo.nextOpenDate ? stateInfo.nextOpenDate.getFullYear() : new Date().getFullYear() + 1;
-
-  const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Campus Ready Foundation//Application Reminder//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-UID:campus-ready-application-${Date.now()}@campusready.foundation
-DTSTAMP:${formatICSDate(new Date())}
-DTSTART:${targetYear}0101T080000Z
-DTEND:${targetYear}0101T090000Z
-SUMMARY:Campus Ready Foundation Applications Open Today!
-DESCRIPTION:Applications for Campus Ready Foundation grants open today. Apply at https://campusready.foundation/apply/\\n\\nThis is your reminder to submit your application for move-in essentials\\, travel to campus\\, and early-arrival support.
-LOCATION:https://campusready.foundation/apply/
-STATUS:CONFIRMED
-SEQUENCE:0
-BEGIN:VALARM
-TRIGGER:-P1D
-DESCRIPTION:Campus Ready applications open tomorrow
-ACTION:DISPLAY
-END:VALARM
-BEGIN:VALARM
-TRIGGER:-PT1H
-DESCRIPTION:Campus Ready applications open in 1 hour
-ACTION:DISPLAY
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'Campus_Ready_Application_Reminder.ics';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(link.href);
-}
-
-function formatICSDate(date) {
-  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-}
-
-// Email Signup
-function showEmailSignup() {
-  const form = document.getElementById('emailSignupForm');
-  if (form.style.display === 'none') {
-    form.style.display = 'block';
-    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-}
-
-function submitEmailSignup(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.textContent;
-
-  submitBtn.textContent = 'Signing you up...';
-  submitBtn.disabled = true;
-
-  const formData = new FormData(form);
-
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxCm2IPRmJ7wr4m6WBQgX6hdFtXUMSwWm9MSp8LfJre0jKmxY_wGkef9bqPZB7EE8Vm/exec';
-
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-    form.style.display = 'none';
-    document.getElementById('emailSignupSuccess').style.display = 'block';
-  })
-  .catch(error => {
-    console.error('Signup error:', error);
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
-  });
-}
-
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', initApplicationGate);
-</script>
 
 </body>
 </html>
