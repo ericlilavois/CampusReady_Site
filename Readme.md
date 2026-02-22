@@ -69,3 +69,4 @@ To change the icon later, replace those files in `/assets/` with the same names.
 ## Tips
 - Keep images/OG assets in `/assets/` (you can add `/assets/img/`).  
 - Hard refresh (Shift+Reload) after header or favicon changes to clear cache.
+- Set up Staging branch for previews

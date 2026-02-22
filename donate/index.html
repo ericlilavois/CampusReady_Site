@@ -1,464 +1,375 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<script src="https://cdn.tailwindcss.com"></script>
-  <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14b8a6', // Main brand color
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a'
-        }
-      }
-    }
-  }
-}
-</script>
-  <head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C6B2GRMESL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-C6B2GRMESL');
 </script>
   <title>Donate | Campus Ready Foundation</title>
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
+<meta name="description" content="Help first-time college students start strong — your gift funds move-in essentials, travel to campus, and early-arrival support through Campus Ready Foundation." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://campusready.foundation/donate/" />
+<meta property="og:title" content="Donate | Campus Ready Foundation" />
+<meta property="og:description" content="Help first-time college students start strong — your gift funds move-in essentials, travel to campus, and early-arrival support." />
+<meta property="og:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
+<meta property="og:image:alt" content="Campus Ready Foundation logo with green checkmark." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Donate | Campus Ready Foundation" />
+<meta name="twitter:description" content="Help first-time college students start strong — your gift funds move-in essentials, travel to campus, and early-arrival support." />
+<meta name="twitter:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
+<meta name="twitter:image:alt" content="Campus Ready Foundation logo with green checkmark." />
+<link rel="canonical" href="https://campusready.foundation/donate/" />
+  <!-- Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/CRF_icon_32 x 32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/CRF_icon_48 x 48.png">
-
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/CRF_icon_180 x 180.png">
-
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/CRF_icon_192 x 192.png">
 <link rel="icon" type="image/png" sizes="144x144" href="/assets/CRF_icon_144 x 144.png">
 <link rel="manifest" href="/assets/site.webmanifest">
-    
-        <meta name="description" content="Help first-time college students start strong with Student Essentials Kits, travel support, and early-arrival meals." />
-  <meta property="og:title" content="Donate | Campus Ready Foundation" />
-    <meta property="og:url" content="https://campusready.foundation/donate/" />
-    <meta property="og:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
-    <meta name="twitter:title" content="Donate | Campus Ready Foundation" />
-    <meta name="twitter:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
-    <link rel="canonical" href="https://campusready.foundation/donate/" />
-    <style>
-    :root{
-      /* Mirroring your original palette */
-      --brand-50:#f0fdfa; --brand-100:#ccfbf1; --brand-200:#99f6e4; --brand-300:#5eead4; --brand-400:#2dd4bf; --brand-500:#14b8a6; --brand-600:#0d9488; --brand-700:#0f766e; --brand-800:#115e59; --brand-900:#134e4a;
-      --accent-50:#fafafa; --accent-100:#f4f4f5; --accent-200:#e4e4e7; --accent-300:#d4d4d8; --accent-400:#a1a1aa; --accent-500:#71717a; --accent-600:#52525b; --accent-700:#3f3f46; --accent-800:#27272a; --accent-900:#18181b;
-      --ink:#0f172a; --muted:#475569; --maxw:1200px; --r:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.08); --shadow-strong:0 18px 50px rgba(20,184,166,.18);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#0f172a; background:#fff; line-height:1.6}
-    .container{max-width:var(--maxw); margin:0 auto; padding:0 24px}
-    /* Sticky header */
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(255,255,255,.85); border-bottom:1px solid var(--accent-200)}
-    .header-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{font-weight:800; letter-spacing:.2px}
-    .donate{display:inline-block; background:var(--brand-500); color:#fff; padding:12px 18px; border-radius:12px; font-weight:800; box-shadow:0 10px 24px rgba(20,184,166,.22); text-decoration:none}
-    .donate:hover{background:var(--brand-600)}
-    /* Stripes */
-    section{padding:88px 0}
-    .hero{background: linear-gradient(135deg, var(--brand-500), var(--brand-600)); color:#fff}
-    .hero h1{margin:0 0 10px; font-size:48px; line-height:1.1}
-    .hero .pull{font-size:28px; font-weight:900; letter-spacing:.3px}
-    .hero .cta{display:inline-block; margin-top:20px; background:#fff; color:var(--brand-700); padding:14px 22px; border-radius:12px; font-weight:900; text-decoration:none; box-shadow:var(--shadow)}
-    .hero .cta:hover{transform:translateY(-2px)}
-    .stripe{background:#fff}
-    .stripe-muted{background:var(--accent-50)}
-    .h2{font-size:36px; margin:0 0 10px}
-    .lead{max-width:860px; color:var(--muted)}
-    /* Large impact tiles */
-    .tiles{display:grid; grid-template-columns:repeat(5,1fr); gap:20px; margin-top:26px}
-    .tile{background:#fff; border:1px solid var(--accent-200); border-radius:var(--r); padding:28px; min-height:160px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease}
-    .tile:hover{transform:translateY(-6px) scale(1.01); box-shadow:var(--shadow-strong)}
-    .amt{font-size:28px; font-weight:900; color:#0f172a}
-    .desc{margin-top:10px; color:#334155}
-    /* Pull quote */
-    .pullquote{padding:70px 0; text-align:center; font-weight:900; letter-spacing:.3px; color:var(--brand-700); font-size:28px}
-    /* Final CTA */
-    .final{background: linear-gradient(180deg, #f8fffe, #ffffff); border-top:1px solid var(--accent-200); border-bottom:1px solid var(--accent-200)}
-    .btn{display:inline-block; margin-top:12px; background:var(--brand-500); color:#fff; padding:16px 26px; border-radius:14px; font-weight:900; text-decoration:none; box-shadow:0 12px 28px rgba(20,184,166,.28)}
-    .btn:hover{background:var(--brand-600)}
-    footer{padding:44px 0; border-top:1px solid var(--accent-200); color:#475569}
-    @media (max-width:1120px){.tiles{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:720px){.tiles{grid-template-columns:1fr} .hero h1{font-size:36px} .hero .pull{font-size:22px}}
-  </style>
-</head>
-<body>
-<div data-include="/includes/header.html"></div>
-  
-  <section class="hero">
-  <div class="container">
-    <h1 class="mt-2 text-4xl sm:text-5xl font-bold leading-tight text-white font-serif" style="letter-spacing: 0.025em;">
-      Join us. Bridge the Gap.
-    </h1>
-    <div class="pull">Confidence. Dignity. Starting Strong.</div>
-    <p style="max-width:760px; margin-top:10px">We equip low‑income, first‑time college students with move-in kits, dorm supplies, travel support, and early arrival meals so they can begin their education with stability—not stress.</p>
-    <a href="https://givebutter.com/campusready?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=hero_donate_now"
-       target="_blank" rel="noopener"
-       class="cta">Donate Now</a>
-  </div>
-</section>
 
-  <section class="stripe">
-    <div class="container">
-      <h2 class="h2">Why Your Gift Matters</h2>
-      <p class="lead">For many low‑income new college students, academics are only part of the challenge; the financial strain and social pressure of getting to college and setting up a living space can distract their focus from day one. Your gift lifts that burden so students begin on equal footing—with the freedom to focus on learning.</p>
-    </div>
-  </section>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
 
-  <section class="stripe-muted">
-    <div class="container">
-      <h2 class="h2">Choose Your Impact Level</h2>
-      <p class="lead">Equipping a student for success is about more than tuition. It’s about ensuring they arrive with stability, not stress. Every contribution—large or small—helps close the gap:</p>
-      <div class="tiles" aria-label="Impact levels">
-        <div class="tile"><div class="amt">$100</div><div class="desc">Covers critical incidentals that ensure a smooth arrival.</div></div>
-        <div class="tile"><div class="amt">$150</div><div class="desc">Provides nutritious meals during move‑in, before dining services open.</div></div>
-        <div class="tile"><div class="amt">$750</div><div class="desc">Funds a complete Student Essentials Living Kit: bedding, towels, storage, toiletries, and supplies.</div></div>
-        <div class="tile"><div class="amt">$1,500</div><div class="desc">Covers safe travel and transportation to campus.</div></div>
-        <div class="tile"><div class="amt">$2,500</div><div class="desc">Provides a full Campus Ready award, eliminating the most pressing transition barriers.</div></div>
-      </div>
-      <div class="mt-8 text-center">
-  <!-- Replace href with your Give Butter -->
-  <a href="https://givebutter.com/campusready?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=tiles_give_now"
-   target="_blank" rel="noopener"
-   class="inline-flex items-center rounded-xl bg-teal-600 px-5 py-3 text-white font-medium shadow-sm hover:bg-teal-700 transition
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2">
-  Give Now
-</a>
-    </div>
-  </section>
-<!-- Ways to Give -->
-<section class="stripe">
-  <div class="container">
-    <!-- Card Container -->
-    <div class="bg-white rounded-xl shadow-lg p-8 border border-slate-100 relative">
-      <!-- Header -->
-      <h2 class="h2 mb-6">Ways to Give</h2>
-      
-      <!-- Main Content Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-end">
-        <!-- List Content - Takes 2/3 width -->
-        <div class="lg:col-span-2">
-          <ul class="space-y-4 text-slate-700">
-            <li><strong>Credit/Debit & Wallets:</strong> Give securely using the buttons on this page.</li>
-
-            <li><strong>DAF (Donor-Advised Fund):</strong> Recommend a grant. <a class="text-teal-700 hover:text-teal-800 underline" href="mailto:hello@campusready.foundation?subject=Donor-Advised%20Fund%20Grant%20Recommendation&body=Hello%20Campus%20Ready%20Foundation%2C%0A%0AI%20would%20like%20to%20recommend%20a%20grant%20from%20my%20Donor-Advised%20Fund.%0A%0ADAF%20Provider%3A%20%5BPlease%20specify%5D%0ARecommended%20Grant%20Amount%3A%20%24%0ADonor%20Name%3A%20%0AContact%20Email%3A%20%0A%0APlease%20confirm%20receipt%20of%20this%20request%20and%20let%20me%20know%20if%20you%20need%20any%20additional%20information.%0A%0AThank%20you!">Email us</a> the details.</li>
-
-            <li><strong>Stock or Wire/ACH:</strong>
-              <a class="text-teal-700 hover:text-teal-800 underline"
-                 href="mailto:hello@campusready.foundation?subject=Stock%20or%20Wire%20Instructions%20Request&amp;body=Hi%20Campus%20Ready%20Foundation%20team%2C%0A%0APlease%20send%20me%20secure%20transfer%20instructions.%0A%0AName%3A%20%0AEmail%3A%20%0AOrganization%20(optional)%3A%20%0AGift%20type%3A%20Stock%20or%20Wire%2FACH%0ANotes%3A%20%0A%0AThank%20you!">
-                Request transfer instructions
-              </a>.
-            </li>
-
-            <li><strong>Check by Mail:</strong> Payable to <em>Campus Ready Foundation</em>, 
-              <span class="whitespace-nowrap">1895 Madrona Ave</span>, <span class="whitespace-nowrap">Saint Helena, CA 94574</span>.
-            </li>
-          </ul>
-        </div>
-        
-        <!-- Right Side Button - Takes 1/3 width, bottom-aligned and centered -->
-        <div class="lg:col-span-1 flex justify-center">
-          <a href="https://givebutter.com/DTxPIn?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=ways_to_give"
-             target="_blank" rel="noopener"
-             class="bg-brand-100 text-brand-700 px-9 py-12 rounded-xl font-bold hover:bg-brand-200 transition-colors text-center w-72 h-48 flex items-center justify-center shadow-md border border-brand-200 text-xl">
-            Choose How<br>to Give
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  <div class="pullquote">“Every gift ensures one more student can start strong.”</div>
-
-  <section id="donate" class="final">
-    <div class="container">
-      <h2 class="h2">Be Part of the Foundation</h2>
-      <p class="lead">Your support goes directly to students—ensuring that cost is never a reason they hesitate before they begin. Whether you choose to cover a meal plan gap, fund a full award, or partner with us on a larger initiative, you are helping build the bridge from high school to higher education.</p>
-<a class="btn"
-   href="https://givebutter.com/DTxPIn?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=footer_join_us"
-   target="_blank" rel="noopener">
-  Join us. Bridge the Gap.
-</a>
-      <p class="mt-3 text-sm text-slate-600">
-  Questions? <a href="/faq/" class="text-teal-700 hover:text-teal-800 underline">See our FAQ</a>.
-</p>
-    </div>
-  </section>
-  
- <div data-include="/includes/footer.html"></div>
-
-<!-- Contact Modal -->
-<div id="contact-modal" class="fixed inset-0 bg-black/60 backdrop-blur-lg z-50 hidden items-center justify-center p-4">
-  <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full mx-4 transform transition-all duration-500 scale-95 opacity-0 overflow-hidden" id="modal-content">
-    
-    <!-- Header with Gradient Background -->
-    <div class="relative bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700 p-8 text-white">
-      <div class="absolute inset-0 bg-gradient-to-br from-brand-400/20 to-transparent"></div>
-      <div class="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
-      <div class="absolute bottom-2 left-6 w-8 h-8 bg-white/5 rounded-full animate-float" style="animation-delay: 2s;"></div>
-      
-      <div class="relative flex items-center justify-between">
-        <div class="flex items-center gap-4">
-          <!-- Campus Ready Logo -->
-          <div class="relative">
-            <span class="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm text-white shadow-lg font-bold text-lg border border-white/30">CR</span>
-            <div class="absolute inset-0 rounded-2xl bg-white/10 blur-sm"></div>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold tracking-tight">Get in Touch</h3>
-            <p class="text-brand-100 text-sm font-medium">Campus Ready Foundation</p>
-          </div>
-        </div>
-        <button 
-          onclick="closeContactModal()" 
-          class="text-white/80 hover:text-white hover:bg-white/20 transition-all duration-200 p-2 rounded-xl backdrop-blur-sm"
-          aria-label="Close contact form"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <p class="text-brand-50 mt-4 leading-relaxed">We look forward to hearing from you.</p>
-    </div>
-    
-    <!-- Form Section -->
-    <form id="contact-form" class="p-8 space-y-6" onsubmit="handleContactSubmit(event)">
-      <div class="space-y-6">
-        <div>
-          <label for="contact-name" class="block text-sm font-semibold text-slate-800 mb-3">Name *</label>
-          <input 
-            type="text" 
-            id="contact-name" 
-            name="name" 
-            required
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
-            placeholder="Your full name"
-          >
-        </div>
-        
-        <div>
-          <label for="contact-email" class="block text-sm font-semibold text-slate-800 mb-3">Email *</label>
-          <input 
-            type="email" 
-            id="contact-email" 
-            name="email" 
-            required
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
-            placeholder="your.email@example.com"
-          >
-        </div>
-        
-        <div>
-          <label for="contact-subject" class="block text-sm font-semibold text-slate-800 mb-3">Subject</label>
-          <input 
-            type="text" 
-            id="contact-subject" 
-            name="subject" 
-            value="Campus Ready Inquiry"
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; font-family: inherit;"
-          >
-        </div>
-        
-        <div style="margin-top: 1.5rem;">
-          <label for="contact-message" class="block text-sm font-semibold text-slate-800 mb-3">Message *</label>
-          <textarea 
-            id="contact-message" 
-            name="message" 
-            required
-            rows="4"
-            style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 12px; background-color: rgba(248, 250, 252, 0.5); outline: none; transition: all 0.3s; resize: vertical; font-family: inherit; font-size: inherit; line-height: 1.5;"
-            placeholder="How may we be of service?"
-          ></textarea>
-        </div>
-      </div>
-      
-      <div class="flex gap-4" style="padding-top: 2rem;">
-        <button 
-          type="button" 
-          onclick="closeContactModal()"
-          class="flex-1 px-6 py-3 border-2 border-slate-300 text-slate-700 rounded-xl hover:bg-slate-50 hover:border-slate-400 transition-all duration-300 font-semibold"
-        >
-          Cancel
-        </button>
-        <button 
-          type="submit"
-          class="flex-1 px-6 py-3 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-xl hover:from-brand-700 hover:to-brand-800 hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-300 font-semibold transform hover:scale-[1.02]"
-        >
-          Send Message
-        </button>
-      </div>
-    </form>
-    
-    <!-- Success Message -->
-    <div id="contact-success" class="hidden p-8 text-center">
-      <div class="relative">
-        <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-          </svg>
-          <div class="absolute inset-0 rounded-full bg-green-400/30 animate-ping"></div>
-        </div>
-      </div>
-      <h4 class="text-2xl font-bold text-slate-900 mb-3">Message Sent!</h4>
-      <p class="text-slate-600 mb-6 leading-relaxed max-w-sm mx-auto">Your email client should open shortly. If it doesn't, please email us directly at <span class="font-semibold text-brand-600">hello@campusready.foundation</span></p>
-      <button 
-        onclick="closeContactModal()"
-        class="px-8 py-3 bg-gradient-to-r from-brand-600 to-brand-700 text-white rounded-xl hover:from-brand-700 hover:to-brand-800 hover:shadow-lg transition-all duration-300 font-semibold transform hover:scale-[1.02]"
-      >
-        Close
-      </button>
-    </div>
-  </div>
-</div>
-
-<script>
-function openContactModal() {
-  const modal = document.getElementById('contact-modal');
-  const content = document.getElementById('modal-content');
-  
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-  
-  setTimeout(() => {
-    content.classList.remove('scale-95', 'opacity-0');
-    content.classList.add('scale-100', 'opacity-100');
-  }, 50);
-  
-  setTimeout(() => {
-    const nameInput = document.getElementById('contact-name');
-    if (nameInput) nameInput.focus();
-  }, 300);
-  
-  document.body.style.overflow = 'hidden';
-}
-
-function closeContactModal() {
-  const modal = document.getElementById('contact-modal');
-  const content = document.getElementById('modal-content');
-  const form = document.getElementById('contact-form');
-  const success = document.getElementById('contact-success');
-  
-  content.classList.add('scale-95', 'opacity-0');
-  content.classList.remove('scale-100', 'opacity-100');
-  
-  setTimeout(() => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    
-    if (form && success) {
-      form.classList.remove('hidden');
-      success.classList.add('hidden');
-      form.reset();
-      
-      const subjectField = document.getElementById('contact-subject');
-      if (subjectField) subjectField.value = 'Campus Ready Inquiry';
-    }
-    
-    document.body.style.overflow = '';
-  }, 500);
-}
-
-function handleContactSubmit(event) {
-  event.preventDefault();
-  
-  const form = event.target;
-  const formData = new FormData(form);
-  
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const subject = formData.get('subject');
-  const message = formData.get('message');
-  
-  const body = `Hello Campus Ready Foundation,
-
-${message}
-
-Best regards,
-${name}
-${email}`;
-  
-  const mailtoLink = `mailto:hello@campusready.foundation?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  
-  form.style.transition = 'opacity 0.3s ease-out';
-  form.style.opacity = '0';
-  
-  setTimeout(() => {
-    form.classList.add('hidden');
-    const successDiv = document.getElementById('contact-success');
-    successDiv.classList.remove('hidden');
-    successDiv.style.opacity = '0';
-    
-    setTimeout(() => {
-      successDiv.style.transition = 'opacity 0.3s ease-in';
-      successDiv.style.opacity = '1';
-    }, 50);
-  }, 300);
-  
-  setTimeout(() => {
-    try {
-      window.location.href = mailtoLink;
-    } catch (e) {
-      try {
-        const tempLink = document.createElement('a');
-        tempLink.href = mailtoLink;
-        tempLink.style.display = 'none';
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-      } catch (e2) {
-        window.open(mailtoLink);
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui'],
+            serif: ['Playfair Display','serif']
+          }
+        }
       }
     }
-  }, 500);
-  
-  setTimeout(() => {
-    closeContactModal();
-  }, 4000);
-}
+  </script>
 
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = document.getElementById('contact-modal');
-  if (modal) {
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeContactModal();
-    });
-    
-    const modalContent = document.getElementById('modal-content');
-    if (modalContent) {
-      modalContent.addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
+  <style>
+    html { -webkit-font-smoothing: antialiased }
+
+    /* ── Site-width cap: prevents bleed on wide/ultrawide monitors ── */
+    body {
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
     }
-  }
-  
-  document.addEventListener('keydown', function(e) {
-    const modal = document.getElementById('contact-modal');
-    if (modal && !modal.classList.contains('hidden') && e.key === 'Escape') {
-      closeContactModal();
+
+    /* Page background gradient */
+    .page-bg {
+      background:
+        radial-gradient(ellipse 900px 500px at 60% -10%, rgba(20,184,166,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
     }
-  });
-});
-</script>
+
+    header.glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.92) !important; border-bottom: 1px solid rgb(226,232,240) }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease }
+    .reveal.visible { opacity: 1; transform: translateY(0) }
+    .reveal-delay-1 { transition-delay: .1s }
+    .reveal-delay-2 { transition-delay: .2s }
+    .reveal-delay-3 { transition-delay: .3s }
+    .reveal-delay-4 { transition-delay: .4s }
+
+    /* Page headline */
+    .page-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: #0f172a;
+    }
+
+    /* Section headline */
+    .section-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.01em;
+    }
+
+    /* Eyebrow */
+    .eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #14b8a6;
+    }
+    .eyebrow-light {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #99f6e4;
+    }
+
+    /* Section rule */
+    .section-rule { width: 3rem; height: 2px; background: #14b8a6 }
+    .section-rule-light { width: 3rem; height: 2px; background: #5eead4 }
+
+    /* Impact tile grid */
+    .impact-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .impact-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .impact-tile {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .impact-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(20,184,166,.20);
+      border-color: #2dd4bf;
+    }
+    .impact-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #14b8a6;
+      letter-spacing: -.02em;
+      margin-bottom: .75rem;
+    }
+    @media (min-width: 640px) {
+      .impact-bottom-row {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 66.666%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Ways to give items */
+    .give-item { border-bottom: 1px solid #e2e8f0; padding-bottom: 1.25rem }
+    .give-item:last-child { border-bottom: none; padding-bottom: 0 }
+
+    /* Pull quote */
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      color: #0f172a;
+      letter-spacing: -.01em;
+    }
+
+    /* CTA */
+    .cta-teal {
+      background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden page-bg">
+
+  <!-- Shared header -->
+  <div data-include="/includes/header.html"></div>
+
+  <main class="relative z-10">
+
+    <!-- 1 · HERO -->
+    <section class="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-20 sm:pb-24">
+      <div class="max-w-3xl reveal">
+        <div class="section-rule mb-5"></div>
+        <p class="eyebrow mb-5">Support students</p>
+        <h1 class="page-headline mb-8">
+          Join us.<br>Bridge the Gap.
+        </h1>
+        <p class="text-xl text-slate-600 leading-relaxed max-w-2xl">
+          There's a moment between getting accepted to college and actually arriving on campus that financial aid wasn't designed for. We fill that gap: essentials, travel, and the basics that make a beginning possible. Every grant we award starts with a donor who decided it mattered.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2 · ORIGIN STORY -->
+    <section class="mx-auto max-w-5xl px-6 pb-16 sm:pb-20">
+      <div class="section-rule mb-10 reveal"></div>
+      <div class="max-w-2xl reveal">
+        <p class="text-lg text-slate-700 leading-loose">
+          During their son's college move-in, Karen Dantzler and Eric Lilavois found themselves making run after run to Target for the things nobody had thought to pack. Somewhere between the hangers and the second pillow, Karen asked: <em class="italic text-brand-600 font-medium">"How do families less fortunate afford all this?"</em>
+        </p>
+        <p class="text-lg text-slate-700 leading-loose mt-6">
+          That question became this Foundation. Eric remembered arriving at NYU with little more than milk crates and records. Karen arrived alone with a single suitcase. They both knew what it meant to show up with less than the people around you, and they knew how early that feeling starts to shape whether a student believes they belong. The families Karen was asking about don't have an answer to her question. You do.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3 · IMPACT TILES -->
+    <section class="bg-brand-50 border-y border-brand-100">
+      <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+        <div class="section-rule mb-5 reveal"></div>
+        <p class="eyebrow mb-4 reveal">Your impact</p>
+        <p class="text-base text-slate-700 leading-relaxed max-w-2xl mb-10 reveal">
+          Campus Ready grants average $2,500 per student — covering move-in essentials, travel to campus, meal support, and a gift card for incidentals. Every contribution at any level maps directly to what a student receives.
+        </p>
+
+        <!-- Top row: 3 tiles -->
+        <div class="impact-grid reveal">
+          <div class="impact-tile reveal-delay-1">
+            <div class="impact-amount">$100</div>
+            <p class="text-slate-600 text-sm leading-relaxed">Funds the incidentals gift card — the things a student forgot to pack and needs in those first days before they've found their footing.</p>
+          </div>
+          <div class="impact-tile reveal-delay-2">
+            <div class="impact-amount">$150</div>
+            <p class="text-slate-600 text-sm leading-relaxed">Funds meal support for a student's first days on campus, before dining services open for the semester.</p>
+          </div>
+          <div class="impact-tile reveal-delay-3">
+            <div class="impact-amount">$750</div>
+            <p class="text-slate-600 text-sm leading-relaxed">Funds move-in essentials — bedding, towels, storage, toiletries, and the supplies every student needs regardless of school or major.</p>
+          </div>
+        </div>
+
+        <!-- Bottom row: 2 tiles, centered -->
+        <div class="impact-grid impact-bottom-row mt-5 reveal">
+          <div class="impact-tile reveal-delay-1">
+            <div class="impact-amount">$1,500</div>
+            <p class="text-slate-600 text-sm leading-relaxed">Funds travel to campus: transportation for a student and a parent or guardian on move-in day, whether that's 50 miles or across the country.</p>
+          </div>
+          <div class="impact-tile reveal-delay-2">
+            <div class="impact-amount">$2,500</div>
+            <p class="text-slate-600 text-sm leading-relaxed">Funds one complete Campus Ready award: move-in essentials, travel to campus, meal support, and a gift card for incidentals. One student. A fundamentally different beginning.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center reveal">
+          <a href="https://givebutter.com/campusready?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=tiles_give_now"
+             target="_blank" rel="noopener"
+             class="inline-flex items-center rounded-xl bg-brand-600 px-6 py-3.5 text-white font-semibold shadow-sm hover:bg-brand-700 transition-colors text-base">
+            Give now
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4 · WAYS TO GIVE -->
+    <section class="bg-slate-50 border-y border-slate-100">
+      <div class="mx-auto max-w-5xl px-6 py-14 sm:py-16 reveal">
+        <p class="eyebrow mb-4">Ways to give</p>
+        <p class="text-base text-slate-600 leading-relaxed max-w-xl mb-10">
+          We've made it straightforward to give in whatever way works best for you.
+        </p>
+
+        <div class="max-w-2xl space-y-5">
+          <div class="give-item">
+            <p class="font-semibold text-slate-900 mb-1">Credit card, debit, or digital wallet</p>
+            <p class="text-slate-500 text-sm leading-relaxed">Secure and immediate through our giving page.</p>
+          </div>
+          <div class="give-item">
+            <p class="font-semibold text-slate-900 mb-1">Donor-Advised Fund</p>
+            <p class="text-slate-500 text-sm leading-relaxed">Recommend a grant to Campus Ready Foundation. Email us at <a href="mailto:hello@campusready.foundation" class="text-brand-700 hover:underline">hello@campusready.foundation</a> and we'll send everything you need.</p>
+          </div>
+          <div class="give-item">
+            <p class="font-semibold text-slate-900 mb-1">Stock transfer or wire/ACH</p>
+            <p class="text-slate-500 text-sm leading-relaxed">Contact us for transfer instructions.</p>
+          </div>
+          <div class="give-item">
+            <p class="font-semibold text-slate-900 mb-1">Check by mail</p>
+            <p class="text-slate-500 text-sm leading-relaxed">Payable to <em>Campus Ready Foundation</em>, <span class="whitespace-nowrap">1895 Madrona Ave,</span> <span class="whitespace-nowrap">Saint Helena, CA 94574.</span></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5 · PULL QUOTE -->
+    <section class="mx-auto max-w-5xl px-6 py-12 sm:py-16 reveal">
+      <p class="pull-quote max-w-3xl">
+        "A strong beginning, with dignity intact, can change everything."
+      </p>
+    </section>
+
+    <!-- 6 · FINAL CTA -->
+    <section class="cta-teal">
+      <div class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center reveal">
+
+          <div>
+            <p class="eyebrow-light mb-4">Make a difference</p>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+              Be part of what<br>changes next.
+            </h2>
+            <p class="text-white/75 text-lg max-w-md leading-relaxed">
+              What you give becomes what a student receives — move-in essentials, travel, meal support, and a gift card for the things nobody remembered to pack.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start lg:items-end gap-4">
+            <a href="https://givebutter.com/campusready?utm_source=site&utm_medium=button&utm_campaign=donor_page&utm_content=footer_donate_now"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center rounded-xl bg-white px-8 py-4 text-slate-900 font-bold text-lg shadow hover:bg-brand-50 transition-colors">
+              Donate now
+            </a>
+            <a href="/partners/"
+               class="inline-flex items-center rounded-xl border-2 border-white/40 px-8 py-4 text-white font-semibold text-lg hover:border-white/70 transition-colors">
+              Partner with us
+            </a>
+          </div>
+
+        </div>
+
+        <p class="mt-10 text-white/50 text-sm reveal">
+          Questions? See our <a href="/faq/" class="text-white/70 hover:text-white underline">FAQ</a> or reach us at <a href="mailto:hello@campusready.foundation" class="text-white/70 hover:text-white underline">hello@campusready.foundation</a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared footer -->
+  <div data-include="/includes/footer.html"></div>
+
   <script src="/assets/js/includes.js"></script>
+
+  <!-- Scroll reveal observer -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+  </script>
+
 </body>
 </html>

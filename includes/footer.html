@@ -1,16 +1,44 @@
-  <footer class="border-t border-slate-200 bg-white/60">
-  <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600">
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <p>
-        <a class="hover:underline" href="/faq/">FAQ</a>
-        <span class="mx-2">•</span>
-        <a class="hover:underline" href="/privacy/">Privacy</a>
-      </p>
-      <p>© <span id="year"></span> Campus Ready Foundation</p>
+<footer class="border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-5xl px-6 py-10">
+
+    <!-- Row 1: Navigation + Utility -->
+    <div class="flex flex-col gap-6 sm:flex-row sm:justify-between">
+
+      <!-- Left: Organization links -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Organization</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-600">
+          <a class="hover:text-brand-600 transition-colors" href="/mission/">Mission</a>
+          <a class="hover:text-brand-600 transition-colors" href="/apply/">Apply</a>
+          <a class="hover:text-brand-600 transition-colors" href="/donate/">Donate</a>
+          <a class="hover:text-brand-600 transition-colors" href="/partners/">Partners</a>
+        </div>
+      </div>
+
+      <!-- Right: Support links -->
+      <div class="sm:text-right">
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Support</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-600 sm:justify-end">
+          <a class="hover:text-brand-600 transition-colors" href="/faq/">FAQ</a>
+          <a class="hover:text-brand-600 transition-colors" href="/privacy/">Privacy</a>
+          <a class="hover:text-brand-600 transition-colors" href="mailto:hello@campusready.foundation">Contact</a>
+        </div>
+      </div>
+
     </div>
 
-    <p class="mt-3">
-      Campus Ready Foundation is a 501(c)(3) nonprofit • EIN: 39-2532572 • Donations are tax-deductible to the fullest extent allowed by law.
-    </p>
+    <!-- Separator -->
+    <div class="border-t border-slate-200 my-6"></div>
+
+    <!-- Row 2: Legal -->
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-slate-400">
+      <p>&copy; <span id="footer-year"></span> Campus Ready Foundation</p>
+      <p>501(c)(3) nonprofit &middot; EIN 39-2532572 &middot; Donations are tax-deductible</p>
+    </div>
+
   </div>
 </footer>
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>

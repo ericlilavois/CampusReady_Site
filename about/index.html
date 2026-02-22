@@ -3,6 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C6B2GRMESL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C6B2GRMESL');
+</script>
+  <title>Campus Ready Foundation — Our Story</title>
 <meta name="description" content="Learn how Campus Ready Foundation helps low-income, first-time college students start strong." />
 <meta property="og:title" content="About | Campus Ready Foundation" />
 <meta property="og:description" content="Learn how Campus Ready Foundation helps low-income, first-time college students start strong." />
@@ -14,99 +23,183 @@
 <meta name="twitter:title" content="About | Campus Ready Foundation" />
 <meta name="twitter:description" content="Learn how Campus Ready Foundation helps low-income, first-time college students start strong." />
 <meta name="twitter:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
-<meta name="theme-color" content="#14b8a6" />  
+<meta name="theme-color" content="#14b8a6" />
+  <!-- Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/CRF_icon_32 x 32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/CRF_icon_48 x 48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/CRF_icon_180 x 180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/CRF_icon_192 x 192.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/assets/CRF_icon_144 x 144.png">
+<link rel="manifest" href="/assets/site.webmanifest">
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: { 500:'#14b8a6',600:'#0d9488',700:'#0f766e',50:'#f0fdfa',100:'#ccfbf1',200:'#99f6e4' }
+            brand: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+              400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+              800: '#115e59', 900: '#134e4a'
+            }
           },
-          fontFamily: { sans:['Inter','ui-sans-serif','system-ui'], serif:['Playfair Display','serif'] },
-          boxShadow: { soft:'0 8px 30px rgba(0,0,0,0.08)' }
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui'],
+            serif: ['Playfair Display','serif']
+          }
         }
       }
     }
   </script>
+
   <style>
-    .hero-gradient{background:radial-gradient(ellipse 800px 400px at 50% -20%, rgba(20,184,166,.15) 0%, transparent 50%),
-                               radial-gradient(ellipse 600px 300px at 80% 80%, rgba(20,184,166,.08) 0%, transparent 50%);}
-    .glass{backdrop-filter:blur(10px); background:rgba(255,255,255,.85); border:1px solid rgba(255,255,255,.2);}
+    html { -webkit-font-smoothing: antialiased }
+
+    .page-bg {
+      background:
+        radial-gradient(ellipse 900px 500px at 60% -10%, rgba(20,184,166,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
+    }
+
+    header.glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.92) !important; border-bottom: 1px solid rgb(226,232,240) }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease }
+    .reveal.visible { opacity: 1; transform: translateY(0) }
+
+    .page-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: #0f172a;
+    }
+
+    .eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #14b8a6;
+    }
+    .eyebrow-light {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5eead4;
+    }
+
+    .section-rule { width: 3rem; height: 2px; background: #14b8a6 }
+    .section-rule-light { width: 3rem; height: 2px; background: #5eead4 }
+
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      color: #0f172a;
+      letter-spacing: -.01em;
+    }
+
+    .cta-dark { background: #469E92 }
   </style>
+</head>
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C6B2GRMESL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden page-bg">
 
-  gtag('config', 'G-C6B2GRMESL');
-</script>
-  
-  <title>Campus Ready Foundation — Our Story</title>
+  <!-- Shared header -->
+  <div data-include="/includes/header.html"></div>
 
-  <!-- Icons (reuse your paths) -->
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/CRF_icon_32 x 32.png">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/CRF_icon_180 x 180.png">
-
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/CRF_icon_192 x 192.png">
-<link rel="manifest" href="/assets/site.webmanifest">
-  </head>
-<body class="font-sans bg-white text-slate-900 overflow-x-hidden">
-  <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
-
-  <!-- ===== Header (same as home, but about links to /about/) ===== -->
-<div data-include="/includes/header.html"></div>
   <main class="relative z-10">
-    <!-- Page header -->
-    <section class="mx-auto max-w-7xl px-6 pt-12 pb-6">
-      <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">Our Story</h1>
 
-   <!-- about sub-nav -->
-<div class="mt-6 flex items-center gap-4 text-sm">
-  <a href="/about/" class="px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 ring-1 ring-brand-100">Our Story</a>
-  <a href="/about/team/" class="px-3 py-1.5 rounded-full text-slate-600 hover:text-brand-700 ring-1 ring-slate-200 hover:ring-brand-200">Our Team</a>
-</div>
+    <!-- 1 · HERO -->
+    <section class="mx-auto max-w-5xl px-6 pt-16 pb-12 sm:pt-20 sm:pb-16">
+      <div class="max-w-3xl reveal">
+        <h1 class="page-headline">Our Story</h1>
+      </div>
     </section>
 
-    <!-- Story body + pull-quote -->
-    <section class="mx-auto max-w-3xl px-6 pb-20 leading-relaxed text-slate-700">
-      <div class="space-y-6 text-lg">
-        <p>When their son Max began his freshman year at Chapman University, Karen Dantzler and Eric Lilavois flew to Southern California to help him move in. Max had driven down that morning, his car packed to the brim with belongings. The family stayed in a hotel the night before move-in, Karen and Eric confident they had planned for everything—checklists reviewed, bedding and towels packed, supplies carefully purchased in advance. Yet as the next day unfolded, the true cost of getting started revealed itself—not only the airfare, hotel, and meals, but also the inevitable forgotten essentials that meant multiple trips to Target the next day: laundry detergent, hangers, a second pillow.</p>
-
-        <!-- Pull-quote -->
-        <blockquote class="my-6 border-l-4 border-brand-500 pl-5 italic text-slate-800">
-          “How do families less fortunate afford all this?”
-        </blockquote>
+    <!-- 2 · NARRATIVE — first half -->
+   <section class="mx-auto max-w-5xl px-6 pb-6 sm:pb-8">
+  <div class="max-w-3xl space-y-6 text-lg leading-relaxed text-slate-700">
+        <p>When their son Max began his freshman year at Chapman University, Karen Dantzler and Eric Lilavois flew to Southern California to help him move in. Max had driven down that morning, his car packed to the brim with belongings. The family stayed in a hotel the night before move-in, Karen and Eric confident they had planned for everything — checklists reviewed, bedding and towels packed, supplies carefully purchased in advance. Yet as the next day unfolded, the true cost of getting started revealed itself — not only the airfare, hotel, and meals, but also the inevitable forgotten essentials that meant multiple trips to Target the next day: laundry detergent, hangers, a second pillow.</p>
 
         <p>It was during one of those drives that Karen asked the question that would become their calling.</p>
+      </div>
+    </section>
 
-        <p>The question resonated deeply. Eric remembered arriving at NYU from Long Island with little more than a set of milk crates and a stack of records—grateful to be there, yet conscious of how different his experience felt from classmates who showed up with carloads of belongings and coordinated dorm sets. Karen also arrived at NYU, alone as a Dance Major with one suitcase, and a few boxes that were shipped from California. Together they understood how easily the gap between resources and readiness can shape a young person’s sense of belonging. For many students, those disparities surface even before the first class is taught.</p>
+    <!-- 3 · PULL QUOTE — Karen's question -->
+  <section class="mx-auto max-w-5xl px-6 py-4 sm:py-6 reveal">
+  <p class="pull-quote max-w-3xl">
+        "How do families less fortunate afford all this?"
+      </p>
+    </section>
 
-        <p>Eighteen months after Max’s drop-off, during a reflective hiatus from a successful career as a hospitality executive, Eric felt a pull he couldn’t ignore. He formed a 501(c)(3) nonprofit and, with Karen, provided the seed funding for what would become the Campus Ready Foundation. Eric brought his operational expertise—building systems, designing applications and creating scoring rubrics, while Karen, having parlayed her dance career into a 30-year business of customized personal fitness, poured in her entrepreneurial tenacity. Together, they turned one heartfelt question into a mission.</p>
+    <!-- 4 · NARRATIVE — second half, ending with the origin statement -->
+   <section class="mx-auto max-w-5xl px-6 pt-6 sm:pt-8 pb-14 sm:pb-16">
+  <div class="max-w-3xl space-y-6 text-lg leading-relaxed text-slate-700">
+        <p>The question resonated deeply. Eric remembered arriving at NYU from Long Island with little more than a set of milk crates and a stack of records — grateful to be there, yet conscious of how different his experience felt from classmates who showed up with carloads of belongings and coordinated dorm sets. Karen also arrived at NYU, alone as a Dance Major with one suitcase, and a few boxes that were shipped from California. Together they understood how easily the gap between resources and readiness can shape a young person's sense of belonging. For many students, those disparities surface even before the first class is taught.</p>
+
+        <p>Eighteen months after Max's drop-off, during a reflective hiatus from a successful career as a hospitality executive, Eric felt a pull he couldn't ignore. He formed a 501(c)(3) nonprofit and, with Karen, provided the seed funding for what would become the Campus Ready Foundation. Eric brought his operational expertise — building systems, designing applications and creating scoring rubrics, while Karen, having parlayed her dance career into a 30-year business of customized personal fitness, poured in her entrepreneurial tenacity. Together, they turned one heartfelt question into a mission.</p>
 
         <p>When they began sharing their vision, the response was immediate. A respected business leader confided that he too had arrived at college with almost nothing, a memory that stayed with him despite all he had achieved later in life. Another offered corporate support. Story after story echoed the same truth: even the most accomplished adults still remembered what it felt like to start out unprepared.</p>
 
-<div class="mt-8 rounded-2xl border border-teal-100 bg-gradient-to-br from-teal-50 to-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-  <p class="text-slate-800 font-medium leading-relaxed">
-    Campus Ready Foundation was born from the belief that no student’s potential should be diminished by the stress of simply getting started—because a strong beginning, with dignity intact, can change everything.
-  </p>
-</div>
+        <p class="text-slate-900 font-medium">Campus Ready Foundation was born from the belief that no student's potential should be diminished by the stress of simply getting started — because a strong beginning, with dignity intact, can change everything.</p>
       </div>
     </section>
+
+    <!-- 5 · CLOSING BAND — no buttons, copy only -->
+    <section class="cta-dark">
+      <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20 reveal">
+        <div class="max-w-2xl">
+          <div class="section-rule-light mb-5"></div>
+          <p class="eyebrow mb-4" style="color: white;">How do families less fortunate afford all this?</p>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+            They don't. Until someone decides they should.
+          </h2>
+          <p class="text-white/85 text-lg max-w-md leading-relaxed">
+            Every grant we award starts with a donor who understood what it costs to begin — and decided to help.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer (reuse your existing footer) -->
-  <!-- fp: about-header-sync -->
- <div data-include="/includes/footer.html"></div>
+  <!-- Shared footer -->
+  <div data-include="/includes/footer.html"></div>
 
+  <!-- Include loader -->
   <script src="/assets/js/includes.js"></script>
+
+  <!-- Scroll reveal observer -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+  </script>
+
 </body>
 </html>
