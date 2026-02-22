@@ -63,6 +63,14 @@
   <style>
     html { -webkit-font-smoothing: antialiased }
 
+    /* ── Site-width cap: prevents bleed on wide/ultrawide monitors ── */
+    body {
+      max-width: 1440px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
     /* Page background gradient */
     .page-bg {
       background:
@@ -70,7 +78,6 @@
         radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
     }
 
-    /* Match other pages: more opaque header (depends on shared include having class="glass" on <header>) */
     header.glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.92) !important; border-bottom: 1px solid rgb(226,232,240) }
 
     /* Scroll reveal */
@@ -120,7 +127,7 @@
     .section-rule { width: 3rem; height: 2px; background: #14b8a6 }
     .section-rule-light { width: 3rem; height: 2px; background: #5eead4 }
 
-    /* Impact tile grid: 3 + 2 */
+    /* Impact tile grid */
     .impact-grid {
       display: grid;
       gap: 1.25rem;
@@ -150,7 +157,6 @@
       letter-spacing: -.02em;
       margin-bottom: .75rem;
     }
-    /* Bottom row: 2 tiles centered */
     @media (min-width: 640px) {
       .impact-bottom-row {
         grid-template-columns: repeat(2, 1fr);
@@ -175,7 +181,7 @@
       letter-spacing: -.01em;
     }
 
-    /* CTA — Teal gradient */
+    /* CTA */
     .cta-teal {
       background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
     }
@@ -279,7 +285,7 @@
           </div>
           <div class="give-item">
             <p class="font-semibold text-slate-900 mb-1">Donor-Advised Fund</p>
-            <p class="text-slate-500 text-sm leading-relaxed">Recommend a grant to Campus Ready Foundation. Email us at <a href="/cdn-cgi/l/email-protection#ed8588818182ad8e8c809d989e9f888c8994c38b829883898c99848283" class="text-brand-700 hover:underline"><span class="__cf_email__" data-cfemail="e28a878e8e8da281838f929791908783869bcc848d978c8683968b8d8c">[email&#160;protected]</span></a> and we'll send everything you need.</p>
+            <p class="text-slate-500 text-sm leading-relaxed">Recommend a grant to Campus Ready Foundation. Email us at <a href="mailto:hello@campusready.foundation" class="text-brand-700 hover:underline">hello@campusready.foundation</a> and we'll send everything you need.</p>
           </div>
           <div class="give-item">
             <p class="font-semibold text-slate-900 mb-1">Stock transfer or wire/ACH</p>
@@ -332,7 +338,7 @@
         </div>
 
         <p class="mt-10 text-white/50 text-sm reveal">
-          Questions? See our <a href="/faq/" class="text-white/70 hover:text-white underline">FAQ</a> or reach us at <a href="/cdn-cgi/l/email-protection#ea828f868685aa898b879a9f99988f8b8e93c48c859f848e8b9e838584" class="text-white/70 hover:text-white underline"><span class="__cf_email__" data-cfemail="a1c9c4cdcdcee1c2c0ccd1d4d2d3c4c0c5d88fc7ced4cfc5c0d5c8cecf">[email&#160;protected]</span></a>
+          Questions? See our <a href="/faq/" class="text-white/70 hover:text-white underline">FAQ</a> or reach us at <a href="mailto:hello@campusready.foundation" class="text-white/70 hover:text-white underline">hello@campusready.foundation</a>
         </p>
 
       </div>
@@ -343,8 +349,7 @@
   <!-- Shared footer -->
   <div data-include="/includes/footer.html"></div>
 
-  <!-- Include loader (last) -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/js/includes.js"></script>
+  <script src="/assets/js/includes.js"></script>
 
   <!-- Scroll reveal observer -->
   <script>
@@ -352,4 +357,19 @@
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(fun
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+  </script>
+
+</body>
+</html>
