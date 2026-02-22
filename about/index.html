@@ -17,8 +17,7 @@
 <meta name="theme-color" content="#14b8a6" />  
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -32,10 +31,58 @@
       }
     }
   </script>
-  <style>
-    .hero-gradient{background:radial-gradient(ellipse 800px 400px at 50% -20%, rgba(20,184,166,.15) 0%, transparent 50%),
-                               radial-gradient(ellipse 600px 300px at 80% 80%, rgba(20,184,166,.08) 0%, transparent 50%);}
-    .glass{backdrop-filter:blur(10px); background:rgba(255,255,255,.85); border:1px solid rgba(255,255,255,.2);}
+ <style>
+    html { -webkit-font-smoothing: antialiased }
+
+    .page-bg {
+      background:
+        radial-gradient(ellipse 900px 500px at 60% -10%, rgba(20,184,166,.10) 0%, transparent 55%),
+        radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
+    }
+
+    header.glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.92) !important; border-bottom: 1px solid rgb(226,232,240) }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease }
+    .reveal.visible { opacity: 1; transform: translateY(0) }
+
+    .page-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      color: #0f172a;
+    }
+
+    .eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #14b8a6;
+    }
+    .eyebrow-light {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #5eead4;
+    }
+
+    .section-rule { width: 3rem; height: 2px; background: #14b8a6 }
+    .section-rule-light { width: 3rem; height: 2px; background: #5eead4 }
+
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      color: #0f172a;
+      letter-spacing: -.01em;
+    }
+
+    .cta-dark { background: #469E92 }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -59,15 +106,16 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/CRF_icon_192 x 192.png">
 <link rel="manifest" href="/assets/site.webmanifest">
   </head>
-<body class="font-sans bg-white text-slate-900 overflow-x-hidden">
-  <div class="pointer-events-none fixed inset-0 hero-gradient"></div>
+<body class="font-sans bg-white text-slate-900 overflow-x-hidden page-bg">
 
   <!-- ===== Header (same as home, but about links to /about/) ===== -->
 <div data-include="/includes/header.html"></div>
   <main class="relative z-10">
     <!-- Page header -->
-    <section class="mx-auto max-w-7xl px-6 pt-12 pb-6">
-      <h1 class="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-slate-900">Our Story</h1>
+    <section class="mx-auto max-w-5xl px-6 pt-16 pb-6 sm:pt-20">
+      <div class="section-rule mb-5"></div>
+      <p class="eyebrow mb-4">Our story</p>
+      <h1 class="page-headline">Our Story</h1>
 
    <!-- about sub-nav -->
 <div class="mt-6 flex items-center gap-4 text-sm">
@@ -81,10 +129,7 @@
       <div class="space-y-6 text-lg">
         <p>When their son Max began his freshman year at Chapman University, Karen Dantzler and Eric Lilavois flew to Southern California to help him move in. Max had driven down that morning, his car packed to the brim with belongings. The family stayed in a hotel the night before move-in, Karen and Eric confident they had planned for everything—checklists reviewed, bedding and towels packed, supplies carefully purchased in advance. Yet as the next day unfolded, the true cost of getting started revealed itself—not only the airfare, hotel, and meals, but also the inevitable forgotten essentials that meant multiple trips to Target the next day: laundry detergent, hangers, a second pillow.</p>
 
-        <!-- Pull-quote -->
-        <blockquote class="my-6 border-l-4 border-brand-500 pl-5 italic text-slate-800">
-          “How do families less fortunate afford all this?”
-        </blockquote>
+        <p class="pull-quote my-8">"How do families less fortunate afford all this?"</p>
 
         <p>It was during one of those drives that Karen asked the question that would become their calling.</p>
 
@@ -94,8 +139,7 @@
 
         <p>When they began sharing their vision, the response was immediate. A respected business leader confided that he too had arrived at college with almost nothing, a memory that stayed with him despite all he had achieved later in life. Another offered corporate support. Story after story echoed the same truth: even the most accomplished adults still remembered what it felt like to start out unprepared.</p>
 
-<div class="mt-8 rounded-2xl border border-teal-100 bg-gradient-to-br from-teal-50 to-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-  <p class="text-slate-800 font-medium leading-relaxed">
+<div class="mt-8 rounded-2xl border border-teal-100 bg-gradient-to-br from-teal-50 to-white p-6 shadow-sm">  <p class="text-slate-800 font-medium leading-relaxed">
     Campus Ready Foundation was born from the belief that no student’s potential should be diminished by the stress of simply getting started—because a strong beginning, with dignity intact, can change everything.
   </p>
 </div>
@@ -103,10 +147,57 @@
     </section>
   </main>
 
+  <!-- CLOSING CTA -->
+    <section class="cta-dark">
+      <div class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-end reveal">
+
+          <div>
+            <div class="section-rule-light mb-5"></div>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+              Confidence. Dignity.<br>A Strong Start.
+            </h2>
+            <p class="text-white/85 text-lg max-w-md leading-relaxed">
+              For students heading to campus this fall. For supporters who want to make that possible.
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start lg:items-end gap-4">
+            <a href="/apply/"
+               class="inline-flex items-center rounded-xl bg-brand-500 px-8 py-4 text-white font-bold text-lg shadow-lg hover:bg-brand-600 transition-colors">
+              Apply now
+            </a>
+            <a href="/donate/"
+               class="inline-flex items-center rounded-xl border-2 border-white/40 px-8 py-4 text-white font-semibold text-lg hover:border-white/70 transition-colors">
+              Support a student
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
   <!-- Footer (reuse your existing footer) -->
   <!-- fp: about-header-sync -->
  <div data-include="/includes/footer.html"></div>
 
   <script src="/assets/js/includes.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
+    });
+  </script>
 </body>
 </html>
