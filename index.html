@@ -1,9 +1,65 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Campus Ready Foundation — Home (Design Prototype)</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C6B2GRMESL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C6B2GRMESL');
+  gtag('config', 'AW-17798681592');
+</script>
+<!-- SEO -->
+<title>Campus Ready Foundation | Confidence. Dignity. A Strong Start.</title>
+<link rel="canonical" href="https://campusready.foundation/" />
+<meta name="description" content="Campus Ready Foundation provides one-time grants to first-time college students from low-income households — covering move-in essentials, travel to campus, and early-arrival support." />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://campusready.foundation/" />
+<meta property="og:title" content="Campus Ready Foundation | Confidence. Dignity. A Strong Start." />
+<meta property="og:description" content="Campus Ready Foundation provides one-time grants to first-time college students — covering move-in essentials, travel to campus, and early-arrival support." />
+<meta property="og:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
+<meta property="og:image:alt" content="Campus Ready Foundation logo with green checkmark." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Campus Ready Foundation | Confidence. Dignity. A Strong Start." />
+<meta name="twitter:description" content="Campus Ready Foundation provides one-time grants to first-time college students — covering move-in essentials, travel to campus, and early-arrival support." />
+<meta name="twitter:image" content="https://campusready.foundation/assets/og/logo-image-1200x630.png" />
+<meta name="twitter:image:alt" content="Campus Ready Foundation logo with green checkmark." />
+<meta name="theme-color" content="#14b8a6" />
+<!-- JSON-LD for Nonprofit -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NonprofitOrganization",
+  "name": "Campus Ready Foundation",
+  "url": "https://campusready.foundation/",
+  "logo": "https://campusready.foundation/assets/logo-512.png",
+  "email": "hello@campusready.foundation",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "EIN",
+    "value": "39-2532572"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Saint Helena",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  }
+}
+</script>
+  <!-- Favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/CRF_icon_16 x 16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/CRF_icon_32 x 32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/CRF_icon_48 x 48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/CRF_icon_180 x 180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/CRF_icon_192 x 192.png">
+<link rel="icon" type="image/png" sizes="144x144" href="/assets/CRF_icon_144 x 144.png">
+<link rel="manifest" href="/assets/site.webmanifest">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,14 +90,6 @@
   <style>
     html { -webkit-font-smoothing: antialiased }
 
-    /* ── CHANGE 1: Site-wide body cap ── */
-    body {
-      max-width: 1280px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    }
-
     /* Page background gradient */
     .page-bg {
       background:
@@ -49,15 +97,15 @@
         radial-gradient(ellipse 500px 400px at 10% 70%, rgba(20,184,166,.06) 0%, transparent 50%);
     }
 
-    /* Header glass effect */
-    header.glass {
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,.92) !important;
-      border-bottom: 1px solid rgb(226,232,240);
-    }
+    /* Match other pages: more opaque header (depends on shared include having class="glass" on <header>) */
+    header.glass { backdrop-filter: blur(10px); background: rgba(255,255,255,.92) !important; border-bottom: 1px solid rgb(226,232,240) }
 
-    /* Scroll reveal — immediately visible for prototype */
-    .reveal { opacity: 1; transform: translateY(0); }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease }
+    .reveal.visible { opacity: 1; transform: translateY(0) }
+    .reveal-delay-1 { transition-delay: .1s }
+    .reveal-delay-2 { transition-delay: .2s }
+    .reveal-delay-3 { transition-delay: .3s }
 
     /* Page headline */
     .page-headline {
@@ -131,67 +179,22 @@
       margin: auto;
     }
 
-    /* CTA — CRF Green */
+    /* CTA — CRF Green (style guide primary: #469E92) */
     .cta-dark { background: #469E92 }
-
-    /* ── Footer styles ── */
-    .site-footer a {
-      transition: color .15s ease;
-    }
-    .site-footer a:hover {
-      color: #0d9488;
-    }
-    .footer-separator {
-      width: 100%;
-      height: 1px;
-      background: #e2e8f0;
-    }
   </style>
 </head>
 
 <body class="font-sans bg-white text-slate-900 overflow-x-hidden page-bg">
 
-  <!-- ══════════════════════════════════════════════════════ -->
-  <!-- HEADER — narrowed to max-w-5xl to match content       -->
-  <!-- ══════════════════════════════════════════════════════ -->
-  <header class="sticky top-0 z-50 glass">
-    <div class="mx-auto max-w-5xl px-6 py-5 flex items-center justify-between">
-
-      <!-- Logo -->
-      <a href="/" class="inline-flex items-center gap-3 group cursor-pointer" aria-label="Campus Ready Foundation home">
-        <!-- Using a text stand-in since we don't have the image locally -->
-        <span class="font-serif text-xl font-bold text-slate-900">Campus Ready<span class="text-brand-600"> Foundation</span></span>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav aria-label="Main" class="hidden sm:block">
-        <ul class="flex items-center gap-8 text-sm font-medium">
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="/mission/">Mission</a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="/donate/">Donate</a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="/partners/">Partners</a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="/about/">About</a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="/apply/start/">Apply</a></li>
-          <li><a class="text-slate-600 hover:text-brand-600 transition-colors duration-200" href="mailto:hello@campusready.foundation">Contact</a></li>
-        </ul>
-      </nav>
-
-      <!-- Mobile toggle (simplified for prototype) -->
-      <button class="sm:hidden p-2 rounded-md ring-1 ring-slate-300 text-slate-700" aria-label="Toggle navigation">
-        <svg width="24" height="24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
-    </div>
-  </header>
+  <!-- Shared header -->
+  <div data-include="/includes/header.html"></div>
 
   <main class="relative z-10">
 
-    <!-- ══════════════════════════════════════════════════════ -->
-    <!-- 1 · HERO — CTAs removed, bottom padding tightened    -->
-    <!-- Was: pt-16 pb-20 sm:pt-20 sm:pb-24                   -->
-    <!-- Now: pt-16 pb-12 sm:pt-20 sm:pb-16                   -->
-    <!-- ══════════════════════════════════════════════════════ -->
-    <section class="mx-auto max-w-5xl px-6 pt-16 pb-12 sm:pt-20 sm:pb-16">
+    <!-- 1 · HERO -->
+    <section class="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-20 sm:pb-24">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
+        <div class="reveal">
           <div class="section-rule mb-5"></div>
           <h1 class="page-headline mb-6">
             Getting accepted was the hard part. Arriving ready shouldn't be.
@@ -199,37 +202,48 @@
           <p class="text-lg text-slate-600 leading-relaxed max-w-xl">
             Campus Ready Foundation provides one-time grants to first-time college students from low-income households — covering move-in essentials, travel to campus, and early-arrival support. These are the costs that show up before the first class, the ones financial aid wasn't designed for, and the ones that can shape whether a student feels like they belong the moment they arrive.
           </p>
-          <!-- CHANGE 2: Hero CTA buttons removed -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="/apply/"
+               class="inline-flex items-center rounded-xl bg-brand-600 px-6 py-3.5 text-white font-semibold shadow-sm hover:bg-brand-700 transition-colors text-base">
+              Apply now
+            </a>
+            <a href="/donate/"
+               class="inline-flex items-center rounded-xl bg-white px-6 py-3.5 text-brand-700 font-semibold ring-1 ring-inset ring-brand-300 hover:bg-brand-50 transition-colors text-base">
+              Support a student
+            </a>
+          </div>
         </div>
 
-        <div>
+        <div class="reveal reveal-delay-2">
           <div class="illus-wrap">
             <div class="flex items-center justify-center h-full p-6">
-              <!-- Placeholder for illustration -->
-              <div class="w-full aspect-[4/3] bg-gradient-to-br from-brand-50 to-brand-100 rounded-xl flex items-center justify-center">
-                <span class="text-brand-400 text-sm font-medium">[Illustration]</span>
-              </div>
+              <picture>
+                <source srcset="/assets/Illustration.FNL.jpg" type="image/jpeg" />
+                <img
+                  src="/assets/Illustration.FNL.jpg"
+                  alt="Campus Ready Foundation care box illustration"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════ -->
-    <!-- 2 · WHAT WE DO — tightened                            -->
-    <!-- Was: py-16 sm:py-20                                   -->
-    <!-- Now: py-14 sm:py-16                                   -->
-    <!-- ══════════════════════════════════════════════════════ -->
+    <!-- 2 · WHAT WE DO -->
     <section class="bg-brand-50 border-y border-brand-100">
-      <div class="mx-auto max-w-5xl px-6 py-14 sm:py-16">
-        <div class="section-rule mb-5"></div>
-        <p class="eyebrow mb-4">What we do</p>
-        <h2 class="section-headline text-slate-900 mb-12 max-w-lg">
+      <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
+        <div class="section-rule mb-5 reveal"></div>
+        <p class="eyebrow mb-4 reveal">What we do</p>
+        <p class="text-base text-slate-600 leading-relaxed max-w-xl mb-10 reveal">
           Each Campus Ready grant covers three things.
-        </h2>
+        </p>
 
         <div class="wwd-grid">
-          <div class="wwd-item">
+
+          <div class="wwd-item reveal reveal-delay-1">
             <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
@@ -242,7 +256,7 @@
             </p>
           </div>
 
-          <div class="wwd-item">
+          <div class="wwd-item reveal reveal-delay-2">
             <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
@@ -256,7 +270,7 @@
             </p>
           </div>
 
-          <div class="wwd-item">
+          <div class="wwd-item reveal reveal-delay-3">
             <div class="w-10 h-10 rounded-full bg-white border border-brand-200 flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
@@ -268,14 +282,13 @@
               Meal support and a gift card for incidentals in those first days on campus, before dining services open and before a student has found their footing.
             </p>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════ -->
-    <!-- 3 · TRUST STRIP — spacing unchanged (already tight)   -->
-    <!-- ══════════════════════════════════════════════════════ -->
-    <section class="mx-auto max-w-5xl px-6 py-8">
+    <!-- 3 · TRUST STRIP -->
+    <section class="mx-auto max-w-5xl px-6 py-8 reveal">
       <div class="rounded-2xl border border-teal-100/70 bg-gradient-to-br from-teal-50 to-white p-4 md:p-5 shadow-sm">
         <p class="text-sm text-slate-600 flex flex-wrap items-center gap-x-2 gap-y-1">
           <svg class="w-4 h-4 text-teal-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
@@ -290,25 +303,17 @@
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════ -->
-    <!-- 4 · PULL QUOTE — tightened                            -->
-    <!-- Was: py-12 sm:py-16                                   -->
-    <!-- Now: py-8 sm:py-12                                    -->
-    <!-- ══════════════════════════════════════════════════════ -->
-    <section class="mx-auto max-w-5xl px-6 py-8 sm:py-12">
+    <!-- 4 · PULL QUOTE -->
+    <section class="mx-auto max-w-5xl px-6 py-12 sm:py-16 reveal">
       <p class="pull-quote max-w-3xl">
         "A strong start, with dignity intact, can change everything."
       </p>
     </section>
 
-    <!-- ══════════════════════════════════════════════════════ -->
-    <!-- 5 · CLOSING CTA — tightened                           -->
-    <!-- Was: py-20 sm:py-24                                   -->
-    <!-- Now: py-16 sm:py-20                                   -->
-    <!-- ══════════════════════════════════════════════════════ -->
+    <!-- 5 · CLOSING CTA -->
     <section class="cta-dark">
-      <div class="mx-auto max-w-5xl px-6 py-16 sm:py-20">
-        <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center">
+      <div class="mx-auto max-w-5xl px-6 py-20 sm:py-24">
+        <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center reveal">
 
           <div>
             <div class="section-rule-light mb-5"></div>
@@ -337,55 +342,29 @@
 
   </main>
 
-  <!-- ══════════════════════════════════════════════════════ -->
-  <!-- FOOTER — redesigned                                    -->
-  <!-- Two rows: nav links + utility links, then legal line  -->
-  <!-- ══════════════════════════════════════════════════════ -->
-  <footer class="site-footer border-t border-slate-200 bg-white">
-    <div class="mx-auto max-w-5xl px-6 py-10">
+  <!-- Shared footer -->
+  <div data-include="/includes/footer.html"></div>
 
-      <!-- Row 1: Navigation + Utility -->
-      <div class="flex flex-col gap-6 sm:flex-row sm:justify-between">
+  <!-- Include loader (last) -->
+  <script src="/assets/js/includes.js"></script>
 
-        <!-- Left: Organization links -->
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Organization</p>
-          <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-600">
-            <a href="/mission/">Mission</a>
-            <a href="/apply/">Apply</a>
-            <a href="/donate/">Donate</a>
-            <a href="/partners/">Partners</a>
-          </div>
-        </div>
-
-        <!-- Right: Support links -->
-        <div class="sm:text-right">
-          <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Support</p>
-          <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-600 sm:justify-end">
-            <a href="/faq/">FAQ</a>
-            <a href="/privacy/">Privacy</a>
-            <a href="mailto:hello@campusready.foundation">Contact</a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Separator -->
-      <div class="footer-separator my-6"></div>
-
-      <!-- Row 2: Legal -->
-      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-slate-400">
-        <p>&copy; 2026 Campus Ready Foundation</p>
-        <p>501(c)(3) nonprofit &middot; EIN 39-2532572 &middot; Donations are tax-deductible</p>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- Mobile nav toggle (simplified for prototype) -->
+  <!-- Scroll reveal observer -->
   <script>
-    document.querySelector('[aria-label="Toggle navigation"]')?.addEventListener('click', function() {
-      // Prototype only — no mobile menu wired
+    document.addEventListener('DOMContentLoaded', function() {
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        reveals.forEach(function(el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+      }
     });
   </script>
 
