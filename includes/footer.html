@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-5xl px-6 py-10">
 
     <!-- Row 1: Navigation + Utility -->
-    <div class="flex flex-col gap-6 sm:flex-row sm:justify-between">
+    <div class="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-start">
 
       <!-- Left: Organization links -->
       <div>
@@ -13,6 +13,27 @@
           <a class="hover:text-brand-600 transition-colors" href="/donate/">Donate</a>
           <a class="hover:text-brand-600 transition-colors" href="/partners/">Partners</a>
         </div>
+      </div>
+
+      <!-- Center: Stay Informed -->
+      <div class="sm:text-center">
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Stay Informed</p>
+        <form id="footer-signup" class="flex gap-2 sm:justify-center">
+          <input
+            type="email"
+            id="footer-email"
+            placeholder="your@email.com"
+            required
+            class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-brand-400 w-44"
+          />
+          <button
+            type="submit"
+            class="text-sm px-3 py-1.5 rounded-lg bg-brand-600 text-white font-medium hover:bg-brand-700 transition-colors whitespace-nowrap"
+          >
+            Sign up
+          </button>
+        </form>
+        <p id="footer-signup-msg" class="text-xs text-brand-600 mt-2 hidden">You're on the list.</p>
       </div>
 
       <!-- Right: Support links -->
@@ -41,4 +62,28 @@
 
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  document.getElementById('footer-signup').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('footer-email').value.trim();
+    var msg = document.getElementById('footer-signup-msg');
+    var btn = this.querySelector('button');
+    if (!email) return;
+    btn.disabled = true;
+    btn.textContent = '...';
+    fetch('https://script.google.com/macros/s/AKfycbwtQT1fQnj4oBJpWyHRf23dEMmr-Y2PHuTFNjQpdl2qi01Yc0UbECooo60-MpfZwjc3/exec', {
+      method: 'POST',
+      redirect: 'follow',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'footer' })
+    })
+    .then(function() {
+      document.getElementById('footer-signup').classList.add('hidden');
+      msg.classList.remove('hidden');
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Sign up';
+    });
+  });
 </script>
